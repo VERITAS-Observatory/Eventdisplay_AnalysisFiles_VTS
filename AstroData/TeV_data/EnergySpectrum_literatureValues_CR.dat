@@ -1,0 +1,56 @@
+
+Energy Spectra of Cosmic Rays
+
+--- individual entries must start with NAME !!! ----
+--- individual entries must end with END !!! ---
+
+
+energies in TeV
+flux constants in cm^-2s^-1TeV^-1sr^-1
+
+Power law (type = 0 ):
+----------------------
+<type> <energy for flux normalisation> <place holder) <flux constant> <error on flux constant> <index> < error on index> <energy range: min> <energy range: max> 
+
+* NAME ATIC_proton
+* OBSERVATORY ATIC
+* SOURCE ATIC proton
+* REFERENCE S Swordy
+* VALUES 0 1. 0. 0.098e-4 0. -2.62. 0. 0.05 1.e6
+* END
+
+* NAME ATIC_helium
+* OBSERVATORY ATIC
+* SOURCE ATIC helium
+* REFERENCE S Swordy
+* VALUES 0 1. 0. 0.057e-4 0. -2.59. 0. 0.05 1.e6
+* END
+
+* NAME FIT_electrons
+* OBSERVATORY Fermi LAT and HESS
+* SOURCE electrons
+* REFERENCE astro-ph/0905.0025 A&A 508261 (2009)
+* VALUES 3 1.7 0.3 1.7 0.3 2.3e-9 1.3e-9 -3.07 0.01 -5. 2.3 0.4 0. 7.e-3 2.
+* END
+
+* NAME FIT_electrons_2
+* OBSERVATORY Fermi LAT and HESS
+* SOURCE electrons
+* REFERENCE astro-ph/0905.0025 A&A 508261 (2009/2010)
+* VALUES 3 2.22 0.20 2.22 0.20 1.18e-9 0.4e-9 -3.04 0.01 -4.2 0.6 0.4 0. 7.e-3 2.
+* END
+
+* NAME AxB_electrons
+* OBSERVATORY DONO
+* SOURCE electrons
+* REFERENCE A&A 457, 899 (2006)
+* VALUES 4 1. 0. 0.005 0. 1.36e-3 0. 2.26 0. 1.e-3 1.
+* END
+
+* NAME HEAT_electrons
+* OBSERVATORY HEAT
+* SOURCE electrons
+* REFERENCE ApJ 498 779 (1998)
+ VALUES 0 1. 0. 1.25e-8 2.48e-9 -3.086 0.081 0.01 10.1
+* VALUES 0 1. 0. 1.25e-8 2.48e-9 -3.086 0.081 0.01 0.1
+* END

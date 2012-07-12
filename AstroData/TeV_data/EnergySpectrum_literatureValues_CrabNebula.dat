@@ -1,0 +1,99 @@
+
+Measurements of the Crab Nebula from Literature
+
+--- individual entries must start with NAME !!! ----
+--- individual entries must end with END !!! ---
+
+
+energies in [TeV]
+flux constants in cm^-2s^-1[energy^-1]
+
+VALUES line:
+
+<type> <energy for flux normalisation> <place holder> [see below] <energy range: min> <energy range: max>
+
+Power law (type = 0 ):
+----------------------
+<flux constants> <error on flux> <index> < error on index> 
+
+Power law with exponential cut off (type = 1 ):
+----------------------
+<flux constants> <error on flux> <cutoff energy> <error on cutoff energy> <index> < error on index>
+
+Curved power law  (type = 2 )
+----------------------
+<flux constants> <error on flux> <index> < error on index>  <curvature> <error on curvature>
+----------------------
+
+* NAME Crab_VERITAS_2Tel
+* OBSERVATORY VERITAS
+* SOURCE Crab Nebula
+* REFERENCE Acciari et al (Apj 679:1427, 2008)
+* VALUES 0 1. 0. 2.85e-11 0. -2.49 0. 0.3, 4.
+* END
+
+* NAME Crab_Whipple
+* OBSERVATORY Whipple
+* SOURCE Crab Nebula
+* REFERENCE Hillas et al (ApJ 503:744, 1998)
+* VALUES 0 1. 0. 3.25e-11 0.14e-11 -2.44 0.06 0.5 8.
+* END
+
+* NAME Crab_HESS_PL
+* OBSERVATORY H.E.S.S.
+* SOURCE Crab Nebula
+* REFERENCE Aharonian et al, A&A 457:899, 2006
+* VALUES 0 1. 0. 3.45e-11 0.05e-11 -2.63 0.01 0.41 40. 
+* END
+
+* NAME Crab_HESS_PLEC
+* OBSERVATORY H.E.S.S.
+* SOURCE Crab Nebula
+* REFERENCE Aharonian et al, A&A 457:899, 2006
+* VALUES 1 1. 0. 3.76e-11 0.07e-11 14.3 2.1 -2.39 0.03 0.41 40. 
+* END
+
+* NAME Crab_HESS_BRPL
+* OBSERVATORY H.E.S.S.
+* SOURCE Crab Nebula
+* REFERENCE Aharonian et al, A&A 457:899, 2006
+* VALUES 3 1. 0. 7. 0.1 3.43e-11 0.07e-11 -2.51 0.02 -3.3 1.5 0.3 0. 0.41 40. 
+* END
+
+* NAME Crab_HEGRA
+* OBSERVATORY HEGRA
+* SOURCE Crab Nebula
+* REFERENCE Aharonian et al, ApJ 614:897, 2004
+* VALUES 0 1. 0. 2.83e-11 0.04e-11 -2.62 0.02 0.50 80. 
+* END
+
+* NAME Crab_MAGIC_PL
+* OBSERVATORY MAGIC
+* SOURCE Crab Nebula
+* REFERENCE Albert et al, ApJ 674:1037, 2008
+* VALUES 0 0.3 0. 5.7e-10 0.20e-10 -2.48 0.03 0.06 9. 
+* DIFFFLUX  0.077  1.14e-8  0.27e-8
+* DIFFFLUX  0.127  3.65e-9  0.38e-9
+* DIFFFLUX  0.210  1.41e-9  0.09e-9
+* DIFFFLUX  0.346  4.37e-10 0.23e-10
+* DIFFFLUX  0.570  1.32e-10 0.07e-10
+* DIFFFLUX  0.940  3.55e-11 0.23e-11
+* DIFFFLUX  1.550  9.88e-12 0.74e-12
+* DIFFFLUX  2.554  2.69e-12 0.29e-12
+* DIFFFLUX  4.212  6.80e-13 1.10e-13
+* DIFFFLUX  6.943  1.15e-13 0.53e-13
+* END
+
+* NAME Crab_MAGIC_VPL
+* OBSERVATORY MAGIC
+* SOURCE Crab Nebula
+* REFERENCE Albert et al, ApJ 674:1037, 2008
+* VALUES 2 0.3 0. 6.0e-10 0.20e-10 -2.31 0.06 -0.26 0.07 0.06 9. 
+* END
+
+* NAME VERITAS_April_2010
+* OBSERVATORY VERITAS
+* SOURCE Crab Nebula
+* REFERENCE no reference (and not public)
+* VALUES 0 1. 0. 3.20e-11 0.01e-11 -2.59 0.02 0.3 12.
+* END

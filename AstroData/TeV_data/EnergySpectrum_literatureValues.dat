@@ -1,0 +1,64 @@
+
+Example file for Energy Spectra
+
+--- individual entries must start with NAME !!! ----
+--- individual entries must end with END !!! ---
+
+
+energies in [TeV]
+flux constants in cm^-2s^-1[energy^-1]
+
+VALUES line:
+
+<type> <energy for flux normalisation> <place holder> [see below] <energy range: min> <energy range: max>
+
+Power law (type = 0 ):
+----------------------
+<flux constants> <error on flux> <index> < error on index> 
+
+Power law with exponential cut off (type = 1 ):
+----------------------
+<flux constants> <error on flux> <cutoff energy> <error on cutoff energy> <index> < error on index>
+
+Curved power law  (type = 2 )
+----------------------
+<flux constants> <error on flux> <index> < error on index>  <curvature> <error on curvature>
+----------------------
+
+
+* NAME WComaeF1_VERITAS
+* OBSERVATORY VERITAS
+* SOURCE W Comae
+* REFERENCE Acciari et al (Apj 684:L73, 2008)
+* VALUES 0 0.4 0. 2.00e-11 0.31e-11 -3.81 0.35 0.2, 1.1
+(flux values private communication from M.Beilicke)
+* DIFFFLUX 0.264428 8.99509e-11 2.23846e-11
+* DIFFFLUX 0.38201 3.66392e-11 7.46925e-12
+* DIFFFLUX 0.551877 5.49705e-12 2.26072e-12
+* DIFFFLUX 0.797279 1.40023e-12 9.52673e-13
+* DIFFFLUX 1.1518 2.3704e-13 3.46875e-13
+* END
+
+* NAME LSIp61303_VERITAS_2006
+* OBSERVATORY VERITAS
+* SOURCE LS I +61 303
+* REFERENCE Acciari et al (Apj 684:L73, 2008)
+* VALUES 0 1.0 0. 2.89e-12 0.32e-12 -2.40 0.19 0.3, 5.0
+* END
+
+* NAME LSIp61303_MAGIC_2006
+* OBSERVATORY MAGIC
+* SOURCE LS I +61 303
+* REFERENCE Albert et al (Science 312:1771, 2006)
+* VALUES 0 1.0 0. 2.70e-12 0.4e-12 -2.60 0.20 0.2, 4.0
+* END
+
+* NAME HESSJ0632p057
+* OBSERVATORY HESS
+* SOURCE HESS J0632 +057
+* REFERENCE Aharonian et al (HESS) (A&A 469, L1, 2007)
+(errors are sys and stat error quadratically added)
+VALUES 0 1.0 0. 9.1e-13 3.4e-13 -2.53 0.32 0.4 5. 
+ (stat errors only)
+* VALUES 0 1.0 0. 9.1e-13 1.7e-13 -2.53 0.26 0.4 5. 
+* END
