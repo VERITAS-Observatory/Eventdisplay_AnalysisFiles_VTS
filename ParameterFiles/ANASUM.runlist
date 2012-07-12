@@ -1,0 +1,76 @@
+
+Run list for analysis with anasum
+==================================
+
+=======================================================
+lines without a '*' in the first column are ignored
+ -------------------------------------------------------
+
+run parameter for all background models
+---------------------------------------
+on run [run number],
+off run (same as on for some background models) [run number],
+pair offset (mainly for on/off runs) [min],
+cuts [cut number],
+cut file name [see cut_example.dat],
+background model [see below],
+file with effective areas for energy calculation 
+(use NOFILE if no file is available (energy reconstruction
+will not work in this case))
+[[from here on background model dependent run parameter]]
+
+   example:
+   30358 30359 0. 0. 30. 0.5 0. 0 cut_example.dat 0 effectiveArea.root
+   30358 30359 0. 0. 30. 0.5 0. 0 cut_example.dat 0 NOFILE
+
+Cuts:
+-----
+0  use mean scaled cuts for stereo analysis 
+1  use mean cuts for stereo analysis
+
+background models:
+-----------------
+0 = on/off, 1 = ring background model, 2 = reflected region model, 3 = template model
+
+0  on/off with off 30 min after on
+   example
+   30358 30359 0 cut_example.dat 0 effectiveArea.root
+
+1  ring background model, additional parameters:
+   ring radius [deg],
+   ratio of off to on source area
+   file with radial acceptance curves 
+
+2  reflected region model, additional parameters: 
+   minimal distance of off source regions in number of background regions from the source region (default 1),
+   minmum number of off source regions (default 2),
+   maximum number of off source regions (default 10)
+   file with radial acceptance curves 
+
+3  field of view model, 
+   source radius to be excluded (depend on the source and on the number of runs)[deg]
+
+4  template model, parameters source radius, mscw_min, mscw_max, mscl_min, mscl_max of off region
+   NOT YET IMPLEMENTED
+
+ ========================================================
+
+Examples:
+
+On/Off
+------
+ 33043 33044 0 cut-3Tel.dat 0 effectiveArea_w0.5_ld99._ana123-d20070420.root
+
+Ring background model
+---------------------
+* 32984   32984 0 d20120210-cut-N3-Point-005CU-Moderate.dat 1 effectiveArea.root 0.6 20 acceptance.root
+
+Reflected region model
+----------------------
+*  58932   58932 0 ANASUM.GammaHadron.d20120322-cut-N3-Point-005CU-Moderate.dat 2 effectiveArea.root 0.1 3 20 radialAcceptance.root
+
+Field of view model 
+-------------------
+ 33275 33275 0 cut-3Tel.dat 3 effectiveArea_w0.5_ld99._ana123.root 0.45 acceptance.root
+
+

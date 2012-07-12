@@ -1,0 +1,108 @@
+Run parameter for anasum
+
+========================================================
+All lines without a '*' in the first column are ignored!
+--------------------------------------------------------
+
+========================================================
+File containing time mask details
+* TIMEMASKFILE ANASUM.timemask.dat
+========================================================
+
+========================================================
+Sky plot binning and size
+
+binning of sky map (correlated plots) [deg]
+* SKYMAPBINSIZE 0.01
+binning of sky map (uncorrelated plots) [deg]
+* SKYMAPBINSIZEUC 0.05
+size of sky map (x-axis) [deg]
+(preliminary: require same value for min and max)
+* SKYMAPSIZEX -2. 2.
+size of sky map (y-axis) [deg]
+(preliminary: require same value for min and max)
+* SKYMAPSIZEY -2. 2.
+========================================================
+
+========================================================
+Star catalogue
+* BRIGHTSTARCATALOGUE BrightStarCatalogue.txt
+Minimum brightness of stars to be included
+* BRIGHTSTARBRIGHTNESS 6.0
+Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
+* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.15
+
+========================================================
+
+Set centre position of sky map
+(default: assume source coordinates)
+in equatorial coordinates (ra,dec) (J2000, deg)
+ SKYMAPCENTRE_RADECJ2000_DEG 83.6333 22.5145
+ in equatorial coordinates (ra,dec) (J2000, hours)
+ SKYMAPCENTRE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18
+
+========================================================
+Position where number of on and off events, significances,
+effective areas, all 1D histograms, etc are calculated
+(default: at sky map centre)
+
+relative to (0,0) in sky plot [deg]
+(West,North)
+ TARGETXYSHIFT 0. -0.5
+Position in equatorial coordinates (ra,dec) (J2000, deg)
+ TARGETPOSITION_RADECJ2000_DEG 83.6333 22.0145
+Position in equatorial coordinates (ra,dec) (J2000, hours)
+ TARGETPOSITION_RADECJ2000_HOUR  03 30 13.24 -05 32 36.3
+
+
+========================================================
+
+Regions in the sky to exclude from background 
+->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius(deg))
+(coordinates are relative to camera center)
+ex: 0.48 -0.2 0.5
+Note: West positive means toward West (left in camera coordinates)
+North positive means toward South (up in camera coordinates)
+->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius(deg))
+ex: 335.287 58.964 0.5
+->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius(deg))
+ex:12 24 15 52 18 04 0.5
+
+
+Default: exclude region around sky map centre
+* REGIONTOEXCLUDE 0. 0. 0.25
+
+Additional regions:
+ REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
+Zeta Tau
+* REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
+
+========================================================
+Energy spectra 
+
+Energy spectra binning (logarithmic axis)
+* ENERGYBINSIZE 0.05
+Minimum energy for power law fit to energy spectra (logarithmic value)
+* ENERGYMINFIT -0.5;
+Maximum energy for power law fit to energy spectra (logarithmic value)
+* ENERGYMAXFIT 0.5;
+Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
+* ENERGYEFFECTIVEAREAS REC
+Energy reconstruction method 0 (default, s=s(r,E)) or 1 (E=E(s,r))
+* ENERGYRECONSTRUCTIONMETHOD 0
+Spectral index for effective areas
+* ENERGYSPECTRALINDEX 2.4
+Effective area smoothing, number of iterations
+ ENERGYEFFAREASMOOTHITER 2
+Effective area smoothing, smoothing threshold
+ ENERGYEFFAREASMOOTHTHRESH 0.05
+========================================================
+
+========================================================
+Rate plots
+
+time intervalls for rate plots and short term histograms [minuts]
+* RATEINTERVALLLENGTH 4.
+========================================================
+
+

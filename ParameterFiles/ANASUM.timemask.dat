@@ -1,0 +1,32 @@
+list of time cuts for anasum analysis
+=====================================
+allows to remove intervalls of arbitrary lengths from a run
+
+---------------------------
+VTimeMask settings per run.
+Format is: 
+
+< run_number >	< mask_start_seconds >	< mask_width_seconds >	< mask_mode_boolean >
+
+The mask mode is 1 for open 0 for closed.
+The default mask is open for the entire run.
+
+- Successive masks for a given run modify those already given.
+  e.g. to cut out two bands of two minutes each, separated by a window of two minutes you could use:
+999	600	360	0
+999	720	120	1
+
+  or equally
+999	600	120	0
+999	840	120	0
+
+- If you want to be certain to kill the end of a run (run durations can be several seconds over 1200)
+  you can safely overlap.
+  e.g. cut the last two minutes and overrun by 10 seconds
+999	1080	130	0
+
+- Put an asterisk (*) as the first character on a line to use it.
+========================================================================================
+
+ 39822 0 120 0
+* 49873 1080 130 0

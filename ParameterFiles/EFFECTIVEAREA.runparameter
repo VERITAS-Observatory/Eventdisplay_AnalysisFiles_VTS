@@ -1,0 +1,51 @@
+Analysis run parameters for effective area and instrument response function (IRF) analysis 
+(makeEffectiveArea)
+========================================================
+All lines without a '*' in the first column are ignored!
+--------------------------------------------------------
+
+========================================
+filling of IRFs: fill all IRFs (0), resolution plots only (1), angular resolution plot only (2), effective areas only (3) 
+* FILLINGMODE 0
+
+energy reconstruction method
+(default = 1; possible values: 0, 1, 2 )
+* ENERGYRECONSTRUCTIONMETHOD 1
+
+number of bins on log_{10} energy axis 
+* ENERGYAXISBINS 60
+
+ignore quality cut on energy reconstruction
+(default = 0; possible values: 0, 1 )
+* ENERGYRECONSTRUCTIONQUALITY 0
+
+define azimuth bins and calculate IRFs in each azimuth bin. 
+Bins are hardwired with a bin width of $22.5^{\mathrm{o}}$ (16 bins), bin 17 contains the full azimuth range
+(default = 1; possible values: 0, 1 )
+* AZIMUTHBINS 1
+
+input MC are simulated with random direction (wobble) offsets (use for gamma rays only)
+(default = 0; possible values: 0, 1 )
+* ISOTROPICARRIVALDIRECTIONS 0
+
+allow telescope type dependent cuts (e.g. remove all LST - cut is quite slow, that is why it is optional)
+(default = 0=off; possible values: 0, 1 )
+* TELESCOPETYPECUTS 0
+
+fill histograms with MC spectra only (default= 0; no IRF calculation)
+(default = 0; possible value: 0, 1 )
+* FILLMONTECARLOHISTOS 0
+
+reweight events to this set of spectral indexes
+(allows to calculate effective areas for n different spectral indexes)
+<number of spectral indexes> <lowest value> <step size>
+* ENERGYSPECTRUMINDEX  1 2.5 0.1
+
+Gamma/hadron cut file
+(if no path is given, file is searched in $VERITAS_EVNDISP_ANA_DIR/ParameterFiles/)
+* CUTFILE ANASUM.GammaHadron.dat
+
+Input data file (full path)
+(wildcards can be used)
+* SIMULATIONFILE_DATA /myfilesystem/gamma_onSource.E_ID0*.mscw.root
+========================================
