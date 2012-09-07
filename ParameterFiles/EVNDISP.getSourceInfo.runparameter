@@ -6,10 +6,13 @@ Examples:
 
 VTS.getRunListFromDB -b 2009-09-01 -e 2009-10-01  -s Crab -z 60. -d 1200. -g 1 -x 1
 VTS.getRunListFromDB -l runlist.dat -t 1 -x 1 -v 1 -g 1
+VTS.getRunListFromDB -m laserlist.dat -x 1 -g 1
 
 Options:
 
 	-l	Download Runs from a runlist (asci file one column of run numbers)
+	-m	Download LASER Runs from a runlist (asci file one column of run numbers)
+		DO NOT use with -l: Use -l <runlist> followed by -x
 	-s	Download Runs for given source name e.g. Crab
 	-b	Beginning Date
 	-e	End Date
