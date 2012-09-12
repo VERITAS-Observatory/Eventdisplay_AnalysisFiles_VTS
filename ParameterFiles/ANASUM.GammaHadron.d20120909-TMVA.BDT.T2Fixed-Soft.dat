@@ -1,0 +1,57 @@
+ Gamma/hadron cut file for CTA using a TMVA separator
+ ====================================================
+
+ File to be used with the corresponding scripts in $EVNDISPSYS/scripts/CTA/:
+ CTA.EFFAREA.sub_analyse.sh and CTA.EFFAREA.subAllParticle_analyse.sh
+
+ Cuts are optimzied for 1% CU and 50 h of observations
+
+ To be used for gamma simulations
+
+========================================================
+* cutselection 40 0
+========================================================
+Stereo cuts:
+--------------------------------------------------------
+i) stereo quality cuts
+successfull core and direction reconstruction (>=0.)
+* arraychi2 0. 1.e99
+distance of core position to telescopes [m]
+* arraycore -1. 1.e99
+size of the camera [deg], all events with direction
+outside that intervall are ignored
+* cameraedge -1. 1.50
+
+==========================================================
+replaced by parent script
+* mc_xy_off 0. 100000.
+==========================================================
+
+* arrayntel 2 10000
+
+ii) direction cut [deg2]
+* theta2cut 0. 0.015
+ theta2cut 0. 0.008
+* sizesecondmax 200. 1.e99
+
+iii) gamma hadron cuts:
+b) mean scaled width cut (use cut selector 0 in runlist)
+* arraymscw -2. 2.
+* arraymscl -2. 5.
+
+iv) energy reconstruction cuts
+echi2 is a measure of the difference between the energies
+estimated per individual telescope
+* arrayechi2 0. 1.e99
+cut on energy of reconstruction shower (on linear energy scale, in [TeV])
+* arrayerec 0. 1.e99
+
+emission height
+* arrayemission 0. 1.e99
+
+
+v)  TMVA cuts
+TMVACUTS <MVA Method> <file index min> <file index max> <weight file (without energy bin index and suffix)>
+* TMVAPARAMETER BDT 0 11  $CTA_USER_DATA_DIR/analysis/AnalysisData/VTS/V5/TMVA/BDT-NM2-ID0-ErecS-d20120812-0.0/ BDT_
+TMVACUTS <signal efficiency> <probability threshold> <Optimize (for source with this CU strength)> <observation time> <file with particle rates before cuts>
+* TMVACUTS -99. -99. 0.01 50. $CTA_USER_DATA_DIR/analysis/AnalysisData/VTS/EffectiveArea/QualityCuts001CU/ParticleNumbers.V5.0.root
