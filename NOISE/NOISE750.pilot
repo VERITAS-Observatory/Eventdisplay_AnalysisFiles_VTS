@@ -1,0 +1,16 @@
+Pilot file generated on blade88.ifh.de at Wed Dec  8 16:04:14 CET 2010
+* ARRAY BestGuess_newArrayConfig_20101106_v416_NOISE.cfg
+* CHERP /lustre/fs5/group/cta/VERITAS//simulations/NOISE/dummy_ioread/DAT200000.ioread
+* LOGBK /afs/ifh.de/group/cta/scratch/maierg/temp//NOISE750.grisu.log
+* OUTPU /afs/ifh.de/group/cta/scratch/maierg/temp//NOISE750.grisu
+* RANDM -7500000
+* NBREV 0 1
+* NBRPR 0 1
+* SOURC 0.0 0.5 0.0 31.675
+* NOISE 0. 0. 750
+* NUMPE 0
+* FRECP 0
+* NOPIX 0
+* USEOC 0
+* GRIDF 2 15 15
+* GRIDP 2 19 19
