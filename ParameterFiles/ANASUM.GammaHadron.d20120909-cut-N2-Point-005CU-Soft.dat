@@ -30,7 +30,7 @@ distance of core position to telescopes [m]
 * arraycore -1. 300.
 size of the camera [deg], all events with direction
 outside that intervall are ignored
-* cameraedge -1. 1.50
+* cameraedge -1. 2.00
 
 * arrayltrig 0 0
 * arrayltrig 1 0
