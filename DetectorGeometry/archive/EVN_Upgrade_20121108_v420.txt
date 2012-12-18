@@ -1,19 +1,34 @@
 
 		          CONFIGURATION FILE FOR VERITAS at the basecamp
-			      Configuration Sept 2009 to July 2012
-			     (after T1 move, before camera upgrade)
 		       =====================================================
+                                         31/12/2007
+					 04/06/2008
+					 22/07/2009
+					 16/9/2009
+					 23/9/2009
 
 				 DETECTOR FILE FOR GRISUDET
 
 ====================================================================================================
+Last modified by Luis Reyes, CalPoly (lreyes04@calpoly.edu)
+====================================================================================================
 
-Changes 11/27/2012 (GM)
+Changes 11/08/2012 (GM)
 
-1) changed low to high gain ratio from 6 to 5.0
+1) small typo fix in RFCRV lines (are 18 values only, was set to 22)
+2) changed readout window from 20 to 16 (FADC: was 20, is 16)
+3) moved pulse time arrival time 3 samples (FADCS: was 6, is 3)
+4) changed absolute gain to 5.47 dc (FADCS: was 2.053e5, is 1.973e5)
+5) changed pixel positions to use correct pixel distance of 31.4mm (PMPIX, was 31.0 mm)
+6) CFD trigger threshold is in the data at 80mV (TRIGG: was 66, is 88.9)
+7) changed relative gain (implemented in mirror reflectivity) to T1, T2, T3, T4 are: 1.0, 1.0, 1.0, 1.0
 
-Changes 10/18/2012 (CS)
-1) changed distance of adjacent pixels from 31.0mm to 31.4mm
+Changes  08/27/2012 (LR)
+
+1) Replace pre-upgrade QE with post-upgrade QE: 34% peak @ 375 nm (from Nepomuk)
+2) Replace pre-upgrade pulse shape with post-upgrade shape as measured by Nepomuk. Set trace length to 64 ns.
+3) Shift MC trace position by 2 samples (from 5 to 7; i.e. reverse change introduced by Aurelien below) since 
+   PE pulse peaks earlier in the post-upgrade parametirization.
 
 Changes 04/23/2012 (AB)
 
@@ -199,6 +214,7 @@ The simulation parameter record SIMUL contains
    -the time between samples in ns (this is also the sampling time 
 	for the simulation calculation to be carried with.)
    -the number of samples over which the simulation produces the signals
+   2) changed readout window from 20 to 16
    -the number of samples over which the noise database is produced
 (GM) should be 20000, but noise calculation currently extremly slow
 * SIMUL 2.0 100 4000
@@ -213,37 +229,34 @@ The FADC record (FADC) contains
 	FADC record. A positive number corresponds to a record starting
 	at a time anterior to the trigger time.
    -the number of samples in pedestal event records
-   -The ratio between high and low gain for system with hi-lo gain switch
-	dynamic range extention. If this number is less than 1.0 the function 
-	is disabled. 
-   -The threshold in FADCdigital counts for the low gain activation. 
 
 (GM) noise length should be 20000, but noise calculation currently extremly slow
-* FADCS 1 7.84 16.0 255 20 5 4000 5.0 250
+* FADCS 1 7.84 16.0 255 16 4 4000 6.0 250
 
+Low gain multiplier, derived from laser runs
+   - telescope ID
+   - low gain multiplier
 
+LOWMULT 1 6.
+LOWMULT 2 6.
+LOWMULT 3 6.
+LOWMULT 4 6.
 
 The trigger record (TRIG) contains 
-   -the telescope identifier
    -the single PMT threshold in mV
    -the discriminator output pulse width in ns
    -the pixel coincidence time window in ns
    -the minimum number of triggered channels required by the coincidence logic
-   -the minimum number of telescopes required 
-   -the telescope coincidence time window width in nanosecondes 
-   -a flag which when set to 1 activates forced triggering. Non triggering
-   telescopes are then read out while when the flag is at 0 they are not.
-       Note:For the last three parameters, since they are specific to the 
-            array and not to one particular telescope it is the values  
-            entered for telescope 1 that are taken into account. 
+   -the minimum number of telescopes required
+   -the telescope coincidence time window width in nanosecondes
 
 (LR) single PMT threshold is 50mV, but CFDs and FADCs different
 (LR) gain (factor is 1.14): 50 mV x 1.2 = 60 mV
 
-* TRIGG 1 66.0 10.0 5.0 3 2 50.0 1
-* TRIGG 2 64.0 10.0 5.0 3 2 50.0 1
-* TRIGG 3 66.0 10.0 5.0 3 2 50.0 1
-* TRIGG 4 66.0 10.0 5.0 3 2 50.0 1
+* TRIGG 1 88.9 10.0 5.0 3 2 50.0 1
+* TRIGG 2 88.9 10.0 5.0 3 2 50.0 1
+* TRIGG 3 88.9 10.0 5.0 3 2 50.0 1
+* TRIGG 4 88.9 10.0 5.0 3 2 50.0 1
 
 Pattern Selection trigger (PSTON).
    -the minimum number of adjacent triggered channels required by the 
@@ -356,138 +369,331 @@ The analog electronics record (ANLG) contains
 	between amps on the output of the PMT and voltages on the 
 	output of the analog signal processing)
    -the electronics  voltage noise standard deviation in mV  
-* ANLOG 2.053E5 2722 0.0
+* ANLOG 1.973E5 2722 0.0
 
 
-* PULSE 128 0.5
-0.000468278
-0.000162951
-0
-0
-0.000391685
-0
-0.000352896
-0.000235158
-0
-0.000421591
-3.41516e-05
-0.000327378
-0.000434139
-0
-0.000665709
-0
-0
-0
-0
-0.00045168
-1.94733e-05
-0.000864506
-0.00131394
-0.00232153
-0.00368436
-0.00626043
-0.0111516
-0.0193556
-0.0303338
-0.0458371
-0.0629094
-0.0799859
-0.0940211
-0.101829
-0.105792
-0.102769
-0.0972981
-0.0907333
-0.0842608
-0.0764649
-0.0699675
-0.0631427
-0.0578235
-0.0529582
-0.0485351
-0.0438294
-0.039809
-0.0361009
-0.0333606
-0.0298674
-0.0276544
-0.0257734
-0.0227699
-0.0209747
-0.0189207
-0.0177143
-0.0160666
-0.0148774
-0.0137729
-0.0130198
-0.0120393
-0.0113256
-0.0102454
-0.010091
-0.00862907
-0.00849768
-0.00821056
-0.00792866
-0.00714893
-0.00690043
-0.00681756
-0.0062524
-0.00651808
-0.00566703
-0.00543708
-0.00503173
-0.00478683
-0.00459319
-0.00410299
-0.00461325
-0.00394129
-0.00364904
-0.00359197
-0.00349188
-0.00316852
-0.0031984
-0.00270934
-0.00287965
-0.00212962
-0.00255152
-0.00229886
-0.00291203
-0.00256934
-0.00240067
-0.00217603
-0.00213269
-0.00269931
-0.00237523
-0.0026404
-0.00266868
-0.00168961
-0.00211288
-0.0022886
-0.0020988
-0.00218375
-0.00173627
-0.00207798
-0.00190955
-0.00186031
-0.00163241
-0.00181308
-0.00157354
-0.00130198
-0.00152363
-0.00190707
-0.00127576
-0.00166937
-0.00202907
-0.00173181
-0.00106845
-0.00168879
-0.00122674
-0.00161288
-0.00132261
-0.00166232
-0.0011238
-0.00130528
-0.00127805
+* PULSE 320 0.2
+0.0004
+0.0004
+0.0003
+0.0003
+0.0003
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0003
+0.0004
+0.0004
+0.0005
+0.0006
+0.0007
+0.0008
+0.0009
+0.0009
+0.0010
+0.0010
+0.0010
+0.0009
+0.0009
+0.0008
+0.0007
+0.0007
+0.0006
+0.0005
+0.0004
+0.0003
+0.0003
+0.0003
+0.0003
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0002
+0.0001
+0.0001
+0.0001
+0.0002
+0.0002
+0.0003
+0.0005
+0.0006
+0.0008
+0.0010
+0.0013
+0.0007
+0.0003
+0.0003
+0.0005
+0.0008
+0.0016
+0.0035
+0.0069
+0.0116
+0.0181
+0.0273
+0.0406
+0.0582
+0.0796
+0.1029
+0.1261
+0.1464
+0.1617
+0.1709
+0.1743
+0.1736
+0.1700
+0.1646
+0.1583
+0.1522
+0.1471
+0.1423
+0.1367
+0.1295
+0.1210
+0.1129
+0.1059
+0.0997
+0.0933
+0.0859
+0.0777
+0.0693
+0.0611
+0.0537
+0.0478
+0.0439
+0.0420
+0.0414
+0.0408
+0.0395
+0.0371
+0.0338
+0.0299
+0.0261
+0.0232
+0.0220
+0.0221
+0.0227
+0.0231
+0.0229
+0.0221
+0.0209
+0.0193
+0.0180
+0.0171
+0.0164
+0.0155
+0.0145
+0.0137
+0.0133
+0.0136
+0.0144
+0.0153
+0.0157
+0.0153
+0.0143
+0.0132
+0.0127
+0.0121
+0.0116
+0.0112
+0.0108
+0.0105
+0.0102
+0.0100
+0.0098
+0.0096
+0.0094
+0.0092
+0.0090
+0.0088
+0.0086
+0.0085
+0.0084
+0.0083
+0.0081
+0.0078
+0.0076
+0.0072
+0.0069
+0.0065
+0.0062
+0.0060
+0.0059
+0.0059
+0.0060
+0.0063
+0.0066
+0.0068
+0.0071
+0.0072
+0.0073
+0.0072
+0.0070
+0.0067
+0.0065
+0.0062
+0.0060
+0.0059
+0.0059
+0.0060
+0.0060
+0.0062
+0.0063
+0.0063
+0.0064
+0.0063
+0.0063
+0.0061
+0.0059
+0.0056
+0.0053
+0.0050
+0.0047
+0.0045
+0.0044
+0.0043
+0.0042
+0.0042
+0.0041
+0.0041
+0.0039
+0.0038
+0.0036
+0.0034
+0.0033
+0.0034
+0.0035
+0.0038
+0.0041
+0.0046
+0.0050
+0.0054
+0.0056
+0.0057
+0.0056
+0.0054
+0.0051
+0.0048
+0.0045
+0.0043
+0.0042
+0.0042
+0.0042
+0.0043
+0.0043
+0.0043
+0.0043
+0.0042
+0.0041
+0.0040
+0.0038
+0.0037
+0.0035
+0.0033
+0.0032
+0.0031
+0.0030
+0.0031
+0.0032
+0.0033
+0.0035
+0.0038
+0.0040
+0.0042
+0.0043
+0.0044
+0.0043
+0.0042
+0.0041
+0.0039
+0.0037
+0.0036
+0.0035
+0.0034
+0.0034
+0.0034
+0.0034
+0.0035
+0.0036
+0.0036
+0.0037
+0.0038
+0.0039
+0.0040
+0.0040
+0.0039
+0.0038
+0.0037
+0.0034
+0.0031
+0.0027
+0.0023
+0.0020
+0.0016
+0.0013
+0.0011
+0.0010
+0.0010
+0.0010
+0.0011
+0.0012
+0.0012
+0.0013
+0.0013
+0.0013
+0.0012
+0.0012
+0.0012
+0.0012
+0.0013
+0.0014
+0.0015
+0.0016
+0.0018
+0.0019
+0.0021
+0.0022
+0.0023
+0.0024
+0.0024
+0.0023
+0.0023
+0.0022
+0.0020
+0.0019
+0.0016
+0.0013
+0.0009
+0.0005
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+0.0000
+
 
 Mirror design (MIROR). The parameters are 
    -the telescope identification number
@@ -514,50 +720,9 @@ Mirror reflectivity
 From Jeff Grube, circa Oct 17, 2011 from January 2011 data 
 Jeff's values were modified by Luis to account for the telescope by telescope gain differences (eLog AandC#2228)
 Relative gains for T1, T2, T3, T4 are: 0.93, 0.81, 1.0, 0.95
+GM: changed to T1, T2, T3, T4 are: 1.0, 1.0, 1.0, 1.0
 
-* RFCRV 1 22
-180	0.5710
-200	0.5994
-220	0.6279
-240	0.6564
-260	0.6855
-280	0.7117
-300	0.7430
-320	0.7700
-340	0.7897
-360	0.8026
-380	0.8086
-400	0.8104
-450	0.7998
-500	0.7761
-550	0.7416
-600	0.7101
-650	0.6763
-700	0.6667
-	
-	
-* RFCRV 2 22
-180	0.4919
-200	0.5195
-220	0.5472
-240	0.5748
-260	0.5972
-280	0.6363
-300	0.6613
-320	0.6811
-340	0.6935
-360	0.7001
-380	0.7042
-400	0.7030
-450	0.6918
-500	0.6692
-550	0.6411
-600	0.6151
-650	0.5925
-700	0.5805
-	
-	
-* RFCRV 3 22	
+* RFCRV 1 18
 180	0.6605
 200	0.6844
 220	0.7082
@@ -578,40 +743,81 @@ Relative gains for T1, T2, T3, T4 are: 0.93, 0.81, 1.0, 0.95
 700	0.7087
 	
 	
-* RFCRV 4 22	
-180	0.5466
-200	0.5816
-220	0.6166
-240	0.6516
-260	0.6842
-280	0.7234
-300	0.7594
-320	0.7888
-340	0.8094
-360	0.8218
-380	0.8293
-400	0.8311
-450	0.8225
-500	0.7965
-550	0.7646
-600	0.7322
-650	0.7030
-700	0.6873
+* RFCRV 2 18
+180	0.6605
+200	0.6844
+220	0.7082
+240	0.7321
+260	0.7566
+280	0.7783
+300	0.8046
+320	0.8273
+340	0.8429
+360	0.8522
+380	0.8580
+400	0.8577
+450	0.8467
+500	0.8205
+550	0.7890
+600	0.7553
+650	0.7323
+700	0.7087
+	
+	
+* RFCRV 3 18	
+180	0.6605
+200	0.6844
+220	0.7082
+240	0.7321
+260	0.7566
+280	0.7783
+300	0.8046
+320	0.8273
+340	0.8429
+360	0.8522
+380	0.8580
+400	0.8577
+450	0.8467
+500	0.8205
+550	0.7890
+600	0.7553
+650	0.7323
+700	0.7087
+	
+	
+* RFCRV 4 18	
+180	0.6605
+200	0.6844
+220	0.7082
+240	0.7321
+260	0.7566
+280	0.7783
+300	0.8046
+320	0.8273
+340	0.8429
+360	0.8522
+380	0.8580
+400	0.8577
+450	0.8467
+500	0.8205
+550	0.7890
+600	0.7553
+650	0.7323
+700	0.7087
 
 
 
 Mirror element (MIREL) characterisation. For each we have 
    -the telescope identification number
    -the mirror element identification number
-   -the element shape (1=circular, 2=hexagonal, 3=square)
-   -orientation angle(degrees). If 0.0, polygon side perpendicular
-    to y-axis of the telescope coordinate system.
+   -the element shape (1=circular, 2=hexagonal)
+   - the rotation angle of facet dir. in tel.plane 
    -the external radius 
    -the curvature radius 
    -the x position of the element on the dish (in meters)
    -the y position of the element on the dish (in meters)
    -the maximum mis-alignement in degrees
-   -the maximum blur radius in degrees
+   -the maximum blure radius in degrees
    -the degradation factor (1.0=perfect 0.0=missing)
    -the reflectivity curve identifier
 
@@ -2063,108 +2269,58 @@ PMT characteristics. If quantum data are given twice for the same
 quantum efficiency identification index, the second occurence will be
 used in the simulations.
 
-* QUEFF 1 101
-180	0.00010
-200	0.00221
-205	0.01105
-210	0.02209
-215	0.03314
-220	0.04418
-225	0.05523
-230	0.06627
-235	0.07732
-240	0.08836
-245	0.09941
-250	0.11045
-255	0.11644
-260	0.12278
-265	0.13017
-270	0.13792
-275	0.14835
-280	0.15836
-285	0.16712
-290	0.17546
-295	0.18287
-300	0.19072
-305	0.19992
-310	0.20956
-315	0.21646
-320	0.22225
-325	0.22471
-330	0.22606
-335	0.22594
-340	0.22662
-345	0.22965
-350	0.23348
-355	0.23190
-360	0.23134
-365	0.23389
-370	0.23747
-375	0.23694
-380	0.23693
-385	0.23847
-390	0.24053
-395	0.23866
-400	0.23727
-405	0.23729
-410	0.23778
-415	0.23736
-420	0.23583
-425	0.23101
-430	0.22508
-435	0.21766
-440	0.21078
-445	0.20553
-450	0.19817
-455	0.19444
-460	0.18982
-465	0.18251
-470	0.17430
-475	0.17000
-480	0.16591
-485	0.16246
-490	0.15922
-495	0.15270
-500	0.14683
-505	0.14291
-510	0.13963
-515	0.13362
-520	0.12623
-525	0.11469
-530	0.10176
-535	0.09239
-540	0.08393
-545	0.07817
-550	0.07332
-555	0.06929
-560	0.06544
-565	0.06213
-570	0.05900
-575	0.05631
-580	0.05351
-585	0.05040
-590	0.04718
-595	0.04468
-600	0.04225
-605	0.04006
-610	0.03796
-615	0.03585
-620	0.03374
-625	0.03163
-630	0.02952
-635	0.02741
-640	0.02530
-645	0.02319
-650	0.02109
-655	0.01898
-660	0.01687
-665	0.01476
-670	0.01265
-675	0.01054
-680	0.00843
-685	0.00633
-690	0.00422
-695	0.00211
+* QUEFF 1 51 
+180     0.053
+190     0.073
+200     0.094
+210     0.114
+220     0.136
+230     0.158
+240     0.184
+250     0.208
+260     0.229
+270     0.249
+280     0.273
+290     0.294
+300     0.308
+310     0.325
+320     0.334
+330     0.341
+340     0.343
+350     0.339
+360     0.334
+370     0.336
+380     0.340
+390     0.335
+400     0.331
+410     0.324
+420     0.315
+430     0.305
+440     0.293
+450     0.279
+460     0.263
+470     0.242
+480     0.223
+490     0.207
+500     0.195
+510     0.180
+520     0.158
+530     0.126
+540     0.098
+550     0.080
+560     0.068
+570     0.057
+580     0.047
+590     0.038
+600     0.030
+610     0.022
+620     0.016
+630     0.010
+640     0.007
+650     0.004
+660     0.003
+670     0.001
+680     0.001
 
 
 Camera design (CAMRA).
@@ -2181,46 +2337,35 @@ Camera rotation (counterclockwise) in [deg]
 * CAROT 3 0.
 * CAROT 4 0.
 
-* CAMPLATE 1 0.965 0. 0.
-* CAMPLATE 2 0.965 0. 0.
-* CAMPLATE 3 0.965 0. 0.
-* CAMPLATE 4 0.965 0. 0.
-
 
 Phototubes (PMPIX). For each we have 
-    -the telescope identification number
-    -the pixel identification number
-    -the pixel shape (1=circular, 2=hexagonal, 3=square)
-    -orientation angle(degrees). If 0.0, polygon side
-     perpendicular to the y-axis
-     -the X position coordinate in the focal plane in mm
-     -the Y position coordinate in the focal plane in mm
-     Camera coordinates are such that increasing X corresponds to
-     going WEST when telescope is pointing SOUTH. Increasing Y
-     corresponds to increasing elevation.
-     -the PMT Radius in mm
-     The PMT radius really is the radius of the sensitive area (Radius of
-     the light cone input for example).
-     -the geometrical efficiency which may be used to include the effects
-     of light cone loss.
-     -the quantum efficiency identification number to be used for that tube.
-     -the single photoelectron signal relative amplitude fluctuation.
-     -the signal rize time in nanosecondes
-     -the signal fall time in nanosecondes
-     -the RC coupling time constant in nanosecondes
-     Note that the pulse shape can also be specified by a table. For this see instructions at the end of this file.
-     -the bellongin of the channel to the trigger (1 if it bellongs,
-     0 other wise)
-     -a flag indicating if the pixel should be used in the analysis(1) or not(0)
-     -a time offset in nanosecond. It measures how late the pulse is locate in
-     the stack for each channel. the analysis and the simulation search
-     for the smalles non negative value and subtract it from all the other
-     to apply a relative correction.
-     -a relative gain factor to account for the imperfect gain flat fielding.
-     In the anlysis, each pixel value is multiplied by this number while
-     in the simulation pulse amplitudes are divided by this number.
-
-
+   -the telescope identification number
+   -the pixel identification number 
+   -the X position coordinate in the focal plane in mm
+   -the Y position coordinate in the focal plane in mm
+	Camera coordinates are such that increasing X corresponds to 
+	going WEST when telescope is pointing SOUTH. Increasing Y 
+	corresponds to increasing elevation.
+   -the PMT Radius in mm
+	The PMT radius really is the radius of the sensitive area (Radius of 
+	the light cone input for example).
+   -the geometrical efficiency which may be used to include the effects 
+	of light cone loss. 
+   -the quantum efficiency identification number to be used for that tube. 
+   -the single photoelectron signal relative amplitude fluctuation. 
+   -the signal rize time in nanosecondes
+   -the signal fall time  in nanosecondes
+   -the RC coupling time constant in nanosecondes
+   -the bellongin of the channel to the trigger (1 if it bellongs, 
+	0 other wise)
+   -a flag indicating if the pixel should be used in the analysis(1) or not(0)
+   -a time offset in nanosecond. It measures how late the pulse is locate in 
+       the stack for each channel. the analysis and the simulation search 
+       for the smalles non negative value and subtract it from all the other 
+       to apply a relative correction.
+   -a relative gain factor to account for the imperfect gain flat fielding. 
+    In the anlysis, each pixel value is multiplied by this number while 
+    in the simulation pulse amplitudes are divided by this number.
 
 (JH) effective tube radius of 12.3mm (mean of ~20 values) measured by Purdue
 (JH) Assume 100% geometrical efficiency over this area, then 50% out to 15.5mm

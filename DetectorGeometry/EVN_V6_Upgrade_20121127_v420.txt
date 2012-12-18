@@ -2348,6 +2348,11 @@ Camera rotation (counterclockwise) in [deg]
 * CAROT 3 0.
 * CAROT 4 0.
 
+* CAMPLATE 1 0.965 0. 0.
+* CAMPLATE 2 0.965 0. 0.
+* CAMPLATE 3 0.965 0. 0.
+* CAMPLATE 4 0.965 0. 0.
+
 
 Phototubes (PMPIX). For each we have 
    -the telescope identification number
