@@ -42,7 +42,8 @@ i) trace integration and image cleaning parameter
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
  image cleaning thresholds <image> <border>
-* -1 IMAGECLEANINGTHRESHOLDS 3. 1.5
+ -1 IMAGECLEANINGTHRESHOLDS 3. 1.5
+* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
 
  image calculation at the edge of the camera
 * -1 LLEDGEFIT 0.1 2
