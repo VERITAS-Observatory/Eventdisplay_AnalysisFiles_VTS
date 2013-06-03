@@ -5,24 +5,6 @@ Revision $Id: d20100408-cut-N2-Point-005CU-Soft.dat,v 1.1.2.2 2010/07/29 09:45:4
 ========================================================
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
-Observe: single telescope cuts are applied for mono 
-         analysis only (-mode=0,1,5)
-	 stereo cuts are applied for stereo cuts only
-	 (-mode=3,4,5)
-========================================================
-Single telescope cuts:
---------------------------------------------------------
-* alpha	     0.0    8.0
-* length     0.12   0.38
-* width	     0.05   0.12
-* maxonetwo  -100   -100
-* los	     0.0    0.0003
-* asymm	     0.0    10.0
-* size	     400    1.e99
-* distance   0.27   1.06
-========================================================
-Stereo cuts:
---------------------------------------------------------
 i) stereo quality cuts
 successfull core and direction reconstruction (>=0.)
 * arraychi2 0. 1.e99
@@ -55,18 +37,9 @@ ii) direction cut [deg2]
 * arraytheta2 -1. 0.015
 
 iii) gamma hadron cuts:
-(observe that only one the following possible cut schemes
-is applied, specify in runlist)
-a) mean cuts (use cut selector 1 in runlist)
-(Monte Carlo independ cuts). 
-* arraywidth 0.01 0.10
-* arraylength 0.01 0.25
-* arraydist -100 100
 b) mean scaled width cut (use cut selector 0 in runlist)
 * arraymscw -1.2 0.35
 * arraymscl -1.2 0.7
-c) random forest cut (use cut selector 2 in runlist)
-* RFthresh 0.5 9
 
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
