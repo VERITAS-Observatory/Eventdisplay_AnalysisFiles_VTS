@@ -1,0 +1,136 @@
+eventdisplay reconstruction parameter file
+===========================================
+
+Note: all line without '*' in the beginning are ignored
+
+The following file describes the reconstruction parameters for eventdisplay:
+
+i) trace integration and image cleaning parameter
+
+ii) quality cuts applied before the array analysis 
+(reconstruction of shower core and direction).
+
+   Each set of cuts listed below correspond to one set of array parameters in the
+   eventdisplay output file (showerpars tree): 
+   for example: first set of cuts to Xcore[0], Ycore[0], etc., second set to Xcore[1], Ycore[1], ...
+
+   The maximum number of different set is 100 
+   (can be changed in VGlobalRunParameter: variable VDST_MAXRECMETHODS
+
+   mscw_energy reads the results of one set only, choose with -arrayrecid=RECID 
+   (e.g. for cut set 13: -arrayrecid=13)
+
+   (Note: There is some confusion between the words method and cut set in the array analysis code of
+   eventdisplay.)
+
+Note that these values override parameters given at the command line
+---------------------------------------------------------------------------------------------------
+
+
+i) trace integration and image cleaning parameter
+--------------------------------------------------
+
+ trace integration <integration method (0=off/1=default/2=sliding window)>
+* -1 FADCANALYSIS 1
+ double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> <integration method for pass 1 (1/2)>
+* -1 FADCDOUBLEPASS 1 18 1
+ trace integration window <window 1> <window 2>
+* -1 FADCSUMMATIONWINDOW XX 18
+ trace integration start (for window 1) <sample> [optional: shift of window start for double pass]
+* -1 FADCSUMMATIONSTART 2 -1
+
+ image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
+* -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
+ image cleaning thresholds <image> <border>
+* -1 IMAGECLEANINGTHRESHOLDS 3. 1.5
+
+ image calculation at the edge of the camera
+* -1 LLEDGEFIT 0.1 2
+
+ii) quality cuts applied before the array analysis 
+--------------------------------------------------
+
+USAGE:
+
+   to start a new set of cuts:
+
+   '* -1 RECMETHOD 4'
+
+   syntax:
+
+     <telescope type> <variable name> <variable value>
+
+   all line without '*' in the beginning are ignored
+
+   all operators are '>' or '<' (except for number of images, where it is '>=')
+
+   DEFAULTS:
+   minimum number of images required for stereo reconstruction
+    -1 MNIMAGE 2
+   minimum angle between image axes for two telescope analysis [deg]
+    -1 MINANGLE 5.
+   minimum number of channels for all telescopes
+    -1 MINTUBES 4
+   maximum number of low gain channels per telescope
+    -1 MAXLOWGAIN 5000
+   minimum local distance for all telescopes [deg]
+    -1 MINDIST -1.e3
+   maximum local distance for all telescopes [deg]
+    -1 MAXDIST  1.e3
+   minimum alpha for all telescopes [deg]
+    -1 MINALPHA -1.e3
+   maximum alpha for all telescopes [deg]
+    -1 MAXALPHA 1.e3
+   minimum image size for all telescopes [dc]
+    -1 MINSIZE 400
+   ignore all pointing corrections (default: off)
+    -1 USEEVNPOINTING 0
+   maximum loss of image size on edge of the camera [%]
+    -1 MAXLOSS 0.05
+   maximum width/length (to remove images to close to the telescopes)
+    -1 MAXWIDTHLENGTH 1.e10
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+Set 0:
+
+* -1 RECMETHOD 4
+* -1 MINTUBES 4
+* -1 MINSIZE 0
+* -1 MAXLOSS 0.2
+
+Set 1:
+
+* -1 RECMETHOD 4
+* -1 MINTUBES 4
+* -1 MINSIZE 200
+* -1 MAXLOSS 0.2
+
+Set 2:
+
+* -1 RECMETHOD 4
+* -1 MINTUBES 4
+* -1 MINSIZE 400
+* -1 MAXLOSS 0.2
+
+Set 3:
+
+* -1 RECMETHOD 4
+* -1 MINTUBES 4
+* -1 MINSIZE 500
+* -1 MAXLOSS 0.2
+
+Set 4:
+
+* -1 RECMETHOD 4
+* -1 MINTUBES 4
+* -1 MINSIZE 800
+* -1 MAXLOSS 0.2
+
+Set 5:
+
+* -1 RECMETHOD 4
+* -1 MINTUBES 4
+* -1 MINSIZE 1200
+* -1 MAXLOSS 0.2
+
