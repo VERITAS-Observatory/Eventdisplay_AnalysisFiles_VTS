@@ -26,11 +26,11 @@ size of sky map (y-axis) [deg]
 
 ========================================================
 Star catalogue
-* BRIGHTSTARCATALOGUE BrightStarCatalogue.txt
+* BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
 Minimum brightness of stars to be included
-* BRIGHTSTARBRIGHTNESS 6.0
+* BRIGHTSTARBRIGHTNESS 7.0
 Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
-* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.15
+* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.25
 
 ========================================================
 
@@ -48,7 +48,7 @@ effective areas, all 1D histograms, etc are calculated
 
 relative to (0,0) in sky plot [deg]
 (West,North)
- TARGETXYSHIFT 0. -0.5
+ TARGETXYSHIFT 0. 0.
 Position in equatorial coordinates (ra,dec) (J2000, deg)
  TARGETPOSITION_RADECJ2000_DEG 83.6333 22.0145
 Position in equatorial coordinates (ra,dec) (J2000, hours)
@@ -70,12 +70,13 @@ ex:12 24 15 52 18 04 0.5
 
 
 Default: exclude region around sky map centre
-* REGIONTOEXCLUDE 0. 0. 0.25
+(should be increased for bright sources)
+* REGIONTOEXCLUDE 0. 0. 0.35
 
 Additional regions:
  REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
 Zeta Tau
-* REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
+ REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
 
 ========================================================
 Energy spectra 
@@ -88,8 +89,8 @@ Maximum energy for power law fit to energy spectra (logarithmic value)
 * ENERGYMAXFIT 0.5;
 Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
 * ENERGYEFFECTIVEAREAS REC
-Energy reconstruction method 0 (default, s=s(r,E)) or 1 (E=E(s,r))
-* ENERGYRECONSTRUCTIONMETHOD 0
+Energy reconstruction method 1 (0 for s=s(r,E)) or 1 (E=E(s,r))
+* ENERGYRECONSTRUCTIONMETHOD 1
 Spectral index for effective areas
 * ENERGYSPECTRALINDEX 2.4
 Effective area smoothing, number of iterations
@@ -104,5 +105,4 @@ Rate plots
 time intervalls for rate plots and short term histograms [minuts]
 * RATEINTERVALLLENGTH 4.
 ========================================================
-
 

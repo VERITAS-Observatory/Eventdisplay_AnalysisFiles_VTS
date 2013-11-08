@@ -55,7 +55,7 @@ background models:
 
  ========================================================
 
-Examples:
+Examples (note that the IRF file names might be out of data):
 
 On/Off
 ------
@@ -67,10 +67,10 @@ Ring background model
 
 Reflected region model
 ----------------------
-*  58932   58932 0 ANASUM.GammaHadron.d20120322-cut-N3-Point-005CU-Moderate.dat 2 effectiveArea.root 0.1 3 20 radialAcceptance.root
+*  58932   58932 0 ANASUM.GammaHadron.d20120322-cut-N3-Point-005CU-Moderate.dat 2 effectiveArea.root 0.1 2 6 radialAcceptance.root
 
-Field of view model 
--------------------
+Field of view model (do not use) 
+---------------------------------
  33275 33275 0 cut-3Tel.dat 3 effectiveArea_w0.5_ld99._ana123.root 0.45 acceptance.root
 
 
