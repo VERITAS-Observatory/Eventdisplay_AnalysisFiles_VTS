@@ -37,7 +37,10 @@ i) trace integration and image cleaning parameter
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 20 20
  trace integration start (for window 1) <sample> [optional: shift of window start for double pass]
-* -1 FADCSUMMATIONSTART 100 -1
+  readout window of 64
+* -1 FADCSUMMATIONSTART 40 -1
+  readout window of 128
+* -1 FADCSUMMATIONSTART 80 -1
 
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
