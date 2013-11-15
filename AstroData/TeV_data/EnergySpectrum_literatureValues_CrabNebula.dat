@@ -56,7 +56,7 @@ Curved power law  (type = 2 )
 * NAME Crab_HESS_BRPL
 * OBSERVATORY H.E.S.S.
 * SOURCE Crab Nebula
-* REFERENCE Aharonian et al, A&A 457:899, 2006 (not error on flux in paper)
+* REFERENCE Aharonian et al, A&A 457:899, 2006 (note error on flux in paper)
 * VALUES 3 1. 0. 7. 0.1 2.595e-13 0.07e-11 -2.51 0.02 -3.3 1.5 0.3 0. 0.41 40. 
 * END
 
