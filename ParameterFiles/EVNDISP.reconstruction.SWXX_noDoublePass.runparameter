@@ -1,5 +1,7 @@
 eventdisplay reconstruction parameter file
 ===========================================
+== DO NOT USE FOR STANDARD ANALYSIS ==
+== SOME VALUES WILL BE REPLACED BY DST SCRIPTS ==
 
 Note: all line without '*' in the beginning are ignored
 
