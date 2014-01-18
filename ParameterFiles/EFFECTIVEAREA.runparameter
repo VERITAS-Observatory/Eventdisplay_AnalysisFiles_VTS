@@ -9,7 +9,7 @@ filling of IRFs: fill all IRFs (0), resolution plots only (1), angular resolutio
 * FILLINGMODE 0
 
 energy reconstruction method
-(default = 1; possible values: 0, 1, 2 )
+(default = 1; possible values: 0, 1)
 * ENERGYRECONSTRUCTIONMETHOD 1
 
 number of bins on log_{10} energy axis 

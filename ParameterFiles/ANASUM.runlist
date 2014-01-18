@@ -47,8 +47,7 @@ background models:
    maximum number of off source regions (default 10)
    file with radial acceptance curves 
 
-3  field of view model, 
-   source radius to be excluded (depend on the source and on the number of runs)[deg]
+3  field of view model (do not use)
 
 4  template model, parameters source radius, mscw_min, mscw_max, mscl_min, mscl_max of off region
    NOT YET IMPLEMENTED
@@ -63,14 +62,10 @@ On/Off
 
 Ring background model
 ---------------------
-* 32984   32984 0 d20120210-cut-N3-Point-005CU-Moderate.dat 1 effectiveArea.root 0.6 20 acceptance.root
+* 32984   32984 0 d20120210-cut-N3-Point-005CU-Moderate.dat RB effectiveArea.root 0.6 20 acceptance.root
 
 Reflected region model
 ----------------------
-*  58932   58932 0 ANASUM.GammaHadron.d20120322-cut-N3-Point-005CU-Moderate.dat 2 effectiveArea.root 0.1 2 6 radialAcceptance.root
-
-Field of view model (do not use) 
----------------------------------
- 33275 33275 0 cut-3Tel.dat 3 effectiveArea_w0.5_ld99._ana123.root 0.45 acceptance.root
+*  58932   58932 0 ANASUM.GammaHadron.d20120322-cut-N3-Point-005CU-Moderate.dat RE effectiveArea.root 0.1 2 6 radialAcceptance.root
 
 
