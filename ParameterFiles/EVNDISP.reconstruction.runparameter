@@ -32,12 +32,13 @@ i) trace integration and image cleaning parameter
 
  trace integration <integration method (0=off/1=default/2=sliding window)>
 * -1 FADCANALYSIS 1
- double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> <integration method for pass 1 (1/2)> <double pass error option (0/1)>
-* -1 FADCDOUBLEPASS 1 18 1 0
+ double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> 
+               <integration method for pass 1 (1/2)> <double pass error option (0/1)>
+* -1 FADCDOUBLEPASS 1 10 1 0
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 6 18
- trace integration start (for window 1) <sample> [optional: shift of window start for double pass]
-* -1 FADCSUMMATIONSTART 2 -1
+ trace integration start (for window 1) <sample> <shift of window start for double pass> <start at T0?>
+* -1 FADCSUMMATIONSTART 2 -1 T0
 
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
@@ -48,9 +49,8 @@ i) trace integration and image cleaning parameter
 * -1 LLEDGEFIT 0.1 2
 
  quality cut on distance of image/border pixel (applied for all cuts defined below)
- -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG
- -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 7.5 0.3 15
- -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0.3 15
+ -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG <apply cut for images with less then minimum number of tubes>
+* -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0. 15
 
 ii) quality cuts applied before the array analysis 
 --------------------------------------------------

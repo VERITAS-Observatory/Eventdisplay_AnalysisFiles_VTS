@@ -33,20 +33,23 @@ i) trace integration and image cleaning parameter
  trace integration <integration method (0=off/1=default/2=sliding window)>
 * -1 FADCANALYSIS 1
  double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> <integration method for pass 1 (1/2)>
-* -1 FADCDOUBLEPASS 0 18 1
+* -1 FADCDOUBLEPASS 0 18 1 0
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 18 18
  trace integration start (for window 1) <sample> [optional: shift of window start for double pass]
-* -1 FADCSUMMATIONSTART 2 -1
+* -1 FADCSUMMATIONSTART 2 -1 T0
 
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
  image cleaning thresholds <image> <border>
- -1 IMAGECLEANINGTHRESHOLDS 3. 1.5
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
 
  image calculation at the edge of the camera
 * -1 LLEDGEFIT 0.1 2
+
+ quality cut on distance of image/border pixel (applied for all cuts defined below)
+ -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG
+* -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0.3 15
 
 ii) quality cuts applied before the array analysis 
 --------------------------------------------------
@@ -96,7 +99,47 @@ USAGE:
 Set 0:
 
 * -1 RECMETHOD 4
+* -1 MINANGLE 10.
 * -1 MINTUBES 4
-* -1 MINSIZE 0
+* -1 MINSIZE 100
 * -1 MAXLOSS 0.2
 
+==============================
+3-telescope combinations
+==============================
+
+Set 1 = T1 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 4
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* 1 USEIMAGE 0
+
+Set 2 = T2 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 4
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* 2 USEIMAGE 0
+
+Set 3 = T3 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 4
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* 3 USEIMAGE 0
+
+Set 4 = T4 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 4
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* 4 USEIMAGE 0
