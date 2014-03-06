@@ -32,9 +32,6 @@ allow range of time offsets (from laser file)
 
 LOW GAIN CHANNELS
 
-low gain gain multiplier (deviation in RMS from mean)
-* -1 LOWGAIN GAINMULTIPLIER     3.      3.
-
 * -1 LOWGAIN PEDESTAL           0.1    50.
 * -1 LOWGAIN PEDESTALVARIATION  0.1     5.e3
 * -1 LOWGAIN PEDESTALDEVIATION  3.      5.
