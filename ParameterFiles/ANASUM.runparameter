@@ -5,36 +5,39 @@ All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
 
 ========================================================
-File containing time mask details
+File containing time mask details 
+(this allows to exclude certain time intervals from 
+the analysis)
 * TIMEMASKFILE ANASUM.timemask.dat
+========================================================
+Exclusion region around sky map centre
+(should be increased for bright sources)
+* REGIONTOEXCLUDE 0. 0. 0.35
+========================================================
+Spectral index for effective areas
+(should be iteratively adjusted to match the measured
+spectrum)
+* ENERGYSPECTRALINDEX 2.4
+
+========================================================
+NO CHANGE NECESSARY BELOW THIS POINT FOR A STANDARD ANALYSIS
 ========================================================
 
 ========================================================
 Sky plot binning and size
-
 binning of sky map (correlated plots) [deg]
 * SKYMAPBINSIZE 0.01
 binning of sky map (uncorrelated plots) [deg]
 * SKYMAPBINSIZEUC 0.05
 size of sky map (x-axis) [deg]
-(preliminary: require same value for min and max)
+(note: require same value for min and max)
 * SKYMAPSIZEX -2. 2.
 size of sky map (y-axis) [deg]
-(preliminary: require same value for min and max)
+(note: require same value for min and max)
 * SKYMAPSIZEY -2. 2.
 ========================================================
 
-========================================================
-Star catalogue
-* BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
-Minimum brightness of stars to be included
-* BRIGHTSTARBRIGHTNESS 7.0
-Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
-* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.25
-
-========================================================
-
-Set centre position of sky map
+Shift the centre position of sky map
 (default: assume source coordinates)
 in equatorial coordinates (ra,dec) (J2000, deg)
  SKYMAPCENTRE_RADECJ2000_DEG 83.6333 22.5145
@@ -42,7 +45,7 @@ in equatorial coordinates (ra,dec) (J2000, deg)
  SKYMAPCENTRE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18
 
 ========================================================
-Position where number of on and off events, significances,
+Change the position where number of on and off events, significances,
 effective areas, all 1D histograms, etc are calculated
 (default: at sky map centre)
 
@@ -54,10 +57,17 @@ Position in equatorial coordinates (ra,dec) (J2000, deg)
 Position in equatorial coordinates (ra,dec) (J2000, hours)
  TARGETPOSITION_RADECJ2000_HOUR  03 30 13.24 -05 32 36.3
 
-
 ========================================================
+Star catalogue
+(start catalogues can be found in
+$VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/)
+* BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
+Minimum magnitude of stars to be excluded
+* BRIGHTSTARBRIGHTNESS 7.0
+Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
+* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.30
 
-Regions in the sky to exclude from background 
+User defined regions in the sky to exclude from background 
 ->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius(deg))
 (coordinates are relative to camera center)
 ex: 0.48 -0.2 0.5
@@ -67,10 +77,6 @@ North positive means toward South (up in camera coordinates)
 ex: 335.287 58.964 0.5
 ->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius(deg))
 ex:12 24 15 52 18 04 0.5
-
-Default: exclude region around sky map centre
-(should be increased for bright sources)
-* REGIONTOEXCLUDE 0. 0. 0.35
 
 Additional regions:
  REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
@@ -85,19 +91,15 @@ Energy spectra binning (logarithmic axis)
 Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
 * ENERGYEFFECTIVEAREAS REC
 Energy reconstruction method 1 (0 for s=s(r,E)) or 1 (E=E(s,r))
+(note: this has to match what has been used in the effective
+area calculations. Do not change unless you know better.)
 * ENERGYRECONSTRUCTIONMETHOD 1
-Spectral index for effective areas
-* ENERGYSPECTRALINDEX 2.4
-Effective area smoothing, number of iterations
- ENERGYEFFAREASMOOTHITER 2
-Effective area smoothing, smoothing threshold
- ENERGYEFFAREASMOOTHTHRESH 0.05
 ========================================================
 
 ========================================================
 Rate plots
 
-time intervalls for rate plots and short term histograms [minuts]
+time intervalls for rate plots and short term histograms [minutes]
 * RATEINTERVALLLENGTH 4.
 ========================================================
 
