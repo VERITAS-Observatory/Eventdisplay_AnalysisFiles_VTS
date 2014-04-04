@@ -1,7 +1,5 @@
 dead channel definition
 =======================
-Revision $Id: deadChannelDefinition.dat,v 1.1.2.1.8.1 2009/10/19 15:46:18 gmaier Exp $
-=======================
 
 syntax:
 
@@ -27,10 +25,16 @@ allowed range in gain variation (rms of the gain distribution)  (from laser file
 * -1 HIGHGAIN GAINVARIATION      1.e-2  20.e5
 maximum value allowed for gain/gainvar (min value is ignored) (from laser file)
 * -1 HIGHGAIN GAINDEVIATION     -1.e2    2.0
-allow range of time offsets (from laser file)
+allowed range of time offsets (from laser file)
 * -1 HIGHGAIN TIMEOFFSET         0.     20.
+allowed ranged of L1 rates
+* -1 HIGHGAIN L1RATES 1.e2 1.e20
+allow range of HV values (in RMS from mean)
+* -1 HIGHGAIN HVRMS 4. 4.
 
+===========================================================
 LOW GAIN CHANNELS
+(see high gain section for documentation)
 
 * -1 LOWGAIN PEDESTAL           0.1    50.
 * -1 LOWGAIN PEDESTALVARIATION  0.1     5.e3
