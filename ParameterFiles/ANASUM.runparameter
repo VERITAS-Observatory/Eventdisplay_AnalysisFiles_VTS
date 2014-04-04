@@ -90,7 +90,7 @@ Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
 Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
 * ENERGYEFFECTIVEAREAS REC
-Energy reconstruction method 1 (0 for s=s(r,E)) or 1 (E=E(s,r))
+Energy reconstruction method (should be 1)
 (note: this has to match what has been used in the effective
 area calculations. Do not change unless you know better.)
 * ENERGYRECONSTRUCTIONMETHOD 1
