@@ -91,6 +91,14 @@ Curved power law  (type = 2 )
 * VALUES 2 0.3 0. 6.0e-10 0.20e-10 -2.31 0.06 -0.26 0.07 0.06 9. 
 * END
 
+* NAME Crab_MAGIC2_VPL
+* OBSERVATORY MAGIC2
+* SOURCE Crab Nebula
+* REFERENCE Aleksic et al, APP 35:435, 2012
+* VALUES 2 0.3 0. 5.8e-10 0.10e-10 -2.32 0.02 -0.13 0.04 0.07 11. 
+* END
+
+
 * NAME VERITAS_April_2010
 * OBSERVATORY VERITAS
 * SOURCE Crab Nebula
