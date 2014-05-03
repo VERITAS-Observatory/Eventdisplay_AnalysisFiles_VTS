@@ -1,8 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Hard cuts
-(optimized by Karsten Berger on a Crab-like source)
+Soft cuts - point source
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -16,9 +15,9 @@ size of the camera [deg], all events with direction
 outside that intervall are ignored
 * cameraedge -1. 2.00
 second largest image size
-* sizesecondmax 1600. 1.e99
+* sizesecondmax 400. 1.e99
 cut on mean emission height
-* emissionheight 0. 1.e12
+* emissionheight 7. 1.e12
 
 Telescope multiplicity
 * arrayltrig 0 0

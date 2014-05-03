@@ -30,7 +30,6 @@ replaced by parent script
 * arrayntel 2 10000
 
 ii) direction cut [deg2]
- theta2cut 0. 0.015
 * theta2cut 0. 0.008
 * sizesecondmax 500. 1.e99
 

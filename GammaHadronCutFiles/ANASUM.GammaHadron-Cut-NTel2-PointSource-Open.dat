@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Super soft cuts
+Open cuts (do not apply any MSCW and MSCL cuts)
    exclude T1T4 and T2T3 combinations
    very tight theta2 cut to clean up sky maps
 
@@ -19,8 +19,9 @@ outside that intervall are ignored
 second largest image size
 * sizesecondmax 200. 1.e99
 cut on mean emission height
-* emissionheight 7. 1.e12
+* emissionheight 0. 1.e12
 
+Telescope multiplicity
 * arrayltrig 0 0
 * arrayltrig 1 0
 * arrayltrig 2 0
@@ -43,8 +44,8 @@ ii) direction cut [deg2]
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
-* arraymscw -1.2 0.35
-* arraymscl -1.2 0.7
+* arraymscw -1.2 5.00
+* arraymscl -1.2 5.00
 
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
