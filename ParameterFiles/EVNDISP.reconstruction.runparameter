@@ -104,6 +104,7 @@ Set 0:
 * -1 MINTUBES 5
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
 
 ==============================
 3-telescope combinations
@@ -116,6 +117,7 @@ Set 1 = T1 off
 * -1 MINTUBES 5
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
 * 1 USEIMAGE 0
 
 Set 2 = T2 off
@@ -125,6 +127,7 @@ Set 2 = T2 off
 * -1 MINTUBES 5
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
 * 2 USEIMAGE 0
 
 Set 3 = T3 off
@@ -134,6 +137,7 @@ Set 3 = T3 off
 * -1 MINTUBES 5
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
 * 3 USEIMAGE 0
 
 Set 4 = T4 off
@@ -143,4 +147,6 @@ Set 4 = T4 off
 * -1 MINTUBES 5
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
 * 4 USEIMAGE 0
+
