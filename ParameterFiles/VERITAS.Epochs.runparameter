@@ -1,0 +1,39 @@
+
+Instrumental epochs of VERITAS:
+
+V4: four-telescope array with T1 at its original position (prototype position)
+V5: four-telescope array with T1 at its current position
+V6: four-telescope array with T1 at its current position and new photomultipliers
+
+* EPOCH <epoch name> <run min> <run max>
+(need to add V1-V3 epochs)
+* EPOCH V4 0  46641
+* EPOCH V5 46642 63372
+* EPOCH V6 63373 999999
+
+=================================================
+
+Atmospheric condition for VERITAS (corsikaIDs)
+   date as SQL string (e.g. 2014-06-12)
+   see https://docs.google.com/spreadsheets/d/1zDMABKHzP6E0h9cFguFjAixhH8VEjm5YLydb6o6S4vg/edit#gid=0
+
+WINTER:
+* ATMOSPHERE 21 2006-11-09  2007-06-03
+* ATMOSPHERE 21 2007-11-24  2008-05-18
+* ATMOSPHERE 21 2008-11-12  2009-06-05
+* ATMOSPHERE 21 2009-11-02  2010-05-26
+* ATMOSPHERE 21 2010-11-20  2011-05-15
+* ATMOSPHERE 21 2011-11-10  2012-05-04
+* ATMOSPHERE 21 2012-10-29  2013-05-22
+* ATMOSPHERE 21 2013-11-17  2014-05-12
+
+SUMMER:
+* ATMOSPHERE 22 2007-06-04  2007-11-23
+* ATMOSPHERE 22 2008-05-19  2008-11-11
+* ATMOSPHERE 22 2009-06-06  2009-11-01
+* ATMOSPHERE 22 2010-05-27  2010-11-19
+* ATMOSPHERE 22 2011-05-16  2011-11-09
+* ATMOSPHERE 22 2012-05-05  2012-10-28
+* ATMOSPHERE 22 2013-05-23  2013-11-16
+---- open end ----
+* ATMOSPHERE 22 2014-05-13  2014-12-31  
