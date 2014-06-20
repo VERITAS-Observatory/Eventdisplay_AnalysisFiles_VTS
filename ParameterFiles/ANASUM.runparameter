@@ -63,7 +63,7 @@ Star catalogue
 $VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/)
 * BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
 Minimum magnitude of stars to be excluded
-* BRIGHTSTARBRIGHTNESS 7.0
+* BRIGHTSTARBRIGHTNESS 8.0
 Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
 * BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.30
 
@@ -94,6 +94,8 @@ Energy reconstruction method (should be 1)
 (note: this has to match what has been used in the effective
 area calculations. Do not change unless you know better.)
 * ENERGYRECONSTRUCTIONMETHOD 1
+Dead time calculation
+* DEADTIMECALCULATIONMETHOD 0
 ========================================================
 
 ========================================================
