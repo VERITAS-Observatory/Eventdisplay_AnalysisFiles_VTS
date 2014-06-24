@@ -10,14 +10,14 @@ All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
 i) stereo quality cuts
 successfull core and direction reconstruction (>=0.)
-* arraychi2 0. 1.e99
+* arraychi2 0. 1.e30
 distance of core position to telescopes [m]
 * arraycore -1. 250.
 size of the camera [deg], all events with direction
 outside that intervall are ignored
 * cameraedge -1. 2.00
 second largest image size
-* sizesecondmax 200. 1.e99
+* sizesecondmax 200. 1.e30
 cut on mean emission height
 * emissionheight 0. 1.e12
 

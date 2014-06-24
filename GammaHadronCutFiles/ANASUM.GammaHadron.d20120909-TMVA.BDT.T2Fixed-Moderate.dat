@@ -15,9 +15,9 @@ Stereo cuts:
 --------------------------------------------------------
 i) stereo quality cuts
 successfull core and direction reconstruction (>=0.)
-* arraychi2 0. 1.e99
+* arraychi2 0. 1.e30
 distance of core position to telescopes [m]
-* arraycore -1. 1.e99
+* arraycore -1. 1.e30
 size of the camera [deg], all events with direction
 outside that intervall are ignored
 * cameraedge -1. 2.00
@@ -31,7 +31,7 @@ replaced by parent script
 
 ii) direction cut [deg2]
 * theta2cut 0. 0.008
-* sizesecondmax 500. 1.e99
+* sizesecondmax 500. 1.e30
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
@@ -41,12 +41,12 @@ b) mean scaled width cut (use cut selector 0 in runlist)
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
 estimated per individual telescope
-* arrayechi2 0. 1.e99
+* arrayechi2 0. 1.e30
 cut on energy of reconstruction shower (on linear energy scale, in [TeV])
-* arrayerec 0. 1.e99
+* arrayerec 0. 1.e30
 
 emission height
-* arrayemission 0. 1.e99
+* arrayemission 0. 1.e30
 
 
 v)  TMVA cuts

@@ -1,21 +1,23 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Hard cuts
+Super Hard cuts - point source
 
 ========================================================
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
 i) stereo quality cuts
 successfull core and direction reconstruction (>=0.)
-* arraychi2 0. 1.e99
+* arraychi2 0. 1.e30
 distance of core position to telescopes [m]
-* arraycore -1. 250.
+* arraycore -1. 350.
 size of the camera [deg], all events with direction
 outside that intervall are ignored
 * cameraedge -1. 2.00
 second largest image size
-* sizesecondmax 1200. 1.e99
+* sizesecondmax 2200. 1.e30 V4
+* sizesecondmax 2200. 1.e30 V5
+* sizesecondmax 2500. 1.e30 V6
 cut on mean emission height
 * emissionheight 0. 1.e12
 
@@ -42,7 +44,7 @@ ii) direction cut [deg2]
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
-* arraymscw -1.2 0.35
+* arraymscw -1.2 0.5
 * arraymscl -1.2 0.7
 
 iv) energy reconstruction cuts
