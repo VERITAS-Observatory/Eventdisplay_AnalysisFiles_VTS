@@ -3,6 +3,9 @@ eventdisplay reconstruction parameter file
 
 Note: all line without '*' in the beginning are ignored
 
+Remember that after changing any values here, you have to redo lookup tables,
+effective areas and radial acceptances
+
 The following file describes the reconstruction parameters for eventdisplay:
 
 i) trace integration and image cleaning parameter
@@ -45,10 +48,11 @@ i) trace integration and image cleaning parameter
  image cleaning thresholds <image> <border>
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
 
- image calculation at the edge of the camera
+ image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
 * -1 LLEDGEFIT 0.1 2
 
  quality cut on distance of image/border pixel (applied for all cuts defined below)
+ (this is currently used for plotting only)
  -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG <apply cut for images with less then minimum number of tubes>
 * -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0. 15
 
@@ -97,17 +101,7 @@ USAGE:
 
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
-Set 0:
-
-* -1 RECMETHOD 7
-* -1 TMVABDTFILE 20 /lustre/fs5/group/cta/users/maierg/VERITAS/temp/BDT_Karsten/BDTDisp_BDT_
- -1 TMVABDTFILE 00 /lustre/fs5/group/cta/VERITAS//IRFPRODUCTION/v443/GRISU/V6_ATM21_gamma/TMVA_AngularReconstruction/ze20deg_offset0.5deg_NSB250MHz/BDTDisp_BDT_
- -1 TMVABDTFILE 35 /lustre/fs5/group/cta/VERITAS//IRFPRODUCTION/v443/GRISU/V6_ATM21_gamma/TMVA_AngularReconstruction/ze35deg_offset0.5deg_NSB250MHz/BDTDisp_BDT_
-* -1 MINANGLE 5.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
+Set 0 = default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
@@ -115,6 +109,7 @@ Set 0:
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 
 ==============================
 3-telescope combinations
@@ -128,6 +123,7 @@ Set 1 = T1 off
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 1 USEIMAGE 0
 
 Set 2 = T2 off
@@ -138,6 +134,7 @@ Set 2 = T2 off
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 2 USEIMAGE 0
 
 Set 3 = T3 off
@@ -148,6 +145,7 @@ Set 3 = T3 off
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 3 USEIMAGE 0
 
 Set 4 = T4 off
@@ -158,5 +156,78 @@ Set 4 = T4 off
 * -1 MINSIZE 100
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 4 USEIMAGE 0
 
+SET 5 = T3&T4 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 3 USEIMAGE 0
+* 4 USEIMAGE 0
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+SETI cuts: 
+==============================
+MINSIZE 0; MINANGLE 0.; MINNTUBES 1
+==============================
+
+Set 6:
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 0.
+* -1 MINTUBES 2
+* -1 MINSIZE 0
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+
+==============================
+3-telescope combinations
+==============================
+
+Set 7 = T1 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 0.
+* -1 MINTUBES 2
+* -1 MINSIZE 0
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* 1 USEIMAGE 0
+
+Set 8 = T2 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 0.
+* -1 MINTUBES 2
+* -1 MINSIZE 0
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* 2 USEIMAGE 0
+
+Set 9 = T3 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 0.
+* -1 MINTUBES 2
+* -1 MINSIZE 0
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* 3 USEIMAGE 0
+
+Set 10 = T4 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 0.
+* -1 MINTUBES 2
+* -1 MINSIZE 0
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* 4 USEIMAGE 0
