@@ -3,6 +3,11 @@ cut values for quality and gamma hadron cuts
 
 Moderate cuts - point source
 
+Notes:
+
+- energy threshold for zenith angles of 20 deg: about 240/270 GeV for V6/V5
+- don't change cut values without recalculating response functions (effective areas and radial acceptances)
+
 ========================================================
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
@@ -12,9 +17,10 @@ successfull core and direction reconstruction (>=0.)
 distance of core position to telescopes [m]
 * arraycore -1. 350.
 size of the camera [deg], all events with direction
-outside that intervall are ignored
+outside of that intervall are ignored
 * cameraedge -1. 2.00
 second largest image size
+(this depends on the state of the instrument)
 * sizesecondmax 400. 1.e30 V4
 * sizesecondmax 400. 1.e30 V5
 * sizesecondmax 600. 1.e30 V6
@@ -22,21 +28,37 @@ cut on mean emission height
 * emissionheight 6. 17.
 
 Telescope multiplicity
+arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which selection is valid>
 * arrayltrig 0 0
+T1
 * arrayltrig 1 0
+T2
 * arrayltrig 2 0
+T1/T2
 * arrayltrig 3 0
+T3
 * arrayltrig 4 0
+T1/T3
 * arrayltrig 5 0
+T2/T3
 * arrayltrig 6 0
+T1/T2/T3
 * arrayltrig 7 1
+T4
 * arrayltrig 8 0
+T1/T4
 * arrayltrig 9 0
+T2/T4
 * arrayltrig 10 0
+T1/T2/T4
 * arrayltrig 11 1
+T3/T4
 * arrayltrig 12 0
+T1/T3/T4
 * arrayltrig 13 1
+T2/T3/T4
 * arrayltrig 14 1
+T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
