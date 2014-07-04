@@ -33,9 +33,9 @@ i) trace integration and image cleaning parameter
  trace integration <integration method (0=off/1=default/2=sliding window)>
 * -1 FADCANALYSIS 1
  double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> <integration method for pass 1 (1/2)>
-* -1 FADCDOUBLEPASS 0 18 1 0
+* -1 FADCDOUBLEPASS 0 16 1 0
  trace integration window <window 1> <window 2>
-* -1 FADCSUMMATIONWINDOW 18 18
+* -1 FADCSUMMATIONWINDOW 16 16
  trace integration start (for window 1) <sample> [optional: shift of window start for double pass]
 * -1 FADCSUMMATIONSTART 2 -1 T0
 
