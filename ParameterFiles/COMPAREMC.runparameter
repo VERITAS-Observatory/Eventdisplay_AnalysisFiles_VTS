@@ -3,7 +3,7 @@ input file list for compareDatawithMC
 
 list of MC and data input files (mscw results files)
 
-<type> <mscw_energy file name> <ntel> <wobble north> <wobble east>
+<type> <mscw_energy file name> <ntel> <wobble north> <wobble east> <az min [deg]> <az max [deg]>
 
 type:   SIMS, ON, OFF
 
@@ -12,10 +12,11 @@ ntel:   number of telescopes (must be the same for all files)
 wobble north and east  < -99: use wobble offset from data files 
                             (on and off must have some offsets)
 
+
 ----------------------------------
 all lines without a '*' in the first column are ignored
 ----------------------------------
 
-* SIMS /lustre/fs5/group/cta/VERITAS/analysis/EVDv400/V5_FLWO/mscw_ATM21_d20120628/gamma_20deg_750m_w0.5_ID0_ana1234_NOISE200_1.root 4 0.5 0.
-* ON   /lustre/fs5/group/cta/users/maierg/VERITAS/analysis/EVD400/RecID0/58[3-5]*.mscw.root 4 -99. -99.
-* OFF  /lustre/fs5/group/cta/users/maierg/VERITAS/analysis/EVD400/RecID0/58[3-5]*.mscw.root 4 -99. -99.
+* SIMS /lustre/fs5/group/cta/VERITAS/analysis/EVDv400/V5_FLWO/mscw_ATM21_d20120628/gamma_20deg_750m_w0.5_ID0_ana1234_NOISE200_1.root 4 0.5 0.  0. 360
+* ON   /lustre/fs5/group/cta/users/maierg/VERITAS/analysis/EVD400/RecID0/58[3-5]*.mscw.root 4 -99. -99. 0. 360.
+* OFF  /lustre/fs5/group/cta/users/maierg/VERITAS/analysis/EVD400/RecID0/58[3-5]*.mscw.root 4 -99. -99. 0. 360.
