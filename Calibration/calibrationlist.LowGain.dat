@@ -2,7 +2,7 @@ low gain calibration
 ====================================
 
 File with low gain pedestals/ped vars per FADC board/channel
-* LOWGAINPEDFILE all.lped
+* LOWGAINPEDFILE LowGainPedestals.lped
 
 (GM: this list is still incomplete (20120313))
 
