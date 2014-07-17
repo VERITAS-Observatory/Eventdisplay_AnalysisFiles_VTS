@@ -26,7 +26,10 @@ ii) quality cuts applied before the array analysis
    (Note: There is some confusion between the words method and cut set in the array analysis code of
    eventdisplay.)
 
-Note that these values override parameters given at the command line
+iii) File names for Disp BDTs
+
+Note that these values override parameters given at the command line (!)
+---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 
 
@@ -231,4 +234,68 @@ Set 10 = T4 off
 * -1 MINSIZE 0
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
+* 4 USEIMAGE 0
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+Set 11:
+* -1 RECMETHOD 7
+* -1 TMVABDTFILE 20 ze20deg_offset0.5deg
+* -1 TMVABDTFILE 30 ze30deg_offset0.5deg
+* -1 TMVABDTFILE 35 ze35deg_offset0.5deg
+* -1 TMVABDTFILE 40 ze40deg_offset0.5deg
+* -1 TMVABDTFILE 45 ze45deg_offset0.5deg
+* -1 TMVABDTFILE 50 ze50deg_offset0.5deg
+* -1 TMVABDTFILE 55 ze55deg_offset0.5deg
+* -1 TMVABDTFILE 60 ze60deg_offset0.5deg
+* -1 TMVABDTFILE 65 ze65deg_offset0.5deg
+* -1 MINANGLE 5.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+
+Set 12 = T1 off:
+* -1 RECMETHOD 7
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 MINANGLE 5.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 1 USEIMAGE 0
+
+Set 13 = T2 off:
+* -1 RECMETHOD 7
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 MINANGLE 5.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 2 USEIMAGE 0
+
+Set 14 = T3 off:
+* -1 RECMETHOD 7
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 MINANGLE 5.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 3 USEIMAGE 0
+
+Set 15 = T4 off:
+* -1 RECMETHOD 7
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 MINANGLE 5.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 4 USEIMAGE 0

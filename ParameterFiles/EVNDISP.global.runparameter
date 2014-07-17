@@ -7,7 +7,8 @@ Latitude and longitude in [deg], observatory height in [m] a.s.l
 (see http://maps.google.com/maps?f=d&hl=en&geocode=&time=&date=&ttype=&saddr=&daddr=31.675001,-110.95243&mra=mi&mrsp=0&sz=18&sll=31.675019,-110.952156&sspn=0.003392,0.004581&ie=UTF8&t=k&om=1&z=18)
 
 Location of VERITAS DB server
-* DBSERVER mysql://romulus.ucsc.edu/
+ DBSERVER mysql://romulus.ucsc.edu/
+* DBSERVER mysql://remus.ucsc.edu/
 
 Location of VERITAS raw data
 * VTSRAWDATA gamma1.astro.ucla.edu
