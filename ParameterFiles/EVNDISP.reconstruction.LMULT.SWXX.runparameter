@@ -1,5 +1,6 @@
 eventdisplay reconstruction parameter file
 ===========================================
+== This is the run parameter file used to generate DSTs to make hilo multipliers ==
 == DO NOT USE FOR STANDARD ANALYSIS ==
 == SOME VALUES WILL BE REPLACED BY DST SCRIPTS ==
 
