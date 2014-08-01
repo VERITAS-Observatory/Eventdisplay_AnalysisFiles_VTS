@@ -115,6 +115,11 @@ Set 0 = default reconstruction method
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
 
+======== IMPORTANT IMPORTANT ============
+ignore the following lines for regular data analysis
+* MCONLY
+======== IMPORTANT IMPORTANT ============
+
 Set 1 = (placeholder, as this is a no-disp file)
 
 * -1 RECMETHOD 4
@@ -124,11 +129,6 @@ Set 1 = (placeholder, as this is a no-disp file)
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
-
-======== IMPORTANT IMPORTANT ============
-ignore the following lines for regular data analysis
-* MCONLY
-======== IMPORTANT IMPORTANT ============
 
 ==============================
 3-telescope combinations
