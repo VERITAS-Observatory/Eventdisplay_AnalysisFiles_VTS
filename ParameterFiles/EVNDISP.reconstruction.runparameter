@@ -115,11 +115,26 @@ Set 0 = default reconstruction method
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
 
+Set 1 = (placeholder, as this is a no-disp file)
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+
+======== IMPORTANT IMPORTANT ============
+ignore the following lines for regular data analysis
+* MCONLY
+======== IMPORTANT IMPORTANT ============
+
 ==============================
 3-telescope combinations
 ==============================
 
-Set 1 = T1 off
+Set 2 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
@@ -130,7 +145,7 @@ Set 1 = T1 off
 * -1 MAXDIST 1.75
 * 1 USEIMAGE 0
 
-Set 2 = T2 off
+Set 3 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
@@ -141,7 +156,7 @@ Set 2 = T2 off
 * -1 MAXDIST 1.75
 * 2 USEIMAGE 0
 
-Set 3 = T3 off
+Set 4 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
@@ -152,7 +167,7 @@ Set 3 = T3 off
 * -1 MAXDIST 1.75
 * 3 USEIMAGE 0
 
-Set 4 = T4 off
+Set 5 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
@@ -161,78 +176,5 @@ Set 4 = T4 off
 * -1 MAXLOSS 0.2
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
-* 4 USEIMAGE 0
-
-SET 5 = T3&T4 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 3 USEIMAGE 0
-* 4 USEIMAGE 0
-
----------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
-
-SETI cuts: 
-==============================
-MINSIZE 0; MINANGLE 0.; MINNTUBES 1
-==============================
-
-Set 6:
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-
-==============================
-3-telescope combinations
-==============================
-
-Set 7 = T1 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 1 USEIMAGE 0
-
-Set 8 = T2 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 2 USEIMAGE 0
-
-Set 9 = T3 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 3 USEIMAGE 0
-
-Set 10 = T4 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
 * 4 USEIMAGE 0
 

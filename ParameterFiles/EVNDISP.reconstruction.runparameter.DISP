@@ -1,5 +1,7 @@
 eventdisplay reconstruction parameter file
 ===========================================
+long integration window - DISP
+===========================================
 
 Note: all line without '*' in the beginning are ignored
 
@@ -115,130 +117,8 @@ Set 0 = default reconstruction method
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
 
-==============================
-3-telescope combinations
-==============================
+Set 1 = BDT Angular reconstruction method (DISP)
 
-Set 1 = T1 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 1 USEIMAGE 0
-
-Set 2 = T2 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 2 USEIMAGE 0
-
-Set 3 = T3 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 3 USEIMAGE 0
-
-Set 4 = T4 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 4 USEIMAGE 0
-
-SET 5 = T3&T4 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 3 USEIMAGE 0
-* 4 USEIMAGE 0
-
----------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
-
-SETI cuts: 
-==============================
-MINSIZE 0; MINANGLE 0.; MINNTUBES 1
-==============================
-
-Set 6:
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-
-==============================
-3-telescope combinations
-==============================
-
-Set 7 = T1 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 1 USEIMAGE 0
-
-Set 8 = T2 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 2 USEIMAGE 0
-
-Set 9 = T3 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 3 USEIMAGE 0
-
-Set 10 = T4 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 0.
-* -1 MINTUBES 2
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* 4 USEIMAGE 0
-
----------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
-Set 11:
 * -1 RECMETHOD 7
 * -1 TMVABDTFILE 20 ze20deg_offset0.5deg
 * -1 TMVABDTFILE 30 ze30deg_offset0.5deg
@@ -256,9 +136,77 @@ Set 11:
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
 
-Set 12 = T1 off:
+======== IMPORTANT IMPORTANT ============
+ignore the following lines for regular data analysis
+* MCONLY
+======== IMPORTANT IMPORTANT ============
+
+==============================
+3-telescope combinations
+==============================
+
+Set 2 = T1 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 1 USEIMAGE 0
+
+Set 3 = T2 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 2 USEIMAGE 0
+
+Set 4 = T3 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 3 USEIMAGE 0
+
+Set 5 = T4 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 4 USEIMAGE 0
+
+SET 6 = T3&T4 off
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 3 USEIMAGE 0
+* 4 USEIMAGE 0
+
+---------------------------------------------------------------------------------------------------
+DISP 3-telescope combinations
+---------------------------------------------------------------------------------------------------
+Set 7 = T1 off: BDT Angular reconstruction method (DISP)
 * -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
 * -1 MINANGLE 5.
 * -1 MINTUBES 5
 * -1 MINSIZE 100
@@ -267,9 +215,9 @@ Set 12 = T1 off:
 * -1 MAXDIST 1.75
 * 1 USEIMAGE 0
 
-Set 13 = T2 off:
+Set 8 = T2 off: BDT Angular reconstruction method (DISP)
 * -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
 * -1 MINANGLE 5.
 * -1 MINTUBES 5
 * -1 MINSIZE 100
@@ -278,9 +226,9 @@ Set 13 = T2 off:
 * -1 MAXDIST 1.75
 * 2 USEIMAGE 0
 
-Set 14 = T3 off:
+Set 9 = T3 off: BDT Angular reconstruction method (DISP)
 * -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
 * -1 MINANGLE 5.
 * -1 MINTUBES 5
 * -1 MINSIZE 100
@@ -289,9 +237,9 @@ Set 14 = T3 off:
 * -1 MAXDIST 1.75
 * 3 USEIMAGE 0
 
-Set 15 = T4 off:
+Set 10 = T4 off: BDT Angular reconstruction method (DISP)
 * -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_11
+* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
 * -1 MINANGLE 5.
 * -1 MINTUBES 5
 * -1 MINSIZE 100
