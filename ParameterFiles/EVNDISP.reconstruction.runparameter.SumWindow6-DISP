@@ -138,7 +138,7 @@ Set 1 = BDT Angular reconstruction method (DISP)
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
-* MCONLY
+* -1 MCONLY
 ======== IMPORTANT IMPORTANT ============
 
 ==============================
