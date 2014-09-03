@@ -47,10 +47,12 @@ i) trace integration and image cleaning parameter
  trace integration start (for window 1) <sample> <shift of window start for double pass> <start at T0?>
 * -1 FADCSUMMATIONSTART 2 -1 T0
 
- image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
-* -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
+ image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL> <FIXED/VARIABLE>
+ -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
  image cleaning thresholds <image> <border>
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
+ image cleaning time parameter <time diff between pixels (in samples)> (used for TIMETWOLEVEL cleaning)
+ -1 TIMETWOLEVELPARAMETERS 1.3
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
 * -1 LLEDGEFIT 0.1 2
@@ -64,6 +66,7 @@ ii) quality cuts applied before the array analysis
 --------------------------------------------------
 
 USAGE:
+
 
    to start a new set of cuts:
 
