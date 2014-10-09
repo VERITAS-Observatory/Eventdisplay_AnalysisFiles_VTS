@@ -30,7 +30,7 @@ allowed range of time offsets (from laser file)
 allowed ranged of L1 rates
 * -1 HIGHGAIN L1RATES 1.e2 1.e20
 allow range of HV values (in RMS from mean)
-* -1 HIGHGAIN HVRMS 4. 4.
+* -1 HIGHGAIN HVRMS 4. 10.
 
 ===========================================================
 LOW GAIN CHANNELS
@@ -38,7 +38,7 @@ LOW GAIN CHANNELS
 
 * -1 LOWGAIN PEDESTAL           0.1    50.
 * -1 LOWGAIN PEDESTALVARIATION  0.1     5.e3
-* -1 LOWGAIN PEDESTALDEVIATION  3.      5.
+* -1 LOWGAIN PEDESTALDEVIATION  5.      5.
 * -1 LOWGAIN GAIN               0.625   1.6
 * -1 LOWGAIN GAINVARIATION      1.e-2  20.e5
 * -1 LOWGAIN GAINDEVIATION     -1.e2    2.0
