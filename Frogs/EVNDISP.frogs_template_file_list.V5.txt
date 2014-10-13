@@ -1,0 +1,6 @@
+1 25.0 35.0 V5/frogs_r075_e30-30000_D0-500_zew60.tmplt
+1 35.0 45.0 V5/frogs_r080_e30-30000_D0-500_zew50.tmplt
+1 45.0 55.0 V5/frogs_r080_e30-30000_D0-500_zew40.tmplt
+1 55.0 65.0 V5/frogs_r085_e30-30000_D0-500_zew30.tmplt
+1 65.0 75.0 V5/frogs_r085_e30-30000_D0-500_zew20.tmplt
+1 75.0 90.0 V5/frogs_r085_e30-30000_D0-500_zew00.tmplt
