@@ -16,6 +16,10 @@ All lines without a '*' in the first column are ignored!
 * PMTNOISE V5 0.35
 * PMTNOISE V6 0.35
 
+Random seed for differential evolution. Read in as an 'unsigned long'.
+If no seed is given or the seed is 0, current system time (in seconds after 1970) is used.
+   
+* RANDOMSEED 0
 
 ========================================================
 
