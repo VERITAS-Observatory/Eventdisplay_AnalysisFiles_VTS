@@ -22,7 +22,7 @@ outside of intervall are ignored
 second largest image size
 * sizesecondmax 200. 1.e30
 cut on mean emission height
-* emissionheight 6. 17.
+* emissionheight 6. 1.e12
 
 Telescope multiplicity
 arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>
