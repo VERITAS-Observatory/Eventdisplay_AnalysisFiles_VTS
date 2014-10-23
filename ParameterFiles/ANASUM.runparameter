@@ -13,6 +13,8 @@ the analysis)
 Exclusion region around sky map centre
 (should be increased for bright sources)
 * REGIONTOEXCLUDE 0. 0. 0.35
+ REGIONTOEXCLUDE 0. 0. 1.0 0.35 40
+
 ========================================================
 Spectral index for effective areas
 (should be iteratively adjusted to match the measured
@@ -68,6 +70,10 @@ Radius of region to be excluded from background calculation around bright star (
 * BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.30
 
 User defined regions in the sky to exclude from background 
+If Radius1=Radius2 and theta=0: circle (point source)
+If Radius1!=Radius2: ellipse (extended source)
+If Radius1!=Radius2 and theta!=0: rotated ellipse (extended source)
+
 ->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius(deg))
 (coordinates are relative to camera center)
 ex: 0.48 -0.2 0.5
@@ -77,6 +83,17 @@ North positive means toward South (up in camera coordinates)
 ex: 335.287 58.964 0.5
 ->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius(deg))
 ex:12 24 15 52 18 04 0.5
+
+->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius1(deg) Radius2(deg) theta(deg))
+(coordinates are relative to camera center)
+ex: 0.48 -0.2 0.5 0.5 40
+Note: West positive means toward West (left in camera coordinates)
+North positive means toward South (up in camera coordinates)
+->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius1(deg) Radius2(deg) theta(deg))
+ex: 335.287 58.964 0.5 0.5 40
+->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius1(deg) Radius2(deg) theta(deg))
+ex:12 24 15 52 18 04 0.5 0.5 40
+
 
 Additional regions:
  REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
