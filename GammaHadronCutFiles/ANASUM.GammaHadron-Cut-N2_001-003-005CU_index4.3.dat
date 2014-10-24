@@ -69,8 +69,8 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 
 v) frogs
 frogs cuts are energy dependent
-* frogscutsfile     /lustre/fs5/group/cta/users/svincent/VERITAS/analysis/FrogsCutRootFiles/FROGS_N2_001-003-005CU_index4.3.root
+* frogscutsfile       FROGS_N2_001-003-005CU_index4.3.root
 * energydependentcuts ShowerGoodness BackgroundGoodness MSCW MSCL
 
 vi) theta2 root file
- theta2file /lustre/fs5/group/cta/users/svincent/VERITAS/analysis/FrogsCutRootFiles/FROGS_N2_001-003-005CU_index2.5.root GRAPH
+ theta2file           FROGS_N2_001-003-005CU_index4.3.root GRAPH
