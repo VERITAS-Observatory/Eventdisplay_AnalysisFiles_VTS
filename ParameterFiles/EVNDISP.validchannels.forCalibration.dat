@@ -1,0 +1,50 @@
+dead channel definition
+=======================
+
+Do not use this file for data analysis!
+
+This file is intended for calibration only (laser/flasher analysis), to recover pixels with large currents due to stars, or which are suppressed at the beginning of a run. By relaxing the dead channel definitions, we are able to recover those pixels. Pixels that are actually dead will have 0 gain anyway.
+
+syntax:
+
+<telescope ID> <high/low gain> <variable> <min> <max>
+
+all line without '*' in the beginning are ignored
+
+all operators are '>' or '<' 
+
+telescope ID starts at 1 (1 = Telescope 1, 2 = Telescope 2, ..., -1 = all telescopes)
+
+HIGH GAIN CHANNELS
+
+allowed pedestal range 
+* -1 HIGHGAIN PEDESTAL           5.0    40.
+allowed pedestal variation range (absolute value, this depends on the summation window)
+* -1 HIGHGAIN PEDESTALVARIATION  0.1     5.e3
+allowed pedestal variation range in standard deviation from the mean value for a particular telescope
+* -1 HIGHGAIN PEDESTALDEVIATION  1e10     1e10
+allowed gain range (from laser file)
+* -1 HIGHGAIN GAIN               0.5   2.0
+allowed range in gain variation (rms of the gain distribution)  (from laser file)
+* -1 HIGHGAIN GAINVARIATION      1.e-2  20.e5
+maximum value allowed for gain/gainvar (min value is ignored) (from laser file)
+* -1 HIGHGAIN GAINDEVIATION     -1.e2    2.0
+allowed range of time offsets (from laser file)
+* -1 HIGHGAIN TIMEOFFSET         0.     20.
+allowed ranged of L1 rates
+* -1 HIGHGAIN L1RATES -1 1.e20
+allow range of HV values (in RMS from mean)
+* -1 HIGHGAIN HVRMS 1e10 1e10
+
+===========================================================
+LOW GAIN CHANNELS
+(see high gain section for documentation)
+
+* -1 LOWGAIN PEDESTAL           0.1    50.
+* -1 LOWGAIN PEDESTALVARIATION  0.1     5.e3
+* -1 LOWGAIN PEDESTALDEVIATION  5.      5.
+* -1 LOWGAIN GAIN               0.625   1.6
+* -1 LOWGAIN GAINVARIATION      1.e-2  20.e5
+* -1 LOWGAIN GAINDEVIATION     -1.e2    2.0
+* -1 LOWGAIN TIMEOFFSET         0.     20.
+
