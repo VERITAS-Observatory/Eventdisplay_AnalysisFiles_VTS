@@ -24,8 +24,8 @@ outside that intervall are ignored
  cameraedge -1. 2.00
 * cameraedge -1. 1.e99
 second largest image size
-* sizesecondmax 700. 1.e99
- sizesecondmax -1. 1.e99
+ sizesecondmax 700. 1.e99
+* sizesecondmax 200. 1.e99
 cut on mean emission height
  emissionheight 0. 1.e12
 * emissionheight 0. 1.e99
@@ -49,7 +49,7 @@ Telescope multiplicity
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.006
+* arraytheta2 -1. 0.012
  arraytheta2 -1. 0.008
 
 iii) gamma hadron cuts:
@@ -69,9 +69,8 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 
 v) frogs
 frogs cuts are energy dependent
-* frogscutsfile       $VERITAS_EVNDISP_ANA_DIR/GammaHadronCutFiles/FROGS_N2_001-003-005CU_index2.5.root
+* frogscutsfile       FROGS_NTel2_001-003-005CU_index4.3.root
 * energydependentcuts ShowerGoodness BackgroundGoodness MSCW MSCL
 
-
 vi) theta2 root file
- theta2file           $VERITAS_EVNDISP_ANA_DIR/GammaHadronCutFiles/FROGS_N2_001-003-005CU_index2.5.root GRAPH
+ theta2file           FROGS_NTel2_001-003-005CU_index4.3.root GRAPH
