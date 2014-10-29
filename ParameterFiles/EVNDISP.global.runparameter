@@ -12,3 +12,5 @@ Location of VERITAS DB server
 
 Location of VERITAS raw data
 * VTSRAWDATA gamma1.astro.ucla.edu
+Alternative location of VERITAS raw data
+ VTSRAWDATA veritas.chpc.utah.edu
