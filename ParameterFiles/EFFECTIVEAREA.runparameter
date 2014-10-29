@@ -42,7 +42,7 @@ reweight events to this set of spectral indexes
 * ENERGYSPECTRUMINDEX  1 2.5 0.1
 
 Gamma/hadron cut file
-(if no path is given, file is searched in $VERITAS_EVNDISP_ANA_DIR/ParameterFiles/)
+(if no path is given, file is searched in $VERITAS_EVNDISP_AUX_DIR/ParameterFiles/)
 * CUTFILE ANASUM.GammaHadron.dat
 
 Input data file (full path)
