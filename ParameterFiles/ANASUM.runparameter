@@ -22,6 +22,15 @@ spectrum)
 * ENERGYSPECTRALINDEX 2.4
 
 ========================================================
+write tree with all events to anasum output file
+(data_on and data_off trees)
+0 = don't fill tree
+1 = fill all events
+2 = fill events after direction cut only 
+(data_off contains events in off regions)
+* WRITEEVENTTREE 2
+
+========================================================
 NO CHANGE NECESSARY BELOW THIS POINT FOR A STANDARD ANALYSIS
 ========================================================
 
@@ -98,7 +107,7 @@ ex:12 24 15 52 18 04 0.5 0.5 40
 Additional regions:
  REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
 Zeta Tau
- REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
+* REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
 
 ========================================================
 Energy spectra 
@@ -107,11 +116,8 @@ Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
 Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
 * ENERGYEFFECTIVEAREAS REC
-Energy reconstruction method (should be 1)
-(note: this has to match what has been used in the effective
-area calculations. Do not change unless you know better.)
-* ENERGYRECONSTRUCTIONMETHOD 1
 Dead time calculation
+(0=using L1 scalars, 1=using tdiff distributions)
 * DEADTIMECALCULATIONMETHOD 0
 ========================================================
 
