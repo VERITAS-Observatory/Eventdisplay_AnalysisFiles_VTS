@@ -66,6 +66,7 @@ Ring background model
 
 Reflected region model
 ----------------------
+Note: too many reflected regions forces the background regions to be too far from the test position and introduces a gradient into sky maps
 *  58932   58932 0 ANASUM.GammaHadron.d20120322-cut-N3-Point-005CU-Moderate.dat RE effectiveArea.root 0.1 2 6 radialAcceptance.root
 
 
