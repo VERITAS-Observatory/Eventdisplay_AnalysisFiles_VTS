@@ -74,9 +74,9 @@ Star catalogue
 $VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/)
 * BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
 Minimum magnitude of stars to be excluded
-* BRIGHTSTARBRIGHTNESS 8.0
+* BRIGHTSTARBRIGHTNESS 7.0
 Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
-* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.30
+* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.25
 
 User defined regions in the sky to exclude from background 
 If Radius1=Radius2 and theta=0: circle (point source)
