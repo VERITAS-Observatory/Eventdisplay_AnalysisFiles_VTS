@@ -55,7 +55,7 @@ i) trace integration and image cleaning parameter
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
-* -1 LLEDGEFIT 0.1 2
+* -1 LLEDGEFIT 0.1 5
 
  quality cut on distance of image/border pixel (applied for all cuts defined below)
  (this is currently used for plotting only)

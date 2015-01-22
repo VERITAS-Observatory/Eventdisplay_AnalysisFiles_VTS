@@ -45,7 +45,7 @@ i) trace integration and image cleaning parameter
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
 
  image calculation at the edge of the camera
-* -1 LLEDGEFIT 0.1 2
+* -1 LLEDGEFIT 0.1 5
 
 ii) quality cuts applied before the array analysis 
 --------------------------------------------------
