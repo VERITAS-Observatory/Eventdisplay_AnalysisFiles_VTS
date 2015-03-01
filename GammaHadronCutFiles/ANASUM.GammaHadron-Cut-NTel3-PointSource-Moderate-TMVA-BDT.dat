@@ -21,7 +21,6 @@ second largest image size
 * sizesecondmax 400. 1.e30 V4
 * sizesecondmax 400. 1.e30 V5
 * sizesecondmax 400. 1.e30 V6
- sizesecondmax 200. 1.e30 NOT_SET
 cut on mean emission height
 * emissionheight 0. 1.e10
 
@@ -94,6 +93,6 @@ v) TMVA Cuts
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
-* TMVA_MVACut V4 00 0.61 01 0.61 02 0.61 03 0.61 10 0.60 11 0.60 12 0.60 13 0.60 20 0.57 21 0.57 22 0.57 23 0.57 30 0.46 31 0.46 32 0.46 33 0.46
+* TMVA_MVACut V4 00 0.58 01 0.57 02 0.57 03 0.56 10 0.53 11 0.53 12 0.53 13 0.51 20 0.42 21 0.42 22 0.42 23 0.42 30 0.07 31 0.07 32 0.07 33 0.07
 * TMVA_MVACut V5 00 0.60 01 0.60 02 0.60 03 0.60 10 0.60 11 0.60 12 0.60 13 0.59 20 0.57 21 0.57 22 0.57 23 0.57 30 0.46 31 0.46 32 0.46 33 0.45
 * TMVA_MVACut V6 00 0.609 01 0.608 02 0.607 03 0.605 10 0.581 11 0.580 12 0.580 13 0.577 20 0.504 21 0.504 22 0.504 23 0.502 30 0.518 31 0.518 32 0.518 33 0.518
