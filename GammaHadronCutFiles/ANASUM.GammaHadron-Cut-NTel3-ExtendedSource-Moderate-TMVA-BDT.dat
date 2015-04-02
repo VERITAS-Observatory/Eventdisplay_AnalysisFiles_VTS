@@ -32,35 +32,25 @@ T1
 T2
 * arrayltrig 2 0
 T1/T2
-* arrayltrig 3 1
+* arrayltrig 3 0
 T3
 * arrayltrig 4 0
-T1/T3 V4: unlikely to get a 2-tel gamma-ray event with T1 and T3
-* arrayltrig 5 0 V4 1234
-* arrayltrig 5 1 V5
-* arrayltrig 5 1 V6
+T1/T3
+* arrayltrig 5 0
 T2/T3
-* arrayltrig 6 1 V4
-T2/T3 and V5/V6: unlikely to get a 2-tel gamma-ray event with T2 and T3
-* arrayltrig 6 0 V5 1234
-* arrayltrig 6 0 V6 1234
+* arrayltrig 6 0
 T1/T2/T3
 * arrayltrig 7 1
 T4
 * arrayltrig 8 0
-T1/T4 and V4: telescopes too close to each other
-* arrayltrig 9 0 V4
-T1/T4 and V5/V6: unlikely to get a 2-tel gamma-ray event with T1 and T4
-* arrayltrig 9 0 V5 1234
-* arrayltrig 9 0 V6 1234
-T2/T4 and V4: unlikely to get a 2-tel gamma-ray event with T2 and T4
-* arrayltrig 10 0 V4 1234
-* arrayltrig 10 1 V5
-* arrayltrig 10 1 V6
+T1/T4
+* arrayltrig 9 0
+T2/T4
+* arrayltrig 10 0
 T1/T2/T4
 * arrayltrig 11 1
 T3/T4
-* arrayltrig 12 1
+* arrayltrig 12 0
 T1/T3/T4
 * arrayltrig 13 1
 T2/T3/T4
