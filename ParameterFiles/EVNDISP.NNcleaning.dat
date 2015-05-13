@@ -9,14 +9,13 @@
 #--------------------------------------------------------------------------
 # Comment every empty line with #
 #  
-#ElecConcept (if do FlashCam analysis)  #  Put: 0 or 1   0=highBW, 1=FlashCam
-# NOT IMPLEMENTED FOR trunk !!!
-#ifDoFlashCam1:  0
-#ifDoFlashCam2:  0
-#ifDoFlashCam3:  0
-#ifDoFlashCam4:  0
 #
-# TelTypes:  0 = empty, 1 = LST, 2 = MST, 3 = SCT,4 = SST, 5 = empty  
+##############
+# Telescope Types
+#
+# VERITAS: set ifVTS TRUE
+#
+# CTA TelTypes:  0 = empty, 1 = LST, 2 = MST, 3 = SCT,4 = SST, 5 = empty  
 #
 # IF analyze telescope of a certain type (ambiguous, set all implemented tels to TRUE) 
 # NOTE:  SCT (type 3) not implemented yet !!!
@@ -25,25 +24,29 @@ ifLST: FALSE
 ifMST: FALSE
 ifSCT: FALSE
 ifSST: FALSE
-#
-#
+##############
 # Create IPR database from DST file containing ped charge histos (hpedPerTelescopeType) and write it to the IPRdatabaseFile 
 CreateIPRdatabase: TRUE
-IPRdatabaseFile:   /lustre/fs9/group/cta/users/maierg/CTA/IPRdatabaseTest.root
-#
+# (set this to EVNDISP_ANALYSIS_DIRECTORY and it will be written into this directory
+#  output file will be <runnumber>.IPR.root)
+IPRdatabaseFile:   EVNDISP_ANALYSIS_DIRECTORY
+##############
 # Read IPRs form IPRdatabase (overrides CreateIPRdatabase)
 ReadIPRfromDatabase: FALSE
-IPRdatabase:   /lustre/fs9/group/cta/users/maierg/CTA/IPRdatabaseTest.root
-#
-#
+# (set this to EVNDISP_ANALYSIS_DIRECTORY and it will be written into this directory
+#  output file will be <runnumber>.IPR.root)
+IPRdatabase:   EVNDISP_ANALYSIS_DIRECTORY
+##############
 # If write NN Image cleaning graphs (prob. curves, IPR graphs, etc..) to a GraphsFile file
 WriteGraphsToFile: TRUE
-GraphsFile:  /lustre/fs9/group/cta/users/maierg/CTA/IPRdatabaseTestGraphs.root
-#
+# (set this to EVNDISP_ANALYSIS_DIRECTORY and it will be written into this directory
+#  output file will be <runnumber>.IPR.root)
+GraphsFile:  EVNDISP_ANALYSIS_DIRECTORY
+##############
 # probability to get fake image from NSB for THIS readout window 
 #( per telescope, not really calibrated, a.u.) smaller values -> stronger tail cuts
 FakeImageProb: 0.5E-3   # 0.5 % per telescope 
-#
+##############
 # NN groups activation
 # IF search the NN-group of a certain multiplicity  while NN-image cleaning
 # settings for every telescope type (columns) and for every NN-group (rows)
@@ -54,10 +57,4 @@ if4nn:        1,1,1,1,0,0
 if2plus1nn:   1,1,1,1,0,0      # sparse 3-pixel group: 2nn and 1 pixel in the vicinity 
 if3nn:        1,1,1,1,0,0
 if2nn:        1,1,1,1,0,0
-#
-#
-# Pulse search windows (50/50 around trigger time (currently: time of max))
-#SearchWin1:    30.   # [ns]
-#SearchWin2:    60.   # [ns]
-#SearchWin3:    60.   # [ns]
-#SearchWin4:    80.   # [ns]
+##############
