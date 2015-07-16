@@ -152,6 +152,16 @@ Set 0 = default reconstruction method
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
 
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.10  0 10
+* -1 LOSS2      -1.  0.10 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
 MINANGLE 15
 
 * -1 RECMETHOD 4
@@ -213,6 +223,16 @@ MINANGLE 15
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 
+* -1 RECMETHOD 4
+* -1 MINANGLE  15.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.10  0 10
+* -1 LOSS2      -1.  0.10 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
 MINANGLE 20
 
 * -1 RECMETHOD 4
@@ -271,6 +291,16 @@ MINANGLE 20
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.25  0 10
 * -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  20.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.10  0 10
+* -1 LOSS2      -1.  0.10 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -335,3 +365,14 @@ MINANGLE 0
 * -1 LOSS2      -1.  0.40 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  20.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.10  0 10
+* -1 LOSS2      -1.  0.10 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
