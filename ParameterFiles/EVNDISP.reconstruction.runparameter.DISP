@@ -1,6 +1,6 @@
 eventdisplay reconstruction parameter file
 ===========================================
-long integration window - DISP
+angular DISP reconstruction method
 ===========================================
 
 Note: all line without '*' in the beginning are ignored
@@ -40,19 +40,31 @@ i) trace integration and image cleaning parameter
 
  trace integration <integration method (0=off/1=default/2=sliding window)>
 * -1 FADCANALYSIS 1
- double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> 
-               <integration method for pass 1 (1/2)> <double pass error option (0/1)>
-               <time difference between LG and HG T0 (default -5 samples)>
-* -1 FADCDOUBLEPASS 1 10 1 0 -5
+ double pass method 
+    Par1: <doublepass (on=1, off=0)>
+    Par2: <integration window length for pass 1> 
+    Par3: <integration method for pass 1 (1/2)>
+    Par4: <double pass error option (0/1)>
+    Par5: <time difference between LG and HG T0 (default -5 samples)>
+* -1 FADCDOUBLEPASS 1 6 2 0 -4
  trace integration window <window 1> <window 2>
-* -1 FADCSUMMATIONWINDOW 6 18
- trace integration start (for window 1) <sample> <shift of window start for double pass> <start at T0?>
-* -1 FADCSUMMATIONSTART 2 -1 T0
+* -1 FADCSUMMATIONWINDOW 6 6
+ trace integration start (for window 1 for integration method 1)
+    Par1: <sample # of window start> 
+    Par2: <shift of window start for double pass>
+    Par3: <timing method used for calculation of window start (FIXED/TZERO/TAVERAGE)>
+    Par4: <max difference between T0 and trace integration start>
+* -1 FADCSUMMATIONSTART 0 0 TAVERAGE -4
 
- image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
-* -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
+ image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL/CLUSTERCLEANING> <FIXED/VARIABLE>
+* -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
+* -1 CLUSTERCLEANINGPARAMETERS -1 0 2
  image cleaning thresholds <image> <border>
-* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
+* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5 
+ image cleaning for double pass method, pass 1
+* -1 IMAGECLEANINGMETHOD_DP_PASS1 CLUSTERCLEANING VARIABLE
+* -1 CLUSTERCLEANINGPARAMETERS_DP_PASS1 -1 0 2
+* -1 IMAGECLEANINGTHRESHOLDS_DP_PASS1 5. 3.5
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
 * -1 LLEDGEFIT 0.1 5
@@ -73,49 +85,23 @@ USAGE:
 
    syntax:
 
-     <telescope type> <variable name> <variable value>
+     <telescope type> <variable name> <min cut value> <max cut value>
 
    all line without '*' in the beginning are ignored
 
    all operators are '>' or '<' (except for number of images, where it is '>=')
 
-   DEFAULTS:
-   minimum number of images required for stereo reconstruction
-    -1 MNIMAGE 2
-   minimum angle between image axes for two telescope analysis [deg]
-    -1 MINANGLE 5.
-   minimum number of channels for all telescopes
-    -1 MINTUBES 4
-   maximum number of low gain channels per telescope
-    -1 MAXLOWGAIN 5000
-   minimum local distance for all telescopes [deg]
-    -1 MINDIST -1.e3
-   maximum local distance for all telescopes [deg]
-    -1 MAXDIST  1.e3
-   minimum alpha for all telescopes [deg]
-    -1 MINALPHA -1.e3
-   maximum alpha for all telescopes [deg]
-    -1 MAXALPHA 1.e3
-   minimum image size for all telescopes [dc]
-    -1 MINSIZE 400
-   ignore all pointing corrections (default: off)
-    -1 USEEVNPOINTING 0
-   maximum loss of image size on edge of the camera [%]
-    -1 MAXLOSS 0.05
-   maximum width/length (to remove images to close to the telescopes)
-    -1 MAXWIDTHLENGTH 1.e10
-
----------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 Set 0 = default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
+* -1 MINANGLE  10.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
 
 Set 1 = BDT Angular reconstruction method (DISP)
 
@@ -129,121 +115,15 @@ Set 1 = BDT Angular reconstruction method (DISP)
 * -1 TMVABDTFILE 55 ze55deg_offset0.5deg
 * -1 TMVABDTFILE 60 ze60deg_offset0.5deg
 * -1 TMVABDTFILE 65 ze65deg_offset0.5deg
-* -1 MINANGLE 5.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
 * -1 MCONLY
 ======== IMPORTANT IMPORTANT ============
 
-==============================
-3-telescope combinations
-==============================
-
-Set 2 = T1 off default reconstruction method
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 1 USEIMAGE 0
-
-Set 3 = T2 off default reconstruction method
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 2 USEIMAGE 0
-
-Set 4 = T3 off default reconstruction method
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 3 USEIMAGE 0
-
-Set 5 = T4 off default reconstruction method
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 4 USEIMAGE 0
-
-SET 6 = T3&T4 off
-
-* -1 RECMETHOD 4
-* -1 MINANGLE 10.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 3 USEIMAGE 0
-* 4 USEIMAGE 0
-
----------------------------------------------------------------------------------------------------
-DISP 3-telescope combinations
----------------------------------------------------------------------------------------------------
-Set 7 = T1 off: BDT Angular reconstruction method (DISP)
-* -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
-* -1 MINANGLE 5.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 1 USEIMAGE 0
-
-Set 8 = T2 off: BDT Angular reconstruction method (DISP)
-* -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
-* -1 MINANGLE 5.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 2 USEIMAGE 0
-
-Set 9 = T3 off: BDT Angular reconstruction method (DISP)
-* -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
-* -1 MINANGLE 5.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 3 USEIMAGE 0
-
-Set 10 = T4 off: BDT Angular reconstruction method (DISP)
-* -1 RECMETHOD 7
-* -1 TMVABDTFILE 00 USE_BDT_METHOD_1
-* -1 MINANGLE 5.
-* -1 MINTUBES 5
-* -1 MINSIZE 100
-* -1 MAXLOSS 0.2
-* -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
-* 4 USEIMAGE 0

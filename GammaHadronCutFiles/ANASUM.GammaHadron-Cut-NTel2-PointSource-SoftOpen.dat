@@ -17,7 +17,7 @@ successfull core and direction reconstruction (>=0.)
 distance of core position to telescopes [m]
 * arraycore -1. 350.
 size of the camera [deg], all events with direction
-outside of intervall are ignored
+outside of interval are ignored
 * cameraedge -1. 2.00
 second largest image size
 * sizesecondmax 200. 1.e30

@@ -61,44 +61,18 @@ USAGE:
 
    syntax:
 
-     <telescope type> <variable name> <variable value>
+     <telescope type> <variable name> <min cut value> <max cut value>
 
    all line without '*' in the beginning are ignored
 
    all operators are '>' or '<' (except for number of images, where it is '>=')
 
-   DEFAULTS:
-   minimum number of images required for stereo reconstruction
-    -1 MNIMAGE 2
-   minimum angle between image axes for two telescope analysis [deg]
-    -1 MINANGLE 5.
-   minimum number of channels for all telescopes
-    -1 MINTUBES 4
-   maximum number of low gain channels per telescope
-    -1 MAXLOWGAIN 5000
-   minimum local distance for all telescopes [deg]
-    -1 MINDIST -1.e3
-   maximum local distance for all telescopes [deg]
-    -1 MAXDIST  1.e3
-   minimum alpha for all telescopes [deg]
-    -1 MINALPHA -1.e3
-   maximum alpha for all telescopes [deg]
-    -1 MAXALPHA 1.e3
-   minimum image size for all telescopes [dc]
-    -1 MINSIZE 400
-   ignore all pointing corrections (default: off)
-    -1 USEEVNPOINTING 0
-   maximum loss of image size on edge of the camera [%]
-    -1 MAXLOSS 0.05
-   maximum width/length (to remove images to close to the telescopes)
-    -1 MAXWIDTHLENGTH 1.e10
-
----------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 Set 0:
 
 * -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-
+* -1 MINANGLE  10.
+* -1 NTUBES    4    10000
+* -1 SIZE      0  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000

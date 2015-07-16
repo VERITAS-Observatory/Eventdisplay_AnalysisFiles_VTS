@@ -1,4 +1,6 @@
-Run parameter for anasum
+========================================================
+Run parameters for the anasum stage
+========================================================
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -8,18 +10,64 @@ All lines without a '*' in the first column are ignored!
 File containing time mask details 
 (this allows to exclude certain time intervals from 
 the analysis)
+ TIMEMASKFILE <file name of time mask file>
 * TIMEMASKFILE ANASUM.timemask.dat
-========================================================
-Exclusion region around sky map centre
-(should be increased for bright sources)
-* REGIONTOEXCLUDE 0. 0. 0.35
- REGIONTOEXCLUDE 0. 0. 1.0 0.35 40
 
 ========================================================
 Spectral index for effective areas
 (should be iteratively adjusted to match the measured
 spectrum)
+ ENERGYSPECTRALINDEX <spectral index>
 * ENERGYSPECTRALINDEX 2.4
+
+========================================================
+Exclusion region around sky map centre:
+should be adjust to brightness of the source
+and the cuts applied 
+ REGIONTOEXCLUDE <x-derot [deg]> <y-derot [deg]> <radius of exlusion region [deg]>
+* REGIONTOEXCLUDE 0. 0. 0.35
+ REGIONTOEXCLUDE 0. 0. 1.0 0.35 40
+
+========================================================
+User defined regions in the sky to exclude from background 
+estimation (e.g. because of other gamma-ray sources in the
+field of view
+
+Exclusion region can be 
+
+1. circles
+If Radius1=Radius2 (or if no Radius2 is given) and theta=0
+
+2. ellipses
+If Radius1!=Radius2
+
+3. rotated ellipses
+If Radius1!=Radius2 and theta!=0
+
+->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius(deg))
+(coordinates are relative to camera center)
+ex: 0.48 -0.2 0.5
+Note: West positive means toward West (left in camera coordinates)
+North positive means toward South (up in camera coordinates)
+->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius(deg))
+ex: 335.287 58.964 0.5
+->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius(deg))
+ex:12 24 15 52 18 04 0.5
+
+->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius1(deg) Radius2(deg) theta(deg))
+(coordinates are relative to camera center)
+ex: 0.48 -0.2 0.5 0.5 40
+Note: West positive means toward West (left in camera coordinates)
+North positive means toward South (up in camera coordinates)
+->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius1(deg) Radius2(deg) theta(deg))
+ex: 335.287 58.964 0.5 0.5 40
+->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius1(deg) Radius2(deg) theta(deg))
+ex:12 24 15 52 18 04 0.5 0.5 40
+
+Additional regions:
+ REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
+Zeta Tau (for the Crab field)
+* REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
 
 ========================================================
 write tree with all events to anasum output file
@@ -31,11 +79,28 @@ write tree with all events to anasum output file
 * WRITEEVENTTREE 2
 
 ========================================================
-NO CHANGE NECESSARY BELOW THIS POINT FOR A STANDARD ANALYSIS
+========================================================
+IN GENERAL, NO CHANGES ARE NECESSARY BELOW THIS POINT FOR
+A STANDARD ANALYSIS
+(please report any inconsistencies of the parameters)
+========================================================
 ========================================================
 
 ========================================================
+Star catalogue
+ BRIGHTSTARCATALOGUE <catalogue file name>
+ (catalogues are located in 
+  $VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/ )
+* BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
+Minimum brightness of stars to be added to the list of exclusion regions and
+radius of region to be excluded from background calculation around bright star (<=0 to switch off)
+ BRIGHTSTARSETTINGS <min magnitude> <radius of exlusion region [deg]> <band (B or V)>
+* BRIGHTSTARSETTINGS 7 0.15 B
+* BRIGHTSTARSETTINGS 4 0.35 B
+
+========================================================
 Sky plot binning and size
+
 binning of sky map (correlated plots) [deg]
 * SKYMAPBINSIZE 0.01
 binning of sky map (uncorrelated plots) [deg]
@@ -66,48 +131,9 @@ relative to (0,0) in sky plot [deg]
 Position in equatorial coordinates (ra,dec) (J2000, deg)
  TARGETPOSITION_RADECJ2000_DEG 83.6333 22.0145
 Position in equatorial coordinates (ra,dec) (J2000, hours)
- TARGETPOSITION_RADECJ2000_HOUR  03 30 13.24 -05 32 36.3
+ TARGETPOSITION_RADECJ2000_HOUR 05 34 31.97 +22 00 52.1
 
 ========================================================
-Star catalogue
-(start catalogues can be found in
-$VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/)
-* BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
-Minimum magnitude of stars to be excluded
-* BRIGHTSTARBRIGHTNESS 7.0
-Radius of region to be excluded from background calculation around bright star (<=0 to switch off)
-* BRIGHTSTAREXCLUDEFROMBACKGROUNDRADIUS 0.25
-
-User defined regions in the sky to exclude from background 
-If Radius1=Radius2 and theta=0: circle (point source)
-If Radius1!=Radius2: ellipse (extended source)
-If Radius1!=Radius2 and theta!=0: rotated ellipse (extended source)
-
-->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius(deg))
-(coordinates are relative to camera center)
-ex: 0.48 -0.2 0.5
-Note: West positive means toward West (left in camera coordinates)
-North positive means toward South (up in camera coordinates)
-->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius(deg))
-ex: 335.287 58.964 0.5
-->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius(deg))
-ex:12 24 15 52 18 04 0.5
-
-->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius1(deg) Radius2(deg) theta(deg))
-(coordinates are relative to camera center)
-ex: 0.48 -0.2 0.5 0.5 40
-Note: West positive means toward West (left in camera coordinates)
-North positive means toward South (up in camera coordinates)
-->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius1(deg) Radius2(deg) theta(deg))
-ex: 335.287 58.964 0.5 0.5 40
-->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius1(deg) Radius2(deg) theta(deg))
-ex:12 24 15 52 18 04 0.5 0.5 40
-
-
-Additional regions:
- REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
-Zeta Tau
-* REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
 
 ========================================================
 Energy spectra 

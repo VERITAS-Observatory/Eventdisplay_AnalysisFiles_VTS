@@ -26,29 +26,50 @@ ii) quality cuts applied before the array analysis
    (Note: There is some confusion between the words method and cut set in the array analysis code of
    eventdisplay.)
 
-Note that these values override parameters given at the command line
+Note that these values override parameters given at the command line (!)
+---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 
 
 i) trace integration and image cleaning parameter
 --------------------------------------------------
 
- trace integration <integration method (0=off/1=default/2=sliding window)>
-* -1 FADCANALYSIS 1
- double pass method <doublepass (on=1, off=0)> <integration window length for pass 1> <integration method for pass 1 (1/2)>
-* -1 FADCDOUBLEPASS 0 20 1
+trace integration <integration method (0=off/1=default/2=sliding window)>
+* -1 FADCANALYSIS 2
+ double pass method 
+    Par1: <doublepass (on=1, off=0)>
+    Par2: <integration window length for pass 1> 
+    Par3: <integration method for pass 1 (1/2)>
+    Par4: <double pass error option (0/1)>
+    Par5: <time difference between LG and HG T0 (default -5 samples)>
+* -1 FADCDOUBLEPASS 0 6 2 0 -4
  trace integration window <window 1> <window 2>
-* -1 FADCSUMMATIONWINDOW 18 XX
- trace integration start (for window 1) <sample> [optional: shift of window start for double pass]
-* -1 FADCSUMMATIONSTART 1 -1 T0
+* -1 FADCSUMMATIONWINDOW 6 6
+ trace integration start (for window 1 for integration method 1)
+    Par1: <sample # of window start> 
+    Par2: <shift of window start for double pass>
+    Par3: <timing method used for calculation of window start (TZERO/TAVERAGE)>
+    Par4: <max difference between T0 and trace integration start>
+* -1 FADCSUMMATIONSTART 0 0 TAVERAGE -4
 
- image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING> <FIXED/VARIABLE>
-* -1 IMAGECLEANINGMETHOD TWOLEVELCLEANING VARIABLE
+ image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL/CLUSTERCLEANING> <FIXED/VARIABLE>
+ -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
+ -1 CLUSTERCLEANINGPARAMETERS -1 0 2
  image cleaning thresholds <image> <border>
-* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
+ -1 IMAGECLEANINGTHRESHOLDS 5. 2.5 
+ image cleaning for double pass method, pass 1
+* -1 IMAGECLEANINGMETHOD_DP_PASS1 TWOLEVELCLEANING VARIABLE
+* -1 IMAGECLEANINGTHRESHOLDS 5. 3.5
+* -1 IMAGECLEANINGMETHOD_DP_PASS1 TWOLEVELCLEANING VARIABLE
+* -1 IMAGECLEANINGTHRESHOLDS_DP_PASS1 5. 3.5
 
- image calculation at the edge of the camera
+ image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
 * -1 LLEDGEFIT 0.1 5
+
+ quality cut on distance of image/border pixel (applied for all cuts defined below)
+ (this is currently used for plotting only)
+ -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG <apply cut for images with less then minimum number of tubes>
+* -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0. 15
 
 ii) quality cuts applied before the array analysis 
 --------------------------------------------------
@@ -61,79 +82,120 @@ USAGE:
 
    syntax:
 
-     <telescope type> <variable name> <variable value>
+     <telescope type> <variable name> <min cut value> <max cut value>
 
    all line without '*' in the beginning are ignored
 
    all operators are '>' or '<' (except for number of images, where it is '>=')
 
-   DEFAULTS:
-   minimum number of images required for stereo reconstruction
-    -1 MNIMAGE 2
-   minimum angle between image axes for two telescope analysis [deg]
-    -1 MINANGLE 5.
-   minimum number of channels for all telescopes
-    -1 MINTUBES 4
-   maximum number of low gain channels per telescope
-    -1 MAXLOWGAIN 5000
-   minimum local distance for all telescopes [deg]
-    -1 MINDIST -1.e3
-   maximum local distance for all telescopes [deg]
-    -1 MAXDIST  1.e3
-   minimum alpha for all telescopes [deg]
-    -1 MINALPHA -1.e3
-   maximum alpha for all telescopes [deg]
-    -1 MAXALPHA 1.e3
-   minimum image size for all telescopes [dc]
-    -1 MINSIZE 400
-   ignore all pointing corrections (default: off)
-    -1 USEEVNPOINTING 0
-   maximum loss of image size on edge of the camera [%]
-    -1 MAXLOSS 0.05
-   maximum width/length (to remove images to close to the telescopes)
-    -1 MAXWIDTHLENGTH 1.e10
-
 ---------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
-Set 0:
+Set 0 = default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 0
-* -1 MAXLOSS 0.2
-
-Set 1:
-
-* -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 200
-* -1 MAXLOSS 0.2
-
-Set 2:
+* -1 MINANGLE  10.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
 
 * -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 400
-* -1 MAXLOSS 0.2
-
-Set 3:
-
-* -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 500
-* -1 MAXLOSS 0.2
-
-Set 4:
+* -1 MINANGLE  10.
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
 
 * -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 800
-* -1 MAXLOSS 0.2
-
-Set 5:
+* -1 MINANGLE  10.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
 
 * -1 RECMETHOD 4
-* -1 MINTUBES 4
-* -1 MINSIZE 1200
-* -1 MAXLOSS 0.2
+* -1 MINANGLE  10.
+* -1 NTUBES    4    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.20  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
 
+======================
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.20  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+----------------------------------------------
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    6    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    6    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.40 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    6    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.25  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.75
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    6    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.20  0 10

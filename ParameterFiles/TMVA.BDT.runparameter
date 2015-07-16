@@ -72,9 +72,9 @@ background weights
 
 ##############################################
 Output file - to be added in IRF.trainTMVAforGammaHadronSeparation.sh
-OUTPUTFILE /lustre/fs5/group/cta/users/mkrause/VERITAS/analysis/TMVA/Training_trunk.new BDT_0_0
+OUTPUTFILE my_output_file BDT_0_0
 
 ##############################################
 input files - to be added in IRF.trainTMVAforGammaHadronSeparation.sh
-SIGNALFILE /lustre/fs5/group/cta/VERITAS/IRFPRODUCTION//v470/CARE_June1425/V6_ATM21_gamma/TMVA/MSCW_RECID0/20deg_0.5wob_NOISE80.mscw.root
-BACKGROUNDFILE /lustre/fs5/group/cta/users/mkrause/VERITAS/analysis/TMVA/Background_sources/v470/EVNDISP/RecID0/63550.mscw.root
+SIGNALFILE signal_mscw_root_file
+BACKGROUNDFILE background_mscw_root_file
