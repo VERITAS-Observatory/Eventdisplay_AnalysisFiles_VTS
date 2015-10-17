@@ -1,10 +1,13 @@
 eventdisplay reconstruction parameter file
 ===========================================
-parameter file used for e.g. DST DQM
+parameter file used for e.g. DST DQM, laser gain calibration
 (should not be used for any data analysis)
 ===========================================
 
 Note: all line without '*' in the beginning are ignored
+
+Remember that after changing any values here, you have to redo lookup tables,
+effective areas and radial acceptances
 
 The following file describes the reconstruction parameters for eventdisplay:
 
@@ -27,6 +30,7 @@ ii) quality cuts applied before the array analysis
    eventdisplay.)
 
 Note that these values override parameters given at the command line (!)
+---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 
 
