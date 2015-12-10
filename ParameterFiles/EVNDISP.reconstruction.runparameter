@@ -7,6 +7,7 @@ Note: all line without '*' in the beginning are ignored
 
 Remember that after changing any values here, you have to redo lookup tables,
 effective areas and radial acceptances
+(so don't do it)
 
 The following file describes the reconstruction parameters for eventdisplay:
 
@@ -42,8 +43,8 @@ i) trace integration and image cleaning parameter
     Par1: <doublepass (on=1, off=0)>
     Par2: <integration window length for pass 1> 
     Par3: <integration method for pass 1 (1/2)>
-    Par4: <double pass error option (0/1)>
-    Par5: <time difference between LG and HG T0 (default -5 samples)>
+    Par4: <double pass error option (0/1)> (don't change if you don't understand)
+    Par5: <maximum time difference between LG and HG T0 (default -5 samples)>
 * -1 FADCDOUBLEPASS 1 6 2 0 -4
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 6 6
@@ -357,6 +358,8 @@ MINANGLE 0
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
 
+Zero MinAngle
+
 * -1 RECMETHOD 4
 * -1 MINANGLE  0.
 * -1 NTUBES    4    10000
@@ -366,12 +369,45 @@ MINANGLE 0
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 
+Second step of optimization; check ntubes cut
+Equivalent to ID0
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    5    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.20  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
 * -1 RECMETHOD 4
 * -1 MINANGLE  20.
-* -1 NTUBES    4    10000
+* -1 NTUBES    5    10000
 * -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.10  0 10
-* -1 LOSS2      -1.  0.10 10 1000
+* -1 LOSS1      -1.  0.20  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  10.
+* -1 NTUBES    6    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.20  0 10
+* -1 LOSS2      -1.  0.30 10 1000
+* -1 WIDTH     0.02 1000.
+* -1 DISTANCE  -1.  1.85
+* -1 FUI       0.35 1.e5
+
+* -1 RECMETHOD 4
+* -1 MINANGLE  20.
+* -1 NTUBES    6    10000
+* -1 SIZE      100  1.e10
+* -1 LOSS1      -1.  0.20  0 10
+* -1 LOSS2      -1.  0.30 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
