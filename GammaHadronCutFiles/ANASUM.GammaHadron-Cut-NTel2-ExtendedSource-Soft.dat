@@ -17,7 +17,7 @@ successfull core and direction reconstruction (>=0.)
 distance of core position to telescopes [m]
 * arraycore -1. 350.
 size of the camera [deg], all events with direction
-outside of intervall are ignored
+outside of interval are ignored
 * cameraedge -1. 2.00
 second largest image size
 * sizesecondmax 200. 1.e30
@@ -25,7 +25,7 @@ cut on mean emission height
 * emissionheight 6. 1.e12
 
 Telescope multiplicity
-arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>
+arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which selection is valid>
 * arrayltrig 0 0
 T1
 * arrayltrig 1 0
