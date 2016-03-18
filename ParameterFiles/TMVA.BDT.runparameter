@@ -33,12 +33,12 @@ cut categories:  NotEnforced, FMax, FMin, FSmart
 
 ##############################################
 spectator variables
-SPECTATOR NImages
-SPECTATOR Xoff
-SPECTATOR Yoff
+* SPECTATOR NImages
+* SPECTATOR Xoff
+* SPECTATOR Yoff
 * SPECTATOR ErecS
- SPECTATOR Xcore
- SPECTATOR Ycore
+* SPECTATOR Xcore
+* SPECTATOR Ycore
  SPECTATOR MCxoff
  SPECTATOR MCyoff
  SPECTATOR MCxcore

@@ -6,29 +6,24 @@ Run parameters for the anasum stage
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
 
-========================================================
+Time mask
+---------
+
 File containing time mask details 
 (this allows to exclude certain time intervals from 
 the analysis)
  TIMEMASKFILE <file name of time mask file>
-* TIMEMASKFILE ANASUM.timemask.dat
+* TIMEMASKFILE timemask.dat
 
-========================================================
-Spectral index for effective areas
-(should be iteratively adjusted to match the measured
-spectrum)
- ENERGYSPECTRALINDEX <spectral index>
-* ENERGYSPECTRALINDEX 2.4
+Exclusion regions
+-----------------
 
-========================================================
-Exclusion region around sky map centre:
-should be adjust to brightness of the source
-and the cuts applied 
+Exclusion region around sky map centre
+(should be adjust to brightness of the gamma-ray source
+and the cuts applied)
  REGIONTOEXCLUDE <x-derot [deg]> <y-derot [deg]> <radius of exlusion region [deg]>
 * REGIONTOEXCLUDE 0. 0. 0.35
- REGIONTOEXCLUDE 0. 0. 1.0 0.35 40
 
-========================================================
 User defined regions in the sky to exclude from background 
 estimation (e.g. because of other gamma-ray sources in the
 field of view
@@ -69,25 +64,7 @@ Additional regions:
 Zeta Tau (for the Crab field)
 * REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
 
-========================================================
-write tree with all events to anasum output file
-(data_on and data_off trees)
-0 = don't fill tree
-1 = fill all events
-2 = fill events after direction cut only 
-(data_off contains events in off regions)
-* WRITEEVENTTREE 2
-
-========================================================
-========================================================
-IN GENERAL, NO CHANGES ARE NECESSARY BELOW THIS POINT FOR
-A STANDARD ANALYSIS
-(please report any inconsistencies of the parameters)
-========================================================
-========================================================
-
-========================================================
-Star catalogue
+Exlusion regions from star catalogue
  BRIGHTSTARCATALOGUE <catalogue file name>
  (catalogues are located in 
   $VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/ )
@@ -98,34 +75,33 @@ radius of region to be excluded from background calculation around bright star (
 * BRIGHTSTARSETTINGS 7 0.15 B
 * BRIGHTSTARSETTINGS 4 0.35 B
 
-========================================================
-Sky plot binning and size
+Sky maps
+--------
+
+binning and size
+(sky maps are in equatorial coordinates)
 
 binning of sky map (correlated plots) [deg]
 * SKYMAPBINSIZE 0.01
 binning of sky map (uncorrelated plots) [deg]
 * SKYMAPBINSIZEUC 0.05
-size of sky map (x-axis) [deg]
-(note: require same value for min and max)
-* SKYMAPSIZEX -2. 2.
-size of sky map (y-axis) [deg]
-(note: require same value for min and max)
-* SKYMAPSIZEY -2. 2.
-========================================================
+size of sky map (x-axis/declination axis) [deg]
+* SKYMAPSIZEX 2.
+size of sky map (y-axis/RA axis) [deg]
+* SKYMAPSIZEY 2.
 
-Shift the centre position of sky map
-(default: assume source coordinates)
+sky map centre
+(default: target coordinates)
 in equatorial coordinates (ra,dec) (J2000, deg)
  SKYMAPCENTRE_RADECJ2000_DEG 83.6333 22.5145
  in equatorial coordinates (ra,dec) (J2000, hours)
  SKYMAPCENTRE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18
 
-========================================================
-Change the position where number of on and off events, significances,
-effective areas, all 1D histograms, etc are calculated
-(default: at sky map centre)
+Position where number of on and off events, significances,
+effective areas (all 1D histograms) are calculated
+(default is at sky map centre)
 
-relative to (0,0) in sky plot [deg]
+relative to (0,0) in sky map [deg]
 (West,North)
  TARGETXYSHIFT 0. 0.
 Position in equatorial coordinates (ra,dec) (J2000, deg)
@@ -133,24 +109,38 @@ Position in equatorial coordinates (ra,dec) (J2000, deg)
 Position in equatorial coordinates (ra,dec) (J2000, hours)
  TARGETPOSITION_RADECJ2000_HOUR 05 34 31.97 +22 00 52.1
 
-========================================================
+Spectral reconstruction
+-----------------------
 
-========================================================
-Energy spectra 
+Spectral index for effective areas
+(should be iteratively adjusted to match the measured
+spectrum)
+ ENERGYSPECTRALINDEX <spectral index>
+* ENERGYSPECTRALINDEX 2.4
 
 Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
 Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
+(default=REC)
 * ENERGYEFFECTIVEAREAS REC
 Dead time calculation
-(0=using L1 scalars, 1=using tdiff distributions)
+(0=using L1 scalars (default), 
+ 1=using tdiff distributions (not as accurate as L1 scalar method))
 * DEADTIMECALCULATIONMETHOD 0
-========================================================
 
-========================================================
 Rate plots
+----------
 
 time intervalls for rate plots and short term histograms [minutes]
 * RATEINTERVALLLENGTH 4.
-========================================================
 
+Output options
+--------------
+
+write tree with all events to anasum output file
+(data_on and data_off trees)
+0 = don't fill tree
+1 = fill all events
+2 = fill events after direction cut only 
+(data_off contains events in off regions)
+* WRITEEVENTTREE 2
