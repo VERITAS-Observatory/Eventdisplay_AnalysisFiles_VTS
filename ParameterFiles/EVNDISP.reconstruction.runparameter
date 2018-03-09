@@ -53,7 +53,7 @@ i) trace integration and image cleaning parameter
     Par2: <shift of window start for double pass>
     Par3: <timing method used for calculation of window start (FIXED/TZERO/TAVERAGE)>
     Par4: <max difference between T0 and trace integration start>
-* -1 FADCSUMMATIONSTART -1 0 TAVERAGE -4
+* -1 FADCSUMMATIONSTART 0 0 TAVERAGE -4
 
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL/CLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
@@ -95,7 +95,7 @@ Set 0 = default reconstruction methods / quality cuts
         for 4-telescope runs
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  10.
+* -1 MINANGLE  20.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -117,7 +117,7 @@ ignore the following lines for regular data analysis
 Set 2 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 10.
+* -1 MINANGLE 20.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -130,7 +130,7 @@ Set 2 = T1 off default reconstruction method
 Set 3 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 10.
+* -1 MINANGLE 20.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -143,7 +143,7 @@ Set 3 = T2 off default reconstruction method
 Set 4 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 10.
+* -1 MINANGLE 20.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -156,7 +156,7 @@ Set 4 = T3 off default reconstruction method
 Set 5 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 10.
+* -1 MINANGLE 20.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
