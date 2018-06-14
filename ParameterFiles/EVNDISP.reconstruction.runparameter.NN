@@ -7,6 +7,7 @@ Note: all line without '*' in the beginning are ignored
 
 Remember that after changing any values here, you have to redo lookup tables,
 effective areas and radial acceptances
+(so don't do it)
 
 The following file describes the reconstruction parameters for eventdisplay:
 
@@ -42,8 +43,8 @@ i) trace integration and image cleaning parameter
     Par1: <doublepass (on=1, off=0)>
     Par2: <integration window length for pass 1> 
     Par3: <integration method for pass 1 (1/2)>
-    Par4: <double pass error option (0/1)>
-    Par5: <time difference between LG and HG T0 (default -5 samples)>
+    Par4: <double pass error option (0/1)> (don't change if you don't understand)
+    Par5: <maximum time difference between LG and HG T0 (default -5 samples)>
 * -1 FADCDOUBLEPASS 0 6 2 0 -4
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 6 6
@@ -52,15 +53,14 @@ i) trace integration and image cleaning parameter
     Par2: <shift of window start for double pass>
     Par3: <timing method used for calculation of window start (FIXED/TZERO/TAVERAGE)>
     Par4: <max difference between T0 and trace integration start>
-* -1 FADCSUMMATIONSTART 0 0 TZERO -4
+* -1 FADCSUMMATIONSTART 0 0 TAVERAGE -4
 
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL/CLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD TIMENEXTNEIGHBOUR FIXED
- image cleaning thresholds <image> <border>
-* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5 
- image cleaning for double pass method, pass 1
-* -1 IMAGECLEANINGMETHOD_DP_PASS1 TWOLEVELCLEANING VARIABLE
-* -1 IMAGECLEANINGTHRESHOLDS_DP_PASS1 5. 3.5
+probability to get fake image from NSB for this readout window
+ -1 IMAGECLEANING_FAKEPROBABILITY 0.1E-4
+* -1 IMAGECLEANING_FAKEPROBABILITY 0.1E-3
+* -1 IMAGECLEANING_ACTIVEMULTIPLICITIES 4NN 2NNp1 3NN 2NN
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
 * -1 LLEDGEFIT 0.05 5
@@ -88,17 +88,8 @@ USAGE:
    all operators are '>' or '<' (except for number of images, where it is '>=')
 
 ---------------------------------------------------------------------------------------------------
-Set 0 = default reconstruction method
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+Set 0 = default reconstruction methods / quality cuts
+        for 4-telescope runs
 
 * -1 RECMETHOD 4
 * -1 MINANGLE  10.
@@ -110,70 +101,20 @@ Set 0 = default reconstruction method
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
 
-* -1 RECMETHOD 4
-* -1 MINANGLE  10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+======== IMPORTANT IMPORTANT ============
+ignore the following lines for regular data analysis
+(used only for MC)
+* -1 MCONLY
+======== IMPORTANT IMPORTANT ============
+
+==============================
+3-telescope combinations
+==============================
+
+Set 2 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.25 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.30 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.10  0 10
-* -1 LOSS2      -1.  0.10 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-MINANGLE 15
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  15.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  15.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -181,70 +122,12 @@ MINANGLE 15
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
+* 1 USEIMAGE 0
+
+Set 3 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  15.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  15.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.25 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  15.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.30 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  15.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  15.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.10  0 10
-* -1 LOSS2      -1.  0.10 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-MINANGLE 20
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -252,71 +135,12 @@ MINANGLE 20
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
+* 2 USEIMAGE 0
+
+Set 4 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.25 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.30 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.10  0 10
-* -1 LOSS2      -1.  0.10 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-MINANGLE 0
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  0.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  0.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -324,53 +148,18 @@ MINANGLE 0
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
+* 3 USEIMAGE 0
+
+Set 5 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  0.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  0.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.25 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  0.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
 * -1 LOSS2      -1.  0.30 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  0.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.25  0 10
-* -1 LOSS2      -1.  0.40 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-
-* -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.10  0 10
-* -1 LOSS2      -1.  0.10 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+* 4 USEIMAGE 0
 
