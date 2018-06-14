@@ -1,12 +1,9 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Moderate point source cuts
+BDT preselection cuts for TMVA BDT cuts optimization 
 
-Notes:
-
-- energy threshold for zenith angles of 20 deg: about 240/270 GeV for V6/V5
-- don't change cut values without recalculating response functions (effective areas and radial acceptances)
+Should not be used for standard data analysis (sky maps, etc)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -16,28 +13,23 @@ successfull core and direction reconstruction (>=0.)
 * arraychi2 0. 1.e30
 distance of core position to telescopes [m]
 * arraycore -1. 350.
- arraycore -1. 1600.
-
 size of the camera [deg], all events with direction
 outside of that intervall are ignored
 * cameraedge -1. 2.00
-
 second largest image size
-(this depends on the state of the instrument)
- sizesecondmax 400. 1.e30 V4
- sizesecondmax 400. 1.e30 V5
- sizesecondmax 600. 1.e30 V6
-
+(sizesecondmax is a BDT parameter, this is why it set to
+ zero here)
 * sizesecondmax 0. 1.e30 V4
 * sizesecondmax 0. 1.e30 V5
 * sizesecondmax 0. 1.e30 V6
 
 cut on mean emission height
- emissionheight 6. 17.
+(emissionheight is a BDT parameter, this is why it set to 
+ zero here)
 * emissionheight 0. 1.e12
 
 Telescope multiplicity
-arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>
+arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which selection is valid>
 * arrayltrig 0 0
 T1
 * arrayltrig 1 0
@@ -85,8 +77,6 @@ ii) direction cut [deg2]
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
- arraymscw -1.2 0.5
- arraymscl -1.2 0.7
 * arraymscw -2. 2.
 * arraymscl -2. 5.
 
