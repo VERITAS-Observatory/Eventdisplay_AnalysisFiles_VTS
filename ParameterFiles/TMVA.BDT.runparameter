@@ -9,13 +9,14 @@ IRF.trainTMVAforGammaHadronSeparation.sh
 
 ##############################################
 NOTE: all lines not starting with * are ignored
-* MVA_METHOD BDT NTrees=200:BoostType=AdaBoost:SeparationType=GiniIndex:nCuts=20:nEventsMin=100:AdaBoostBeta=1.0:UseYesNoLeaf=True:PruneMethod=CostComplexity:PruneStrength=-1:MaxDepth=50
+* MVA_METHOD BDT NTrees=200:BoostType=AdaBoost:SeparationType=GiniIndex:nCuts=20:AdaBoostBeta=1.0:UseYesNoLeaf=True:PruneMethod=CostComplexity:PruneStrength=-1:MaxDepth=50
+ MVA_METHOD BDT NTrees=400:MaxDepth=5
 
 ##############################################
 energy bins
 * ENERGYBINS 1 -1.10 -0.5 -0.3 0 1.7
 zenith bins
-* ZENBINS 0 25 32.5 42.5 75
+* ZENBINS 0 32.5 42.5 75
 
 ##############################################
 training variables
@@ -56,6 +57,14 @@ Selection cut before training
 (similar to TTree::Draw() selection cuts)
 * SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&EChi2S>=0.&&ErecS>0.&&EmissionHeight>0.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6
 * SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05
+
+
+##############################################
+azimuth cut ('de-star' if not needed)
+South:
+ AZIMUTH (ArrayPointing_Azimuth>135.&&ArrayPointing_Azimuth<225.)
+North:
+ AZIMUTH (ArrayPointing_Azimuth<45.||ArrayPointing_Azimuth>315.)
 
 ##############################################
 Prepare training options - to be added in IRF.trainTMVAforGammaHadronSeparation.sh
