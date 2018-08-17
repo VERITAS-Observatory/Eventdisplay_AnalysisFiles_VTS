@@ -115,7 +115,7 @@ ignore the following lines for regular data analysis
 3-telescope combinations
 ==============================
 
-Set 2 = T1 off default reconstruction method
+Set 1 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 20.
@@ -128,7 +128,7 @@ Set 2 = T1 off default reconstruction method
 * -1 FUI       0.35 1.e5
 * 1 USEIMAGE 0
 
-Set 3 = T2 off default reconstruction method
+Set 2 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 20.
@@ -141,7 +141,7 @@ Set 3 = T2 off default reconstruction method
 * -1 FUI       0.35 1.e5
 * 2 USEIMAGE 0
 
-Set 4 = T3 off default reconstruction method
+Set 3 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 20.
@@ -154,7 +154,7 @@ Set 4 = T3 off default reconstruction method
 * -1 FUI       0.35 1.e5
 * 3 USEIMAGE 0
 
-Set 5 = T4 off default reconstruction method
+Set 4 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 20.
