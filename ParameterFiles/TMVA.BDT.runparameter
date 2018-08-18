@@ -9,8 +9,8 @@ IRF.trainTMVAforGammaHadronSeparation.sh
 
 ##############################################
 NOTE: all lines not starting with * are ignored
-* MVA_METHOD BDT NTrees=200:BoostType=AdaBoost:SeparationType=GiniIndex:nCuts=20:AdaBoostBeta=1.0:UseYesNoLeaf=True:PruneMethod=CostComplexity:PruneStrength=-1:MaxDepth=50
- MVA_METHOD BDT NTrees=400:MaxDepth=5
+ MVA_METHOD BDT NTrees=200:BoostType=AdaBoost:SeparationType=GiniIndex:nCuts=20:AdaBoostBeta=1.0:UseYesNoLeaf=True:PruneMethod=CostComplexity:PruneStrength=-1:MaxDepth=50
+* MVA_METHOD BDT NTrees=400:MaxDepth=5
 
 ##############################################
 energy bins
