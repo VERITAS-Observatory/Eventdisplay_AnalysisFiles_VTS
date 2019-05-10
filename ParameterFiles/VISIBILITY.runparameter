@@ -4,6 +4,7 @@ input parameters for binaryVisibility tool
 coordinates of observatory
 <longitude> <latitude> <name>
 * OBSERVATORY 249.0478 31.675 VERITAS
+ OBSERVATORY -17.88 28.76 MAGIC
 
 maximum elevation of sun for observing
 * MAX_SUN_ELEVATION -15.
@@ -16,6 +17,7 @@ minimum and maximum elevation for observing
 
 object to observe
 <ra> <dec> <name>
+ OBJECT 98.246903 5.80032 HESS J0632+057
 * OBJECT 40.132 61.2293 LS I +61 303
 orbital parameter for binaries (set -1 for no binaries)
 <orbital period in days> <MJD(t0)> <number of phase bins>
@@ -23,4 +25,5 @@ orbital parameter for binaries (set -1 for no binaries)
 
 print name (remove parameter for no printing)
 * PRINTNAME LSIp61303
+ PRINTNAME HESSJ
 
