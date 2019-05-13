@@ -28,14 +28,16 @@ training variables
 (name must correspond to variable names in data tree of mscw root files)
 VARIABLE <variable name> <type (float=F, integer=I)>  <cut range min> <cut range max> <cut category>
 cut categories:  NotEnforced, FMax, FMin, FSmart
-* VARIABLE F -2.0  2.0 FMin MSCW
-* VARIABLE F -2.0  5.0 FMin MSCL
-* VARIABLE F -6 4 FMin log10(EChi2S)
+* VARIABLE F -2.0  2.0 NotEnforced MSCW
+* VARIABLE F -2.0  5.0 NotEnforced MSCL
+* VARIABLE F -6 4 NotEnforced log10( (EChi2S<0)+(EChi2S>0)*EChi2S)
+* VARIABLE F -2. 2. NotEnforced (EChi2S<=0)
 * VARIABLE F 0.0 100. FMax EmissionHeight
-* VARIABLE F -6 4 FMin log10(EmissionHeightChi2)
-* VARIABLE F 0 5 FMin log10(SizeSecondMax)
-* VARIABLE F 0.0 1000. FMin sqrt(Xcore*Xcore+Ycore*Ycore)
- VARIABLE F -20 20 FMin dES
+* VARIABLE F -11 4 NotEnforced log10(EmissionHeightChi2)
+* VARIABLE F 0 5 NotEnforced log10(SizeSecondMax)
+* VARIABLE F 0.0 1000. NotEnforced sqrt(Xcore*Xcore+Ycore*Ycore)
+* VARIABLE F -13. 3. NotEnforced log10( (DispDiff<=0)+(DispDiff>0.)*DispDiff)
+* VARIABLE F -2. 2. NotEnforced (DispDiff<=0)
 
 ##############################################
 spectator variables
@@ -62,14 +64,14 @@ Selection cut before training
 (similar to TTree::Draw() selection cuts)
 
 ######## SOFT
-* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&EChi2S>=0.&&ErecS>0.&&EmissionHeight>0.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6
+* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6&&SizeSecondMax>200
 * SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05
 ######## MODERATE
-* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&EChi2S>=0.&&ErecS>0.&&EmissionHeight>0.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6&&sizesecondmax>400
-* SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05&&sizesecondmax>>400
+ SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6&&SizeSecondMax>400
+ SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05&&sizesecondmax>>400
 ######## HARD
-* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&EChi2S>=0.&&ErecS>0.&&EmissionHeight>0.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6&&sizesecondmax>1400
-* SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05&&sizesecondmax>1400
+ SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff*Yoff)+(Xoff*Xoff))<0.6&&SizeSecondMax>1400
+ SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05&&sizesecondmax>1400
 
 
 ##############################################
