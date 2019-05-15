@@ -1,7 +1,9 @@
 cut values for quality and gamma hadron cuts for TMVA BDT
 ========================================================
 
-Soft cuts
+Soft cuts 
+Applied preselection cuts for cut determination are:
+ANASUM.GammaHadron-Cut-NTel2-PointSource-Soft-MVA-Preselection.dat
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -23,6 +25,8 @@ second largest image size
 * sizesecondmax 200. 1.e30 V6
 
 cut on mean emission height
+(emissionheight is a BDT parameter, this is why it set to 
+ zero here)
 * emissionheight 0. 1.e10
 
 Telescope multiplicity
@@ -80,31 +84,126 @@ b) mean scaled width cut (use cut selector 0 in runlist)
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
 estimated per individual telescope
-* arrayechi2 0. 99999.
+* arrayechi2 -99999. 99999.
+* arraydE -99999. 99999.
 cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
 
 v) TMVA Cuts
 * cutselection 42 0
 
-TMVAPARAMETER V4 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V4/   BDT
-TMVAPARAMETER V5 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V5/   BDT
-* TMVAPARAMETER V4 BDT 0 5 0 2 -1 /GammaHadron_BDTs/V6/soft/   BDT
-* TMVAPARAMETER V5 BDT 0 5 0 2 -1 /GammaHadron_BDTs/V6/soft/   BDT
-* TMVAPARAMETER V6 BDT 0 5 0 2 -1 /GammaHadron_BDTs/V6/soft/   BDT
-TMVAPARAMETER V6 BDT 0 4 0 2 -1 /GammaHadron_BDTs/V6/   BDT
- TMVAPARAMETER NOT_SET BDT 0 3 0 3 -1 /lustre/fs5/group/cta/users/mkrause/VERITAS/analysis/AnalysisData-VTS-v480/GammaHadron_BDTs/V6/soft/   BDT
+* TMVAPARAMETER V6 BDT 2 0 5 0 2 -1 /GammaHadron_BDTs/V6/soft/ mva
 
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
-TMVA_MVACut V4 00 0.61 01 0.60 02 0.59 03 0.58 10 0.54 11 0.54 12 0.54 13 0.52 20 0.43 21 0.43 22 0.43 23 0.42 30 0.07 31 0.07 32 0.07 33 0.07
-TMVA_MVACut V5 00 0.55 01 0.55 02 0.56 03 0.56 10 0.58 11 0.58 12 0.58 13 0.58 20 0.58 21 0.58 22 0.58 23 0.58 30 0.46 31 0.46 32 0.46 33 0.45
-TMVA_MVACut V6 00 0.631 01 0.631 02 0.629 03 0.626 10 0.596 11 0.596 12 0.595 13 0.593 20 0.518 21 0.518 22 0.518 23 0.516 30 0.490 31 0.490 32 0.490 33 0.49
-TMVA_MVACut V6 00 0.19 01 0.22 02 0.22 10 0.17 11 0.23 12 0.23 20 0.12 21 0.18 22 0.18 30 0.10 31 0.16 32 0.21 40 0.13 41 0.18 42 0.18  
-* TMVA_MVACut V4 00 0.121 01 0.087 02 0.076 10 0.148 11 0.185 12 0.167 20 0.125 21 0.171 22 0.159 30 0.109 31 0.148 32 0.214 40 0.068 41 0.122 42 0.108 50 0.127 51 0.142 52 0.131 
-* TMVA_MVACut V5 00 0.121 01 0.087 02 0.076 10 0.148 11 0.185 12 0.167 20 0.125 21 0.171 22 0.159 30 0.109 31 0.148 32 0.214 40 0.068 41 0.122 42 0.108 50 0.127 51 0.142 52 0.131 
-* TMVA_MVACut V6 00 0.121 01 0.087 02 0.076 10 0.148 11 0.185 12 0.167 20 0.125 21 0.171 22 0.159 30 0.109 31 0.148 32 0.214 40 0.068 41 0.122 42 0.108 50 0.127 51 0.142 52 0.131 
- TMVA_MVACut NOT_SET 00 0.55 01 0.55 02 0.56 03 0.56 10 0.58 11 0.58 12 0.58 13 0.58 20 0.58 21 0.58 22 0.58 23 0.58 30 0.46 31 0.46 32 0.46 33 0.45
- TMVA_MVACut NOT_SET 00 0.631 01 0.631 02 0.629 03 0.626 10 0.596 11 0.596 12 0.595 13 0.593 20 0.518 21 0.518 22 0.518 23 0.516 30 0.490 31 0.490 32 0.490 33 0.490
+* TMVA_MVACut V6 00 0.124286 01 0.142732 02 0.144564 10 0.144804 11 -99 12 -0.844056 20 0.144678 21 0.140777 22 0.16798 30 0.172462 31 0.166342 32 0.166568 40 0.116489 41 0.106633 42 0.160578
+
+optimizeBDTcuts( "/lustre/fs19/group/cta/users/maierg/EVNDISP_AnalysisFiles.svn/trunk/VTS/GammaHadron_BDTs/V6/soft/TL5035MA20_ID0_NTel2-PointSource-Soft-MVA-Preselection_RE_N8.root", "/lustre/fs19/group/cta/users/maierg/EVNDISP_AnalysisFiles.svn/trunk/VTS/GammaHadron_BDTs/V6/soft/", "mva", "BDT", 2, 20., 0, 4, 0, 2, 3. );
+
+mooth and Interpolate MVA cut values
+         TMVA values: at 0.1 TeV, [0, 32.5] deg: 0.124286, signal efficiency: 0.62046 (0)
+         TMVA values: at 0.158489 TeV, [0, 32.5] deg: 0.142732, signal efficiency: 0.56094 (1)
+         TMVA values: at 0.1 TeV, [32.5, 42.5] deg: 0.144564 (Interpolated non-optimal value), signal efficiency: 0.56034 (2)
+         TMVA values: at 0.158489 TeV, [32.5, 42.5] deg: 0.144804 (Interpolated non-optimal value), signal efficiency: 0.5594 (3)
+Error: no optimal cut value found for this bin
+         TMVA values: at 0.1 TeV, [42.5, 75] deg: -99 (Interpolated non-optimal value), signal efficiency: 0 (4)
+         TMVA values: at 0.158489 TeV, [42.5, 75] deg: -0.844056 (Interpolated non-optimal value), signal efficiency: 0 (5)
+         TMVA values: at 0.177828 TeV, [0, 32.5] deg: 0.144678, signal efficiency: 0.5873 (6)
+         TMVA values: at 0.281838 TeV, [0, 32.5] deg: 0.140777, signal efficiency: 0.60162 (7)
+         TMVA values: at 0.177828 TeV, [32.5, 42.5] deg: 0.16798, signal efficiency: 0.5154 (8)
+         TMVA values: at 0.281838 TeV, [32.5, 42.5] deg: 0.172462, signal efficiency: 0.4997 (9)
+         TMVA values: at 0.177828 TeV, [42.5, 75] deg: 0.166342 (Interpolated non-optimal value), signal efficiency: 0.49912 (10)
+         TMVA values: at 0.281838 TeV, [42.5, 75] deg: 0.166568 (Interpolated non-optimal value), signal efficiency: 0.49832 (11)
+         TMVA values: at 0.354813 TeV, [0, 32.5] deg: 0.116489, signal efficiency: 0.66058 (12)
+         TMVA values: at 0.562341 TeV, [0, 32.5] deg: 0.106633, signal efficiency: 0.69202 (13)
+         TMVA values: at 0.354813 TeV, [32.5, 42.5] deg: 0.160578, signal efficiency: 0.54078 (14)
+         TMVA values: at 0.562341 TeV, [32.5, 42.5] deg: 0.141007, signal efficiency: 0.61302 (15)
+         TMVA values: at 0.354813 TeV, [42.5, 75] deg: 0.141997 (Interpolated non-optimal value), signal efficiency: 0.61248 (16)
+         TMVA values: at 0.562341 TeV, [42.5, 75] deg: 0.142239 (Interpolated non-optimal value), signal efficiency: 0.6117 (17)
+         TMVA values: at 0.562341 TeV, [0, 32.5] deg: 0.109621, signal efficiency: 0.68744 (18)
+         TMVA values: at 0.891251 TeV, [0, 32.5] deg: 0.0846317, signal efficiency: 0.7569 (19)
+         TMVA values: at 0.562341 TeV, [32.5, 42.5] deg: 0.154932, signal efficiency: 0.58466 (20)
+         TMVA values: at 0.891251 TeV, [32.5, 42.5] deg: 0.140924, signal efficiency: 0.6339 (21)
+         TMVA values: at 0.562341 TeV, [42.5, 75] deg: 0.146012 (Interpolated non-optimal value), signal efficiency: 0.63298 (22)
+         TMVA values: at 0.891251 TeV, [42.5, 75] deg: 0.146259 (Interpolated non-optimal value), signal efficiency: 0.63214 (23)
+         TMVA values: at 1.12202 TeV, [0, 32.5] deg: 0.141935, signal efficiency: 0.62832 (24)
+         TMVA values: at 1.77828 TeV, [0, 32.5] deg: 0.118897, signal efficiency: 0.69172 (25)
+         TMVA values: at 2.81838 TeV, [0, 32.5] deg: 0.119189 (Interpolated non-optimal value), signal efficiency: 0.69098 (26)
+         TMVA values: at 4.46684 TeV, [0, 32.5] deg: 0.11948 (Interpolated non-optimal value), signal efficiency: 0.6901 (27)
+         TMVA values: at 7.07946 TeV, [0, 32.5] deg: 0.119772 (Interpolated non-optimal value), signal efficiency: 0.68938 (28)
+         TMVA values: at 11.2202 TeV, [0, 32.5] deg: 0.120063 (Interpolated non-optimal value), signal efficiency: 0.68854 (29)
+         TMVA values: at 17.7828 TeV, [0, 32.5] deg: 0.120355 (Interpolated non-optimal value), signal efficiency: 0.68788 (30)
+         TMVA values: at 28.1838 TeV, [0, 32.5] deg: 0.120792 (Interpolated non-optimal value), signal efficiency: 0.68696 (31)
+         TMVA values: at 44.6684 TeV, [0, 32.5] deg: 0.121084 (Interpolated non-optimal value), signal efficiency: 0.6863 (32)
+         TMVA values: at 1.12202 TeV, [32.5, 42.5] deg: 0.215498, signal efficiency: 0.52288 (33)
+         TMVA values: at 1.77828 TeV, [32.5, 42.5] deg: 0.164906, signal efficiency: 0.63336 (34)
+         TMVA values: at 2.81838 TeV, [32.5, 42.5] deg: 0.059259, signal efficiency: 0.85664 (35)
+         TMVA values: at 4.46684 TeV, [32.5, 42.5] deg: 0.0598001 (Interpolated non-optimal value), signal efficiency: 0.85566 (36)
+         TMVA values: at 7.07946 TeV, [32.5, 42.5] deg: 0.0602059 (Interpolated non-optimal value), signal efficiency: 0.855 (37)
+         TMVA values: at 11.2202 TeV, [32.5, 42.5] deg: 0.0606117 (Interpolated non-optimal value), signal efficiency: 0.85424 (38)
+         TMVA values: at 17.7828 TeV, [32.5, 42.5] deg: 0.0610176 (Interpolated non-optimal value), signal efficiency: 0.85344 (39)
+         TMVA values: at 28.1838 TeV, [32.5, 42.5] deg: 0.0615586 (Interpolated non-optimal value), signal efficiency: 0.85246 (40)
+         TMVA values: at 44.6684 TeV, [32.5, 42.5] deg: 0.0620997 (Interpolated non-optimal value), signal efficiency: 0.85156 (41)
+         TMVA values: at 1.12202 TeV, [42.5, 75] deg: 0.0601425 (Interpolated non-optimal value), signal efficiency: 0.85078 (42)
+         TMVA values: at 1.77828 TeV, [42.5, 75] deg: 0.0605645 (Interpolated non-optimal value), signal efficiency: 0.84992 (43)
+         TMVA values: at 2.81838 TeV, [42.5, 75] deg: 0.0609864 (Interpolated non-optimal value), signal efficiency: 0.8491 (44)
+         TMVA values: at 4.46684 TeV, [42.5, 75] deg: 0.061549 (Interpolated non-optimal value), signal efficiency: 0.84824 (45)
+         TMVA values: at 7.07946 TeV, [42.5, 75] deg: 0.0621117 (Interpolated non-optimal value), signal efficiency: 0.84732 (46)
+         TMVA values: at 11.2202 TeV, [42.5, 75] deg: 0.0625336 (Interpolated non-optimal value), signal efficiency: 0.84646 (47)
+         TMVA values: at 17.7828 TeV, [42.5, 75] deg: 0.0630962 (Interpolated non-optimal value), signal efficiency: 0.84554 (48)
+         TMVA values: at 28.1838 TeV, [42.5, 75] deg: 0.0635182 (Interpolated non-optimal value), signal efficiency: 0.84472 (49)
+         TMVA values: at 44.6684 TeV, [42.5, 75] deg: 0.0640808 (Interpolated non-optimal value), signal efficiency: 0.84374 (50)
+         smoothed TMVA values: at 0.1 TeV, [0, 32.5] deg: 0.129588 (0)
+         smoothed TMVA values: at 0.158489 TeV, [0, 32.5] deg: 0.142713 (1)
+         smoothed TMVA values: at 0.1 TeV, [32.5, 42.5] deg: -0.328112 (2)
+         smoothed TMVA values: at 0.158489 TeV, [32.5, 42.5] deg: 0.150077 (3)
+         smoothed TMVA values: at 0.1 TeV, [42.5, 75] deg: -61.0297 (4)
+         smoothed TMVA values: at 0.158489 TeV, [42.5, 75] deg: -4.39985 (5)
+         smoothed TMVA values: at 0.177828 TeV, [0, 32.5] deg: 0.142713 (6)
+         smoothed TMVA values: at 0.281838 TeV, [0, 32.5] deg: 0.139088 (7)
+         smoothed TMVA values: at 0.177828 TeV, [32.5, 42.5] deg: 0.150077 (8)
+         smoothed TMVA values: at 0.281838 TeV, [32.5, 42.5] deg: 0.169228 (9)
+         smoothed TMVA values: at 0.177828 TeV, [42.5, 75] deg: -4.39985 (10)
+         smoothed TMVA values: at 0.281838 TeV, [42.5, 75] deg: 0.163202 (11)
+         smoothed TMVA values: at 0.354813 TeV, [0, 32.5] deg: 0.120973 (12)
+         smoothed TMVA values: at 0.562341 TeV, [0, 32.5] deg: 0.106028 (13)
+         smoothed TMVA values: at 0.354813 TeV, [32.5, 42.5] deg: 0.159142 (14)
+         smoothed TMVA values: at 0.562341 TeV, [32.5, 42.5] deg: 0.142414 (15)
+         smoothed TMVA values: at 0.354813 TeV, [42.5, 75] deg: 0.148531 (16)
+         smoothed TMVA values: at 0.562341 TeV, [42.5, 75] deg: 0.143846 (17)
+         smoothed TMVA values: at 0.562341 TeV, [0, 32.5] deg: 0.106028 (18)
+         smoothed TMVA values: at 0.891251 TeV, [0, 32.5] deg: 0.101945 (19)
+         smoothed TMVA values: at 0.562341 TeV, [32.5, 42.5] deg: 0.142414 (20)
+         smoothed TMVA values: at 0.891251 TeV, [32.5, 42.5] deg: 0.158971 (21)
+         smoothed TMVA values: at 0.562341 TeV, [42.5, 75] deg: 0.143846 (22)
+         smoothed TMVA values: at 0.891251 TeV, [42.5, 75] deg: 0.12429 (23)
+         smoothed TMVA values: at 1.12202 TeV, [0, 32.5] deg: 0.119877 (24)
+         smoothed TMVA values: at 1.77828 TeV, [0, 32.5] deg: 0.123891 (25)
+         smoothed TMVA values: at 2.81838 TeV, [0, 32.5] deg: 0.117312 (26)
+         smoothed TMVA values: at 4.46684 TeV, [0, 32.5] deg: 0.117609 (27)
+         smoothed TMVA values: at 7.07946 TeV, [0, 32.5] deg: 0.117904 (28)
+         smoothed TMVA values: at 11.2202 TeV, [0, 32.5] deg: 0.118198 (29)
+         smoothed TMVA values: at 17.7828 TeV, [0, 32.5] deg: 0.118503 (30)
+         smoothed TMVA values: at 28.1838 TeV, [0, 32.5] deg: 0.118904 (31)
+         smoothed TMVA values: at 44.6684 TeV, [0, 32.5] deg: 0.119152 (32)
+         smoothed TMVA values: at 1.12202 TeV, [32.5, 42.5] deg: 0.181935 (33)
+         smoothed TMVA values: at 1.77828 TeV, [32.5, 42.5] deg: 0.163866 (34)
+         smoothed TMVA values: at 2.81838 TeV, [32.5, 42.5] deg: 0.0790544 (35)
+         smoothed TMVA values: at 4.46684 TeV, [32.5, 42.5] deg: 0.0605263 (36)
+         smoothed TMVA values: at 7.07946 TeV, [32.5, 42.5] deg: 0.060958 (37)
+         smoothed TMVA values: at 11.2202 TeV, [32.5, 42.5] deg: 0.061363 (38)
+         smoothed TMVA values: at 17.7828 TeV, [32.5, 42.5] deg: 0.0617779 (39)
+         smoothed TMVA values: at 28.1838 TeV, [32.5, 42.5] deg: 0.0622869 (40)
+         smoothed TMVA values: at 44.6684 TeV, [32.5, 42.5] deg: 0.0627774 (41)
+         smoothed TMVA values: at 1.12202 TeV, [42.5, 75] deg: 0.095508 (42)
+         smoothed TMVA values: at 1.77828 TeV, [42.5, 75] deg: 0.073897 (43)
+         smoothed TMVA values: at 2.81838 TeV, [42.5, 75] deg: 0.0670007 (44)
+         smoothed TMVA values: at 4.46684 TeV, [42.5, 75] deg: 0.0613062 (45)
+         smoothed TMVA values: at 7.07946 TeV, [42.5, 75] deg: 0.0618497 (46)
+         smoothed TMVA values: at 11.2202 TeV, [42.5, 75] deg: 0.0622982 (47)
+         smoothed TMVA values: at 17.7828 TeV, [42.5, 75] deg: 0.0628144 (48)
+         smoothed TMVA values: at 28.1838 TeV, [42.5, 75] deg: 0.0632684 (49)
+         smoothed TMVA values: at 44.6684 TeV, [42.5, 75] deg: 0.0637219 (50)
+
 
