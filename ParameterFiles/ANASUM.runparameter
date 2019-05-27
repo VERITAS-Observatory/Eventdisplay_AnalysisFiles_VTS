@@ -22,7 +22,7 @@ Exclusion region around sky map centre
 (should be adjust to brightness of the gamma-ray source
 and the cuts applied)
  REGIONTOEXCLUDE <x-derot [deg]> <y-derot [deg]> <radius of exlusion region [deg]>
-* REGIONTOEXCLUDE 0. 0. 0.35
+* REGIONTOEXCLUDE 0. 0. 0.5
 
 User defined regions in the sky to exclude from background 
 estimation (e.g. because of other gamma-ray sources in the
@@ -62,7 +62,9 @@ ex:12 24 15 52 18 04 0.5 0.5 40
 Additional regions:
  REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
 Zeta Tau (for the Crab field)
-* REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
+ REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
+Crab
+ REGIONTOEXCLUDE_RADECJ2000_DEG 83.6333 22.0145 0.5
 
 Exlusion regions from star catalogue
  BRIGHTSTARCATALOGUE <catalogue file name>
@@ -72,8 +74,9 @@ Exlusion regions from star catalogue
 Minimum brightness of stars to be added to the list of exclusion regions and
 radius of region to be excluded from background calculation around bright star (<=0 to switch off)
  BRIGHTSTARSETTINGS <min magnitude> <radius of exlusion region [deg]> <band (B or V)>
-* BRIGHTSTARSETTINGS 7 0.15 B
-* BRIGHTSTARSETTINGS 4 0.35 B
+ BRIGHTSTARSETTINGS 7 0.15 B
+* BRIGHTSTARSETTINGS 6 0.10 B
+ BRIGHTSTARSETTINGS 4 0.35 B
 
 Sky maps
 --------
@@ -96,6 +99,7 @@ in equatorial coordinates (ra,dec) (J2000, deg)
  SKYMAPCENTRE_RADECJ2000_DEG 83.6333 22.5145
  in equatorial coordinates (ra,dec) (J2000, hours)
  SKYMAPCENTRE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18
+ SKYMAPCENTRE_RADECJ2000_DEG 83.6333 21.5145
 
 Position where number of on and off events, significances,
 effective areas (all 1D histograms) are calculated
