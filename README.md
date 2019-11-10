@@ -1,4 +1,4 @@
-# Eventdisplay Analysis Files v480
+# Eventdisplay Analysis Files - version v480
 
 Configuration and runparameter files for Eventdisplay
 
