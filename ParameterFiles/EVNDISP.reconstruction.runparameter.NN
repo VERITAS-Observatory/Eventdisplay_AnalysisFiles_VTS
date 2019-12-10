@@ -91,7 +91,7 @@ Set 0 = default reconstruction methods / quality cuts
         for 4-telescope runs
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  20.
+* -1 MINANGLE  10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -110,10 +110,10 @@ ignore the following lines for regular data analysis
 3-telescope combinations
 ==============================
 
-Set 2 = T1 off default reconstruction method
+Set 1 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -123,10 +123,10 @@ Set 2 = T1 off default reconstruction method
 * -1 FUI       0.35 1.e5
 * 1 USEIMAGE 0
 
-Set 3 = T2 off default reconstruction method
+Set 2 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -136,10 +136,10 @@ Set 3 = T2 off default reconstruction method
 * -1 FUI       0.35 1.e5
 * 2 USEIMAGE 0
 
-Set 4 = T3 off default reconstruction method
+Set 3 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -149,10 +149,10 @@ Set 4 = T3 off default reconstruction method
 * -1 FUI       0.35 1.e5
 * 3 USEIMAGE 0
 
-Set 5 = T4 off default reconstruction method
+Set 4 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10

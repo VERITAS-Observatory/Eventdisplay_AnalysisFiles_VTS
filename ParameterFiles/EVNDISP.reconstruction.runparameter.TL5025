@@ -59,7 +59,6 @@ i) trace integration and image cleaning parameter
 * -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
 * -1 CLUSTERCLEANINGPARAMETERS -1 0 2
  image cleaning thresholds <image> <border>
- -1 IMAGECLEANINGTHRESHOLDS 6. 3.5 
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5 
  image cleaning for double pass method, pass 1
 * -1 IMAGECLEANINGMETHOD_DP_PASS1 CLUSTERCLEANING VARIABLE
@@ -67,7 +66,7 @@ i) trace integration and image cleaning parameter
 * -1 IMAGECLEANINGTHRESHOLDS_DP_PASS1 5. 2.5
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
-* -1 LLEDGEFIT 0.05 5
+* -1 LLEDGEFIT 0.05 5 0.40
 
  quality cut on distance of image/border pixel (applied for all cuts defined below)
  (this is currently used for plotting only)
@@ -96,7 +95,7 @@ Set 0 = default reconstruction methods / quality cuts
         for 4-telescope runs
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  20.
+* -1 MINANGLE  10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -107,8 +106,8 @@ Set 0 = default reconstruction methods / quality cuts
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
-(used only for MC if *)
-* -1 MCONLY 
+(used only for MC)
+* -1 MCONLY
 ======== IMPORTANT IMPORTANT ============
 
 ==============================
@@ -118,7 +117,7 @@ ignore the following lines for regular data analysis
 Set 1 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -131,7 +130,7 @@ Set 1 = T1 off default reconstruction method
 Set 2 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -144,7 +143,7 @@ Set 2 = T2 off default reconstruction method
 Set 3 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
@@ -157,7 +156,7 @@ Set 3 = T3 off default reconstruction method
 Set 4 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
