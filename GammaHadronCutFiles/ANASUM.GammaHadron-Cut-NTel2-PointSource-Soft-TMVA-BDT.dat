@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-BDT preselection cuts for TMVA BDT cuts optimization  (soft cuts)
+Soft cuts (tmva analysis)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -17,13 +17,12 @@ outside of that intervall are ignored
 * cameraedge -1. 2.00
 
 second largest image size
+(this depends on the state of the instrument)
 * sizesecondmax 200. 1.e30 V4
 * sizesecondmax 200. 1.e30 V5
 * sizesecondmax 200. 1.e30 V6
 
 cut on mean emission height
-(emissionheight is a BDT parameter, this is why it set to 
- zero here)
 * emissionheight 0. 1.e10
 
 Telescope multiplicity
@@ -71,7 +70,7 @@ T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.008
+* arraytheta2 -1. 0.010
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
@@ -81,7 +80,19 @@ b) mean scaled width cut (use cut selector 0 in runlist)
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
 estimated per individual telescope
-* arrayechi2 -99999. 99999.
-* arraydE -99999. 99999.
+* arrayechi2 0. 99999.
 cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
+
+v) TMVA Cuts
+* cutselection 42 0
+
+* TMVAPARAMETER V6 BDT 0 0 4 0 2 -1 /GammaHadron_BDTs/V6/soft/ mva
+
+ TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
+cut values for different epochs and its corresponding directory where to find .root and weight files
+
+* TMVA_MVACutGraph TL5035MA20_ID0_NTel2-PointSource-Soft-MVA-Preselection_RE_N8_MC_MVA.default.root 0.25 0.5
+dE 0.2
+* TMVA_MVACut V6 00 0.14261 10 0.14115 20 0.139994 30 0.129463 40 0.121426
+
