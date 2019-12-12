@@ -62,7 +62,7 @@ probability to get fake image from NSB for this readout window
 * -1 IMAGECLEANING_ACTIVEMULTIPLICITIES 4NN 2NNp1 3NN 2NN
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
-* -1 LLEDGEFIT 0.05 5 0.40
+* -1 LLEDGEFIT 0.05 5
 
  quality cut on distance of image/border pixel (applied for all cuts defined below)
  (this is currently used for plotting only)
