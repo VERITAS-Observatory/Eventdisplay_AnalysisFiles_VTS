@@ -1,13 +1,13 @@
 Runparameters for mscw_energy
 
 max loss
-* MAXLOSS 0.2
+* MAXLOSS 0.3
 
 max distance (energy reconstruction)
-* MAXDIST_ENERGY 1.3
+* MAXDIST_ENERGY 1.4
 
 use median or mean (=0) for energy reconstruction
 * MEDIAN_ENERGY 0
 
 min angle between two image lines for stereo reconstruction
-* MINANGLE_STEREORECONSTRUCTION 20.
+* MINANGLE_STEREORECONSTRUCTION 10.
