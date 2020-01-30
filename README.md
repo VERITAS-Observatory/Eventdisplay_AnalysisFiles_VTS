@@ -1,4 +1,4 @@
-# Eventdisplay Analysis Files - trunk
+# Eventdisplay Analysis Files
 
 **release candidate - not ready for science analysis**
 
