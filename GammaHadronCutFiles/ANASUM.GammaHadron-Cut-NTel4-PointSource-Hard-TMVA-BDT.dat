@@ -20,7 +20,7 @@ second largest image size
 (this depends on the state of the instrument)
 * sizesecondmax 900. 1.e30 V4
 * sizesecondmax 900. 1.e30 V5
-* sizesecondmax 1400. 1.e30 V6
+* sizesecondmax 2000. 1.e30 V6
 
 cut on mean emission height
 * emissionheight 0. 1.e10
@@ -87,11 +87,9 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 v) TMVA Cuts
 * cutselection 42 0
 
-* TMVAPARAMETER V5 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V5/  BDT
-* TMVAPARAMETER V6 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V6/  BDT
+* TMVAPARAMETER V6 BDT 0 0 2 0 1 0.25 /GammaHadron_BDTs/V6/Hard/ mva
 
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
+cut values for different epochs and its corresponding directory where to find .root and weight files
 
-* TMVA_MVACut V5 00 0.65 01 0.64 02 0.64 03 0.64 10 0.63 11 0.63 12 0.63 13 0.63 20 0.60 21 0.60 22 0.60 23 0.60 30 0.48 31 0.48 32 0.48 33 0.47
-* TMVA_MVACut V6 00 0.634 01 0.634 02 0.634 03 0.634 10 0.621 11 0.620 12 0.620 13 0.619 20 0.575 21 0.575 22 0.574 23 0.574 30 0.616 31 0.616 32 0.616 33 0.617
-
+* TMVA_MVACutGraph /GammaHadron_BDTs/V6/Hard/TMVACUT-20.h.root 1.e-8 0.5 10.
