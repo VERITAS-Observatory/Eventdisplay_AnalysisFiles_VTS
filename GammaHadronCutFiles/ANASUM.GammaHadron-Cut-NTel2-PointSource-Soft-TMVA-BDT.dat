@@ -92,4 +92,4 @@ v) TMVA Cuts
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
-* TMVA_MVACutGraph /GammaHadron_BDTs/V6/Soft/TMVACUT-20.h.root 1.e-8 0.5 30.
+* TMVA_MVACutGraph /GammaHadron_BDTs/V6/Soft/TMVACUT-20.h.root 1.e-8 0.5 10.
