@@ -87,12 +87,9 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 v) TMVA Cuts
 * cutselection 42 0
 
-* TMVAPARAMETER V6 BDT 0 0 4 0 2 -1 /GammaHadron_BDTs/V6/soft/ mva
+* TMVAPARAMETER V6 BDT 0 0 2 0 1 0.25 /GammaHadron_BDTs/V6/Soft/ mva
 
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
-* TMVA_MVACutGraph TL5035MA20_ID0_NTel2-PointSource-Soft-MVA-Preselection_RE_N8_MC_MVA.default.root 0.25 0.5
-dE 0.2
-* TMVA_MVACut V6 00 0.14261 10 0.14115 20 0.139994 30 0.129463 40 0.121426
-
+* TMVA_MVACutGraph /GammaHadron_BDTs/V6/Soft/TMVACUT-20.h.root 1.e-8 0.5 30.
