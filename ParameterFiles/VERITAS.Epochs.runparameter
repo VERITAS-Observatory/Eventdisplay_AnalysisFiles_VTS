@@ -13,6 +13,27 @@ V6: four-telescope array with T1 at its current position and new photomultiplier
 
 =================================================
 
+Since the reflectivity and gains may not be stable
+we need to subdivide V6 in subperiods. This affects
+the whichRunsAreArrayEpoch script. The corresponding
+reflectivities are defined in MSCW.sizecal.runparameter
+
+* IRFPERIOD V4 00000 46641
+* IRFPERIOD V5 46642 63372
+* IRFPERIOD V6 63373 999999
+* IRFPERIOD V6_2013 63373 69491
+* IRFPERIOD V6_2014 69492 74121
+* IRFPERIOD V6_2015 74122 78239
+* IRFPERIOD V6_2016 78240 82587
+* IRFPERIOD V6_2017 82588 86848
+* IRFPERIOD V6_2018 86849 90608
+* IRFPERIOD V6_2019 90609 999999 
+
+
+
+
+=================================================
+
 Atmospheric condition for VERITAS (corsikaIDs)
    date as SQL string (e.g. 2014-06-12)
 

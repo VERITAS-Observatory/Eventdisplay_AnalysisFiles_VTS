@@ -1,0 +1,61 @@
+Size scaling correction
+Version: 0.1 (prototype), 2019/12/26
+
+Basic correction:
+
+Apply size scale corrections based on s=g*T, where g is the relative gain and T the transmission of the optical part (mirror reflectivity). Since g is more or less stable (long-term), for now we just ignore it and scale with T.
+
+Partially extracted from here:
+https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Reflectivity
+and here (more recent)
+https://veritas.sao.arizona.edu/wiki/index.php/Optical_Reflectivity_Results
+http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/190919_071142/GT_Proposal-9-16-2019.pdf
+https://veritas.sao.arizona.edu/wiki/images/f/fc/VCMSummer2019_ThroughputWDR_LinHumensky.pdf
+
+Different possibilities for measuring the baseline...
+
+transmission/reflectivity baseline for each telescope 
+(estimated from end of V5 / beginning of V6):
+TB 1 0.91
+TB 2 0.93
+TB 3 0.95
+TB 4 0.95
+
+transmission/reflectivity baseline for each telescope 
+(estimated from calibration curve in https://veritas.sao.arizona.edu/wiki/images/0/0e/IOReaderDetectorConfigV6.txt at 340nm):
+TB 1 0.80
+TB 2 0.82
+TB 3 0.84
+TB 4 0.82
+
+As of winston cone efficiency (https://veritas.sao.arizona.edu/wiki/images/0/02/CARE_VERITAS_AfterPMTUpgrade_V6_140916.txt)
+TB 1 0.97
+TB 2 1.00
+TB 3 0.98
+TB 4 0.95
+
+Table with average-year mirror reflectivities (after normalization w.r.t GRISUDET), extracted from the graph
+  t ID RUN_START RUN_STOP T1 T2 T3 T4
+T V4 00000 46641 1.00 1.00 1.00 1.00
+T V5 46642 63372 1.00 1.00 1.00 1.00
+T V6 63373 69492 1.00 1.00 1.00 1.00
+T V6_2014 69492 74121 0.90 0.98 0.82 0.85
+T V6_2015 74122 78239 0.77 0.86 0.77 0.78
+T V6_2016 78240 82587 0.78 0.83 0.73 0.81
+T V6_2017 82588 86848 0.72 0.82 0.68 0.74
+T V6_2018 86849 90608 0.71 0.78 0.72 0.73
+T V6_2019 90609 99000 0.68 0.72 0.65 0.68 
+
+Table with average-year s-factors (from Colin Adams)
+  t ID RUN_START RUN_STOP T1 T2 T3 T4
+* T V4 00000 46641 1.00 1.00 1.00 1.00
+* T V5 46642 63372 1.00 1.00 1.00 1.00
+* T V6 63373 69492 1.00 1.00 1.00 1.00
+* T V6_2014 69492 74121 0.91 0.98 0.83 0.81
+* T V6_2015 74122 78239 0.72 0.82 0.74 0.72
+* T V6_2016 78240 82587 0.73 0.79 0.71 0.76
+* T V6_2017 82588 86848 0.66 0.76 0.66 0.70
+* T V6_2018 86849 90608 0.68 0.76 0.67 0.71
+* T V6_2019 90609 99000 0.63 0.69 0.62 0.66 
+
+Note: mirror swaps/jumps/breaks in T2 (2015), T3 (2015, 2018), T4 (2014).
