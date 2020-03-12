@@ -3,7 +3,7 @@ Version: 0.1 (prototype), 2019/12/26
 
 Basic correction:
 
-Apply size scale corrections based on s=g*T, where g is the relative gain and T the transmission of the optical part (mirror reflectivity). Since g is more or less stable (long-term), for now we just ignore it and scale with T.
+Apply size scale corrections based on s=g*T, where g is the relative gain and T the transmission of the optical part (mirror reflectivity). 
 
 Partially extracted from here:
 https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Reflectivity
