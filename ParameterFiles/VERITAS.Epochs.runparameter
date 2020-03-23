@@ -13,7 +13,8 @@ reflectivities are defined in MSCW.sizecal.runparameter
 Naming should be always MAJOREPOCH_MINOREPOCH
 
 EPOCH <epoch name> <run min> <run max>
-* EPOCH V4 00000 46641
+Naming should be always MAJOREPOCH_MINOREPOCH
+* EPOCH V4 0  46641
 * EPOCH V5 46642 63372
  EPOCH V6 63373 999999
 * EPOCH V6_2012_2013 63373 69491
@@ -22,7 +23,8 @@ EPOCH <epoch name> <run min> <run max>
 * EPOCH V6_2015_2016 78240 82587
 * EPOCH V6_2016_2017 82588 86848
 * EPOCH V6_2017_2018 86849 90608
-* EPOCH V6_2018_2019 90609 999999 
+* EPOCH V6_2018_2019 90609 93830
+* EPOCH V6_2019_2020 93830 999999 
 
 =================================================
 
