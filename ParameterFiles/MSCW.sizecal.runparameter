@@ -87,4 +87,12 @@ V6_2013 (preliminary; no calibration applied yet)
 
 Note: mirror swaps/jumps/breaks in T2 (2014_2015), T3 (2014_2015, 2017_2018), T4 (2013_2014).
 
+Table for 2-tel analyses (switch off 2 at a time) - not used for standard analysis
+
+* s V6_T1T2 1.00 1.00 0.00 0.00
+* s V6_T1T3 1.00 0.00 1.00 0.00
+* s V6_T1T4 1.00 0.00 0.00 1.00
+* s V6_T2T3 0.00 1.00 1.00 0.00
+* s V6_T2T4 0.00 1.00 0.00 1.00
+* s V6_T3T4 0.00 0.00 1.00 1.00
 
