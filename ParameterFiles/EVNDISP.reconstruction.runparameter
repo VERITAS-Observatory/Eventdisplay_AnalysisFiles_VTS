@@ -44,7 +44,7 @@ i) trace integration and image cleaning parameter
     Par2: <integration window length for pass 1> 
     Par3: <integration method for pass 1 (1/2)>
     Par4: <double pass error option (0/1)> (don't change if you don't understand)
-    Par5: <maximum time difference between LG and HG T0 (default -5 samples)>
+    Par5: <maximum time difference between LG and HG T0 (default -4 samples)>
 * -1 FADCDOUBLEPASS 1 6 2 0 -4
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 6 6
