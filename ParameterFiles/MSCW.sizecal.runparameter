@@ -38,6 +38,7 @@ TB 4 0.95
 Table with average reflectivities (from David Hanna, see elog end of March 2020)
 * T V4 1.00 1.00 1.00 1.00
 * T V5 1.00 1.00 1.00 1.00
+* T V6 1.00 1.00 1.00 1.00
 * T V6_2012_2013 0.987 1.011 0.958 0.931
 * T V6_2013_2013 0.969 1.013 0.902 0.878
 * T V6_2013_2014 0.947 0.990 0.852 0.882
@@ -70,6 +71,7 @@ Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
   t ID T1 T2 T3 T4
 * s V4 1.00 1.00 1.00 1.00
 * s V5 1.00 1.00 1.00 1.00
+* s V6 1.00 1.00 1.00 1.00
 * s V6_2012_2013 0.953 1.051 0.950 0.937
 * s V6_2013_2013 0.911 1.033 0.827 0.872
 * s V6_2013_2014 0.889 0.979 0.779 0.833
