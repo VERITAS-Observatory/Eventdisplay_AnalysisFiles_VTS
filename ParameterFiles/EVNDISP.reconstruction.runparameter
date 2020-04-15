@@ -1,6 +1,6 @@
 eventdisplay reconstruction parameter file
 ===========================================
-long integration window - no DISP
+no DISP
 ===========================================
 
 Note: all line without '*' in the beginning are ignored
@@ -67,7 +67,6 @@ ii) quality cuts applied before the array analysis
 --------------------------------------------------
 
 USAGE:
-
 
    to start a new set of cuts:
 
