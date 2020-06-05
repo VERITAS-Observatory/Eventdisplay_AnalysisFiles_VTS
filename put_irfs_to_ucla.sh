@@ -18,10 +18,10 @@ LDIR="GammaHadron_BDTs Tables RadialAcceptances EffectiveAreas"
 
 for D in $LDIR
 do
-   echo "Uploading $D to /veritas/upload/EVNDISP/${VERSION}/${D}.tar.gz"
-   rm -f -v ${D}.tar.gz
-   tar -cvzf ${D}.tar.gz ${D}
+   echo "Uploading $D to /veritas/upload/EVNDISP/${VERSION}/${D}.tar"
+   rm -f -v ${D}.tar
+   tar -cvf ${D}.tar ${D}
 
-   bbftp -u bbftp -V -S -m -p 12 -e "put ${D}.tar.gz /veritas/upload/EVNDISP/${VERSION}/${D}.tar.gz" gamma1.astro.ucla.edu
-   rm -f -v ${D}.tar.gz
+   bbftp -u bbftp -V -S -m -p 12 -e "put ${D}.tar /veritas/upload/EVNDISP/${VERSION}/${D}.tar" gamma1.astro.ucla.edu
+   # rm -f -v ${D}.tar
 done
