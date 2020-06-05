@@ -11,18 +11,23 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 VERSION="v483"
 
 # List of directories to be uploaded
-LDIR=( "EffectiveAreas"  "GammaHadron_BDTs" "RadialAcceptances" "Tables" )
+LDIR="GammaHadron_BDTs Tables RadialAcceptances EffectiveAreas"
 
 for D in $LDIR
 do
-   echo "Downloading $D.tar.gz from  /veritas/upload/EVNDISP/${VERSION}/${D}"
-   if [[ -e ${D}.tar.gz ]]
-   then
-       echo "   File ${D}.tar.gz exists locally"
-       echo "   move or remove before resume downloading"
-       continue
+   if [[ $HOSTNAME == *"desy"* ]]; then
+       echo "DESY host detected"
+       cp -v -i /lustre/fs23/group/veritas/Eventdisplay_AnalysisFiles/${VERSION}/archive/$D.tar .
+   else
+       echo "Downloading $D.tar from  /veritas/upload/EVNDISP/${VERSION}/${D}"
+       if [[ -e ${D}.tar ]]
+       then
+           echo "   File ${D}.tar exists locally"
+           echo "   move or remove before resume downloading"
+           continue
+       fi
+       bbftp -u bbftp -V -S -m -p 12 -e "get /veritas/upload/EVNDISP/${VERSION}/${D}.tar ${D}.tar" gamma1.astro.ucla.edu
    fi
-   bbftp -u bbftp -V -S -m -p 12 -e "get /veritas/upload/EVNDISP/${VERSION}/${D}.tar.gz ${D}.tar.gz" gamma1.astro.ucla.edu
-   tar --keep-newer-files -xvzf ${D}.tar.gz
-   rm -f -v ${D}.tar.gz
+   tar --keep-newer-files -xvf ${D}.tar
+   rm -v ${D}.tar
 done
