@@ -11,7 +11,7 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 VERSION="v483"
 
 # List of directories to be uploaded
-LDIR=( "EffectiveAreas"  "GammaHadron_BDTs" "RadialAcceptances" "Tabes" )
+LDIR=( "EffectiveAreas"  "GammaHadron_BDTs" "RadialAcceptances" "Tables" )
 
 for D in $LDIR
 do
