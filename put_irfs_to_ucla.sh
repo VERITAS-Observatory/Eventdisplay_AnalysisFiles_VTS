@@ -14,7 +14,7 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 VERSION="v483"
 
 # List of directories to be uploaded
-LDIR="GammaHadron_BDTs Tables RadialAcceptances EffectiveAreas"
+LDIR="GammaHadron_BDTs Tables RadialAcceptances"
 
 for D in $LDIR
 do
@@ -25,3 +25,38 @@ do
    bbftp -u bbftp -V -S -m -p 12 -e "put ${D}.tar /veritas/upload/EVNDISP/${VERSION}/${D}.tar" gamma1.astro.ucla.edu
    # rm -f -v ${D}.tar
 done
+
+# Effective areas for different epochs
+for I in V6_2012_2013a V6_2012_2013b V6_2013_2014a V6_2013_2014b V6_2014_2015 V6_2015_2016 V6_2016_2017 V6_2017_2018 V6_2018_2019 V6_2019_2020
+do
+   for A in ATM61 ATM62
+   do
+       for T in T1234 T123 T124 T134 T234
+       do
+           D="EffectiveAreas_${I}_${A}_${T}"
+           echo "Uploading EffectiveAreas $I $A ${T} to /veritas/upload/EVNDISP/${VERSION}/${D}.tar "
+           rm -f -v ${D}.tar
+           tar -cvf ${D}.tar EffectiveAreas/*${I}*${A}*${T}.root
+
+           bbftp -u bbftp -V -S -m -p 12 -e "put ${D}.tar /veritas/upload/EVNDISP/${VERSION}/${D}.tar" gamma1.astro.ucla.edu
+       done
+    done
+done
+
+for I in V4 V5
+do
+    for A in ATM21 ATM22
+    do
+       for T in T1234
+       do
+           D="EffectiveAreas_${I}_${A}_${T}"
+           echo "Uploading EffectiveAreas $I $A ${T} to /veritas/upload/EVNDISP/${VERSION}/${D}.tar "
+           rm -f -v ${D}.tar
+           tar -cvf ${D}.tar EffectiveAreas/*${I}*${A}*${T}.root
+
+           bbftp -u bbftp -V -S -m -p 12 -e "put ${D}.tar /veritas/upload/EVNDISP/${VERSION}/${D}.tar" gamma1.astro.ucla.edu
+       done
+    done
+done
+
+
