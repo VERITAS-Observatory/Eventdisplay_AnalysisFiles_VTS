@@ -56,7 +56,7 @@ for I in V4 V5
 do
     for A in ATM21 ATM22
     do
-       for T in T1234
+       for T in T1234 T123 T124 T134 T234
        do
            D="EffectiveAreas_${I}_${A}_${T}"
            echo "Getting EffectiveAreas $I $A ${T} (${D}.tar)"
