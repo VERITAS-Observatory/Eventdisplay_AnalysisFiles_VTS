@@ -4,7 +4,7 @@ Configuration and runparameter files for Eventdisplay
 
 Required for the analysis of VERITAS data. Analysis requires additional IRF files (lookup tables, radial acceptances, etc) - these are available through the UCLA archive.
 
-Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v480
+Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v483
 
 Following directories and files are available:
 
