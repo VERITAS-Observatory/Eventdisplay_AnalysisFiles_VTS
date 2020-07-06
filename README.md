@@ -1,6 +1,6 @@
 # Eventdisplay Analysis Files
 
-**release candidate - not ready for science analysis**
+**do not use the master for anything**
 
 Configuration and runparameter files for Eventdisplay
 
