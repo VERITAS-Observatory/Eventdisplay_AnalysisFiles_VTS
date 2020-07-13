@@ -31,4 +31,4 @@ All these files are packed into a tarball that you have to get from David Hanna 
 into the ReflectivityFromDHanna directory.
 
 Once you have the `processed_gain_all_runs_no_CFD.csv` file (gains) and `ReflectivityFromDHanna` directory (WDR), you can proceed 
-to run the script `get_throughput_v483.py`
+to run the script `get_throughput_v483.py` . It may happen that you need to modify slightly the script for newer periods of time (note to myself: check this and perhaps prepare for the next 2-3 years)
