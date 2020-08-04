@@ -31,6 +31,10 @@ mpl.rc('figure',figsize=(4.2,2.4))
 mpl.rc('figure',dpi=100)
 mpl.rc('savefig',dpi=100)
 
+### Supress RuntimeWarnings (zero-divisions and such) in a very dirty way
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning) 
+
 ######################################
 ##       AUXILIARY FUNCTIONS        ##
 ######################################
@@ -1234,7 +1238,7 @@ for l in table_summary_sfac:
 #   3) inject that list in log generator: https://veritasm.sao.arizona.edu/DQM/loggen.html 
 #      to get a file with the dates for each run
 #   4) create a csv/table with dates and runs: date_and_runs.txt
-#      cat loggen.csv | awk -F ", " '{print $1", "$2}' > date_and_runs.txt
+#      cat loggen.csv | grep -v ^$ | awk -F ", " '{print $1", "$2}' > date_and_runs.txt
 #
 ##########################
 
@@ -1557,7 +1561,6 @@ v483_refs = np.asarray([\
 # https://veritas.sao.arizona.edu/wiki/images/1/14/Reflectivity_tucson.pdf
 # https://veritas.sao.arizona.edu/wiki/images/5/53/Reflectivity_zeuthen_13.pdf
 MeanRefF4 = {T: mean_reflectivity(RFCRV[T],435,445) for T in range(1,4+1)}
-print(MeanRefF4)
 T1_2010 = np.asarray([0.73,0.75,0.82,0.85,0.79,0.81,0.79,0.77,0.65,0.65,0.75,0.77,0.72,0.73])
 T2_2010 = np.asarray([0.84,0.89,0.89,0.89,0.72,0.80,0.87])
 T3_2010 = np.asarray([0.72,0.64,0.79,0.74,0.72])
