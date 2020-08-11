@@ -438,43 +438,75 @@ old_results_ref_hanna = np.asarray([
 ])
 
 # Reflectivity values in from David Hanna, measured using the WDR method.
-# The name of the file contains the month starting from 2014 Jan. 
+# The name of the file contains the month starting from 2014 Jan.
+
+# averages is the old format, tracknums is the new format as of Aug 11.
+WDRformat="tracknums"
 hanna_reflectdir = "ReflectivityFromDHanna/"
-hanna_files = [f.split("/")[-1] for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
-months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
-init_date = datetime.datetime(2014,1,1,0,0,0)
+if WDRformat=="averages":
+    hanna_files = [f.split("/")[-1] \
+        for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
+    months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
+    init_date = datetime.datetime(2014,1,1,0,0,0)
 
-table_reflectivities = []
-for month_tot in months_raw:
-    years  = int(month_tot/12)
-    months = int(month_tot%12)
-    dt = atime.Time(datetime.datetime(2014+years,1+months,15,0,0,0)).mjd
-    
-    reflect_date = [0 for k in range(9)]
-    reflect_date[0] = dt
-    
-    b_filt = [0,0,0,0]
-    b_err  = [0,0,0,0]
-    for n in range(80):
-        fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
-        if not fname in hanna_files:
-            break
+    table_reflectivities = []
+    for month_tot in months_raw:
+        years  = int(month_tot/12)
+        months = int(month_tot%12)
+        dt = atime.Time(datetime.datetime(\
+            2014+years,
+            1+months,
+            15,
+            0,0,0)).mjd
         
-        nm  = int(n/4)+1
-        tel = n%4 + 1
-        cont=np.loadtxt(hanna_reflectdir+"/"+fname)
-        reflect_date[tel*2-1] += cont[4]
-        reflect_date[tel*2]   += cont[5]**2
-    
+        reflect_date = [0 for k in range(9)]
+        reflect_date[0] = dt
+        
+        b_filt = [0,0,0,0]
+        b_err  = [0,0,0,0]
+        for n in range(80):
+            fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
+            if not fname in hanna_files:
+                break
+            
+            nm  = int(n/4)+1
+            tel = n%4 + 1
+            cont=np.loadtxt(hanna_reflectdir+"/"+fname)
+            reflect_date[tel*2-1] += cont[4]
+            reflect_date[tel*2]   += cont[5]**2
+        
+        for tel in range(4):
+            reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
+            reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        
+        table_reflectivities.append(reflect_date)
+
+    table_reflectivities_array = np.asarray(table_reflectivities)
+    table_reflectivities = dict()
     for tel in range(4):
-        reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
-        reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        table_reflectivities[tel+1] = np.transpose([
+            table_reflectivities[:,0],
+            table_reflectivities[:,T*2+1],
+            table_reflectivities[:,T*2+2]
+        ])
+
     
-    table_reflectivities.append(reflect_date)
+    #print(table_reflectivities)
 
-table_reflectivities = np.asarray(table_reflectivities)
-#print(table_reflectivities)
-
+elif WDRformat=='tracknums':
+    hanna_files = glob.glob(hanna_reflectdir+"/tracknums*.dat")
+    init_date = atime.Time(datetime.datetime(2014,1,1,0,0,0)).mjd
+    hanna_contents = [np.loadtxt(hf).reshape(3,-1) for hf in hanna_files]
+     
+    table_reflectivities = dict()
+    for tel in range(4):
+        hc = hanna_contents[tel]
+        hc   = np.delete(hc, 0, axis=1)
+        days = hc[0]
+        vals = hc[1]
+        errs = hc[2]
+        mjds = days+init_date
+        table_reflectivities[tel+1] = np.transpose([mjds,vals,errs])
 
 refl_result = dict()
 
@@ -484,9 +516,9 @@ for T in range(1,4+1):
     
     SimuR_B = mean_reflectivity(RFCRV[T],weights=[Bfilter])
     
-    mjds = table_reflectivities[:,0]
-    vals = table_reflectivities[:,T*2-1]/(SimuR_B)#*WCEFF[T])
-    errs = table_reflectivities[:,T*2]/(SimuR_B)#*WCEFF[T])
+    mjds = table_reflectivities[T][:,0]
+    vals = table_reflectivities[T][:,1]/(SimuR_B)#*WCEFF[T])
+    errs = table_reflectivities[T][:,2]/(SimuR_B)#*WCEFF[T])
     
     filt = ((errs/vals) < 0.5)* (vals<np.median(vals)+5*np.std(vals))* (vals>np.median(vals)-3*np.std(vals))
     
@@ -562,7 +594,7 @@ for T in range(1,4+1):
     )
     
     xint = np.linspace(min(mjds),max(mjds),1000)
-    spli = sinterp.splrep(mjds[filt],smoo,s=0.001)
+    spli = sinterp.splrep(mjds[filt],smoo,s=0.01)
     yint = sinterp.splev(xint,spli)
     
     plot.plot(
@@ -1228,6 +1260,10 @@ print("")
 for l in table_summary_sfac:
     print("* s V6_"+l[0].replace("-","_"),l[4],l[6],l[8],l[10])
 
+
+# Do not continue running the single PE values (comment the next line to show it)
+exit(0)
+
 ##########################
 #### GAINs from single PE
 #
@@ -1597,41 +1633,73 @@ old_results_ref_hanna = np.asarray([
      None, None],
 ])
 
-
+# averages is the old format, tracknums is the new format as of Aug 11.
+WDRformat="tracknums"
 hanna_reflectdir = "ReflectivityFromDHanna/"
-hanna_files = [f.split("/")[-1] for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
-months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
-init_date = datetime.datetime(2014,1,1,0,0,0)
+if WDRformat=="averages":
+    hanna_files = [f.split("/")[-1] \
+        for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
+    months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
+    init_date = datetime.datetime(2014,1,1,0,0,0)
 
-table_reflectivities = []
-for month_tot in months_raw:
-    years  = int(month_tot/12)
-    months = int(month_tot%12)
-    dt = atime.Time(datetime.datetime(2014+years,1+months,15,0,0,0)).mjd
-    
-    reflect_date = [0 for k in range(9)]
-    reflect_date[0] = dt
-    
-    b_filt = [0,0,0,0]
-    b_err  = [0,0,0,0]
-    for n in range(80):
-        fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
-        if not fname in hanna_files:
-            break
+    table_reflectivities = []
+    for month_tot in months_raw:
+        years  = int(month_tot/12)
+        months = int(month_tot%12)
+        dt = atime.Time(datetime.datetime(\
+            2014+years,
+            1+months,
+            15,
+            0,0,0)).mjd
         
-        nm  = int(n/4)+1
-        tel = n%4 + 1
-        cont=np.loadtxt(hanna_reflectdir+"/"+fname)
-        reflect_date[tel*2-1] += cont[4]
-        reflect_date[tel*2]   += cont[5]**2
-    
-    for tel in range(4):
-        reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
-        reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
-    
-    table_reflectivities.append(reflect_date)
+        reflect_date = [0 for k in range(9)]
+        reflect_date[0] = dt
+        
+        b_filt = [0,0,0,0]
+        b_err  = [0,0,0,0]
+        for n in range(80):
+            fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
+            if not fname in hanna_files:
+                break
+            
+            nm  = int(n/4)+1
+            tel = n%4 + 1
+            cont=np.loadtxt(hanna_reflectdir+"/"+fname)
+            reflect_date[tel*2-1] += cont[4]
+            reflect_date[tel*2]   += cont[5]**2
+        
+        for tel in range(4):
+            reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
+            reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        
+        table_reflectivities.append(reflect_date)
 
-table_reflectivities = np.asarray(table_reflectivities)
+    table_reflectivities_array = np.asarray(table_reflectivities)
+    table_reflectivities = dict()
+    for tel in range(4):
+        table_reflectivities[tel+1] = np.transpose([
+            table_reflectivities[:,0],
+            table_reflectivities[:,T*2+1],
+            table_reflectivities[:,T*2+2]
+        ])
+
+    
+    #print(table_reflectivities)
+
+elif WDRformat=='tracknums':
+    hanna_files = glob.glob(hanna_reflectdir+"/tracknums*.dat")
+    init_date = atime.Time(datetime.datetime(2014,1,1,0,0,0)).mjd
+    hanna_contents = [np.loadtxt(hf).reshape(3,-1) for hf in hanna_files]
+     
+    table_reflectivities = dict()
+    for tel in range(4):
+        hc = hanna_contents[tel]
+        hc   = np.delete(hc, 0, axis=1)
+        days = hc[0]
+        vals = hc[1]
+        errs = hc[2]
+        mjds = days+init_date
+        table_reflectivities[tel+1] = np.transpose([mjds,vals,errs])
 
 refl_result = dict()
 
@@ -1641,12 +1709,13 @@ for T in range(1,4+1):
     
     SimuR_B = mean_reflectivity(RFCRV[T],weights=[Bfilter])
     
-    mjds = table_reflectivities[:,0]
-    vals = table_reflectivities[:,T*2-1]/(SimuR_B)#*WCEFF[T])
-    errs = table_reflectivities[:,T*2]/(SimuR_B)#*WCEFF[T])
+    mjds = table_reflectivities[T][:,0]
+    vals = table_reflectivities[T][:,1]/(SimuR_B)#*WCEFF[T])
+    errs = table_reflectivities[T][:,2]/(SimuR_B)#*WCEFF[T])
     
-    filt = ((errs/vals) < 0.5)*            (vals<np.median(vals)+5*np.std(vals))*            (vals>np.median(vals)-3*np.std(vals))
-    
+    filt = ((errs/vals) < 0.5)*\
+            (vals<np.median(vals)+5*np.std(vals))*\
+            (vals>np.median(vals)-3*np.std(vals))    
     
     smoo = ssignal.medfilt(vals[filt],3)
     
@@ -1719,7 +1788,7 @@ for T in range(1,4+1):
     )
     
     xint = np.linspace(min(mjds),max(mjds),1000)
-    spli = sinterp.splrep(mjds[filt],smoo,s=0.001)
+    spli = sinterp.splrep(mjds[filt],smoo,s=0.01)
     yint = sinterp.splev(xint,spli)
     
     plot.plot(
