@@ -1633,7 +1633,9 @@ old_results_ref_hanna = np.asarray([
      None, None],
 ])
 
-# averages is the old format, tracknums is the new format as of Aug 11.
+# Reflectivity data:
+# The averages files is the old format, tracknums files is the new format as of Aug 11.
+# in both cases, the files are provided by David Hanna.
 WDRformat="tracknums"
 hanna_reflectdir = "ReflectivityFromDHanna/"
 if WDRformat=="averages":
