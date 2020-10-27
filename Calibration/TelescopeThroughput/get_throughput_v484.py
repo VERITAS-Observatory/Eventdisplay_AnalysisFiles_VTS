@@ -1,39 +1,26 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+#####################################
+##      PACKAGES that we need      ##
+#####################################
 
 import os,sys
 import numpy as np
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import matplotlib.cbook as cbook
-import matplotlib.colors as mcolors
 import datetime
 import time
-
 import math
 import glob
+import tabulate
 
 import astropy
 import astropy.units as u
-from astropy.time import Time,TimeDelta
 import astropy.time as atime
 import scipy.interpolate as sinterp
-import scipy.optimize as sopt
-import scipy.stats as sstats
 import scipy.signal as ssignal
-
-import tabulate
-import logging
-
-logging.addLevelName( logging.DEBUG, "\033[1;36m%s\033[1;0m" % logging.getLevelName(logging.INFO))
-logging.addLevelName( logging.INFO, "\033[0;32m%s\033[1;0m" % logging.getLevelName(logging.INFO))
-logging.addLevelName( logging.WARNING, "\033[1;31m%s\033[1;0m" % logging.getLevelName(logging.WARNING))
-logging.addLevelName( logging.ERROR, "\033[1;41m%s\033[1;0m" % logging.getLevelName(logging.ERROR))
-logging.root.setLevel("INFO")
 
 time.sleep(1)
 mpl.rc('font',**{'family':'serif','serif':['Palatino']})
@@ -44,8 +31,13 @@ mpl.rc('figure',figsize=(4.2,2.4))
 mpl.rc('figure',dpi=100)
 mpl.rc('savefig',dpi=100)
 
-# In[ ]:
+### Supress RuntimeWarnings (zero-divisions and such) in a very dirty way
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning) 
 
+######################################
+##       AUXILIARY FUNCTIONS        ##
+######################################
 
 def datestr2num(string):
     if type(string)==bytes:
@@ -54,7 +46,7 @@ def datestr2num(string):
         dt = datetime.datetime.strptime(str(string),"%Y-%m-%d %H:%M:%S")
     except:
         dt = datetime.datetime.strptime(str(string)+" 00:00:00","%Y-%m-%d %H:%M:%S")
-    at = astropy.time.Time(dt)
+    at = atime.Time(dt)
     return(at.mjd)
 
 def find_nearest(array,value):
@@ -68,15 +60,14 @@ def middle(array):
     return (np.min(array)+np.max(array))/2.
 
 
-# In[5]:
-
-
-# Reference reflectivities from Oct 17 2011 (Jeff Grube)
-
+##########################################################
+# Reference reflectivities from Oct 17 2011 (Jeff Grube) #
+##########################################################
 
 RFCRV = {}
 
-RFCRV[1] = np.asarray([    [260, 0.687594],
+RFCRV[1] = np.asarray([\
+    [260, 0.687594],
     [280, 0.712322],
     [300, 0.74184],
     [320, 0.771999],
@@ -92,7 +83,8 @@ RFCRV[1] = np.asarray([    [260, 0.687594],
     [700, 0.70074]
 ])
 
-RFCRV[2] = np.asarray([    [260, 0.721465],
+RFCRV[2] = np.asarray([\
+    [260, 0.721465],
     [280, 0.746258],
     [300, 0.773332],
     [320, 0.799048],
@@ -108,7 +100,8 @@ RFCRV[2] = np.asarray([    [260, 0.721465],
     [700, 0.709881]
 ])
 
-RFCRV[3] = np.asarray([    [260, 0.737282],
+RFCRV[3] = np.asarray([\
+    [260, 0.737282],
     [280, 0.77011],
     [300, 0.799097],
     [320, 0.824643],
@@ -124,7 +117,8 @@ RFCRV[3] = np.asarray([    [260, 0.737282],
     [700, 0.716556],
 ])
  
-RFCRV[4] = np.asarray([    [260, 0.739627],
+RFCRV[4] = np.asarray([\
+    [260, 0.739627],
     [280, 0.758912],
     [300, 0.782842],
     [320, 0.805983],
@@ -140,16 +134,21 @@ RFCRV[4] = np.asarray([    [260, 0.739627],
     [700, 0.720607],
 ])
 
-### Winston cone efficiency from CARE_VERITAS_AfterPMTUpgrade_V6_140916
-#WCEFF = {1: 0.97, 2: 1.0, 3: 0.98, 4: 0.95}
+###########################################################################
+##  Winston cone efficiency from CARE_VERITAS_AfterPMTUpgrade_V6_140916  ##
+###########################################################################
 WCEFF = {1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0}
 
-
+######################################################
+## Some reference spectra (NSB,                     ##
+## Cherenkov radiation, old PMT response, B filters ##
+######################################################
 NSB = np.loadtxt("NSB.csv",delimiter=',')
 Cherenkov = np.loadtxt("CherenkovSpec.csv",delimiter=',')
 PMTs = np.loadtxt("PMTs.csv",delimiter=',')
 Bfilter = np.loadtxt("Bessel_B-1.txt")
 
+# Create the figure
 fig   = plt.figure(figsize=(6,3.4),dpi=150)
 plot  = fig.add_subplot(111)
 
@@ -184,9 +183,10 @@ fig.savefig("Reference_PMT_Cherenkov_Bfilters.pdf",bbox_inches='tight')
 fig.savefig("Reference_PMT_Cherenkov_Bfilters.png",bbox_inches='tight',dpi=120)
 
 
-# In[6]:
-
-
+#######################################################
+## Mean reflectivity from Emmet's measurements       ##
+## spoiler: does not match the observed reflectivity ##
+#######################################################
 def mean_reflectivity(reflectivity_curve,lmin=250,lmax=700,weights=None):
     # first interpolate to normalize all the arrays
     xi = np.linspace(lmin,lmax,100)
@@ -222,15 +222,13 @@ def mean_reflectivity(reflectivity_curve,lmin=250,lmax=700,weights=None):
     return(np.average(yref_i,weights=weights_y))
 
 
-# In[7]:
+##########################################################################
+## Mean reflectivity value from reflectivity curves simulated in the MC ##
+##########################################################################
 
 print('Mean reflectivities from the MC / Reference')
 for T in range(1,4+1):
     print(mean_reflectivity(RFCRV[T],weights=[Cherenkov]))
-
-
-# In[8]:
-
 
 fig   = plt.figure(figsize=(6,6),dpi=150)
 for T in range(1,4+1):
@@ -265,8 +263,7 @@ fig.text(0.05, 0.5, 'Mean reflectivity',
 fig.savefig("DiffuseReflectivity_from_Emmet.pdf",bbox_inches='tight')
 fig.savefig("DiffuseReflectivity_from_Emmet.png",bbox_inches='tight',dpi=120)
 
-
-# In[9]:
+### Same as before, but convolved with Cherenkov spectrum
 
 print("")
 print("#Convolved with Cherenkov spectrum")
@@ -304,8 +301,7 @@ for d in sorted(glob.glob("20*")):
     
 reflectivityaveragetable = np.asarray(reflectivityaveragetable)
 
-
-# In[10]:
+## Same as before, but convolved with a Blue filter
 
 print("")
 print("#Convolved with Blue filter")
@@ -325,9 +321,9 @@ for d in sorted(glob.glob("20*")):
     
     print("{0}, {1:.2f}, {2:.2f}, {3:.2f}, {4:.2f}".format(d,MRef[0],MRef[1],MRef[2],MRef[3]))
 
-
-# In[13]:
-
+######################################################
+## Reflectivity measurement series from David Hanna ##
+######################################################
 
 def fill_empty(f):
     try:
@@ -347,26 +343,24 @@ def filter_to_number(f):
 t_factors_raw = np.loadtxt("Parsed_reflectivity_DH.csv.txt",
                           skiprows=1,converters={0: datestr2num, 3:fill_empty, 4:fill_empty, 5: filter_to_number}, delimiter=',')
 
-
-# In[24]:
-
+#########################################
+## Calculation of T, g and S factors ####
+#########################################
 
 print("###########################################")
 print(" Calculation of T- g- and S- factors below ")
 print(" ----------------------------------------- ")
 
+## Seasonal averages 
+## Note that these values are defined pretty much by hand. 
 
-
-#### Seasonal averages
-year_begin_mjd = atime.Time(np.asarray(    [datetime.datetime(2010,9,1,0,0),
+year_begin_mjd = atime.Time(np.asarray(\
+    [datetime.datetime(2010,9,1,0,0),
      datetime.datetime(2011,9,1,0,0),
      datetime.datetime(2012,7,1,0,0),
-     #datetime.datetime(2012,11,1,0,0),
      datetime.datetime(2013,3,1,0,0),
-     #datetime.datetime(2013,7,1,0,0),
      datetime.datetime(2013,11,1,0,0),
      datetime.datetime(2014,4,1,0,0),
-     #datetime.datetime(2014,7,1,0,0),
      datetime.datetime(2014,10,1,0,0),
      datetime.datetime(2015,9,1,0,0),
      datetime.datetime(2016,9,1,0,0),
@@ -375,14 +369,12 @@ year_begin_mjd = atime.Time(np.asarray(    [datetime.datetime(2010,9,1,0,0),
      datetime.datetime(2019,9,1,0,0),
      ])).mjd
 
-year_end_mjd = atime.Time(np.asarray(    [datetime.datetime(2011,7,1,0,0),
+year_end_mjd = atime.Time(np.asarray(\
+    [datetime.datetime(2011,7,1,0,0),
      datetime.datetime(2012,7,1,0,0),
-     #datetime.datetime(2012,12,1,0,0),
      datetime.datetime(2013,4,1,0,0),
-     #datetime.datetime(2013,8,1,0,0),
      datetime.datetime(2013,12,1,0,0),
      datetime.datetime(2014,5,1,0,0),
-     #datetime.datetime(2014,8,1,0,0),
      datetime.datetime(2014,12,1,0,0),
      datetime.datetime(2015,7,1,0,0),
      datetime.datetime(2016,7,1,0,0),
@@ -393,11 +385,9 @@ year_end_mjd = atime.Time(np.asarray(    [datetime.datetime(2011,7,1,0,0),
      ])).mjd
 
 
-# In[29]:
-
-
 ##### T-factors
 
+# Old T-factors derived from Tony's work.
 v483_refs = np.asarray([  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
   [56687.5, 151.5, 0.90, 0.98, 0.82, 0.85],
   [57052.5, 151.5, 0.77, 0.86, 0.77, 0.78],
@@ -407,6 +397,7 @@ v483_refs = np.asarray([  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
   [58513.5, 151.5, 0.68, 0.72, 0.65, 0.68],
 ])
 
+# Very early (and wrong, do not use) measurements using the prototype WDR.
 # https://veritas.sao.arizona.edu/wiki/images/1/14/Reflectivity_tucson.pdf
 # https://veritas.sao.arizona.edu/wiki/images/5/53/Reflectivity_zeuthen_13.pdf
 MeanRefF4 = {T: mean_reflectivity(RFCRV[T],435,445) for T in range(1,4+1)}
@@ -446,46 +437,76 @@ old_results_ref_hanna = np.asarray([
      None, None],
 ])
 
+# Reflectivity values in from David Hanna, measured using the WDR method.
+# The name of the file contains the month starting from 2014 Jan.
 
+# averages is the old format, tracknums is the new format as of Aug 11.
+WDRformat="tracknums"
 hanna_reflectdir = "ReflectivityFromDHanna/"
-hanna_files = [f.split("/")[-1] for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
-months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
-init_date = datetime.datetime(2014,1,1,0,0,0)
+if WDRformat=="averages":
+    hanna_files = [f.split("/")[-1] \
+        for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
+    months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
+    init_date = datetime.datetime(2014,1,1,0,0,0)
 
-#fig   = plt.figure(figsize=(6,3.4),dpi=150)
-#plot  = fig.add_subplot(111)
-
-table_reflectivities = []
-for month_tot in months_raw:
-    years  = int(month_tot/12)
-    months = int(month_tot%12)
-    dt = atime.Time(datetime.datetime(2014+years,1+months,15,0,0,0)).mjd
-    
-    reflect_date = [0 for k in range(9)]
-    reflect_date[0] = dt
-    
-    b_filt = [0,0,0,0]
-    b_err  = [0,0,0,0]
-    for n in range(80):
-        fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
-        if not fname in hanna_files:
-            break
+    table_reflectivities = []
+    for month_tot in months_raw:
+        years  = int(month_tot/12)
+        months = int(month_tot%12)
+        dt = atime.Time(datetime.datetime(\
+            2014+years,
+            1+months,
+            15,
+            0,0,0)).mjd
         
-        nm  = int(n/4)+1
-        tel = n%4 + 1
-        cont=np.loadtxt(hanna_reflectdir+"/"+fname)
-        reflect_date[tel*2-1] += cont[4]
-        reflect_date[tel*2]   += cont[5]**2
-    
+        reflect_date = [0 for k in range(9)]
+        reflect_date[0] = dt
+        
+        b_filt = [0,0,0,0]
+        b_err  = [0,0,0,0]
+        for n in range(80):
+            fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
+            if not fname in hanna_files:
+                break
+            
+            nm  = int(n/4)+1
+            tel = n%4 + 1
+            cont=np.loadtxt(hanna_reflectdir+"/"+fname)
+            reflect_date[tel*2-1] += cont[4]
+            reflect_date[tel*2]   += cont[5]**2
+        
+        for tel in range(4):
+            reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
+            reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        
+        table_reflectivities.append(reflect_date)
+
+    table_reflectivities_array = np.asarray(table_reflectivities)
+    table_reflectivities = dict()
     for tel in range(4):
-        reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
-        reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        table_reflectivities[tel+1] = np.transpose([
+            table_reflectivities[:,0],
+            table_reflectivities[:,T*2+1],
+            table_reflectivities[:,T*2+2]
+        ])
+
     
-    table_reflectivities.append(reflect_date)
+    #print(table_reflectivities)
 
-table_reflectivities = np.asarray(table_reflectivities)
-#print(table_reflectivities)
-
+elif WDRformat=='tracknums':
+    hanna_files = glob.glob(hanna_reflectdir+"/tracknums*.dat")
+    init_date = atime.Time(datetime.datetime(2014,1,1,0,0,0)).mjd
+    hanna_contents = [np.loadtxt(hf).reshape(3,-1) for hf in hanna_files]
+     
+    table_reflectivities = dict()
+    for tel in range(4):
+        hc = hanna_contents[tel]
+        hc   = np.delete(hc, 0, axis=1)
+        days = hc[0]
+        vals = hc[1]
+        errs = hc[2]
+        mjds = days+init_date
+        table_reflectivities[tel+1] = np.transpose([mjds,vals,errs])
 
 refl_result = dict()
 
@@ -495,16 +516,14 @@ for T in range(1,4+1):
     
     SimuR_B = mean_reflectivity(RFCRV[T],weights=[Bfilter])
     
-    mjds = table_reflectivities[:,0]
-    vals = table_reflectivities[:,T*2-1]/(SimuR_B)#*WCEFF[T])
-    errs = table_reflectivities[:,T*2]/(SimuR_B)#*WCEFF[T])
+    mjds = table_reflectivities[T][:,0]
+    vals = table_reflectivities[T][:,1]/(SimuR_B)#*WCEFF[T])
+    errs = table_reflectivities[T][:,2]/(SimuR_B)#*WCEFF[T])
     
-    filt = ((errs/vals) < 0.5)*            (vals<np.median(vals)+5*np.std(vals))*            (vals>np.median(vals)-3*np.std(vals))
-    
+    filt = ((errs/vals) < 0.5)* (vals<np.median(vals)+5*np.std(vals))* (vals>np.median(vals)-3*np.std(vals))
     
     smoo = ssignal.medfilt(vals[filt],3)
     #smoo = ssignal.savgol_filter(vals[filt],3,1)
-    
     
     mjds = np.append([55851,55901,55951,55991],mjds)
     vals = np.append([1,1,1,1],vals)
@@ -528,8 +547,6 @@ for T in range(1,4+1):
     )
     
     tfilthannaold = old_results_ref_hanna[:,2*T-1]!=None
-    #print(old_results_ref_hanna[tfilthannaold][:,0])
-    #print(old_results_ref_hanna[:,2*T-1][tfilthannaold])
     plot.errorbar(
         x    = [atime.Time(_dt,format='mjd').datetime \
                 for _dt in old_results_ref_hanna[tfilthannaold][:,0]],
@@ -577,7 +594,7 @@ for T in range(1,4+1):
     )
     
     xint = np.linspace(min(mjds),max(mjds),1000)
-    spli = sinterp.splrep(mjds[filt],smoo,s=0.001)
+    spli = sinterp.splrep(mjds[filt],smoo,s=0.01)
     yint = sinterp.splev(xint,spli)
     
     plot.plot(
@@ -588,11 +605,6 @@ for T in range(1,4+1):
         color='C{0}'.format(T-1),
         label='spline'
     )
-    
-    
-    #### Seasonal averages
-    #year_begin_mjd = np.asarray([atime.Time(datetime.datetime(2010+k,9,1,0,0)).mjd for k in range(20)])
-    #year_end_mjd   = np.asarray([atime.Time(datetime.datetime(2011+k,7,1,0,0)).mjd for k in range(20)])
     
     mjd_season_val = []
     mjd_season_err = []
@@ -669,9 +681,7 @@ plt.tight_layout()
 fig.savefig("TFactors_WDR_Plus_splineInterp_FromDHanna.pdf",bbox_inches='tight')
 fig.savefig("TFactors_WDR_Plus_splineInterp_FromDHanna.png",bbox_inches='tight',dpi=120)
 
-
-# In[30]:
-
+## Create a table with the T-factors
 
 table_summary = []
 
@@ -707,12 +717,8 @@ print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_m
 
 table_summary_refl = list(table_summary)
 
-
-# In[33]:
-
-
 ##########################
-#### GAINs from photostat
+#### Photostat GAINs
 #
 # Needs:
 #   https://www.hep.physics.mcgill.ca/~veritas/photostat/
@@ -764,40 +770,15 @@ pstat_gains = np.concatenate([pstat_gains2[filt2g],pstat_gains1])
 
 gains_all = []
 
-
 # Table / dict with the gains per epoch for all telescopes
 # This is the same as the relative TLCFG of 0.939 0.924 0.924 1.00 the Elisa mentioned
 # in the issue #49 (https://veritas.sao.arizona.edu/wiki/images/f/f3/CARE_V6_Std.txt)
 gains_epoch_dict = dict(
     {
-        4:
-        {
-            1: 5.11,
-            2: 5.32,
-            3: 4.76,
-            4: 5.00,
-        },
-        5:
-        {
-            1: 5.20,
-            2: 5.31,
-            3: 5.33,
-            4: 5.46,
-        },
-        6:
-        {
-            1: 5.20,
-            2: 5.12,
-            3: 5.12,
-            4: 5.54,
-        },
-        6:
-        {
-            1: 5.73*0.939,
-            2: 5.73*0.924,
-            3: 5.73*0.924,
-            4: 5.73*1.000,
-        }
+        4: { 1: 5.11, 2: 5.32, 3: 4.76, 4: 5.00 },
+        5: { 1: 5.20, 2: 5.31, 3: 5.33, 4: 5.46 },
+        6: { 1: 5.20, 2: 5.12, 3: 5.12, 4: 5.54 },
+        6: { 1: 5.73*0.939, 2: 5.73*0.924, 3: 5.73*0.924, 4: 5.73*1.000 }
     }
 )
 
@@ -820,11 +801,13 @@ def gainref_from_mjd(mjd):
 
 for run in np.unique(pstat_gains[:,0]):
     gain_ref_teldict = gainref_from_run(run)
-    
+   
+    # filter to match the runs in the given interval 
     rfilt = pstat_gains[:,0]==run
     if pstat_gains[:,5][rfilt][0] != 0: continue
     gains_all.append([pstat_gains[:,4][rfilt][0]])
     for T in range(4):
+	# filter to match the telescope
         tfilt = pstat_gains[:,1]==T
         if np.sum(tfilt*rfilt)==0: 
             gains_all[-1].append(0)
@@ -839,13 +822,12 @@ for run in np.unique(pstat_gains[:,0]):
             gains_all[-1].append(pstat_gains[:,2][tfilt*rfilt][0]/gain_ref_teldict[T+1])
             gains_all[-1].append(pstat_gains[:,3][tfilt*rfilt][0]/gain_ref_teldict[T+1])
 
+# convert to numpy array
 gains_all = np.asarray(gains_all)
 gains_qua = gains_all
 
 #### Make the plot
-
 gain_result = dict()
-
 fig   = plt.figure(figsize=(5,5),dpi=150)
 for T in range(1,4+1):
     plot  = fig.add_subplot(2,2,T)
@@ -853,17 +835,6 @@ for T in range(1,4+1):
     raw_mjds = gains_qua[:,0]
     raw_vals = gains_qua[:,2*T-1]
     raw_errs = gains_qua[:,2*T]
-    
-    #old_db = laser_run_db_gains[T]
-    
-    #for k,run in enumerate(old_db[:,0]):
-    #    old_db[k][1] *= 1./gainref_from_mjd(run)[T]
-    #    old_db[k][2] *= 1./gainref_from_mjd(run)[T]
-    
-    #olddtfilt = old_db[:,0]<np.min(raw_mjds)
-    #raw_mjds = np.append(old_db[:,0][olddtfilt],raw_mjds)
-    #raw_vals = np.append(old_db[:,1][olddtfilt],raw_vals)
-    #raw_errs = np.append(old_db[:,2][olddtfilt],raw_errs)
     
     mjds = []
     vals = []
@@ -883,14 +854,8 @@ for T in range(1,4+1):
     mjds = np.asarray(mjds)
     vals = np.asarray(vals)
     errs = np.asarray(errs)
-    
-    #nf = 13
-    #bf = [1.0 / nf] * nf
-    #af = 1
-    #smoo = ssignal.lfilter(bf,af,vals)
-    #smoo = ssignal.lfilter(bf,af,vals)
-    
-    #smoo = ssignal.medfilt(vals,5)
+   
+    # smoothed values 
     smoo = np.array(vals)
     smoo = ssignal.savgol_filter(smoo,13,1)
     smoo = ssignal.medfilt(smoo,9)
@@ -956,12 +921,9 @@ for T in range(1,4+1):
     year_begin_mjd = atime.Time(np.asarray(        [datetime.datetime(2010,9,1,0,0),
          datetime.datetime(2011,9,1,0,0),
          datetime.datetime(2012,7,1,0,0),
-         #datetime.datetime(2012,11,1,0,0),
          datetime.datetime(2013,3,1,0,0),
-         #datetime.datetime(2013,7,1,0,0),
          datetime.datetime(2013,11,1,0,0),
          datetime.datetime(2014,4,1,0,0),
-         #datetime.datetime(2014,7,1,0,0),
          datetime.datetime(2014,10,1,0,0),
          datetime.datetime(2015,9,1,0,0),
          datetime.datetime(2016,9,1,0,0),
@@ -972,12 +934,9 @@ for T in range(1,4+1):
     
     year_end_mjd = atime.Time(np.asarray(        [datetime.datetime(2011,7,1,0,0),
          datetime.datetime(2012,7,1,0,0),
-         #datetime.datetime(2012,12,1,0,0),
          datetime.datetime(2013,4,1,0,0),
-         #datetime.datetime(2013,8,1,0,0),
          datetime.datetime(2013,12,1,0,0),
          datetime.datetime(2014,5,1,0,0),
-         #datetime.datetime(2014,8,1,0,0),
          datetime.datetime(2014,12,1,0,0),
          datetime.datetime(2015,7,1,0,0),
          datetime.datetime(2016,7,1,0,0),
@@ -986,7 +945,8 @@ for T in range(1,4+1):
          datetime.datetime(2019,7,1,0,0),
          datetime.datetime(2020,7,1,0,0),
          ])).mjd
-    
+   
+    # seasonal values 
     mjd_season_val = []
     mjd_season_err = []
     val_season_val = []
@@ -1057,9 +1017,9 @@ plt.tight_layout()
 fig.savefig("GFactors_Photostat_CAdams.pdf",bbox_inches='tight')
 fig.savefig("GFactors_Photostat_CAdams.png",bbox_inches='tight',dpi=120)
 
-
-# In[34]:
-
+##############################
+## Table with the g-factors ##
+##############################
 
 table_summary = []
 
@@ -1069,12 +1029,11 @@ begmjd = np.append(mjdsave[0]-diffs[0]/2.,mjdsave[:-1]+diffs/2.)
 endmjd = np.append(mjdsave[:-1]+diffs/2.,mjdsave[-1]+diffs[-1]/2.)
 
 for k,mjd in enumerate(mjdsave):
-    #begmjd = gain_result[1]['mjds_average'][k]-gain_result[1]['mjds_avererr'][k]
-    #endmjd = gain_result[1]['mjds_average'][k]+gain_result[1]['mjds_avererr'][k]   
-    
+    # derive the season naming, e.g. 2014-2015 if the date is 2015 April 22. 
     season = "{0}-{1}".format(int(atime.Time(mjdsave[k]-270,format='mjd').datetime.strftime("%Y")),
                               int(atime.Time(mjdsave[k]+95,format='mjd').datetime.strftime("%Y")))
     
+    # if more than 1 bin in a season, then append a letter (e.g. 2012-2013b).
     if k>0:
         if season==table_summary[-1][0]:
             table_summary[-1][0]+="a"
@@ -1098,11 +1057,13 @@ print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_m
 
 table_summary_gain = list(table_summary)
 
-
-# In[35]:
-
-
-##### S-factors
+#####################################################
+## S-factors = g-factors * T-factors               ##
+## ----------------------------------------------- ##
+## since we have several ways to compute them,     ##
+## derive those factors from different approaches  ##
+## to compare the results                          ##
+#####################################################
 
 v483_refs = np.asarray([  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
   [56687.5, 151.5, 0.91, 0.98, 0.83, 0.81],
@@ -1121,6 +1082,8 @@ for T in range(1,4+1):
     
     plot  = fig.add_subplot(2,2,T)
     
+
+    ### first way: make interpolations to obtain a regularly space fake dataset then multiply one-by-one.
     xint = np.linspace(
         atime.Time(datetime.datetime(2012,9,1,0,0)).mjd,
         atime.Time(datetime.datetime(2020,3,1,0,0)).mjd,
@@ -1134,7 +1097,8 @@ for T in range(1,4+1):
     mjd_season_err = []
     val_season_val = []
     val_season_err = []
-    
+   
+    ### individual measurements: look for the closest pairs 
     s_factors_indiv = {'x': [], 'y': [], 'yerr': [], 'xerr': []}
     
     for i,gmjd in enumerate(gain_result[T]['mjds']):
@@ -1163,12 +1127,14 @@ for T in range(1,4+1):
         zorder=-20
     )
     
+    ### third way: seasonal averages.
     for k,mjd in enumerate(refl_result[T]['mjds_average']):
         if mjd in gain_result[T]['mjds_average']:
             l = np.where(gain_result[T]['mjds_average']==mjd)
             mjd_season_val.append(mjd)
             mjd_season_err.append(refl_result[T]['mjds_avererr'][k])
-            val_season_val.append((refl_result[T]['vals_average'][k]*                                   gain_result[T]['vals_average'][l])[0])
+            val_season_val.append((refl_result[T]['vals_average'][k]*\
+                                   gain_result[T]['vals_average'][l])[0])
             val_season_err.append(np.sqrt(
                 (refl_result[T]['vals_average'][k]*gain_result[T]['errs_average'][l])**2 +\
                 (refl_result[T]['errs_average'][k]*gain_result[T]['vals_average'][l])**2
@@ -1231,8 +1197,6 @@ for T in range(1,4+1):
         
     
 fig.text(0.5, 0.0, 'Date', ha='center',fontsize='large')
-#fig.text(-0.02, 0.5, 'S-factors from WDR/D.Hanna + Gains from single PE', 
-#         va='center', rotation='vertical',fontsize='large')
 fig.text(-0.02, 0.5, 'S-factors from WDR/D.Hanna + photostat gains (C.Adams/T.Lin)', 
          va='center', rotation='vertical',fontsize='large')
 plt.tight_layout()
@@ -1240,9 +1204,7 @@ plt.tight_layout()
 fig.savefig("SFactors_Photostat_WDR.pdf",bbox_inches='tight')
 fig.savefig("SFactors_Photostat_WDR.png",bbox_inches='tight',dpi=120)
 
-
-# In[36]:
-
+### get the corresponding S-factor table
 
 table_summary = []
 
@@ -1252,8 +1214,6 @@ begmjd = np.append(mjdsave[0]-diffs[0]/2.,mjdsave[:-1]+diffs/2.)
 endmjd = np.append(mjdsave[:-1]+diffs/2.,mjdsave[-1]+diffs[-1]/2.)
 
 for k,mjd in enumerate(mjdsave):
-    #begmjd = gain_result[1]['mjds_average'][k]-gain_result[1]['mjds_avererr'][k]
-    #endmjd = gain_result[1]['mjds_average'][k]+gain_result[1]['mjds_avererr'][k]   
     
     season = "{0}-{1}".format(int(atime.Time(mjdsave[k]-270,format='mjd').datetime.strftime("%Y")),
                               int(atime.Time(mjdsave[k]+95,format='mjd').datetime.strftime("%Y")))
@@ -1279,15 +1239,13 @@ for k,mjd in enumerate(mjdsave):
             table_summary[-1].append('{0:.3f}'.format(resulting_factors[T]['vals_average'][k]))
             table_summary[-1].append('{0:.3f}'.format(resulting_factors[T]['errs_average'][k]))
 
-print('#### S factors (single PE)')
 print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_mjd',
                                                'S[1]','err[1]','S[2]','err[2]',
                                                'S[3]','err[3]','S[4]','err[4]']))
 
 table_summary_sfac = list(table_summary)
 
-
-# In[37]:
+#### what needs to be written in the MSCW.sizescal.runparameter of ED
 
 print("To write down in the MSCW.sizescal.runparameter")
 
@@ -1303,8 +1261,8 @@ for l in table_summary_sfac:
     print("* s V6_"+l[0].replace("-","_"),l[4],l[6],l[8],l[10])
 
 
-# In[39]:
-
+# Do not continue running the single PE values (comment the next line to show it)
+exit(0)
 
 ##########################
 #### GAINs from single PE
@@ -1316,11 +1274,12 @@ for l in table_summary_sfac:
 #   3) inject that list in log generator: https://veritasm.sao.arizona.edu/DQM/loggen.html 
 #      to get a file with the dates for each run
 #   4) create a csv/table with dates and runs: date_and_runs.txt
-#      cat loggen.csv | awk -F ", " '{print $1", "$2}' > date_and_runs.txt
+#      cat loggen.csv | grep -v ^$ | awk -F ", " '{print $1", "$2}' > date_and_runs.txt
 #
 ##########################
 
-v483_refs = np.asarray([  [56322.5, 151.5, 1.000, 1.000, 1.000, 1.000],
+v483_refs = np.asarray([\
+  [56322.5, 151.5, 1.000, 1.000, 1.000, 1.000],
   [56687.5, 151.5, 0.976, 0.981, 0.984, 0.958],
   [57052.5, 151.5, 0.930, 0.958, 0.966, 0.929],
   [57418.0, 152.0, 0.937, 0.967, 0.970, 0.935],
@@ -1341,38 +1300,15 @@ gains_qua = []
 # in the issue #49 (https://veritas.sao.arizona.edu/wiki/images/f/f3/CARE_V6_Std.txt)
 gains_epoch_dict = dict(
     {
-        4:
-        {
-            1: 5.11,
-            2: 5.32,
-            3: 4.76,
-            4: 5.00,
-        },
-        5:
-        {
-            1: 5.20,
-            2: 5.31,
-            3: 5.33,
-            4: 5.46,
-        },
-        6:
-        {
-            1: 5.20,
-            2: 5.12,
-            3: 5.12,
-            4: 5.54,
-        },
-        6:
-        {
-            1: 5.73*0.939,
-            2: 5.73*0.924,
-            3: 5.73*0.924,
-            4: 5.73*1.000,
-        }
+        4: {1: 5.11, 2: 5.32, 3: 4.76, 4: 5.00 },
+        5: {1: 5.20, 2: 5.31, 3: 5.33, 4: 5.46 },
+        6: {1: 5.20, 2: 5.12, 3: 5.12, 4: 5.54 },
+        6: {1: 5.73*0.939, 2: 5.73*0.924, 3: 5.73*0.924, 4: 5.73*1.000}
     }
 )
 
 ### Collect the data and derive the single PE based g-factors
+## this is very similar to the photostat gains.
 
 for k,run in enumerate(singlePE[:,1]):
     dt = datetime.datetime.strptime(
@@ -1416,7 +1352,6 @@ gains_all = np.asarray(gains_all)
 gains_qua = np.asarray(gains_qua)
 
 #### Make the plot
-
 
 gain_result = dict()
 
@@ -1507,15 +1442,13 @@ for T in range(1,4+1):
     )
     
     #### Seasonal averages
-    year_begin_mjd = atime.Time(np.asarray(        [datetime.datetime(2010,9,1,0,0),
+    year_begin_mjd = atime.Time(np.asarray(\
+        [datetime.datetime(2010,9,1,0,0),
          datetime.datetime(2011,9,1,0,0),
          datetime.datetime(2012,7,1,0,0),
-         #datetime.datetime(2012,11,1,0,0),
          datetime.datetime(2013,3,1,0,0),
-         #datetime.datetime(2013,7,1,0,0),
          datetime.datetime(2013,11,1,0,0),
          datetime.datetime(2014,4,1,0,0),
-         #datetime.datetime(2014,7,1,0,0),
          datetime.datetime(2014,10,1,0,0),
          datetime.datetime(2015,9,1,0,0),
          datetime.datetime(2016,9,1,0,0),
@@ -1524,14 +1457,12 @@ for T in range(1,4+1):
          datetime.datetime(2019,9,1,0,0),
          ])).mjd
     
-    year_end_mjd = atime.Time(np.asarray(        [datetime.datetime(2011,7,1,0,0),
+    year_end_mjd = atime.Time(np.asarray(\
+        [datetime.datetime(2011,7,1,0,0),
          datetime.datetime(2012,7,1,0,0),
-         #datetime.datetime(2012,12,1,0,0),
          datetime.datetime(2013,4,1,0,0),
-         #datetime.datetime(2013,8,1,0,0),
          datetime.datetime(2013,12,1,0,0),
          datetime.datetime(2014,5,1,0,0),
-         #datetime.datetime(2014,8,1,0,0),
          datetime.datetime(2014,12,1,0,0),
          datetime.datetime(2015,7,1,0,0),
          datetime.datetime(2016,7,1,0,0),
@@ -1611,9 +1542,7 @@ plt.tight_layout()
 fig.savefig("GFactors_SinglePE.pdf",bbox_inches='tight')
 fig.savefig("GFactors_SinglePE.png",bbox_inches='tight',dpi=120)
 
-
-# In[40]:
-
+### table with the results
 
 table_summary = []
 
@@ -1623,8 +1552,6 @@ begmjd = np.append(mjdsave[0]-diffs[0]/2.,mjdsave[:-1]+diffs/2.)
 endmjd = np.append(mjdsave[:-1]+diffs/2.,mjdsave[-1]+diffs[-1]/2.)
 
 for k,mjd in enumerate(mjdsave):
-    #begmjd = gain_result[1]['mjds_average'][k]-gain_result[1]['mjds_avererr'][k]
-    #endmjd = gain_result[1]['mjds_average'][k]+gain_result[1]['mjds_avererr'][k]   
     
     season = "{0}-{1}".format(int(atime.Time(mjdsave[k]-270,format='mjd').datetime.strftime("%Y")),
                               int(atime.Time(mjdsave[k]+95,format='mjd').datetime.strftime("%Y")))
@@ -1653,12 +1580,12 @@ print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_m
 table_summary_gain = list(table_summary)
 
 
-# In[43]:
+######################################
+## T-factors are the same as before ##
+######################################
 
-
-##### T-factors
-
-v483_refs = np.asarray([  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
+v483_refs = np.asarray([\
+  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
   [56687.5, 151.5, 0.90, 0.98, 0.82, 0.85],
   [57052.5, 151.5, 0.77, 0.86, 0.77, 0.78],
   [57418.0, 152.0, 0.78, 0.83, 0.73, 0.81],
@@ -1670,7 +1597,6 @@ v483_refs = np.asarray([  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
 # https://veritas.sao.arizona.edu/wiki/images/1/14/Reflectivity_tucson.pdf
 # https://veritas.sao.arizona.edu/wiki/images/5/53/Reflectivity_zeuthen_13.pdf
 MeanRefF4 = {T: mean_reflectivity(RFCRV[T],435,445) for T in range(1,4+1)}
-print(MeanRefF4)
 T1_2010 = np.asarray([0.73,0.75,0.82,0.85,0.79,0.81,0.79,0.77,0.65,0.65,0.75,0.77,0.72,0.73])
 T2_2010 = np.asarray([0.84,0.89,0.89,0.89,0.72,0.80,0.87])
 T3_2010 = np.asarray([0.72,0.64,0.79,0.74,0.72])
@@ -1707,46 +1633,75 @@ old_results_ref_hanna = np.asarray([
      None, None],
 ])
 
-
+# Reflectivity data:
+# The averages files is the old format, tracknums files is the new format as of Aug 11.
+# in both cases, the files are provided by David Hanna.
+WDRformat="tracknums"
 hanna_reflectdir = "ReflectivityFromDHanna/"
-hanna_files = [f.split("/")[-1] for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
-months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
-init_date = datetime.datetime(2014,1,1,0,0,0)
+if WDRformat=="averages":
+    hanna_files = [f.split("/")[-1] \
+        for f in sorted(glob.glob(hanna_reflectdir+"/averages*"))]
+    months_raw  = np.unique([int(f.split("_")[1]) for f in hanna_files])
+    init_date = datetime.datetime(2014,1,1,0,0,0)
 
-#fig   = plt.figure(figsize=(6,3.4),dpi=150)
-#plot  = fig.add_subplot(111)
-
-table_reflectivities = []
-for month_tot in months_raw:
-    years  = int(month_tot/12)
-    months = int(month_tot%12)
-    dt = atime.Time(datetime.datetime(2014+years,1+months,15,0,0,0)).mjd
-    
-    reflect_date = [0 for k in range(9)]
-    reflect_date[0] = dt
-    
-    b_filt = [0,0,0,0]
-    b_err  = [0,0,0,0]
-    for n in range(80):
-        fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
-        if not fname in hanna_files:
-            break
+    table_reflectivities = []
+    for month_tot in months_raw:
+        years  = int(month_tot/12)
+        months = int(month_tot%12)
+        dt = atime.Time(datetime.datetime(\
+            2014+years,
+            1+months,
+            15,
+            0,0,0)).mjd
         
-        nm  = int(n/4)+1
-        tel = n%4 + 1
-        cont=np.loadtxt(hanna_reflectdir+"/"+fname)
-        reflect_date[tel*2-1] += cont[4]
-        reflect_date[tel*2]   += cont[5]**2
-    
+        reflect_date = [0 for k in range(9)]
+        reflect_date[0] = dt
+        
+        b_filt = [0,0,0,0]
+        b_err  = [0,0,0,0]
+        for n in range(80):
+            fname = "averages_{0}_{1}.dat".format(month_tot,n+1)
+            if not fname in hanna_files:
+                break
+            
+            nm  = int(n/4)+1
+            tel = n%4 + 1
+            cont=np.loadtxt(hanna_reflectdir+"/"+fname)
+            reflect_date[tel*2-1] += cont[4]
+            reflect_date[tel*2]   += cont[5]**2
+        
+        for tel in range(4):
+            reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
+            reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        
+        table_reflectivities.append(reflect_date)
+
+    table_reflectivities_array = np.asarray(table_reflectivities)
+    table_reflectivities = dict()
     for tel in range(4):
-        reflect_date[1+tel*2] = reflect_date[1+tel*2]/nm
-        reflect_date[1+tel*2+1] = np.sqrt(reflect_date[1+tel*2+1])/nm
+        table_reflectivities[tel+1] = np.transpose([
+            table_reflectivities[:,0],
+            table_reflectivities[:,T*2+1],
+            table_reflectivities[:,T*2+2]
+        ])
+
     
-    table_reflectivities.append(reflect_date)
+    #print(table_reflectivities)
 
-table_reflectivities = np.asarray(table_reflectivities)
-#print(table_reflectivities)
-
+elif WDRformat=='tracknums':
+    hanna_files = glob.glob(hanna_reflectdir+"/tracknums*.dat")
+    init_date = atime.Time(datetime.datetime(2014,1,1,0,0,0)).mjd
+    hanna_contents = [np.loadtxt(hf).reshape(3,-1) for hf in hanna_files]
+     
+    table_reflectivities = dict()
+    for tel in range(4):
+        hc = hanna_contents[tel]
+        hc   = np.delete(hc, 0, axis=1)
+        days = hc[0]
+        vals = hc[1]
+        errs = hc[2]
+        mjds = days+init_date
+        table_reflectivities[tel+1] = np.transpose([mjds,vals,errs])
 
 refl_result = dict()
 
@@ -1756,16 +1711,15 @@ for T in range(1,4+1):
     
     SimuR_B = mean_reflectivity(RFCRV[T],weights=[Bfilter])
     
-    mjds = table_reflectivities[:,0]
-    vals = table_reflectivities[:,T*2-1]/(SimuR_B)#*WCEFF[T])
-    errs = table_reflectivities[:,T*2]/(SimuR_B)#*WCEFF[T])
+    mjds = table_reflectivities[T][:,0]
+    vals = table_reflectivities[T][:,1]/(SimuR_B)#*WCEFF[T])
+    errs = table_reflectivities[T][:,2]/(SimuR_B)#*WCEFF[T])
     
-    filt = ((errs/vals) < 0.5)*            (vals<np.median(vals)+5*np.std(vals))*            (vals>np.median(vals)-3*np.std(vals))
-    
+    filt = ((errs/vals) < 0.5)*\
+            (vals<np.median(vals)+5*np.std(vals))*\
+            (vals>np.median(vals)-3*np.std(vals))    
     
     smoo = ssignal.medfilt(vals[filt],3)
-    #smoo = ssignal.savgol_filter(vals[filt],3,1)
-    
     
     mjds = np.append([55851,55901,55951,55991],mjds)
     vals = np.append([1,1,1,1],vals)
@@ -1789,8 +1743,6 @@ for T in range(1,4+1):
     )
     
     tfilthannaold = old_results_ref_hanna[:,2*T-1]!=None
-    #print(old_results_ref_hanna[tfilthannaold][:,0])
-    #print(old_results_ref_hanna[:,2*T-1][tfilthannaold])
     plot.errorbar(
         x    = [atime.Time(_dt,format='mjd').datetime \
                 for _dt in old_results_ref_hanna[tfilthannaold][:,0]],
@@ -1838,7 +1790,7 @@ for T in range(1,4+1):
     )
     
     xint = np.linspace(min(mjds),max(mjds),1000)
-    spli = sinterp.splrep(mjds[filt],smoo,s=0.001)
+    spli = sinterp.splrep(mjds[filt],smoo,s=0.01)
     yint = sinterp.splev(xint,spli)
     
     plot.plot(
@@ -1852,9 +1804,6 @@ for T in range(1,4+1):
     
     
     #### Seasonal averages
-    #year_begin_mjd = np.asarray([atime.Time(datetime.datetime(2010+k,9,1,0,0)).mjd for k in range(20)])
-    #year_end_mjd   = np.asarray([atime.Time(datetime.datetime(2011+k,7,1,0,0)).mjd for k in range(20)])
-    
     mjd_season_val = []
     mjd_season_err = []
     val_season_val = []
@@ -1927,9 +1876,7 @@ fig.text(-0.02, 0.5, 'T-factors from WDR/D.Hanna',
 
 plt.tight_layout()
 
-
-# In[44]:
-
+## Table with results
 
 table_summary = []
 
@@ -1965,13 +1912,12 @@ print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_m
 
 table_summary_refl = list(table_summary)
 
-
-# In[ ]:
-
+## The corresponding S-factors (again, using single PE gains
 
 ##### S-factors
 
-v483_refs = np.asarray([  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
+v483_refs = np.asarray([\
+  [56322.5, 151.5, 1.00, 1.00, 1.00, 1.00],
   [56687.5, 151.5, 0.91, 0.98, 0.83, 0.81],
   [57052.5, 151.5, 0.72, 0.82, 0.74, 0.72],
   [57418.0, 152.0, 0.73, 0.79, 0.71, 0.76],
@@ -2007,7 +1953,8 @@ for T in range(1,4+1):
             l = np.where(gain_result[T]['mjds_average']==mjd)
             mjd_season_val.append(mjd)
             mjd_season_err.append(refl_result[T]['mjds_avererr'][k])
-            val_season_val.append((refl_result[T]['vals_average'][k]*                                   gain_result[T]['vals_average'][l])[0])
+            val_season_val.append((refl_result[T]['vals_average'][k]*\
+                                   gain_result[T]['vals_average'][l])[0])
             val_season_err.append(np.sqrt(
                 (refl_result[T]['vals_average'][k]*gain_result[T]['errs_average'][l])**2 +\
                 (refl_result[T]['errs_average'][k]*gain_result[T]['vals_average'][l])**2
@@ -2072,16 +2019,12 @@ for T in range(1,4+1):
 fig.text(0.5, 0.0, 'Date', ha='center',fontsize='large')
 fig.text(-0.02, 0.5, 'S-factors from WDR/D.Hanna + Gains from single PE', 
          va='center', rotation='vertical',fontsize='large')
-#fig.text(-0.02, 0.5, 'S-factors from WDR/D.Hanna + photostat gains (C.Adams/T.Lin)', 
-#         va='center', rotation='vertical',fontsize='large')
 plt.tight_layout()
 
 fig.savefig("SFactors_SinglePE_WDR.pdf",bbox_inches='tight')
 fig.savefig("SFactors_SinglePE_WDR.png",bbox_inches='tight',dpi=120)
 
-
-# In[ ]:
-
+## corresponding table
 
 table_summary = []
 
@@ -2091,8 +2034,6 @@ begmjd = np.append(mjdsave[0]-diffs[0]/2.,mjdsave[:-1]+diffs/2.)
 endmjd = np.append(mjdsave[:-1]+diffs/2.,mjdsave[-1]+diffs[-1]/2.)
 
 for k,mjd in enumerate(mjdsave):
-    #begmjd = gain_result[1]['mjds_average'][k]-gain_result[1]['mjds_avererr'][k]
-    #endmjd = gain_result[1]['mjds_average'][k]+gain_result[1]['mjds_avererr'][k]   
     
     season = "{0}-{1}".format(int(atime.Time(mjdsave[k]-270,format='mjd').datetime.strftime("%Y")),
                               int(atime.Time(mjdsave[k]+95,format='mjd').datetime.strftime("%Y")))
@@ -2125,8 +2066,6 @@ print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_m
 
 table_summary_sfac = list(table_summary)
 
-
-# In[ ]:
 
 print("To write down in the MSCW.sizescal.runparameter")
 
