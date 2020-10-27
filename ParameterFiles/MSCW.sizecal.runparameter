@@ -1,0 +1,97 @@
+Size scaling correction
+Version: 0.1 (prototype), 2019/12/26
+
+Basic correction:
+
+Apply size scale corrections based on s=g*T, where g is the relative gain and T the transmission of the optical part (mirror reflectivity). 
+
+Partially extracted from here:
+https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Reflectivity
+and here (more recent)
+https://veritas.sao.arizona.edu/wiki/index.php/Optical_Reflectivity_Results
+http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/190919_071142/GT_Proposal-9-16-2019.pdf
+https://veritas.sao.arizona.edu/wiki/images/f/fc/VCMSummer2019_ThroughputWDR_LinHumensky.pdf
+
+Different possibilities for measuring the baseline...
+
+transmission/reflectivity baseline for each telescope 
+(estimated from end of V5 / beginning of V6):
+TB 1 0.91
+TB 2 0.93
+TB 3 0.95
+TB 4 0.95
+
+transmission/reflectivity baseline for each telescope 
+(estimated from calibration curve in https://veritas.sao.arizona.edu/wiki/images/0/0e/IOReaderDetectorConfigV6.txt at 340nm):
+TB 1 0.80
+TB 2 0.82
+TB 3 0.84
+TB 4 0.82
+
+As of winston cone efficiency (https://veritas.sao.arizona.edu/wiki/images/0/02/CARE_VERITAS_AfterPMTUpgrade_V6_140916.txt)
+TB 1 0.97
+TB 2 1.00
+TB 3 0.98
+TB 4 0.95
+
+
+Table with average reflectivities (from David Hanna, see elog end of March 2020)
+* T V4 1.00 1.00 1.00 1.00
+* T V5 1.00 1.00 1.00 1.00
+* T V6 1.00 1.00 1.00 1.00
+* T V6_2012_2013a 0.978 1.011 0.953 0.918
+* T V6_2012_2013b 0.949 1.013 0.891 0.848
+* T V6_2013_2014a 0.919 0.990 0.835 0.838
+* T V6_2013_2014b 0.860 0.926 0.804 0.827
+* T V6_2014_2015 0.772 0.858 0.762 0.779
+* T V6_2015_2016 0.773 0.814 0.727 0.801
+* T V6_2016_2017 0.717 0.815 0.679 0.744
+* T V6_2017_2018 0.706 0.781 0.706 0.727
+* T V6_2018_2019 0.669 0.721 0.655 0.674
+* T V6_2019_2020 0.652 0.726 0.728 0.658
+
+
+Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mcgill.ca/~veritas/gain)
+  t ID T1 T2 T3 T4
+* G V4 1.00 1.00 1.00 1.00
+* G V5 1.00 1.00 1.00 1.00
+* G V6 1.00 1.00 1.00 1.00
+* G V6_2012_2013a 1.043 1.062 1.055 1.030
+* G V6_2012_2013b 1.026 1.044 1.027 1.004
+* G V6_2013_2014a 0.999 1.001 1.013 0.991
+* G V6_2013_2014b 0.974 0.981 1.005 0.970
+* G V6_2014_2015 0.955 0.990 0.990 0.949
+* G V6_2015_2016 0.948 0.981 0.982 0.944
+* G V6_2016_2017 0.942 0.983 0.986 0.957
+* G V6_2017_2018 0.993 0.990 1.000 0.989
+* G V6_2018_2019 0.940 0.972 0.978 0.975
+* G V6_2019_2020 0.965 0.995 1.040 1.006
+
+Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
+  s = T * G
+  t ID T1 T2 T3 T4
+* s V4 1.00 1.00 1.00 1.00
+* s V5 1.00 1.00 1.00 1.00
+* s V6 1.00 1.00 1.00 1.00
+* s V6_2012_2013a 0.986 1.039 0.972 0.914
+* s V6_2012_2013b 0.941 1.023 0.885 0.823
+* s V6_2013_2014a 0.887 0.958 0.818 0.803
+* s V6_2013_2014b 0.809 0.878 0.782 0.775
+* s V6_2014_2015 0.713 0.821 0.730 0.715
+* s V6_2015_2016 0.708 0.772 0.690 0.731
+* s V6_2016_2017 0.653 0.774 0.647 0.688
+* s V6_2017_2018 0.677 0.748 0.683 0.695
+* s V6_2018_2019 0.608 0.678 0.619 0.635
+* s V6_2019_2020 0.608 0.698 0.732 0.640
+
+Note: mirror swaps/jumps/breaks in T2 (2014_2015), T3 (2014_2015, 2017_2018), T4 (2013_2014).
+
+Table for 2-tel analyses (switch off 2 at a time) - not used for standard analysis
+
+* s V6_T1T2 1.00 1.00 0.00 0.00
+* s V6_T1T3 1.00 0.00 1.00 0.00
+* s V6_T1T4 1.00 0.00 0.00 1.00
+* s V6_T2T3 0.00 1.00 1.00 0.00
+* s V6_T2T4 0.00 1.00 0.00 1.00
+* s V6_T3T4 0.00 0.00 1.00 1.00
+

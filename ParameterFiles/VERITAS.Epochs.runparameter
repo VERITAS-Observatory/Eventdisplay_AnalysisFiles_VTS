@@ -5,18 +5,27 @@ V4: four-telescope array with T1 at its original position (prototype position)
 V5: four-telescope array with T1 at its current position
 V6: four-telescope array with T1 at its current position and new photomultipliers
 
+Since the reflectivity and gains may not be stable
+we need to subdivide V6 in subperiods. This affects
+the whichRunsAreArrayEpoch script. The corresponding
+reflectivities are defined in MSCW.sizecal.runparameter
+
+Naming should be always MAJOREPOCH_MINOREPOCH
+
 EPOCH <epoch name> <run min> <run max>
 Naming should be always MAJOREPOCH_MINOREPOCH
 * EPOCH V4 0  46641
 * EPOCH V5 46642 63372
  EPOCH V6 63373 999999
-* EPOCH V6_2012_2013 63373 69491
-* EPOCH V6_2013_2014 69492 74121
-* EPOCH V6_2014_2015 74122 78239
+* EPOCH V6_2012_2013a 63373 67410
+* EPOCH V6_2012_2013b 67411 70170
+* EPOCH V6_2013_2014a 70171 73235
+* EPOCH V6_2013_2014b 73236 75021
+* EPOCH V6_2014_2015 75022 78239
 * EPOCH V6_2015_2016 78240 82587
 * EPOCH V6_2016_2017 82588 86848
 * EPOCH V6_2017_2018 86849 90608
-* EPOCH V6_2018_2019 90609 93830
+* EPOCH V6_2018_2019 90609 93829
 * EPOCH V6_2019_2020 93830 999999 
 
 =================================================

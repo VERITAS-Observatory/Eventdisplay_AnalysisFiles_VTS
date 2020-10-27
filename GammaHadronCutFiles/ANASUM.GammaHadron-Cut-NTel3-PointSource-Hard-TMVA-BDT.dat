@@ -20,7 +20,7 @@ second largest image size
 (this depends on the state of the instrument)
 * sizesecondmax 900. 1.e30 V4
 * sizesecondmax 900. 1.e30 V5
-* sizesecondmax 2000. 1.e30 V6
+* sizesecondmax 1400. 1.e30 V6
 
 cut on mean emission height
 * emissionheight 0. 1.e10
@@ -36,28 +36,18 @@ T1/T2
 * arrayltrig 3 0
 T3
 * arrayltrig 4 0
-T1/T3 V4: unlikely to get a 2-tel gamma-ray event with T1 and T3
-* arrayltrig 5 0 V4 1234
-* arrayltrig 5 0 V5
-* arrayltrig 5 0 V6
+T1/T3
+* arrayltrig 5 0
 T2/T3
-* arrayltrig 6 0 V4
-T2/T3 and V5/V6: unlikely to get a 2-tel gamma-ray event with T2 and T3
-* arrayltrig 6 0 V5 1234
-* arrayltrig 6 0 V6 1234
+* arrayltrig 6 0
 T1/T2/T3
 * arrayltrig 7 1
 T4
 * arrayltrig 8 0
-T1/T4 and V4: telescopes too close to each other
-* arrayltrig 9 0 V4
-T1/T4 and V5/V6: unlikely to get a 2-tel gamma-ray event with T1 and T4
-* arrayltrig 9 0 V5 1234
-* arrayltrig 9 0 V6 1234
-T2/T4 and V4: unlikely to get a 2-tel gamma-ray event with T2 and T4
-* arrayltrig 10 0 V4 1234
-* arrayltrig 10 0 V5
-* arrayltrig 10 0 V6
+T1/T4
+* arrayltrig 9 0
+T2/T4
+* arrayltrig 10 0
 T1/T2/T4
 * arrayltrig 11 1
 T3/T4
@@ -70,7 +60,7 @@ T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.005
+* arraytheta2 -1. 0.008
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
@@ -87,9 +77,13 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 v) TMVA Cuts
 * cutselection 42 0
 
-* TMVAPARAMETER V6 BDT 0 0 3 0 1 0.25 /GammaHadron_BDTs/V6/Hard/ mva
+* TMVAPARAMETER V4 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V4/  BDT
+* TMVAPARAMETER V5 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V5/  BDT
+* TMVAPARAMETER V6 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V6/  BDT
 
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
-cut values for different epochs and its corresponding directory where to find .root and weight files
 
-* TMVA_MVACutGraph /GammaHadron_BDTs/V6/Hard/TMVACUT-20.h.root 1.e-8 0.5 10.
+* TMVA_MVACut V4 00 0.66 01 0.64 02 0.60 03 0.12 10 0.56 11 0.62 12 0.63 13 0.47 20 0.18 21 0.34 22 0.62 23 0.57 30 0.01 31 0.07 32 0.04 33 0.29
+* TMVA_MVACut V5 00 0.67 01 0.63 02 0.62 03 0.26 10 0.57 11 0.65 12 0.73 13 0.50 20 0.45 21 0.56 22 0.73 23 0.42 30 0.52 31 0.46 32 0.52 33 0.39
+* TMVA_MVACut V6 00 0.62 01 0.67 02 0.59 03 0.67 10 0.58 11 0.66 12 0.72 13 0.56 20 0.32 21 0.68 22 0.63 23 0.75 30 0.53 31 0.46 32 0.56 33 0.62
+

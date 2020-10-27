@@ -20,8 +20,7 @@ second largest image size
 (this depends on the state of the instrument)
 * sizesecondmax 400. 1.e30 V4
 * sizesecondmax 400. 1.e30 V5
-* sizesecondmax 400. 1.e30 V6
- sizesecondmax 200. 1.e30 NOT_SET
+* sizesecondmax 600. 1.e30 V6
 cut on mean emission height
 * emissionheight 0. 1.e10
 
@@ -33,35 +32,25 @@ T1
 T2
 * arrayltrig 2 0
 T1/T2
-* arrayltrig 3 1
+* arrayltrig 3 0
 T3
 * arrayltrig 4 0
-T1/T3 V4: unlikely to get a 2-tel gamma-ray event with T1 and T3
-* arrayltrig 5 0 V4 1234
-* arrayltrig 5 1 V5
-* arrayltrig 5 1 V6
+T1/T3
+* arrayltrig 5 0
 T2/T3
-* arrayltrig 6 1 V4
-T2/T3 and V5/V6: unlikely to get a 2-tel gamma-ray event with T2 and T3
-* arrayltrig 6 0 V5 1234
-* arrayltrig 6 0 V6 1234
+* arrayltrig 6 0
 T1/T2/T3
 * arrayltrig 7 1
 T4
 * arrayltrig 8 0
-T1/T4 and V4: telescopes too close to each other
-* arrayltrig 9 0 V4
-T1/T4 and V5/V6: unlikely to get a 2-tel gamma-ray event with T1 and T4
-* arrayltrig 9 0 V5 1234
-* arrayltrig 9 0 V6 1234
-T2/T4 and V4: unlikely to get a 2-tel gamma-ray event with T2 and T4
-* arrayltrig 10 0 V4 1234
-* arrayltrig 10 1 V5
-* arrayltrig 10 1 V6
+T1/T4
+* arrayltrig 9 0
+T2/T4
+* arrayltrig 10 0
 T1/T2/T4
 * arrayltrig 11 1
 T3/T4
-* arrayltrig 12 1
+* arrayltrig 12 0
 T1/T3/T4
 * arrayltrig 13 1
 T2/T3/T4
@@ -94,6 +83,6 @@ v) TMVA Cuts
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
-* TMVA_MVACut V4 00 0.61 01 0.61 02 0.61 03 0.61 10 0.60 11 0.60 12 0.60 13 0.60 20 0.57 21 0.57 22 0.57 23 0.57 30 0.46 31 0.46 32 0.46 33 0.46
-* TMVA_MVACut V5 00 0.60 01 0.60 02 0.60 03 0.60 10 0.60 11 0.60 12 0.60 13 0.59 20 0.57 21 0.57 22 0.57 23 0.57 30 0.46 31 0.46 32 0.46 33 0.45
-* TMVA_MVACut V6 00 0.609 01 0.608 02 0.607 03 0.605 10 0.581 11 0.580 12 0.580 13 0.577 20 0.504 21 0.504 22 0.504 23 0.502 30 0.518 31 0.518 32 0.518 33 0.518
+* TMVA_MVACut V4 00 0.64 01 0.54 02 0.51 03 0.08 10 0.54 11 0.60 12 0.62 13 0.45 20 0.16 21 0.31 22 0.59 23 0.54 30 0.01 31 0.07 32 0.04 33 0.29
+* TMVA_MVACut V5 00 0.65 01 0.54 02 0.53 03 0.23 10 0.54 11 0.62 12 0.71 13 0.48 20 0.42 21 0.53 22 0.69 23 0.39 30 0.52 31 0.46 32 0.52 33 0.32
+* TMVA_MVACut V6 00 0.61 01 0.65 02 0.55 03 0.64 10 0.55 11 0.64 12 0.70 13 0.54 20 0.29 21 0.64 22 0.42 23 0.62 30 0.46 31 0.37 32 0.48 33 0.52

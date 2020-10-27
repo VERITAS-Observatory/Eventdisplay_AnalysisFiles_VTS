@@ -3,8 +3,6 @@ cut values for quality and gamma hadron cuts
 
 Moderate cuts (BDT preselection)
 
-Should not be used for standard data analysis (sky maps, etc)
-
 ========================================================
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
