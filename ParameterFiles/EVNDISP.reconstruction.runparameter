@@ -120,7 +120,7 @@ Set 0 = default reconstruction method
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
-* -1 MCONLY
+-1 MCONLY
 ======== IMPORTANT IMPORTANT ============
 
 Set 1 = (placeholder, as this is a no-disp file)
