@@ -1,6 +1,6 @@
 # Eventdisplay Analysis Files - version v485
 
-**do not use the master for anything**
+**pre-release - under development**
 
 Configuration and runparameter files for Eventdisplay
 
