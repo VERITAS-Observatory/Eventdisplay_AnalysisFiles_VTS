@@ -9,7 +9,7 @@
 command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting."; exit 1; }
 
 # Eventdisplay version
-VERSION="v483"
+VERSION="v483b"
 
 # List of directories to be uploaded
 LDIR="GammaHadron_BDTs Tables RadialAcceptances"

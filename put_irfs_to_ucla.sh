@@ -4,7 +4,7 @@
 # - one tar package per directory
 # 
 # prepare by hand the upload directory:
-# bbftp -u bbftp -V -S -m -p 12 -e "mkdir /veritas/upload/EVNDISP/v483" gamma1.astro.ucla.edu
+# bbftp -u bbftp -V -S -m -p 12 -e "mkdir /veritas/upload/EVNDISP/v483b" gamma1.astro.ucla.edu
 #
 
 # make sure that bbftp is installed
