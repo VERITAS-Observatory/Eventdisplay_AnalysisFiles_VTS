@@ -27,7 +27,7 @@ do
 done
 
 # Effective areas for different epochs
-for F in nominalHV RedHV
+for F in nominalHV
 do
     for I in V6_2012_2013a V6_2012_2013b V6_2013_2014a V6_2013_2014b V6_2014_2015 V6_2015_2016 V6_2016_2017 V6_2017_2018 V6_2018_2019 V6_2019_2020
     do
