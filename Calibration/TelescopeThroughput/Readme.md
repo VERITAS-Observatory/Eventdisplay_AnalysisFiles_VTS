@@ -1,8 +1,6 @@
 # How to generate g-, T- and S- factors for ED
 
-> Last update: 2020/07/13
-
-
+> Last update: 2021/03/01
 
 S- factors (or what we call total throughput correction) are obtained from two components: gains and reflectivity.
 
@@ -24,13 +22,12 @@ As of July 2020 Colin Adams and the McGill group maintains this file updated. Pi
 ## Reflectivity
 
 Reflectivity values are more tricky. They are compiled (as of July 2020) by David Hanna and stored in 
-files with only one column and values, errors for the 4 telescopes. Filenames are
-averages_MM_Measurement.dat, where MM is the month since beginning of data taking and Measurement is ?? (note for myself: check this)
-
-All these files are packed into a tarball that you have to get from David Hanna (he names them spectra_and_reflec.tar) and untar it 
-into the ReflectivityFromDHanna directory.
+files with only one column: number of days since 2014-1-1, reflectivities, errors. Filenames are
+tracknums-T{}.dat, where T{} is the telescope number. Move these files into the ReflectivityFromDHanna directory
+(create if necessary).
 
 ## Computation of correction factors.
 
 Once you have the `processed_gain_all_runs_no_CFD.csv` file (gains) and `ReflectivityFromDHanna` directory (WDR), you can proceed 
-to run the script `get_throughput_v483.py` with Python3. It may happen that you need to modify slightly the script for newer periods of time (note to myself: check this and perhaps prepare for the next 2-3 years).
+to run the script `get_throughput.py` with Python3 (you may need a few python modules, you can install them with pip / conda). 
+It may happen that you need to modify slightly the script for newer periods of time (note to myself: check this and perhaps prepare for the next 2-3 years).

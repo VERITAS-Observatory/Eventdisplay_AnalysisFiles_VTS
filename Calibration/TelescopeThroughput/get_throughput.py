@@ -60,6 +60,47 @@ def middle(array):
     return (np.min(array)+np.max(array))/2.
 
 
+#########################################
+## Definition of seasons             ####
+#########################################
+
+year_begin_mjd = atime.Time(np.asarray(\
+    [datetime.datetime(2010,9,1,0,0),
+     datetime.datetime(2011,9,1,0,0),
+     datetime.datetime(2012,7,1,0,0),
+     datetime.datetime(2013,3,1,0,0),
+     datetime.datetime(2013,11,1,0,0),
+     datetime.datetime(2014,4,1,0,0),
+     datetime.datetime(2014,10,1,0,0),
+     datetime.datetime(2015,9,1,0,0),
+     datetime.datetime(2016,9,1,0,0),
+     datetime.datetime(2017,9,1,0,0),
+     datetime.datetime(2018,9,1,0,0),
+     datetime.datetime(2019,9,1,0,0),
+     datetime.datetime(2020,9,1,0,0),
+     datetime.datetime(2021,9,1,0,0),
+     datetime.datetime(2022,9,1,0,0),
+     ])).mjd
+
+year_end_mjd = atime.Time(np.asarray(\
+    [datetime.datetime(2011,7,1,0,0),
+     datetime.datetime(2012,7,1,0,0),
+     datetime.datetime(2013,4,1,0,0),
+     datetime.datetime(2013,12,1,0,0),
+     datetime.datetime(2014,5,1,0,0),
+     datetime.datetime(2014,12,1,0,0),
+     datetime.datetime(2015,7,1,0,0),
+     datetime.datetime(2016,7,1,0,0),
+     datetime.datetime(2017,7,1,0,0),
+     datetime.datetime(2018,7,1,0,0),
+     datetime.datetime(2019,7,1,0,0),
+     datetime.datetime(2020,7,1,0,0),
+     datetime.datetime(2021,7,1,0,0),
+     datetime.datetime(2022,7,1,0,0),
+     datetime.datetime(2023,7,1,0,0),
+     ])).mjd
+
+
 ##########################################################
 # Reference reflectivities from Oct 17 2011 (Jeff Grube) #
 ##########################################################
@@ -316,7 +357,9 @@ for d in sorted(glob.glob("20*")):
     MRef = []
     for T in range(1,4+1):
         TR = np.loadtxt("{0}/T{1}.csv".format(d,T),delimiter=',')
-        MRef.append(mean_reflectivity(TR,weights=[Cherenkov])*                         mean_reflectivity(TR,weights=[Bfilter])*                         0.01/mean_reflectivity(RFCRV[T],weights=[Cherenkov]))
+        MRef.append(mean_reflectivity(TR,weights=[Cherenkov])*\
+                    mean_reflectivity(TR,weights=[Bfilter])*\
+                    0.01/mean_reflectivity(RFCRV[T],weights=[Cherenkov]))
     
     
     print("{0}, {1:.2f}, {2:.2f}, {3:.2f}, {4:.2f}".format(d,MRef[0],MRef[1],MRef[2],MRef[3]))
@@ -341,7 +384,9 @@ def filter_to_number(f):
     return d[f]
 
 t_factors_raw = np.loadtxt("Parsed_reflectivity_DH.csv.txt",
-                          skiprows=1,converters={0: datestr2num, 3:fill_empty, 4:fill_empty, 5: filter_to_number}, delimiter=',')
+                           skiprows=1,
+                           converters={0: datestr2num, 3:fill_empty, 4:fill_empty, 5: filter_to_number}, 
+                           delimiter=',')
 
 #########################################
 ## Calculation of T, g and S factors ####
@@ -350,39 +395,6 @@ t_factors_raw = np.loadtxt("Parsed_reflectivity_DH.csv.txt",
 print("###########################################")
 print(" Calculation of T- g- and S- factors below ")
 print(" ----------------------------------------- ")
-
-## Seasonal averages 
-## Note that these values are defined pretty much by hand. 
-
-year_begin_mjd = atime.Time(np.asarray(\
-    [datetime.datetime(2010,9,1,0,0),
-     datetime.datetime(2011,9,1,0,0),
-     datetime.datetime(2012,7,1,0,0),
-     datetime.datetime(2013,3,1,0,0),
-     datetime.datetime(2013,11,1,0,0),
-     datetime.datetime(2014,4,1,0,0),
-     datetime.datetime(2014,10,1,0,0),
-     datetime.datetime(2015,9,1,0,0),
-     datetime.datetime(2016,9,1,0,0),
-     datetime.datetime(2017,9,1,0,0),
-     datetime.datetime(2018,9,1,0,0),
-     datetime.datetime(2019,9,1,0,0),
-     ])).mjd
-
-year_end_mjd = atime.Time(np.asarray(\
-    [datetime.datetime(2011,7,1,0,0),
-     datetime.datetime(2012,7,1,0,0),
-     datetime.datetime(2013,4,1,0,0),
-     datetime.datetime(2013,12,1,0,0),
-     datetime.datetime(2014,5,1,0,0),
-     datetime.datetime(2014,12,1,0,0),
-     datetime.datetime(2015,7,1,0,0),
-     datetime.datetime(2016,7,1,0,0),
-     datetime.datetime(2017,7,1,0,0),
-     datetime.datetime(2018,7,1,0,0),
-     datetime.datetime(2019,7,1,0,0),
-     datetime.datetime(2020,7,1,0,0),
-     ])).mjd
 
 
 ##### T-factors
@@ -755,12 +767,12 @@ def date_to_mjd_gains(t):
     
 
 pstat_gains1 = np.loadtxt("processed_gain_all_runs_no_CFD.csv", 
-                      skiprows=1, delimiter=',',
+                      skiprows=1, delimiter=',',\
                       converters={4:date_to_mjd_gains,5:obs_type_gains})
 
 
 pstat_gains2 = np.loadtxt("Gain_all_normal_runs_2012_to_2019_remove_duplicate.csv", 
-                      skiprows=1, delimiter=',',usecols=(0,1,2,3,5,6),
+                      skiprows=1, delimiter=',',usecols=(0,1,2,3,5,6),\
                       converters={5:date_to_mjd_gains,6:get_zero})
 
 filt2g = pstat_gains2[:,0]<pstat_gains1[0][0]
@@ -840,7 +852,10 @@ for T in range(1,4+1):
     vals = []
     errs = []
     
-    filt = ((raw_errs/raw_vals) < 0.2)*            (raw_vals > 0)*(raw_vals < 3)*            (raw_vals<np.median(raw_vals)+0.5*np.std(raw_vals))*            (raw_vals>np.median(raw_vals)-0.5*np.std(raw_vals))
+    filt = ((raw_errs/raw_vals) < 0.2)*\
+            (raw_vals > 0)*(raw_vals < 3)*\
+            (raw_vals<np.median(raw_vals)+0.5*np.std(raw_vals))*\
+            (raw_vals>np.median(raw_vals)-0.5*np.std(raw_vals))
     
     raw_mjds = raw_mjds[filt]
     raw_vals = raw_vals[filt]
@@ -848,7 +863,8 @@ for T in range(1,4+1):
         
     for mjd in np.unique(sorted(raw_mjds)):
         vals.append(np.mean(raw_vals[raw_mjds==mjd]))
-        errs.append(np.mean(raw_errs[raw_mjds==mjd]) + np.std(raw_vals[raw_mjds==mjd])/np.sum(raw_mjds==mjd))
+        errs.append(np.mean(raw_errs[raw_mjds==mjd]) +\
+                    np.std(raw_vals[raw_mjds==mjd])/np.sum(raw_mjds==mjd))
         mjds.append(mjd)
     
     mjds = np.asarray(mjds)
@@ -917,34 +933,6 @@ for T in range(1,4+1):
         label='spline'
     )
     
-    #### Seasonal averages
-    year_begin_mjd = atime.Time(np.asarray(        [datetime.datetime(2010,9,1,0,0),
-         datetime.datetime(2011,9,1,0,0),
-         datetime.datetime(2012,7,1,0,0),
-         datetime.datetime(2013,3,1,0,0),
-         datetime.datetime(2013,11,1,0,0),
-         datetime.datetime(2014,4,1,0,0),
-         datetime.datetime(2014,10,1,0,0),
-         datetime.datetime(2015,9,1,0,0),
-         datetime.datetime(2016,9,1,0,0),
-         datetime.datetime(2017,9,1,0,0),
-         datetime.datetime(2018,9,1,0,0),
-         datetime.datetime(2019,9,1,0,0),
-         ])).mjd
-    
-    year_end_mjd = atime.Time(np.asarray(        [datetime.datetime(2011,7,1,0,0),
-         datetime.datetime(2012,7,1,0,0),
-         datetime.datetime(2013,4,1,0,0),
-         datetime.datetime(2013,12,1,0,0),
-         datetime.datetime(2014,5,1,0,0),
-         datetime.datetime(2014,12,1,0,0),
-         datetime.datetime(2015,7,1,0,0),
-         datetime.datetime(2016,7,1,0,0),
-         datetime.datetime(2017,7,1,0,0),
-         datetime.datetime(2018,7,1,0,0),
-         datetime.datetime(2019,7,1,0,0),
-         datetime.datetime(2020,7,1,0,0),
-         ])).mjd
    
     # seasonal values 
     mjd_season_val = []
@@ -1239,6 +1227,8 @@ for k,mjd in enumerate(mjdsave):
             table_summary[-1].append('{0:.3f}'.format(resulting_factors[T]['vals_average'][k]))
             table_summary[-1].append('{0:.3f}'.format(resulting_factors[T]['errs_average'][k]))
 
+
+print('#### S factors (photostat gains + WDR)')
 print(tabulate.tabulate(table_summary,headers=['season','mjdav','width','range_mjd',
                                                'S[1]','err[1]','S[2]','err[2]',
                                                'S[3]','err[3]','S[4]','err[4]']))
@@ -1263,6 +1253,13 @@ for l in table_summary_sfac:
 
 # Do not continue running the single PE values (comment the next line to show it)
 exit(0)
+
+
+
+
+
+
+
 
 ##########################
 #### GAINs from single PE
@@ -1440,37 +1437,6 @@ for T in range(1,4+1):
         color='C{0}'.format(T-1),
         label='spline'
     )
-    
-    #### Seasonal averages
-    year_begin_mjd = atime.Time(np.asarray(\
-        [datetime.datetime(2010,9,1,0,0),
-         datetime.datetime(2011,9,1,0,0),
-         datetime.datetime(2012,7,1,0,0),
-         datetime.datetime(2013,3,1,0,0),
-         datetime.datetime(2013,11,1,0,0),
-         datetime.datetime(2014,4,1,0,0),
-         datetime.datetime(2014,10,1,0,0),
-         datetime.datetime(2015,9,1,0,0),
-         datetime.datetime(2016,9,1,0,0),
-         datetime.datetime(2017,9,1,0,0),
-         datetime.datetime(2018,9,1,0,0),
-         datetime.datetime(2019,9,1,0,0),
-         ])).mjd
-    
-    year_end_mjd = atime.Time(np.asarray(\
-        [datetime.datetime(2011,7,1,0,0),
-         datetime.datetime(2012,7,1,0,0),
-         datetime.datetime(2013,4,1,0,0),
-         datetime.datetime(2013,12,1,0,0),
-         datetime.datetime(2014,5,1,0,0),
-         datetime.datetime(2014,12,1,0,0),
-         datetime.datetime(2015,7,1,0,0),
-         datetime.datetime(2016,7,1,0,0),
-         datetime.datetime(2017,7,1,0,0),
-         datetime.datetime(2018,7,1,0,0),
-         datetime.datetime(2019,7,1,0,0),
-         datetime.datetime(2020,7,1,0,0),
-         ])).mjd
     
     mjd_season_val = []
     mjd_season_err = []
