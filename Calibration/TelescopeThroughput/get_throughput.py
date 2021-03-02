@@ -663,7 +663,8 @@ for T in range(1,4+1):
         zorder=5
     )
     
-    plot.set_ylim(0.6,1.05)
+    plot.set_ylim(0.5,1.05)
+    plot.set_yticks(np.arange(0.5,1.15,0.1))
     plot.legend(fontsize='xx-small',ncol=1)
     plot.grid(lw=0.5,ls='dotted')
     plot.set_title("T{0}".format(T))
@@ -978,6 +979,7 @@ for T in range(1,4+1):
     )
     
     plot.set_ylim(0.7,1.12)
+    plot.set_yticks(np.arange(0.5,1.15,0.1))
     plot.legend(fontsize='xx-small',ncol=3,loc=4)
     plot.grid(lw=0.5,ls='dotted')
     plot.set_title("T{0}".format(T))
@@ -1066,17 +1068,18 @@ fig   = plt.figure(figsize=(5,5),dpi=150)
 
 resulting_factors = dict()
 
+xint = np.linspace(
+    max([table_summary_gain[0][1]-table_summary_gain[0][2]/2.,table_summary_refl[0][1]-table_summary_refl[0][2]/2.]),
+    min([table_summary_gain[-1][1]+table_summary_gain[0][2]/2.,table_summary_refl[-1][1]+table_summary_refl[-1][1]/2.]),
+    1000
+)
+
 for T in range(1,4+1):
     
     plot  = fig.add_subplot(2,2,T)
     
 
     ### first way: make interpolations to obtain a regularly space fake dataset then multiply one-by-one.
-    xint = np.linspace(
-        atime.Time(datetime.datetime(2012,9,1,0,0)).mjd,
-        atime.Time(datetime.datetime(2020,3,1,0,0)).mjd,
-        1000
-    )
     refl = sinterp.splev(xint,refl_result[T]['spline'])
     gain = sinterp.splev(xint,gain_result[T]['spline'])
     tota = refl*gain
@@ -1175,7 +1178,8 @@ for T in range(1,4+1):
         label='spline'
     )
     
-    plot.set_ylim(0.55,1.1)
+    plot.set_ylim(0.45,1.1)
+    plot.set_yticks(np.arange(0.5,1.15,0.1))
     plot.legend(fontsize='x-small',ncol=1)
     plot.grid(lw=0.5,ls='dotted')
     plot.set_title("T{0}".format(T))
@@ -1481,6 +1485,7 @@ for T in range(1,4+1):
     )
     
     plot.set_ylim(0.7,1.12)
+    plot.set_yticks(np.arange(0.7,1.15,0.1))
     plot.legend(fontsize='xx-small',ncol=3,loc=4)
     plot.grid(lw=0.5,ls='dotted')
     plot.set_title("T{0}".format(T))
@@ -1815,7 +1820,8 @@ for T in range(1,4+1):
         zorder=5
     )
     
-    plot.set_ylim(0.6,1.05)
+    plot.set_ylim(0.5,1.05)
+    plot.set_yticks(np.arange(0.5,1.15,0.1))
     plot.legend(fontsize='xx-small',ncol=1)
     plot.grid(lw=0.5,ls='dotted')
     plot.set_title("T{0}".format(T))
@@ -1896,15 +1902,12 @@ fig   = plt.figure(figsize=(5,5),dpi=150)
 
 resulting_factors = dict()
 
+
+
 for T in range(1,4+1):
     
     plot  = fig.add_subplot(2,2,T)
     
-    xint = np.linspace(
-        atime.Time(datetime.datetime(2012,9,1,0,0)).mjd,
-        atime.Time(datetime.datetime(2020,3,1,0,0)).mjd,
-        1000
-    )
     refl = sinterp.splev(xint,refl_result[T]['spline'])
     gain = sinterp.splev(xint,gain_result[T]['spline'])
     tota = refl*gain
@@ -1973,7 +1976,8 @@ for T in range(1,4+1):
         label='spline'
     )
     
-    plot.set_ylim(0.55,1.1)
+    plot.set_ylim(0.45,1.1)
+    plot.set_yticks(np.arange(0.5,1.15,0.1))
     plot.legend(fontsize='x-small',ncol=1)
     plot.grid(lw=0.5,ls='dotted')
     plot.set_title("T{0}".format(T))
