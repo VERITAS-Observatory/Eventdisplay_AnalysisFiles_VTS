@@ -43,6 +43,3 @@ Calibration
 DetectorGeometry
 - configuration files for pixel and telescope positions
 
-Frogs
-- Frogs parameter files (experimental)
-
