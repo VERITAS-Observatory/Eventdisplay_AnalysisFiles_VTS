@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Moderate cuts (box cuts)
+Soft cuts (box cuts)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -13,9 +13,8 @@ distance of core position to telescopes [m]
 * arraycore -1. 350.
 
 size of the camera [deg], all events with direction
-outside of that intervall are ignored
+outside of intervall are ignored
 * cameraedge -1. 2.00
-
 second largest image size
 * sizesecondmax 200. 1.e30 V4
 * sizesecondmax 200. 1.e30 V5
