@@ -1,6 +1,6 @@
 # Eventdisplay Analysis Files - version v485
 
-**pre-release - under development**
+**pre-release** 
 
 Configuration and runparameter files for Eventdisplay
 
@@ -13,8 +13,7 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_A
 ./get_irfs_from_ucla.sh
 ```
 
-Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v483
-Further information on this release: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v500
+Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v485
 
 Following directories and files are available:
 
