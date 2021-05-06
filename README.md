@@ -1,6 +1,6 @@
-# Eventdisplay Analysis Files - version vX
+# Eventdisplay Analysis Files - version v485
 
-**do not use the master for anything**
+**pre-release** 
 
 Configuration and runparameter files for Eventdisplay
 
@@ -13,8 +13,7 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_A
 ./get_irfs_from_ucla.sh
 ```
 
-Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v483
-Further information on this release: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v500
+Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v485
 
 Following directories and files are available:
 
@@ -42,7 +41,4 @@ Calibration
 
 DetectorGeometry
 - configuration files for pixel and telescope positions
-
-Frogs
-- Frogs parameter files (experimental)
 

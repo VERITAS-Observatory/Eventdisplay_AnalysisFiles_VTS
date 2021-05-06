@@ -1,6 +1,8 @@
 low gain calibration
 ====================================
 
+* VERSION5
+
 File with low gain pedestals/ped vars per FADC board/channel
 * LOWGAINPEDFILE LowGainPedestals.lped
 
