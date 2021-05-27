@@ -13,7 +13,7 @@ File containing time mask details
 (this allows to exclude certain time intervals from 
 the analysis)
  TIMEMASKFILE <file name of time mask file>
-* TIMEMASKFILE timemask.dat
+* TIMEMASKFILE ANASUM.timemask.dat
 
 Exclusion regions
 -----------------
@@ -22,7 +22,7 @@ Exclusion region around sky map centre
 (should be adjust to brightness of the gamma-ray source
 and the cuts applied)
  REGIONTOEXCLUDE <x-derot [deg]> <y-derot [deg]> <radius of exlusion region [deg]>
-* REGIONTOEXCLUDE 0. 0. 0.5
+* REGIONTOEXCLUDE 0. 0. 0.35
 
 User defined regions in the sky to exclude from background 
 estimation (e.g. because of other gamma-ray sources in the
@@ -75,7 +75,8 @@ Minimum brightness of stars to be added to the list of exclusion regions and
 radius of region to be excluded from background calculation around bright star (<=0 to switch off)
  BRIGHTSTARSETTINGS <min magnitude> <radius of exlusion region [deg]> <band (B or V)>
  BRIGHTSTARSETTINGS 7 0.15 B
-* BRIGHTSTARSETTINGS 6 0.10 B
+ BRIGHTSTARSETTINGS 8 0.30 B
+* BRIGHTSTARSETTINGS 6 0.30 B
  BRIGHTSTARSETTINGS 4 0.35 B
 
 Sky maps
@@ -124,9 +125,6 @@ spectrum)
 
 Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
-Use effective areas vs MC or REC energy (set to 'MC' or 'REC')
-(default=REC)
-* ENERGYEFFECTIVEAREAS REC
 Dead time calculation
 (0=using L1 scalars (default), 
  1=using tdiff distributions (not as accurate as L1 scalar method))
@@ -137,14 +135,3 @@ Rate plots
 
 time intervalls for rate plots and short term histograms [minutes]
 * RATEINTERVALLLENGTH 4.
-
-Output options
---------------
-
-write tree with all events to anasum output file
-(data_on and data_off trees)
-0 = don't fill tree
-1 = fill all events
-2 = fill events after direction cut only 
-(data_off contains events in off regions)
-* WRITEEVENTTREE 2

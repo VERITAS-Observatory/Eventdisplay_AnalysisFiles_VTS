@@ -9,11 +9,7 @@
 VERSION="v485"
 
 # list of cuts
-CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT"
-CLISTRV="NTel2-PointSource-SuperSoft"
-
-# List of directories to be uploaded
-LDIR="Tables RadialAcceptances"
+CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-PointSource-SuperSoft NTel2-PointSource-Soft"
 
 # Radial acceptances
 D="RadialAcceptances"
