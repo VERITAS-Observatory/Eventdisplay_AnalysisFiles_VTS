@@ -10,6 +10,7 @@ VERSION="v485"
 
 # list of cuts
 CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-PointSource-SuperSoft NTel2-PointSource-Soft"
+CLISTNV="NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
 
 # Radial acceptances
 D="RadialAcceptances"
