@@ -18,5 +18,6 @@ TARLIST=$(find . -maxdepth 1 -name "*.tar")
 
 for T in ${TARLIST}
 do
+   echo ${T}
    bbftp -u bbftp -V -S -m -p 12 -e "put ${T} /veritas/upload/EVNDISP/${VERSION}/${T}" gamma1.astro.ucla.edu
 done
