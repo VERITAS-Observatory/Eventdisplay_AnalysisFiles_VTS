@@ -102,7 +102,7 @@ Set 0 = default reconstruction methods / quality cuts
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
-(used only for MC)
+(used only for MC if *)
 * -1 MCONLY
 ======== IMPORTANT IMPORTANT ============
 
