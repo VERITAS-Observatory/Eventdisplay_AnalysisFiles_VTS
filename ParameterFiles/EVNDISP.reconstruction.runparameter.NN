@@ -96,7 +96,7 @@ Set 0 = default reconstruction methods / quality cuts
 * -1 NTUBES    5    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -118,7 +118,7 @@ Set 1 = T1 off default reconstruction method
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -131,7 +131,7 @@ Set 2 = T2 off default reconstruction method
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -144,7 +144,7 @@ Set 3 = T3 off default reconstruction method
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -157,7 +157,7 @@ Set 4 = T4 off default reconstruction method
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
