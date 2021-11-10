@@ -1,4 +1,4 @@
-# Eventdisplay Analysis Files - version v485
+# Eventdisplay Analysis Files - version v485c
 
 **pre-release** 
 
@@ -42,3 +42,9 @@ Calibration
 DetectorGeometry
 - configuration files for pixel and telescope positions
 
+# Technical
+
+For version changes, the following files need to be changed:
+- [README.md](README.md)
+- [get_irfs_from_ucla.sh](get_irfs_from_ucla.sh) 
+- [put_irfs_to_ucla.sh](put_irfs_to_ucla.sh)
