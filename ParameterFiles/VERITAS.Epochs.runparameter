@@ -26,7 +26,13 @@ Naming should be always MAJOREPOCH_MINOREPOCH
 * EPOCH V6_2016_2017 82588 86848
 * EPOCH V6_2017_2018 86849 90608
 * EPOCH V6_2018_2019 90609 93829
-* EPOCH V6_2019_2020 93830 999999 
+(ends with end of Summer 2019)
+* EPOCH V6_2019_2019s 93830 94573
+(from here: alignement with summer/winter epochs)
+* EPOCH V6_2019_2020w 94574 96041
+* EPOCH V6_2020_2020s 96042 96534
+(ends nominally with run 98542)
+* EPOCH V6_2020_2021w 96535 999999
 
 =================================================
 
