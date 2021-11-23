@@ -53,12 +53,20 @@ v485-auxv02 | Eventdisplay version v485c | IRFs for V4 including plate scale cor
 
 ## v485-auxv02
 
-Description | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
+V4 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
 V4 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485b (plate scale corrections) | - DONE |
 V4 Summer | 0-65 deg | 0-2 deg | 75-750 MHz | v485b (plate scale corrections) | - DONE |
+
+
+V5 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
+:---:|:---:|:---:|:---:|:---:|:---:
 V5 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485 | identical with v485-auxv01 DONE |
 V5 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485 | identical with v485-auxv01 DONE |
+
+
+V6 Winter Epoch (nominal HV) | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
+:---:|:---:|:---:|:---:|:---:|:---:
 V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
 V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE | 
 V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
@@ -69,6 +77,29 @@ V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-a
 V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
 V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
 
+V6 Summer Epoch (nominal HV) | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
+:---:|:---:|:---:|:---:|:---:|:---:
+V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE | 
+V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
+
+V6 Winter Epoch (red HV) | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
+:---:|:---:|:---:|:---:|:---:|:---:
+V6 2012_2013a | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2012_2013b | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE | 
+V6 2013_2014a | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2013_2014b | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2014_2015 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2015_2016 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2016_2017 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2017_2018 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
+V6 2018_2019 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
 
 # Technical
 
