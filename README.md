@@ -1,4 +1,4 @@
-# Eventdisplay Analysis Files - version v485c
+# Eventdisplay Analysis Files - version v485
 
 **pre-release** 
 
@@ -41,6 +41,24 @@ Calibration
 
 DetectorGeometry
 - configuration files for pixel and telescope positions
+
+# v485 History
+
+**Version** | **Eventdisplay version** | **Changes** |
+:---:|:---:|:---:
+v485-auxv01 | Eventdisplay version v485a,b | IRFs for V6 period for all off-axis angles and with improved MC statistics |
+v485-auxv02 | Eventdisplay version v485c | IRFs for V4 including plate scale correction; IRFs for V6 with extended zenith angle range; IRFs for V6 with new throughput correction epochs |
+
+# IRF Description
+
+## v485-auxv02
+
+**File** | Zenith Range | NSB Range | Description | 
+:---:|:---:|:---:|:---:
+table-v485-auxv01-GRISU-ATM21-V4-GEO.root | 0-60 deg | | V4 Winter |
+table-v485-auxv01-GRISU-ATM22-V4-GEO.root | 0-60 deg | | V4 Summer | 
+
+
 
 # Technical
 
