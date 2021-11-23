@@ -1,6 +1,6 @@
-# Eventdisplay Analysis Files - version v485
+# Eventdisplay Analysis Files - version v485 (latest: auxv02)
 
-**pre-release** 
+**in development - v485-auxv02-dev1**
 
 Configuration and runparameter files for Eventdisplay
 
