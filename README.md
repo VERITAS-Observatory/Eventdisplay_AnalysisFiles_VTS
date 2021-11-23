@@ -53,12 +53,12 @@ v485-auxv02 | Eventdisplay version v485c | IRFs for V4 including plate scale cor
 
 ## v485-auxv02
 
-**File** | Zenith Range | Wobble Offset | NSB Range | Description | Eventdisplay version (production) | Comment |
-:---:|:---:|:---:|:---:|:---:|:---:
+File | Zenith Range | Wobble Offset | NSB Range | Description | Eventdisplay version (production) | Comment |
+:---:|:---:|:---:|:---:|:---:|:---:|:---:
 table-v485-auxv01-GRISU-ATM21-V4-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V4 Winter | v485b (plate scale corrections) | - |
 table-v485-auxv01-GRISU-ATM22-V4-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V4 Summer | v485b (plate scale corrections) | - |
-table-v485-auxv01-GRISU-ATM21-V5-GEO.root | 0-60 deg | 0-2 deg | 75-750 MHz | V4 Winter | v485 | identical with v485-auxv01 |
-table-v485-auxv01-GRISU-ATM22-V5-GEO.root | 0-60 deg | 0-2 deg | 75-750 MHz | V4 Summer | v485 | identical with v485-auxv01 |
+table-v485-auxv01-GRISU-ATM21-V5-GEO.root | 0-60 deg | 0-2 deg | 75-750 MHz | V5 Winter | v485 | identical with v485-auxv01 |
+table-v485-auxv01-GRISU-ATM22-V5-GEO.root | 0-60 deg | 0-2 deg | 75-750 MHz | V5 Summer | v485 | identical with v485-auxv01 |
 
 
 # Technical
