@@ -1,5 +1,5 @@
-Size scaling correction
-Version: 0.1 (prototype), 2019/12/26
+Throughput corrections
+(file was called earlier MSCW.sizecal.runparameter)
 
 Basic correction:
 
@@ -11,6 +11,9 @@ and here (more recent)
 https://veritas.sao.arizona.edu/wiki/index.php/Optical_Reflectivity_Results
 http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/190919_071142/GT_Proposal-9-16-2019.pdf
 https://veritas.sao.arizona.edu/wiki/images/f/fc/VCMSummer2019_ThroughputWDR_LinHumensky.pdf
+
+Most recent values are from:
+https://veritas.sao.arizona.edu/wiki/Flux_Calibration_/_Energy_scale_2020
 
 Different possibilities for measuring the baseline...
 
@@ -47,8 +50,10 @@ Table with average reflectivities (from David Hanna, see elog end of March 2020)
 * T V6_2016_2017 0.771 0.850 0.733 0.790
 * T V6_2017_2018 0.720 0.815 0.733 0.737
 * T V6_2018_2019 0.685 0.760 0.706 0.692
-* T V6_2019_2020 0.664 0.742 0.757 0.681
-
+* T V6_2019_2019s 0.666 0.748 0.727 0.672
+* T V6_2019_2020w 0.667 0.747 0.785 0.682
+* T V6_2020_2020s 0.659 0.727 0.764 0.685
+* T V6_2020_2021w 0.647 0.712 0.781 0.665
 
 Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mcgill.ca/~veritas/gain)
   t ID T1 T2 T3 T4
@@ -64,7 +69,10 @@ Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mc
 * G V6_2016_2017 0.911 0.951 0.953 0.925
 * G V6_2017_2018 0.960 0.958 0.967 0.956
 * G V6_2018_2019 0.909 0.940 0.945 0.942
-* G V6_2019_2020 0.932 0.962 1.005 0.973
+* G V6_2019_2019s 0.915 0.881 0.915 0.967
+* G V6_2019_2020w 0.944 0.971 1.017 0.976
+* G V6_2020_2020s 0.936 0.928 1.003 1.003
+* G V6_2020_2021w 0.942 0.930 1.016 1.014
 
 Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
   s = T * G
@@ -82,6 +90,10 @@ Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
 * s V6_2017_2018 0.692 0.781 0.709 0.705
 * s V6_2018_2019 0.622 0.714 0.667 0.652
 * s V6_2019_2020 0.619 0.714 0.761 0.662
+* s V6_2019_2019s 0.609 0.659 0.665 0.650
+* s V6_2019_2020w 0.630 0.725 0.798 0.666
+* s V6_2020_2020s 0.616 0.675 0.766 0.686
+* s V6_2020_2021w 0.609 0.662 0.793 0.674
 
 Note: mirror swaps/jumps/breaks in T2 (2014_2015), T3 (2014_2015, 2017_2018), T4 (2013_2014).
 
