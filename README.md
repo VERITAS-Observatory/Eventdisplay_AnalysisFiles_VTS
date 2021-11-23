@@ -56,9 +56,18 @@ v485-auxv02 | Eventdisplay version v485c | IRFs for V4 including plate scale cor
 File | Zenith Range | Wobble Offset | NSB Range | Description | Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:|:---:
 table-v485-auxv01-GRISU-ATM21-V4-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V4 Winter | v485b (plate scale corrections) | - |
-table-v485-auxv01-GRISU-ATM22-V4-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V4 Summer | v485b (plate scale corrections) | - |
-table-v485-auxv01-GRISU-ATM21-V5-GEO.root | 0-60 deg | 0-2 deg | 75-750 MHz | V5 Winter | v485 | identical with v485-auxv01 |
-table-v485-auxv01-GRISU-ATM22-V5-GEO.root | 0-60 deg | 0-2 deg | 75-750 MHz | V5 Summer | v485 | identical with v485-auxv01 |
+table-v485-auxv01-GRISU-ATM22-V4-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V4 Summer | v485b (plate scale corrections) | - RUNNING |
+table-v485-auxv02-GRISU-ATM21-V5-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V5 Winter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-GRISU-ATM22-V5-GEO.root | 0-65 deg | 0-2 deg | 75-750 MHz | V5 Summer | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2012_2013a-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2012_2013a Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2012_2013b-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2012_2013b Summter | v485 | identical with v485-auxv01 DONE | 
+table-v485-auxv02-CARE_June2020-ATM62-V6_2013_2014a-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2013_2014a Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2013_2014b-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2013_2014b Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2014_2015-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2014_2015 Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2015_2016-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2015_2016 Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2016_2017-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2016_2017 Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2017_2018-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2017_2018 Summter | v485 | identical with v485-auxv01 DONE |
+table-v485-auxv02-CARE_June2020-ATM62-V6_2018_2019-GEO.root | 0-60 deg |  0-2 deg | 50-450 MHz | V6 2018_2019 Summter | v485 | identical with v485-auxv01 DONE |
 
 
 # Technical
