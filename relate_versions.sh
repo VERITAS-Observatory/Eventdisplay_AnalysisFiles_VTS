@@ -30,6 +30,7 @@ link_V4()
 {
     echo "======================"
     echo "Copying V4 IRFs"
+    echo "   (reproduced with v485b with plase-scale corrections included)"
     for A in ATM21 ATM22
     do
        copy_files v485c Tables GRISU-V4-${A} v485 v486
@@ -42,6 +43,7 @@ link_V5()
 {
     echo "======================"
     echo "Copying V5 IRFs"
+    echo "   (original v485 production)"
     for A in ATM21 ATM22
     do
        copy_files v485 Tables GRISU-V5-${A} v485 v486
