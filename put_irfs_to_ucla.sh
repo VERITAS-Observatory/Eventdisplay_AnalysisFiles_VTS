@@ -11,7 +11,7 @@
 command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting."; exit 1; }
 
 # Eventdisplay version
-VERSION="v485c"
+VERSION=$(cat IRFVERSION)
 
 # list of tar files
 TARLIST=$(find . -maxdepth 1 -name "*.tar")
