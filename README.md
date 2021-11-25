@@ -92,6 +92,9 @@ V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485 D
 V6 2019_2019s |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | RUNNING |
 V6 2020_2021s |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | RUNNING |
 
+Remarks:
+- Extended025-Moderate-TMVA-BDT and Extended050-Moderate-TMVA-BDT for zenith range 0-50 deg only
+
 ### V6 Winter (reduced HV)
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
