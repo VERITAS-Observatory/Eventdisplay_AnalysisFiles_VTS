@@ -82,6 +82,7 @@ pack_effectiveareas_V6()
                        else
                            tar -cvf ${D}.tar EffectiveAreas/*${T}*${I}*${A}*.root
                        fi
+                       mv -v ${D}.tar ./${DDIR}/
                    else
                        echo "Packing EffectiveAreas $F $I $A ${T} ${D}.tar (no files)"
                    fi
