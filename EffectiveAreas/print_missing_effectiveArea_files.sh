@@ -25,6 +25,11 @@ do
              ATM="ATM22"
           fi
       fi
+      if [[ ${E: -1} == "w" ]] && [[ ${A} == "ATM62" ]]; then
+         continue
+      elif [[ ${E: -1} == "s" ]] && [[ ${A} == "ATM61" ]]; then
+         continue
+      fi
       for T in T1234 T123 T124 T134 T234
       do
          for C in ${CLISTNV}
