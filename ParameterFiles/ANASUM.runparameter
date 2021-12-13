@@ -99,8 +99,8 @@ sky map centre
 in equatorial coordinates (ra,dec) (J2000, deg)
  SKYMAPCENTRE_RADECJ2000_DEG 83.6333 22.5145
  in equatorial coordinates (ra,dec) (J2000, hours)
- SKYMAPCENTRE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18
- SKYMAPCENTRE_RADECJ2000_DEG 83.6333 21.5145
+ SKYMAPCENTRE_RADECJ2000_HOUR 05 34 31.94 +22 00 52.2
+ SKYMAPCENTRE_RADECJ2000_DEG  83.633080  22.014500
 
 Position where number of on and off events, significances,
 effective areas (all 1D histograms) are calculated
@@ -112,7 +112,7 @@ relative to (0,0) in sky map [deg]
 Position in equatorial coordinates (ra,dec) (J2000, deg)
  TARGETPOSITION_RADECJ2000_DEG 83.6333 22.0145
 Position in equatorial coordinates (ra,dec) (J2000, hours)
- TARGETPOSITION_RADECJ2000_HOUR 05 34 31.97 +22 00 52.1
+ TARGETPOSITION_RADECJ2000_HOUR 05 34 31.94 +22 00 52.2
 
 Spectral reconstruction
 -----------------------
