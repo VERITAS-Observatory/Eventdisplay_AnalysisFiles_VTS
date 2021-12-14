@@ -9,7 +9,6 @@ VERSION=$(cat ../IRFVERSION)
 
 
 ME="GEO"
-VE="effArea-v483-auxv01-CARE_June1702-Cut"
 
 for A in ATM61 ATM62
 do
@@ -39,7 +38,6 @@ do
                     continue
                 fi
               fi
-             #EFF="effArea-v486-auxv01-CARE_June2020-Cut-NTel3-PointSource-Hard-TMVA-BDT-GEO-V6_2018_2019-ATM61-T234.root"
              EFF="effArea-${VERSION}-auxv01-${SIMTYPE}-Cut-${C}-GEO-${E}-${ATM}-${T}.root"
              if [[ ! -e ${EFF} ]]; then
                  echo "MISSING $EFF"
