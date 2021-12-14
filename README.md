@@ -1,7 +1,5 @@
 # Eventdisplay Analysis Files - version v486 (latest: auxv01)
 
-**in development - v486-dev1**
-
 Configuration and runparameter files for Eventdisplay
 
 Required for the analysis of VERITAS data. 
