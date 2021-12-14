@@ -1,6 +1,6 @@
-# Eventdisplay Analysis Files - version v485 (latest: auxv02)
+# Eventdisplay Analysis Files - version v486 (latest: auxv01)
 
-**in development - v485-auxv02-dev1**
+**in development - v486-dev1**
 
 Configuration and runparameter files for Eventdisplay
 
@@ -13,7 +13,7 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_A
 ./get_irfs_from_ucla.sh
 ```
 
-Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v485
+Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v486
 
 Following directories and files are available:
 
@@ -42,16 +42,9 @@ Calibration
 DetectorGeometry
 - configuration files for pixel and telescope positions
 
-# v485 History
-
-**Version** | **Eventdisplay version** | **Changes** |
-:---:|:---:|:---:
-v485-auxv01 | Eventdisplay version v485a,b | IRFs for V6 period for all off-axis angles and with improved MC statistics |
-v485-auxv02 | Eventdisplay version v485c | IRFs for V4 including plate scale correction; IRFs for V6 with extended zenith angle range; IRFs for V6 with new throughput correction epochs |
-
 # IRF Description
 
-## v485-auxv02
+## v486
 
 ### V4
 
@@ -64,56 +57,61 @@ V4 Summer | 0-65 deg | 0-2 deg | 75-750 MHz | v485b (plate scale corrections) | 
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
-V5 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485 | identical with v485-auxv01 DONE |
-V5 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485 | identical with v485-auxv01 DONE |
+V5 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485 | identical with v485 DONE |
+V5 Winter | 0-65 deg | 0-2 deg | 75-750 MHz | v485 | identical with v485 DONE |
 
 ### V6 Winter (nominal HV)
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
-V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg | 
-V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485d | identical with v485-auxv01 RUNNING 55,60deg |
-V6 2019_2019w |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485dd | RUNNING |
-V6 2020_2021w |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v485dd | RUNNING |
+V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) | 
+V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, expect 55,60deg (v486) |
+V6 2019_2019w |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
+V6 2020_2021w |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
 
 ### V6 Summer (nominal HV)
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
-V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE | 
-V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2019_2019s |  0-60 deg |  0-2 deg | 50-450 MHz  | v485d | RUNNING |
-V6 2020_2021s |  0-60 deg |  0-2 deg | 50-450 MHz  | v485d | RUNNING |
+V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  | 
+V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2019_2019s |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
+V6 2020_2020s |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
+
+Remarks:
+- Extended025-Moderate-TMVA-BDT and Extended050-Moderate-TMVA-BDT for zenith range 0-50 deg only (2012-2019)
 
 ### V6 Winter (reduced HV)
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
-V6 2012_2013a | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2012_2013b | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE | 
-V6 2013_2014a | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2013_2014b | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2014_2015 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2015_2016 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2016_2017 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2017_2018 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2018_2019 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485-auxv01 DONE |
-V6 2019_2019w |  0-55 deg |  0.5 deg | 150-900 MHz  | v485d | TOBEDONE |
-V6 2020_2021w |  0-55 deg |  0.5 deg | 150-900 MHz  | v485d | TOBEDONE |
+V6 2012_2013a | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2012_2013b | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 | 
+V6 2013_2014a | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2013_2014b | 0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2014_2015 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2015_2016 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2016_2017 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2017_2018 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2018_2019 |  0-55 deg |  0.5 deg | 150-900 MHz  | v485 | identical with v485 |
+V6 2019_2019s |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
+V6 2019_2020w |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
+V6 2020_2020s |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
+V6 2020_2021w |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 
 # Technical
 
@@ -121,3 +119,5 @@ For version changes, the following files need to be changed:
 - [README.md](README.md)
 - [get_irfs_from_ucla.sh](get_irfs_from_ucla.sh) 
 - [put_irfs_to_ucla.sh](put_irfs_to_ucla.sh)
+
+For related/identical IRFs between different Eventdisplay version, use the script `relate_versions.sh` (Note: extremely finetuned)

@@ -14,9 +14,11 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 VERSION=$(cat IRFVERSION)
 
 # list of tar files
-TARLIST=$(find . -maxdepth 1 -name "*.tar")
+TARLIST=$(find tar_packages -name "*.tar")
 
 for T in ${TARLIST}
 do
-   bbftp -u bbftp -V -S -m -p 12 -e "put ${T} /veritas/upload/EVNDISP/${VERSION}/${T}" gamma1.astro.ucla.edu
+   TT=$(basename $T)
+   echo $T $TT
+   bbftp -u bbftp -V -S -m -p 12 -e "put ${T} /veritas/upload/EVNDISP/${VERSION}/${TT}" gamma1.astro.ucla.edu
 done
