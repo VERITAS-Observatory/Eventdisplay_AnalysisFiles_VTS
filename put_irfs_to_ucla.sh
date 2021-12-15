@@ -13,6 +13,8 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 # Eventdisplay version
 VERSION=$(cat IRFVERSION)
 
+echo "Uploading to /veritas/upload/EVNDISP/${VERSION}/"
+
 # list of tar files
 TARLIST=$(find tar_packages -name "*.tar")
 
