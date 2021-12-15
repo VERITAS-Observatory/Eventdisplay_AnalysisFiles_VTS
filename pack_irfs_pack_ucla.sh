@@ -11,7 +11,7 @@ mkdir -p ${DDIR}
 
 # epochs
 EPOCHS=( V6_2012_2013a V6_2012_2013b V6_2013_2014a V6_2013_2014b V6_2014_2015 V6_2015_2016 V6_2016_2017 V6_2017_2018 V6_2018_2019 V6_2019_2019s V6_2019_2020w V6_2020_2020s V6_2020_2021w )
-EPOCHS=( V6_2012_2013a V6_2012_2013b V6_2019_2020w V6_2020_2020s )
+#EPOCHS=( V6_2012_2013a V6_2012_2013b V6_2019_2020w V6_2020_2020s )
 set -- EPOCHS
 
 # list of cuts
@@ -117,11 +117,11 @@ pack_effectivareas_V4V5()
     done
 }
 
-#pack_radial_acceptances
+pack_radial_acceptances
 
-#pack_lookup_tables
+pack_lookup_tables
 
 pack_effectiveareas_V6
 
-#pack_effectivareas_V4V5
+pack_effectivareas_V4V5
 
