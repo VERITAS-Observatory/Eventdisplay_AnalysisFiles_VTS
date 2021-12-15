@@ -78,15 +78,15 @@ V6 2020_2021w |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
-V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  | 
-V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
-V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485 | identical with v485  |
+V6 2012_2013a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2012_2013b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  | 
+V6 2013_2014a | 0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2013_2014b | 0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2014_2015 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2015_2016 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2016_2017 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
+V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
 V6 2019_2019s |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
 V6 2020_2020s |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
 
