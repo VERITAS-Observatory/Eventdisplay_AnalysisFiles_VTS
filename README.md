@@ -111,6 +111,17 @@ V6 2019_2020w |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 V6 2020_2020s |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 V6 2020_2021w |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 
+## Lookup tables
+
+Why are lookup table files so big?
+
+A lookup is a 2D-Histogram (TH2F\*), with the dimensions log10(size), distance to telescope, and variable of interest (width, length, energy).
+To cover the full parameter space of observations, there lookup tables included for:
+
+NSB=11 x Ze(9) x Woff(9) x Az(4) x Tel(4) x Var(3) x Hist(2) = 85,000 histograms
+
+Woff = distance to comera center, Var = (width, length, energy), Hist = number of histogram required (2)
+
 # Technical
 
 For version changes, the following files need to be changed:
