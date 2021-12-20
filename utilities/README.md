@@ -11,3 +11,5 @@ Execute in `$VERITAS_IRFPRODUCTION_DIR`:
 ```
 ./link_productions_v486.sh
 ```
+
+## Test lookup table files
