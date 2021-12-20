@@ -130,3 +130,21 @@ For version changes, the following files need to be changed:
 - [put_irfs_to_ucla.sh](put_irfs_to_ucla.sh)
 
 For related/identical IRFs between different Eventdisplay version, use the script `relate_versions.sh` (Note: extremely finetuned)
+
+## Uploading IRFs
+
+1. Pack IRFs into several tar packages
+```
+./pack_irfs_pack_ucla.sh
+```
+2. Inspect tar packages in directory `tar_packages` and move them to the directory `archive`
+3. Upload files to UCLA
+```
+./put_irfs_to_ucla.sh
+```
+4. Test some uploads with downloading script (modify, to not download again everything):
+```
+get_irfs_from_ucla.sh
+```
+
+Note that for DESY users, the tar packages are not downloaded but copied from their archive location.

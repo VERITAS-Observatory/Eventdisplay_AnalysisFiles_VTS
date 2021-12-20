@@ -6,12 +6,19 @@
 # prepare by hand the upload directory:
 # bbftp -u bbftp -V -S -m -p 12 -e "mkdir /veritas/upload/EVNDISP/v485b" gamma1.astro.ucla.edu
 #
+# for reduced file size IRFs, upload do ./put_irfs_to_ucla.sh reducedIRFs
+#
+
+[[ "$1" ]] && IRFTYPE=$1 || IRFTYPE=""
 
 # make sure that bbftp is installed
 command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting."; exit 1; }
 
 # Eventdisplay version
 VERSION=$(cat IRFVERSION)
+if [[ $IRFTYPE ]]; then
+   VERSION=${VERSION}-${IRFTYPE}
+fi
 
 echo "Uploading to /veritas/upload/EVNDISP/${VERSION}/"
 
