@@ -17,7 +17,7 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 # Eventdisplay version
 VERSION=$(cat IRFVERSION)
 if [[ $IRFTYPE ]]; then
-   VERSION=${VERSION}-${IRFTYPE}
+   VERSION=${VERSION}${IRFTYPE}
 fi
 
 echo "Uploading to /veritas/upload/EVNDISP/${VERSION}/"
