@@ -2,8 +2,6 @@
 # download IRFs from UCLA
 # - downloading in tar packages
 # 
-# for reduced file size IRFs, download from ./get_irfs_from_ucla.sh reducedIRFs
-#
 
 [[ "$1" ]] && IRFTYPE=$1 || IRFTYPE=""
 

@@ -6,8 +6,6 @@
 # prepare by hand the upload directory:
 # bbftp -u bbftp -V -S -m -p 12 -e "mkdir /veritas/upload/EVNDISP/v485b" gamma1.astro.ucla.edu
 #
-# for reduced file size IRFs, upload do ./put_irfs_to_ucla.sh reducedIRFs
-#
 
 [[ "$1" ]] && IRFTYPE=$1 || IRFTYPE=""
 
