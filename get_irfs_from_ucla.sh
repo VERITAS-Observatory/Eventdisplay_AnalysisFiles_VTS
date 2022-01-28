@@ -52,7 +52,7 @@ dowload_radialacceptances()
 
 dowload_lookuptables()
 {
-    for I in ${EPOCHS[@]}
+    for I in ${EPOCHS[@]} V4 V5
     do
       download_and_unpack Tables_${I}
     done
