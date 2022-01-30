@@ -45,7 +45,7 @@ i) trace integration and image cleaning parameter
     Par3: <integration method for pass 1 (1/2)>
     Par4: <double pass error option (0/1)> (don't change if you don't understand)
     Par5: <maximum time difference between LG and HG T0 (default -4 samples)>
-* -1 FADCDOUBLEPASS 1 6 2 0 -4
+* -1 FADCDOUBLEPASS 1 10 1 0 -4
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 6 6
  trace integration start (for window 1 for integration method 1)
@@ -53,7 +53,7 @@ i) trace integration and image cleaning parameter
     Par2: <shift of window start for double pass>
     Par3: <timing method used for calculation of window start (FIXED/TZERO/TAVERAGE)>
     Par4: <max difference between T0 and trace integration start>
-* -1 FADCSUMMATIONSTART 0 0 TAVERAGE -4
+* -1 FADCSUMMATIONSTART 2 -1 T0
 
  image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL/CLUSTERCLEANING> <FIXED/VARIABLE>
 * -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
