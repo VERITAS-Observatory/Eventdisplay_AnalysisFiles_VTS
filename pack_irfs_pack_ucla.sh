@@ -33,7 +33,7 @@ pack_lookup_tables()
 {
     echo "Packing Lookup Tables"
     echo "====================="
-    for I in ${EPOCHS[@]}
+    for I in ${EPOCHS[@]} V4 V5
     do
         D="Tables_${I}"
         echo "Packing tables ${I} into ${D}.tar"
