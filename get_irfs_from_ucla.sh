@@ -21,7 +21,7 @@ EPOCHS=( V6_2012_2013a V6_2012_2013b V6_2013_2014a V6_2013_2014b V6_2014_2015 V6
 set -- EPOCHS
 
 # list of cuts
-CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-PointSource-SuperSoft NTel2-PointSource-Soft NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
+CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
 CLISTRV="NTel2-PointSource-SuperSoft NTel2-PointSource-Soft"
 
 ## function to download and upack
@@ -66,6 +66,10 @@ download_effectivareas_V4V5()
         do
            for T in ${CLISTNV}
            do
+               # no extended cuts for V4 and V5
+               if [[ $T == *"Extended"* ]]; then
+                   continue
+               fi
                D="EffectiveAreas_${I}_${A}_${T}"
                download_and_unpack ${D}
            done
