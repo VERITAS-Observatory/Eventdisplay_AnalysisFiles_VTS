@@ -26,6 +26,9 @@ Examples:
 V4 <run>      <tel> <run for peds>  <run for gains> <run for toff> <bunch of -1s>
 V4 <data run> <tel> <data run>      <laser run>     <laser run>    -1 -1 -1 -1 -1 -1
 
+IMPORTANT!!
+V4 is in the context the file syntax version, and not the VERITAS array in its V4 form.
+
 ========
 V1 59814  -1    59814   -1       -1        -1  -1
 V1 59827  -1    59827   -1       -1        -1  -1
