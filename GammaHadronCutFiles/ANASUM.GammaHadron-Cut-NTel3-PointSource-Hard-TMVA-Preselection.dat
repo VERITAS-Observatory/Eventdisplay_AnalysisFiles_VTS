@@ -1,9 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Hard cuts (BDT preselection)
-
-Should not be used for standard data analysis (sky maps, etc)
+BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -51,12 +49,10 @@ T1/T2/T3
 * arrayltrig 7 1
 T4
 * arrayltrig 8 0
-T1/T4 and V4: telescopes too close to each other
+T1/T4
 * arrayltrig 9 0 V4
-T1/T4 and V5/V6: unlikely to get a 2-tel gamma-ray event with T1 and T4
 * arrayltrig 9 0 V5 1234
 * arrayltrig 9 0 V6 1234
-T2/T4 and V4: unlikely to get a 2-tel gamma-ray event with T2 and T4
 * arrayltrig 10 0 V4 1234
 * arrayltrig 10 0 V5
 * arrayltrig 10 0 V6
@@ -72,7 +68,7 @@ T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.005
+* arraytheta2 -1. 0.008
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)

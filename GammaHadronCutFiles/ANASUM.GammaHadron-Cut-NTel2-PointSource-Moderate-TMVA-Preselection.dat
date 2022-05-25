@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Moderate cuts (BDT preselection)
+BDT preselection cuts for TMVA BDT cuts optimization  (moderate cuts)
 
 ========================================================
 All lines without a '*' in the first column are ignored!

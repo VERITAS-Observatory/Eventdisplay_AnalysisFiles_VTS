@@ -17,7 +17,7 @@ outside of that intervall are ignored
 * cameraedge -1. 2.00
 
 second largest image size
-* sizesecondmax 100. 1.e30
+* sizesecondmax 10. 1.e30
 
 cut on mean emission height
 * emissionheight 6. 1.e12
