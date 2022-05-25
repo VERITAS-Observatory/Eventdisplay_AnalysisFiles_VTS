@@ -55,18 +55,10 @@ i) trace integration and image cleaning parameter
     Par4: <max difference between T0 and trace integration start>
 * -1 FADCSUMMATIONSTART 2 -1 T0
 
- image cleaning <method=TWOLEVELCLEANING/TIMECLUSTERCLEANING/TIMETWOLEVEL/CLUSTERCLEANING> <FIXED/VARIABLE>
-* -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
-* -1 CLUSTERCLEANINGPARAMETERS -1 0 2
  image cleaning thresholds <image> <border>
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
- image cleaning for double pass method, pass 1
-* -1 IMAGECLEANINGMETHOD_DP_PASS1 CLUSTERCLEANING VARIABLE
-* -1 CLUSTERCLEANINGPARAMETERS_DP_PASS1 -1 0 2
-* -1 IMAGECLEANINGTHRESHOLDS_DP_PASS1 5. 3.5
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
- -1 LLEDGEFIT 0.1 2
 * -1 LLEDGEFIT 0.05 5
 
  quality cut on distance of image/border pixel (applied for all cuts defined below)
@@ -96,19 +88,19 @@ Set 0 = default reconstruction methods / quality cuts
         for 4-telescope runs
 
 * -1 RECMETHOD 4
-* -1 MINANGLE  20.
-* -1 NTUBES    4    10000
+* -1 MINANGLE 10.
+* -1 NTUBES    5    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+* -1 DISTANCE  -1. 1.75
+* -1 FUI       -1. 1.e5
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
 (used only for MC if *)
--1 MCONLY 
+* -1 MCONLY
 ======== IMPORTANT IMPORTANT ============
 
 ==============================
@@ -118,11 +110,11 @@ ignore the following lines for regular data analysis
 Set 1 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -131,11 +123,11 @@ Set 1 = T1 off default reconstruction method
 Set 2 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -144,11 +136,11 @@ Set 2 = T2 off default reconstruction method
 Set 3 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5
@@ -157,11 +149,11 @@ Set 3 = T3 off default reconstruction method
 Set 4 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
-* -1 MINANGLE 20.
+* -1 MINANGLE 10.
 * -1 NTUBES    4    10000
 * -1 SIZE      100  1.e10
 * -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.30 10 1000
+* -1 LOSS2      -1.  0.20 10 1000
 * -1 WIDTH     0.02 1000.
 * -1 DISTANCE  -1.  1.85
 * -1 FUI       0.35 1.e5

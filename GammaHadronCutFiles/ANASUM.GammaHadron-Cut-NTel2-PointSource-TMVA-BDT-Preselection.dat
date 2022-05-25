@@ -1,12 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Moderate point source cuts
-
-Notes:
-
-- energy threshold for zenith angles of 20 deg: about 240/270 GeV for V6/V5
-- don't change cut values without recalculating response functions (effective areas and radial acceptances)
+BDT preselection cuts for TMVA BDT cuts optimization  (2-tel cut; equivalent to soft cuts)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
