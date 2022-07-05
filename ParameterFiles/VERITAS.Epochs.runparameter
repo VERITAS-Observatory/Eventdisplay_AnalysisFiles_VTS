@@ -33,9 +33,7 @@ Naming should be always MAJOREPOCH_MINOREPOCH
 * EPOCH V6_2020_2020s 96042 96534
 * EPOCH V6_2020_2021w 96535 98542
 * EPOCH V6_2021_2021s 98543 100569
-TODO - replace V6_2020_2021w by V6_2021_2022w 
-(when throughput parameters are available)
-* EPOCH V6_2020_2021w 100570 102655
+* EPOCH V6_2021_2022w 100570 102655
 TODO - replace V6_2021_2021s by V6_2022_2022s 
 (when throughput parameters are available)
 * EPOCH V6_2021_2021s 102656 999999
