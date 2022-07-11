@@ -76,6 +76,7 @@ V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with 
 V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485, v486 | identical with v485, except 55,60deg (v486) |
 V6 2019_2019w |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
 V6 2020_2021w |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
+V6 2021_2022w |  0-60 deg |  0-2 deg | 50-450 MHz  | v487 | - |
 
 ### V6 Summer (nominal HV)
 
@@ -92,6 +93,7 @@ V6 2017_2018 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c
 V6 2018_2019 |  0-60 deg |  0-2 deg | 50-450 MHz  | v485c | identical with v485c  |
 V6 2019_2019s |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
 V6 2020_2020s |  0-60 deg |  0-2 deg | 50-450 MHz  | v486 | - |
+V6 2021_2021s |  0-60 deg |  0-2 deg | 50-450 MHz  | v487 | - |
 
 Remarks:
 - Extended025-Moderate-TMVA-BDT and Extended050-Moderate-TMVA-BDT for zenith range 0-50 deg only (2012-2019)
@@ -113,6 +115,8 @@ V6 2019_2019s |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 V6 2019_2020w |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 V6 2020_2020s |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
 V6 2020_2021w |  0-55 deg |  0.5 deg | 150-900 MHz  | v486 | - |
+V6 2021_2021s |  0-55 deg |  0.5 deg | 150-900 MHz  | v487 | - |
+V6 2021_2022w |  0-55 deg |  0.5 deg | 150-900 MHz  | v487 | - |
 
 ## Lookup tables
 
