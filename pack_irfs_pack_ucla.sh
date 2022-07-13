@@ -9,12 +9,6 @@
 DDIR="tar_packages"
 mkdir -p ${DDIR}
 
-# epochs
-EPOCHS=( V6_2012_2013a V6_2012_2013b V6_2013_2014a V6_2013_2014b V6_2014_2015 V6_2015_2016 V6_2016_2017 V6_2017_2018 V6_2018_2019 V6_2019_2019s V6_2019_2020w V6_2020_2020s V6_2020_2021w V6_2021_2021s V6_2021_2022w )
-#EPOCHS=( V6_2012_2013a V6_2012_2013b V6_2019_2020w V6_2020_2020s )
-EPOCHS=( V6_2021_2021s V6_2021_2022w )
-set -- EPOCHS
-
 # list of cuts
 CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-PointSource-SuperSoft NTel2-PointSource-Soft NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
 CLISTRV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft"
@@ -34,6 +28,7 @@ pack_lookup_tables()
 {
     echo "Packing Lookup Tables"
     echo "====================="
+    EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
     for I in ${EPOCHS[@]} V4 V5
     do
         D="Tables_${I}"
@@ -49,14 +44,14 @@ pack_effectiveareas_V6()
     # Effective areas for different epochs
     for A in ATM61 ATM62
     do
+        if [[ ${A} == "ATM62" ]]; then
+            EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
+        else
+            EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
+        fi
+
         for I in ${EPOCHS[@]}
         do
-            # skip summer/winter epochs
-            if [[ ${I: -1} == "w" ]] && [[ ${A} == "ATM62" ]]; then
-               continue
-            elif [[ ${I: -1} == "s" ]] && [[ ${A} == "ATM61" ]]; then
-               continue
-            fi
             for F in nominalHV RedHV
             do
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
@@ -120,7 +115,7 @@ pack_effectivareas_V4V5()
 
 # pack_radial_acceptances
 
-pack_lookup_tables
+# pack_lookup_tables
 
 pack_effectiveareas_V6
 
