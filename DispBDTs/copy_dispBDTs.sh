@@ -31,10 +31,20 @@ do
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
             IDIR="${IDIR}/ze${ZE}/"
-            if [[ -d ${IDIR} ]]; then
-                cp -v ${IDIR}/BDTDisp/*.xml ${ODIR}
-                cp -v ${IDIR}/BDTDispError/*.xml ${ODIR}
-            fi
+            # check log file for successful training
+            for B in BDTDisp BDTDispError
+            do
+                if [[ -d ${IDIR}/${B} ]]; then
+                    CHECKF=$(tail -n 1 ${IDIR}/${B}/mvaAngRes_${ZE}-${B}.log | grep -v Delete | wc -l)
+                    if [[ $CHECKF != "0" ]]; then
+                        echo "ERROR training file not complete in ${IDIR}/${B}/"
+                    else
+                        cp -v ${IDIR}/BDTDisp/*.xml ${ODIR}
+                    fi
+                else
+                    echo "ERROR directory not found: ${IDIR}/${B}"
+                fi
+            done
         done
    done
 done
