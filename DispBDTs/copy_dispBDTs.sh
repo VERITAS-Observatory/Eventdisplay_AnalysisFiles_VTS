@@ -39,7 +39,13 @@ do
                     if [[ $CHECKF != "0" ]]; then
                         echo "ERROR training file not complete in ${IDIR}/${B}/"
                     else
-                        cp -v ${IDIR}/BDTDisp/*.xml ${ODIR}
+                        # expect 4=NTel xml files
+                        NFILE=$(ls -1 ${IDIR}/${B}/*.xml | wc -l)
+                        if [[ $NFILE == "4" ]]; then
+                            cp -v -u ${IDIR}/${B}/*.xml ${ODIR}
+                        else
+                            echo "ERROR found only $NFILE xml files (expected 4) in ${IDIR}/${B}/"
+                        fi
                     fi
                 else
                     echo "ERROR directory not found: ${IDIR}/${B}"
@@ -48,4 +54,3 @@ do
         done
    done
 done
-
