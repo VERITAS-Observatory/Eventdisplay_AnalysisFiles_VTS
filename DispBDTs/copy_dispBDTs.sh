@@ -14,7 +14,7 @@ do
     elif [[ $Z == "MZE" ]]; then
         ZE="50deg"
     elif [[ $Z == "SZE" ]]; then
-        ZE="20deg"
+        ZE="30deg"
     fi
     echo $Z
     for A in ATM61 ATM62
@@ -26,6 +26,7 @@ do
         fi
         for E in $EPOCHS
         do
+            echo "EPOCH ${E}"
             ODIR="${E}_${A}/${Z}"
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
