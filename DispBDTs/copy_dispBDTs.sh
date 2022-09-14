@@ -7,14 +7,16 @@ IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="TS"
 SIMTYPE="CARE_June2020"
 
-for Z in LZE MZE SZE
+for Z in XZE LZE MZE SZE
 do
-    if [[ $Z == "LZE" ]]; then
+    if [[ $Z == "XZE" ]]; then
         ZE="60deg"
+    elif [[ $Z == "LZE" ]]; then
+        ZE="55deg"
     elif [[ $Z == "MZE" ]]; then
-        ZE="50deg"
+        ZE="45deg"
     elif [[ $Z == "SZE" ]]; then
-        ZE="30deg"
+        ZE="20deg"
     fi
     echo $Z
     for A in ATM61 ATM62
