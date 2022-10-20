@@ -91,7 +91,7 @@ USAGE:
    minimum number of images required for stereo reconstruction
     -1 MNIMAGE 2
    minimum angle between image axes for two telescope analysis [deg]
-    -1 MINANGLE 5.
+    -1 MINANGLE 10.
    minimum number of channels for all telescopes
     -1 MINTUBES 4
    maximum number of low gain channels per telescope
