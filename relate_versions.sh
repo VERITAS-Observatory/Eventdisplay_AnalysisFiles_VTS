@@ -33,8 +33,8 @@ link_V4()
     echo "   (reproduced with v485b with plase-scale corrections included)"
     for A in ATM21 ATM22
     do
-       copy_files v486 Tables GRISU-${A}-V4 v486 v487
-       copy_files v486 RadialAcceptances "GRISU-*-V4" v486 v487
+       copy_files v486 Tables GRISU-${A}-V4 v486 v490
+       copy_files v486 RadialAcceptances "GRISU-*-V4" v486 v490
     done
 }
 
@@ -45,8 +45,8 @@ link_V5()
     echo "   (original v485 production)"
     for A in ATM21 ATM22
     do
-       copy_files v486 Tables GRISU-${A}-V5 v486 v487
-       copy_files v486 RadialAcceptances "GRISU-*-V5" v486 v487
+       copy_files v486 Tables GRISU-${A}-V5 v486 v490
+       copy_files v486 RadialAcceptances "GRISU-*-V5" v486 v490
     done
 }
 
@@ -59,7 +59,7 @@ link_CARE_RedHV()
     do
        for E in ${EPOCHS[@]}
        do
-           copy_files v486 Tables "CARE_RedHV-${A}-${E}" v486 v487
+           copy_files v486 Tables "CARE_RedHV-${A}-${E}" v486 v490
        done
     done
 }
@@ -73,23 +73,23 @@ link_CARE_June2020()
     do
        for E in ${EPOCHS[@]}
        do
-           copy_files v486 Tables "CARE_June2020-${A}-${E}" v486 v487
+           copy_files v486 Tables "CARE_June2020-${A}-${E}" v486 v490
            # Radial acceptances (independent of atmosphere)
-           copy_files v486 RadialAcceptances CARE_June2020 v486 v487
+           copy_files v486 RadialAcceptances CARE_June2020 v486 v490
        done
        if [[ $A == "ATM61" ]]; then
            for E in ${EPOCHSATM61[@]}
            do
-               copy_files v486 Tables "CARE_June2020-${A}-${E}" v486 v487
+               copy_files v486 Tables "CARE_June2020-${A}-${E}" v486 v490
                # Radial acceptances (independent of atmosphere)
-               copy_files v486 RadialAcceptances CARE_June2020 v486 v487
+               copy_files v486 RadialAcceptances CARE_June2020 v486 v490
            done
        else
            for E in ${EPOCHSATM62[@]}
            do
-               copy_files v486 Tables "CARE_June2020-${A}-${E}" v486 v487
+               copy_files v486 Tables "CARE_June2020-${A}-${E}" v486 v490
                # Radial acceptances (independent of atmosphere)
-               copy_files v486 RadialAcceptances CARE_June2020 v486 v487
+               copy_files v486 RadialAcceptances CARE_June2020 v486 v490
            done
        fi
     done

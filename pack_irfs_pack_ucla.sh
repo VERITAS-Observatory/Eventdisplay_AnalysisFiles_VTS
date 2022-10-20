@@ -12,6 +12,7 @@ mkdir -p ${DDIR}
 # list of cuts
 CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-PointSource-SuperSoft NTel2-PointSource-Soft NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
 CLISTRV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft"
+CLISTUV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft NTel2-PointSource-SuperSoftOpen"
 
 pack_radial_acceptances()
 {
@@ -52,19 +53,27 @@ pack_effectiveareas_V6()
 
         for I in ${EPOCHS[@]}
         do
-            for F in nominalHV RedHV
+            for F in nominalHV RedHV UV
             do
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
                   continue
                fi
+               if [[ ${F} == "UV" ]]; then
+                  if [[ ${A} == "ATM62" ]]; then
+                      continue
+                  fi
+                  A="ATM21"
+               fi
                if [[ ${F} == "RedHV" ]]; then
                   CLIST=${CLISTRV}
+               elif [[ ${F} == "UV" ]]; then
+                  CLIST=${CLISTUV}
                else
                   CLIST=${CLISTNV}
                fi
                for T in $CLIST
                do
-                   if [[ ${F} == "RedHV" ]]; then
+                   if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
                        NFIL=$(find EffectiveAreas -name "*${F}*${T}*${I}*${A}*.root" | wc -l)
                    else
                        NFIL=$(find EffectiveAreas -name "*${T}*${I}*${A}*.root" | wc -l)
@@ -73,7 +82,7 @@ pack_effectiveareas_V6()
                        D="EffectiveAreas_${F}_${I}_${A}_${T}"
                        echo "Packing EffectiveAreas $F $I $A ${T} ${D}.tar ($NFIL files)"
                        rm -f -v ${D}.tar
-                       if [[ ${F} == "RedHV" ]]; then
+                       if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
                            tar -cvf ${D}.tar EffectiveAreas/*${F}*${T}*${I}*${A}*.root
                        else
                            tar -cvf ${D}.tar EffectiveAreas/*${T}*${I}*${A}*.root
