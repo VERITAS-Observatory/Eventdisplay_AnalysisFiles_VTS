@@ -1,7 +1,7 @@
-cut values for quality and gamma hadron cuts for TMVA BDT
+cut values for quality and gamma hadron cuts
 ========================================================
 
-Soft cuts
+Super Soft point source cuts (no BDTs)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -17,13 +17,10 @@ outside of that intervall are ignored
 * cameraedge -1. 2.00
 
 second largest image size
-(this depends on the state of the instrument)
-* sizesecondmax 0. 1.e30 V4
-* sizesecondmax 0. 1.e30 V5
-* sizesecondmax 0. 1.e30 V6
+* sizesecondmax 10. 1.e30
 
 cut on mean emission height
-* emissionheight 0. 1.e10
+* emissionheight 6. 1.e12
 
 Telescope multiplicity
 arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>
@@ -70,12 +67,12 @@ T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.008
+* arraytheta2 -1. 0.012
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
-* arraymscw -2. 2.
-* arraymscl -2. 5.
+* arraymscw -1.2 0.8
+* arraymscl -1.2 1.0
 
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
@@ -83,16 +80,3 @@ estimated per individual telescope
 * arrayechi2 0. 99999.
 cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
-
-v) TMVA Cuts
-* cutselection 42 0
-
-* TMVAPARAMETER V4 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V4/   BDT
-* TMVAPARAMETER V5 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V5/   BDT
-* TMVAPARAMETER V6 BDT 0 3 0 3 -1 /GammaHadron_BDTs/V6/   BDT
-
- TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
-
-* TMVA_MVACut V4 00 0.65 01 0.62 02 0.59 03 0.11 10 0.54 11 0.60 12 0.62 13 0.46 20 0.16 21 0.31 22 0.59 23 0.54 30 0.01 31 0.07 32 0.04 33 0.29
-* TMVA_MVACut V5 00 0.66 01 0.63 02 0.24 03 0.15 10 0.56 11 0.63 12 0.72 13 0.49 20 0.44 21 0.54 22 0.71 23 0.40 30 0.52 31 0.46 32 0.52 33 0.33
-* TMVA_MVACut V6 00 0.62 01 0.67 02 0.60 03 0.67 10 0.56 11 0.65 12 0.71 13 0.55 20 0.30 21 0.65 22 0.44 23 0.63 30 0.44 31 0.34 32 0.46 33 0.49
