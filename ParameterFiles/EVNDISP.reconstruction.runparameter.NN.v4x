@@ -1,6 +1,7 @@
 eventdisplay reconstruction parameter file
 ===========================================
-next-neighbour cleaning (no angular DISP) - v4x versions
+geometrical stereo reconstruction
+next-neighbour cleaning
 ===========================================
 
 Note: all line without '*' in the beginning are ignored

@@ -1,6 +1,7 @@
 eventdisplay reconstruction parameter file
 ===========================================
-geometrical stereo reconstruction (no angular DISP)
+geometrical stereo reconstruction
+threshold cleaning
 ===========================================
 
 Note: all line without '*' in the beginning are ignored
