@@ -57,7 +57,7 @@ i) trace integration and image cleaning parameter
 * -1 FADCSUMMATIONSTART 2 -1 T0
 
 * -1 IMAGECLEANINGMETHOD CLUSTERCLEANING VARIABLE
-* -1 CLUSTERCLEANINGPARAMETERS -1 0 3
+* -1 CLUSTERCLEANINGPARAMETERS -1 0 2
  image cleaning thresholds <image> <border>
 * -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
 
