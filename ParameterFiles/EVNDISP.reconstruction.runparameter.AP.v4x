@@ -1,0 +1,161 @@
+eventdisplay reconstruction parameter file
+===========================================
+geometrical stereo reconstruction
+threshold cleaning
+===========================================
+
+Note: all line without '*' in the beginning are ignored
+
+Remember that after changing any values here, you have to redo lookup tables,
+effective areas and radial acceptances
+(so don't do it)
+
+The following file describes the reconstruction parameters for eventdisplay:
+
+i) trace integration and image cleaning parameter
+
+ii) quality cuts applied before the array analysis 
+(reconstruction of shower core and direction).
+
+   Each set of cuts listed below correspond to one set of array parameters in the
+   eventdisplay output file (showerpars tree): 
+   for example: first set of cuts to Xcore[0], Ycore[0], etc., second set to Xcore[1], Ycore[1], ...
+
+   The maximum number of different set is 100 
+   (can be changed in VGlobalRunParameter: variable VDST_MAXRECMETHODS
+
+   mscw_energy reads the results of one set only, choose with -arrayrecid=RECID 
+   (e.g. for cut set 13: -arrayrecid=13)
+
+   (Note: There is some confusion between the words method and cut set in the array analysis code of
+   eventdisplay.)
+
+Note that these values override parameters given at the command line (!)
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+i) trace integration and image cleaning parameter
+--------------------------------------------------
+
+ trace integration <integration method (0=off/1=default/2=sliding window)>
+* -1 FADCANALYSIS 1
+ double pass method 
+    Par1: <doublepass (on=1, off=0)>
+    Par2: <integration window length for pass 1> 
+    Par3: <integration method for pass 1 (1/2)>
+    Par4: <double pass error option (0/1)> (don't change if you don't understand)
+    Par5: <maximum time difference between LG and HG T0 (default -4 samples)>
+* -1 FADCDOUBLEPASS 1 10 1 0 -4
+ trace integration window <window 1> <window 2>
+* -1 FADCSUMMATIONWINDOW 6 6
+ trace integration start (for window 1 for integration method 1)
+    Par1: <sample # of window start> 
+    Par2: <shift of window start for double pass>
+    Par3: <timing method used for calculation of window start (FIXED/TZERO/TAVERAGE)>
+    Par4: <max difference between T0 and trace integration start>
+* -1 FADCSUMMATIONSTART 2 -1 T0
+
+ image cleaning thresholds <image> <border> <remove single image/border pairs (1=on)>
+* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5 1
+
+ image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
+* -1 LLEDGEFIT 0.05 5
+
+ quality cut on distance of image/border pixel (applied for all cuts defined below)
+ (this is currently used for plotting only)
+ -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG <apply cut for images with less then minimum number of tubes>
+* -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0. 15
+
+ii) quality cuts applied before the array analysis 
+--------------------------------------------------
+
+USAGE:
+
+   to start a new set of cuts:
+
+   '* -1 RECMETHOD 4'
+
+   syntax:
+
+     <telescope type> <variable name> <variable value>
+
+   all line without '*' in the beginning are ignored
+
+   all operators are '>' or '<' (except for number of images, where it is '>=')
+
+---------------------------------------------------------------------------------------------------
+Set 0 = default reconstruction methods / quality cuts
+        for 4-telescope runs
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+
+======== IMPORTANT IMPORTANT ============
+ignore the following lines for regular data analysis
+-1 MCONLY
+======== IMPORTANT IMPORTANT ============
+
+Set 1 = (placeholder, as this is a no-disp file)
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+
+==============================
+3-telescope combinations
+==============================
+
+Set 2 = T1 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 1 USEIMAGE 0
+
+Set 3 = T2 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 2 USEIMAGE 0
+
+Set 4 = T3 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 3 USEIMAGE 0
+
+Set 5 = T4 off default reconstruction method
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
+* 4 USEIMAGE 0
+
