@@ -7,6 +7,8 @@ IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="TS"
 SIMTYPE="CARE_June2020"
 
+echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
+
 for Z in XZE LZE MZE SZE
 do
     if [[ $Z == "XZE" ]]; then
@@ -29,7 +31,7 @@ do
         for E in $EPOCHS
         do
             echo "EPOCH ${E}"
-            ODIR="${E}_${A}/${Z}"
+            ODIR="${E}_${A}_${ANALYSISTYPE}/${Z}"
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
