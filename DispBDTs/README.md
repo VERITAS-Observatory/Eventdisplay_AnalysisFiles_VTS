@@ -8,3 +8,9 @@ dispBDT files are provided in three different bins of zenith angle:
 
 Note that this is encoded both in the script `copy_dispBDTs.sh` as in the
 analysis steering scripts for MSCW.
+
+VERITAS epochs and operation types supported:
+- V6 nominal high voltage
+- V6redHV reduced high voltage
+- V5 nominal high voltage
+- V4 nominal high voltage
