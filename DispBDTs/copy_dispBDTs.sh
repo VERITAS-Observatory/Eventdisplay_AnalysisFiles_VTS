@@ -1,10 +1,13 @@
 #!/bin/bash
 # copy dispBDT files from IRF production site
 #
+# hardwired 
+# - SIMTYPE (e.g., CARE_June2020)
+# - ANALYSISTYPE (e.g., AP)
 #
 
 IRFVERSION=$(cat ../IRFVERSION)
-ANALYSISTYPE="TS"
+ANALYSISTYPE="AP"
 SIMTYPE="CARE_June2020"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
