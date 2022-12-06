@@ -10,7 +10,7 @@ i) stereo quality cuts
 successfull core and direction reconstruction (>=0.)
 * arraychi2 0. 1.e30
 distance of core position to telescopes [m]
-* arraycore -1. 350.
+* arraycore -1. 400.
 
 size of the camera [deg], all events with direction
 outside of that intervall are ignored
