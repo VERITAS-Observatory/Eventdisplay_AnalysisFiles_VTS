@@ -40,7 +40,7 @@ do
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
             IDIR="${IDIR}/ze${ZE}/"
             # check log file for successful training
-            for B in BDTDisp BDTDispError
+            for B in BDTDisp BDTDispError BDTDispSign
             do
                 if [[ -d ${IDIR}/${B} ]]; then
                     CHECKF=$(tail -n 1 ${IDIR}/${B}/mvaAngRes_${ZE}-${B}.log | grep -v Delete | wc -l)
