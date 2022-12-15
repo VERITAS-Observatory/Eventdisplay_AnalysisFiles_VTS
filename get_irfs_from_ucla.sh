@@ -23,6 +23,7 @@ set -- EPOCHS
 # list of cuts
 CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
 CLISTRV="NTel2-PointSource-SuperSoft NTel2-PointSource-Soft"
+CLISTUV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft NTel2-PointSource-SuperSoftOpen"
 
 ## function to download and upack
 download_and_unpack()
@@ -90,13 +91,21 @@ download_effectivareas_V6()
             elif [[ ${I: -1} == "s" ]] && [[ ${A} == "ATM61" ]]; then
                continue
             fi
-            for F in nominalHV RedHV
+            for F in nominalHV RedHV UV
             do
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
                   continue
                fi
+               if [[ ${F} == "UV" ]]; then
+                   if [[ ${A} == "ATM62" ]]; then
+                       continue
+                   fi
+                   A="ATM21"
+               fi
                if [[ ${F} == "RedHV" ]]; then
                   CLIST=${CLISTRV}
+               elif [[ ${F} == "UV" ]]; then
+                   CLIST=${CLISTUV}
                else
                   CLIST=${CLISTNV}
                fi

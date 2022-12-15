@@ -10,7 +10,7 @@ i) stereo quality cuts
 successfull core and direction reconstruction (>=0.)
 * arraychi2 0. 1.e30
 distance of core position to telescopes [m]
-* arraycore -1. 350.
+* arraycore -1. 400.
 
 size of the camera [deg], all events with direction
 outside of that intervall are ignored
@@ -23,6 +23,11 @@ second largest image size
 * sizesecondmax 600. 1.e30 V6
 cut on mean emission height
 * emissionheight 6. 1.e12
+
+cut on direction reconstruction quality
+(applies to Disp method only)
+Third parameter: require sucessful reconstruction for both methods
+* arraydispdiff -1. 0.5 1
 
 Telescope multiplicity
 arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>

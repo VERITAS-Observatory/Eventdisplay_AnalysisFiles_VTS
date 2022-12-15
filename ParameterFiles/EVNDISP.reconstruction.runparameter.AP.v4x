@@ -1,6 +1,7 @@
 eventdisplay reconstruction parameter file
 ===========================================
-geometrical stereo reconstruction (no angular DISP)
+geometrical stereo reconstruction
+threshold cleaning
 ===========================================
 
 Note: all line without '*' in the beginning are ignored
@@ -55,8 +56,8 @@ i) trace integration and image cleaning parameter
     Par4: <max difference between T0 and trace integration start>
 * -1 FADCSUMMATIONSTART 2 -1 T0
 
- image cleaning thresholds <image> <border>
-* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5
+ image cleaning thresholds <image> <border> <remove single image/border pairs (1=on)>
+* -1 IMAGECLEANINGTHRESHOLDS 5. 2.5 1
 
  image calculation at the edge of the camera <start fit for image with at least this loss> <min number of tubes>
 * -1 LLEDGEFIT 0.05 5
@@ -77,7 +78,7 @@ USAGE:
 
    syntax:
 
-     <telescope type> <variable name> <min cut value> <max cut value>
+     <telescope type> <variable name> <variable value>
 
    all line without '*' in the beginning are ignored
 
@@ -89,73 +90,72 @@ Set 0 = default reconstruction methods / quality cuts
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
-* -1 NTUBES    5    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1. 1.75
-* -1 FUI       -1. 1.e5
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 
 ======== IMPORTANT IMPORTANT ============
 ignore the following lines for regular data analysis
-(used only for MC if *)
-* -1 MCONLY
+-1 MCONLY
 ======== IMPORTANT IMPORTANT ============
+
+Set 1 = (placeholder, as this is a no-disp file)
+
+* -1 RECMETHOD 4
+* -1 MINANGLE 10.
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 
 ==============================
 3-telescope combinations
 ==============================
 
-Set 1 = T1 off default reconstruction method
+Set 2 = T1 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 1 USEIMAGE 0
 
-Set 2 = T2 off default reconstruction method
+Set 3 = T2 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 2 USEIMAGE 0
 
-Set 3 = T3 off default reconstruction method
+Set 4 = T3 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 3 USEIMAGE 0
 
-Set 4 = T4 off default reconstruction method
+Set 5 = T4 off default reconstruction method
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
-* -1 NTUBES    4    10000
-* -1 SIZE      100  1.e10
-* -1 LOSS1      -1.  0.20  0 10
-* -1 LOSS2      -1.  0.20 10 1000
-* -1 WIDTH     0.02 1000.
-* -1 DISTANCE  -1.  1.85
-* -1 FUI       0.35 1.e5
+* -1 MINTUBES 5
+* -1 MINSIZE 100
+* -1 MAXLOSS 0.2
+* -1 MINWIDTH 0.02
+* -1 MAXDIST 1.75
 * 4 USEIMAGE 0
 

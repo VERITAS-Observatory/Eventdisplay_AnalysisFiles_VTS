@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts)
+Super Soft point source cuts (no BDTs)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -17,13 +17,10 @@ outside of that intervall are ignored
 * cameraedge -1. 2.00
 
 second largest image size
-(this depends on the state of the instrument)
-* sizesecondmax 900. 1.e30 V4
-* sizesecondmax 900. 1.e30 V5
-* sizesecondmax 2000. 1.e30 V6
+* sizesecondmax 10. 1.e30
 
 cut on mean emission height
-* emissionheight 0. 1.e10
+* emissionheight 6. 1.e12
 
 Telescope multiplicity
 arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>
@@ -33,15 +30,15 @@ T1
 T2
 * arrayltrig 2 0
 T1/T2
-* arrayltrig 3 0
+* arrayltrig 3 1
 T3
 * arrayltrig 4 0
 T1/T3 V4: unlikely to get a 2-tel gamma-ray event with T1 and T3
 * arrayltrig 5 0 V4 1234
-* arrayltrig 5 0 V5
-* arrayltrig 5 0 V6
+* arrayltrig 5 1 V5
+* arrayltrig 5 1 V6
 T2/T3
-* arrayltrig 6 0 V4
+* arrayltrig 6 1 V4
 T2/T3 and V5/V6: unlikely to get a 2-tel gamma-ray event with T2 and T3
 * arrayltrig 6 0 V5 1234
 * arrayltrig 6 0 V6 1234
@@ -49,17 +46,19 @@ T1/T2/T3
 * arrayltrig 7 1
 T4
 * arrayltrig 8 0
-T1/T4
+T1/T4 and V4: telescopes too close to each other
 * arrayltrig 9 0 V4
+T1/T4 and V5/V6: unlikely to get a 2-tel gamma-ray event with T1 and T4
 * arrayltrig 9 0 V5 1234
 * arrayltrig 9 0 V6 1234
+T2/T4 and V4: unlikely to get a 2-tel gamma-ray event with T2 and T4
 * arrayltrig 10 0 V4 1234
-* arrayltrig 10 0 V5
-* arrayltrig 10 0 V6
+* arrayltrig 10 1 V5
+* arrayltrig 10 1 V6
 T1/T2/T4
 * arrayltrig 11 1
 T3/T4
-* arrayltrig 12 0
+* arrayltrig 12 1
 T1/T3/T4
 * arrayltrig 13 1
 T2/T3/T4
@@ -68,12 +67,12 @@ T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.008
+* arraytheta2 -1. 0.012
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
-* arraymscw -2. 2.
-* arraymscl -2. 5.
+* arraymscw -1.2 0.8
+* arraymscl -1.2 1.0
 
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies

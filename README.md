@@ -1,4 +1,4 @@
-# Eventdisplay Analysis Files - version v487 (latest: auxv01)
+# Eventdisplay Analysis Files - version v490
 
 Configuration and runparameter files for Eventdisplay
 
@@ -11,7 +11,7 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_A
 ./get_irfs_from_ucla.sh
 ```
 
-Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v487
+Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v490
 
 Following directories and files are available:
 
@@ -42,7 +42,9 @@ DetectorGeometry
 
 # IRF Description
 
-## v487
+**TODO needs to be updated**
+
+## v490
 
 All v487 effectivea area IRFs are identical to v486 in their values, but **not** in the data format.
 Mixing of version is therefore not possible at the anasum stage.
