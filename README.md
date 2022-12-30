@@ -1,6 +1,6 @@
 # Eventdisplay Analysis Files - version v490
 
-Configuration and runparameter files for Eventdisplay
+Configuration and run parameter files for Eventdisplay
 
 Required for the analysis of VERITAS data. 
 
@@ -11,15 +11,15 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_A
 ./get_irfs_from_ucla.sh
 ```
 
-Further information on this relase: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v490
+Further information on this release: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v490
 
 Following directories and files are available:
 
-ParameterFiles
+Parameter Files
 - parameter files required for running most steps of Eventdisplay
 - EVNDISP.global.runparameter (global parameters like VERITAS position; URL of VERITAS DB; location of VERITAS raw data archive)
 - VERITAS.Epochs.runparameter (definition of VERITAS epochs (V4,V5,V6); summer/winter; absolute gains)
-- EVNDISP.reconstruction.runparameter (parameters used in eventdisplay reconstruction)
+- EVNDISP.reconstruction.runparameter (parameters used in Eventdisplay reconstruction)
 - EVNDISP.specialchannels.dat (definition of special channels like L2 channels)
 - EVNDISP.validchannels.dat (criteria for dead channel finders)
 - ANASUM.runparameter (parameter file for anasum step)
@@ -30,12 +30,12 @@ GammaHadronCutFiles
 - parameter files for gamma/hadron separation cuts
 
 AstroData:
-- example catalogues and typical Crab Nebula spectra
+- example catalogs and typical Crab Nebula spectra
 
 Calibration 
 - low-gain calibration files required for Eventdisplay analysis
 - pulse-shapes used in CARE simulations (Calibration/CareSimulations)
-- example file for calibration list to be used to overwrite DB flasher/laser values in the anlaysis (Calibration/calibrationlist.dat)
+- example file for calibration list to be used to overwrite DB flasher/laser values in the analysis (Calibration/calibrationlist.dat)
 
 DetectorGeometry
 - configuration files for pixel and telescope positions
@@ -46,7 +46,7 @@ DetectorGeometry
 
 ## v490
 
-All v487 effectivea area IRFs are identical to v486 in their values, but **not** in the data format.
+All v487 effective area IRFs are identical to v486 in their values, but **not** in the data format.
 Mixing of version is therefore not possible at the anasum stage.
 
 ### V4
@@ -129,7 +129,7 @@ To cover the full parameter space of observations, there lookup tables included 
 
 NSB=11 x Ze(9) x Woff(9) x Az(4) x Tel(4) x Var(3) x Hist(2) = 85,000 histograms
 
-Woff = distance to comera center, Var = (width, length, energy), Hist = number of histogram required (2)
+Woff = distance to camera center, Var = (width, length, energy), Hist = number of histogram required (2)
 
 # Technical
 
@@ -138,7 +138,7 @@ For version changes, the following files need to be changed:
 - [get_irfs_from_ucla.sh](get_irfs_from_ucla.sh) 
 - [put_irfs_to_ucla.sh](put_irfs_to_ucla.sh)
 
-For related/identical IRFs between different Eventdisplay version, use the script `relate_versions.sh` (Note: extremely finetuned)
+For related/identical IRFs between different Eventdisplay version, use the script `relate_versions.sh` (Note: extremely fine tuned)
 
 ## Uploading IRFs
 
