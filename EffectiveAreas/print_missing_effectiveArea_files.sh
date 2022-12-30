@@ -1,10 +1,10 @@
 # print missing effective area files
 #
 
-CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
+CLISTNV=$(cat ../IRF_GAMMAHADRONCUTS.dat)
 VERSION=$(cat ../IRFVERSION)
 
-ME="GEO"
+ME="AP"
 
 for A in ATM61 ATM62
 do
