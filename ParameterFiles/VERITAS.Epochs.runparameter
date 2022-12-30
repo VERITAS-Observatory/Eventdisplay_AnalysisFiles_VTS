@@ -26,7 +26,7 @@ Naming should be always MAJOREPOCH_MINOREPOCH
 * EPOCH V6_2017_2018 2017-08-01 2018-07-31
 * EPOCH V6_2018_2019 2018-08-01 2019-11-12
 (replaced by extended V6_2018_2019 period;
-short period with <3% throughput differences ony)
+short period with <3% throughput differences only)
  EPOCH V6_2019_2019s 2019-09-20 2019-11-12
 (from here: alignement with summer/winter epochs)
 * EPOCH V6_2019_2020w 2019-11-13 2020-05-07
