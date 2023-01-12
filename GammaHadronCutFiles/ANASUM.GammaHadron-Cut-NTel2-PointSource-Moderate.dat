@@ -21,8 +21,9 @@ second largest image size
 * sizesecondmax 400. 1.e30 V4
 * sizesecondmax 400. 1.e30 V5
 * sizesecondmax 600. 1.e30 V6
+
 cut on mean emission height
-* emissionheight 6. 1.e12
+* emissionheight 0. 1.e10
 
 cut on direction reconstruction quality
 (applies to Disp method only)
