@@ -10,9 +10,9 @@ DDIR="tar_packages"
 mkdir -p ${DDIR}
 
 # list of cuts
-CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-PointSource-SuperSoft NTel2-PointSource-Soft NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
-CLISTRV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft"
-CLISTUV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft NTel2-PointSource-SuperSoftOpen"
+CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
+CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
+CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
 pack_radial_acceptances()
 {
@@ -124,7 +124,7 @@ pack_effectivareas_V4V5()
 
 # pack_radial_acceptances
 
-# pack_lookup_tables
+pack_lookup_tables
 
 pack_effectiveareas_V6
 

@@ -19,9 +19,9 @@ echo "Downloading IRF packages for ${VERSION}/"
 # Epochs
 EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat IRF_EPOCHS_WINTER.dat | sort -u)
 # list of cuts
-CLISTNV="NTel2-PointSource-Moderate-TMVA-BDT NTel2-PointSource-Soft-TMVA-BDT NTel3-PointSource-Hard-TMVA-BDT NTel2-PointSource-Hard-TMVA-BDT NTel2-Extended050-Moderate-TMVA-BDT NTel2-Extended025-Moderate-TMVA-BDT"
-CLISTRV="NTel2-PointSource-SuperSoft NTel2-PointSource-Soft"
-CLISTUV="NTel2-PointSource-Soft-GEO NTel2-PointSource-SuperSoft NTel2-PointSource-SuperSoftOpen"
+CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
+CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
+CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
 ## function to download and upack
 download_and_unpack()
