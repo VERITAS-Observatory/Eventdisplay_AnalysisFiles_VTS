@@ -30,8 +30,9 @@ cut categories:  NotEnforced, FMax, FMin, FSmart
 * VARIABLE F -6 4 NotEnforced log10(EChi2S)
 * VARIABLE F 0.0 100. FMax EmissionHeight
 * VARIABLE F -11 4 NotEnforced log10(EmissionHeightChi2)
- VARIABLE F 0 5 NotEnforced log10(SizeSecondMax)
+* VARIABLE F 0 5 NotEnforced log10(SizeSecondMax)
 * VARIABLE F 0.0 1000. NotEnforced sqrt(Xcore*Xcore+Ycore*Ycore)
+* VARIABLE I 0 5 NotEnforced NImages
 
 ##############################################
 spectator variables
@@ -53,7 +54,7 @@ Selection cut before training
 (similar to TTree::Draw() selection cuts)
 
 # size cut replaced by run script
-* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff_derot*Yoff_derot)+(Xoff_derot*Xoff_derot))<0.6
+* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff_derot*Yoff_derot)+(Xoff_derot*Xoff_derot))<0.6&&SizeSecondMax>TMVASIZECUT
 * SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05
 
 ##############################################
