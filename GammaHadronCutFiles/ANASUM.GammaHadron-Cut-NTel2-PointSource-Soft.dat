@@ -22,6 +22,11 @@ second largest image size
 cut on mean emission height
 * emissionheight 6. 1.e12
 
+cut on direction reconstruction quality
+(applies to Disp method only)
+Third parameter: require sucessful reconstruction for both methods
+* arraydispdiff -1. 0.5 1
+
 Telescope multiplicity
 arrayltrig <bit coded telescope combination> <0=off, 1=on> <epoch> <telescope combinations for which this selection is valid>
 * arrayltrig 0 0
