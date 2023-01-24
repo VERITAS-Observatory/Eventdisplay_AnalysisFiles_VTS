@@ -18,8 +18,7 @@ energy bins
 * ENERGYBINS 1 -1.50 -0.75 -0.25 0.5 2.0
 
 zenith bins
- ZENBINS 0 25 32.5 42.5 75
-* ZENBINS 0 25 32.5
+* ZENBINS 0 25 32.5 42.5 75
 
 ##############################################
 training variables
@@ -33,20 +32,16 @@ cut categories:  NotEnforced, FMax, FMin, FSmart
 * VARIABLE F -11 4 NotEnforced log10(EmissionHeightChi2)
 * VARIABLE F 0 5 NotEnforced log10(SizeSecondMax)
 * VARIABLE F 0.0 1000. NotEnforced sqrt(Xcore*Xcore+Ycore*Ycore)
+* VARIABLE I 0 5 NotEnforced NImages
 
 ##############################################
 spectator variables
-* SPECTATOR NImages
-* SPECTATOR Xoff_derot
-* SPECTATOR Yoff_derot
+ SPECTATOR NImages
+ SPECTATOR Xoff_derot
+ SPECTATOR Yoff_derot
 * SPECTATOR ErecS
-* SPECTATOR Xcore
-* SPECTATOR Ycore
- SPECTATOR MCxoff
- SPECTATOR MCyoff
- SPECTATOR MCxcore
- SPECTATOR MCycore
- SPECTATOR MCe0
+ SPECTATOR Xcore
+ SPECTATOR Ycore
 
 ##############################################
 Minimum number of signal and background events needed
@@ -59,7 +54,7 @@ Selection cut before training
 (similar to TTree::Draw() selection cuts)
 
 # size cut replaced by run script
-* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff_derot*Yoff_derot)+(Xoff_derot*Xoff_derot))<0.6
+* SELECTION_CUTS MSCW>-2.&&MSCW<2.&&MSCL>-2.&&MSCL<5.&&ErecS>0.&&EmissionHeight>0.&&EmissionHeight<50.&&NImages>1&&((Yoff_derot*Yoff_derot)+(Xoff_derot*Xoff_derot))<0.6&&SizeSecondMax>TMVASIZECUT
 * SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05
 
 ##############################################
@@ -74,9 +69,6 @@ Prepare training options - to be added in IRF.trainTMVAforGammaHadronSeparation.
 (e.g. number of signal and background events used for training: nTrain_Signal=100:nTrain_Background=100)
 
 PREPARE_TRAINING_OPTIONS SplitMode=Random:!V:nTrain_Signal=200000:nTrain_Background=200000::nTest_Signal=200000:nTest_Background=200000
-
-* CHECKEVENTVALIDITY 0
-* RESETNUMBEROFTRAININGEVENTS 0
 
 signal weight
 * SIGNALWEIGHT 1.
