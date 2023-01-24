@@ -11,8 +11,8 @@ mkdir -p ${DDIR}
 
 # list of cuts
 CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
-CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
-CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
+# CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
+# CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
 pack_radial_acceptances()
 {
@@ -50,6 +50,9 @@ pack_effectiveareas_V6()
         else
             EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
         fi
+        # required, as IRFs for some operation mode are
+        # available only for one atmosphere
+        ASAVE=${A}
 
         for I in ${EPOCHS[@]}
         do
@@ -63,6 +66,7 @@ pack_effectiveareas_V6()
                       continue
                   fi
                   A="ATM21"
+                  ASAVE="ATM61"
                fi
                if [[ ${F} == "RedHV" ]]; then
                   CLIST=${CLISTRV}
@@ -92,6 +96,7 @@ pack_effectiveareas_V6()
                        echo "Packing EffectiveAreas $F $I $A ${T} ${D}.tar (no files)"
                    fi
                done
+               A=${ASAVE}
             done
          done
     done
