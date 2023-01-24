@@ -10,6 +10,7 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 
 # Eventdisplay version
 VERSION=$(cat IRFVERSION)
+VERSION="${VERSION}-beta.1"
 if [[ $IRFTYPE ]]; then
    VERSION=${VERSION}${IRFTYPE}
 fi
@@ -20,14 +21,14 @@ echo "Downloading IRF packages for ${VERSION}/"
 EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat IRF_EPOCHS_WINTER.dat | sort -u)
 # list of cuts
 CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
-CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
-CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
+# CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
+# CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
 ## function to download and upack
 download_and_unpack()
 {
     D=${1}
-    if [[ $HOSTNAME == *"desy"* ]]; then
+    if [[ $HOSTNAME == *"desFFy"* ]]; then
        echo "DESY host detected"
        cp -v -i /lustre/fs23/group/veritas/Eventdisplay_AnalysisFiles/${VERSION}/archive/$D.tar .
     else
@@ -117,10 +118,10 @@ download_effectivareas_V6()
     done
 }
 
-dowload_radialacceptances
+# dowload_radialacceptances
 
 dowload_lookuptables
 
-download_effectivareas_V4V5
+# download_effectivareas_V4V5
 
 download_effectivareas_V6
