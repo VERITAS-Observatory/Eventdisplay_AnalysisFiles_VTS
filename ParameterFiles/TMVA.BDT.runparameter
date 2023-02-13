@@ -33,6 +33,7 @@ cut categories:  NotEnforced, FMax, FMin, FSmart
 * VARIABLE F 0 5 NotEnforced log10(SizeSecondMax)
 * VARIABLE F 0.0 1000. NotEnforced sqrt(Xcore*Xcore+Ycore*Ycore)
 * VARIABLE I 0 5 NotEnforced NImages
+* VARIABLE F -10. 4. NotEnforced log10(DispDiff)
 
 ##############################################
 spectator variables
