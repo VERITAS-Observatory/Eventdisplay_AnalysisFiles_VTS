@@ -11,7 +11,7 @@ IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="AP"
 SIMTYPE="CARE_June2020"
 
-BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining"
+BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining/DISP/"
 
 echo "COPY gamma/hadron BDTs for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 echo "  reading files from ${BDTDIR}"
@@ -31,7 +31,6 @@ do
             ODIR="${E}_${A}/${C}"
             mkdir -p ${ODIR}
             ls  ${BDTDIR}/${ODIR}/*
-            continue
             cp -v -f ${BDTDIR}/${ODIR}/*.xml ${ODIR}/
             cp -v -f ${BDTDIR}/${ODIR}/BDT_*.root ${ODIR}/
         done
