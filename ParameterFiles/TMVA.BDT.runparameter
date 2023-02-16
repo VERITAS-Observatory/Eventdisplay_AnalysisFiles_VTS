@@ -15,7 +15,8 @@ MinNodeSize=1 (between 0.1 and 10) - significant effect
 
 ##############################################
 energy bins
-* ENERGYBINS 1 -1.50 -0.75 -0.25 0.5 2.0
+# (min/max pairs of energy bin edges; sorted)
+* ENERGYBINEDGES -1.5 -0.5 -1.25 -0.25 -1. 0. -0.75 0.25 -0.5 0.5 -0.25 0.75 0. 1. 0.25 1.25 0.5 2.
 
 zenith bins
 * ZENBINS 0 32.5 47.5 75.
