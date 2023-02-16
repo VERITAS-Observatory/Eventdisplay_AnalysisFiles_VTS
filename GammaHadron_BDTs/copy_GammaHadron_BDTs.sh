@@ -30,7 +30,6 @@ do
             echo "EPOCH ${E} CUT ${C}"
             ODIR="${E}_${A}/${C}"
             mkdir -p ${ODIR}
-            ls  ${BDTDIR}/${ODIR}/*
             cp -v -f ${BDTDIR}/${ODIR}/*.xml ${ODIR}/
             cp -v -f ${BDTDIR}/${ODIR}/BDT_*.root ${ODIR}/
         done
