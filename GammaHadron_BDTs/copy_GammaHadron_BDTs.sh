@@ -25,13 +25,21 @@ do
     fi
     for E in $EPOCHS
     do
-        for C in NTel2-Moderate NTel2-Soft NTel3-Hard
+        # for C in NTel2-Moderate NTel2-Soft NTel3-Hard
+        for C in NTel2-Moderate
         do
             echo "EPOCH ${E} CUT ${C}"
             ODIR="${E}_${A}/${C}"
+            if [[ ! -d ${BDTDIR}/${ODIR} ]]; then
+                echo "   directory not found"
+                continue
+            fi
             mkdir -p ${ODIR}
+            NXML=$(ls -1 ${BDTDIR}/${ODIR}/*.xml | wc -l)
+            NROO=$(ls -1 ${BDTDIR}/${ODIR}/BDT_*[0-9].root* | wc -l)
+            echo "   found $NXML XML and $NROO root files"
             cp -v -f ${BDTDIR}/${ODIR}/*.xml ${ODIR}/
-            cp -v -f ${BDTDIR}/${ODIR}/BDT_*.root ${ODIR}/
+            cp -v -f ${BDTDIR}/${ODIR}/BDT_*[0-9].root ${ODIR}/
         done
     done
 done
