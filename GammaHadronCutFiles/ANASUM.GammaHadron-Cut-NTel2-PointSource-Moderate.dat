@@ -79,8 +79,8 @@ ii) direction cut [deg2]
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
-* arraymscw -1.2 0.5
-* arraymscl -1.2 0.7
+* arraymscw -1.2 0.3
+* arraymscl -1.2 0.5
 
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies
