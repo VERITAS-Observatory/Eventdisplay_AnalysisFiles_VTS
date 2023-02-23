@@ -40,6 +40,36 @@ pack_lookup_tables()
     done
 }
 
+pack_gammahadronbdts()
+{
+    echo "Packing GammaHadron BDTs"
+    echo "========================"
+    EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
+    for I in ${EPOCHS[@]} V4 V5
+    do
+        D="GammaHadronBDTs_${I}"
+        echo "Packing BDT files ${I} into ${D}.tar"
+        rm -f -v ${D}.tar
+        tar -cvzf ${D}.tar GammaHadronBDTs/${I}*
+        mv -f ${D}.tar ${DDIR}/
+    done
+}
+
+pack_dispbdts()
+{
+    echo "Packing disp BDTs"
+    echo "========================"
+    EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
+    for I in ${EPOCHS[@]} V4 V5
+    do
+        D="DispBDTs_${I}"
+        echo "Packing dispBDT files ${I} into ${D}.tar"
+        rm -f -v ${D}.tar
+        tar -cvzf ${D}.tar DispBDTs/${I}*
+        mv -f ${D}.tar ${DDIR}/
+    done
+}
+
 pack_effectiveareas_V6()
 {
     # Effective areas for different epochs
@@ -58,6 +88,7 @@ pack_effectiveareas_V6()
         do
             for F in nominalHV RedHV UV
             do
+                # redHV and UV for ATM61 only
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
                   continue
                fi
@@ -68,9 +99,10 @@ pack_effectiveareas_V6()
                   A="ATM21"
                   ASAVE="ATM61"
                fi
-               if [[ ${F} == "RedHV" ]]; then
+               # list of cuts depend on observation mode
+               if [[ ${F} == "RedHV" ]] && [[ -v ${CLISTRV} ]]; then
                   CLIST=${CLISTRV}
-               elif [[ ${F} == "UV" ]]; then
+               elif [[ ${F} == "UV" ]] && [[ -v ${CLISTUV{} ]]; then
                   CLIST=${CLISTUV}
                else
                   CLIST=${CLISTNV}
@@ -129,9 +161,14 @@ pack_effectivareas_V4V5()
 
 # pack_radial_acceptances
 
-pack_lookup_tables
+# pack_lookup_tables
 
-pack_effectiveareas_V6
+# pack_effectiveareas_V6
 
 # pack_effectivareas_V4V5
+
+pack_dispbdts
+
+pack_gammahadronbdts
+
 
