@@ -56,6 +56,7 @@ Table with average reflectivities (from David Hanna, see elog end of March 2020)
 * T V6_2020_2021w 0.647 0.712 0.781 0.665
 * T V6_2021_2021s 0.670 0.701 0.774 0.647
 * T V6_2021_2022w 0.697 0.680 0.767 0.652
+* T V6_2022_2022s 0.682 0.684 0.764 0.645
 
 Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mcgill.ca/~veritas/gain)
   t ID T1 T2 T3 T4
@@ -77,6 +78,7 @@ Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mc
 * G V6_2020_2021w 0.942 0.930 1.016 1.014
 * G V6_2021_2021s 0.937 0.987 1.022 1.054
 * G V6_2021_2022w 0.927 0.993 0.999 1.047
+* G V6_2022_2022s 0.932 0.959 0.970 0.991
 
 Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
   s = T * G
@@ -100,6 +102,7 @@ Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
 * s V6_2020_2021w 0.609 0.662 0.793 0.674
 * s V6_2021_2021s 0.628 0.692 0.792 0.682
 * s V6_2021_2022w 0.646 0.676 0.766 0.683
+* s V6_2022_2022s 0.636 0.656 0.741 0.639
 
 Note: mirror swaps/jumps/breaks in T2 (2014_2015), T3 (2014_2015, 2017_2018), T4 (2013_2014).
 
@@ -111,4 +114,3 @@ Table for 2-tel analyses (switch off 2 at a time) - not used for standard analys
 * s V6_T2T3 0.00 1.00 1.00 0.00
 * s V6_T2T4 0.00 1.00 0.00 1.00
 * s V6_T3T4 0.00 0.00 1.00 1.00
-

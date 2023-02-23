@@ -58,6 +58,22 @@ dowload_lookuptables()
     done
 }
 
+dowload_dispBDTs()
+{
+    for I in ${EPOCHS[@]} V4 V5
+    do
+      download_and_unpack DispBDTs_${I}
+    done
+}
+
+download_gammahadronbdts()
+{
+    for I in ${EPOCHS[@]} V4 V5
+    do
+      download_and_unpack GammaHadronBDTs_${I}
+    done
+}
+
 download_effectivareas_V4V5()
 {
     for I in V4 V5
@@ -125,3 +141,7 @@ dowload_lookuptables
 # download_effectivareas_V4V5
 
 download_effectivareas_V6
+
+download_dispbdts
+
+download_gammahadronbdts
