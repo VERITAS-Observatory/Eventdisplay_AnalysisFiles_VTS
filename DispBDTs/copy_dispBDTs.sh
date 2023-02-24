@@ -24,16 +24,14 @@ do
         ZE="20deg"
     fi
     echo $Z
-    # for A in ATM61 ATM62
-    for A in ATM62
+    for A in ATM61 ATM62
     do
         if [[ ${A} == "ATM62" ]]; then
             EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
         else
             EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
         fi
-#        for E in $EPOCHS
-        for E in "V6_2022_2022s"
+        for E in $EPOCHS
         do
             echo "EPOCH ${E}"
             ODIR="${E}_${A}_${ANALYSISTYPE}/${Z}"
