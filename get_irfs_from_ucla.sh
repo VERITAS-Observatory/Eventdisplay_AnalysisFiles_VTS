@@ -10,7 +10,7 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 
 # Eventdisplay version
 VERSION=$(cat IRFVERSION)
-VERSION="${VERSION}-beta.1"
+VERSION="${VERSION}-beta.2"
 if [[ $IRFTYPE ]]; then
    VERSION=${VERSION}${IRFTYPE}
 fi
@@ -55,6 +55,22 @@ dowload_lookuptables()
     for I in ${EPOCHS[@]} V4 V5
     do
       download_and_unpack Tables_${I}
+    done
+}
+
+dowload_dispBDTs()
+{
+    for I in ${EPOCHS[@]} V4 V5
+    do
+      download_and_unpack DispBDTs_${I}
+    done
+}
+
+download_gammahadronbdts()
+{
+    for I in ${EPOCHS[@]} V4 V5
+    do
+      download_and_unpack GammaHadronBDTs_${I}
     done
 }
 
@@ -125,3 +141,7 @@ dowload_lookuptables
 # download_effectivareas_V4V5
 
 download_effectivareas_V6
+
+download_dispbdts
+
+download_gammahadronbdts

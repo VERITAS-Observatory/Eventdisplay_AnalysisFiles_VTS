@@ -34,9 +34,7 @@ short period with <3% throughput differences only)
 * EPOCH V6_2020_2021w 2020-11-05 2021-04-27
 * EPOCH V6_2021_2021s 2021-04-28 2021-11-16
 * EPOCH V6_2021_2022w 2021-11-17 2022-05-09
-TODO - replace V6_2021_2021s by V6_2022_2022s 
-(when throughput parameters are available)
-* EPOCH V6_2021_2021s 2022-05-10 2022-11-08
+* EPOCH V6_2022_2022s 2022-05-10 2022-11-08
 TODO - replace V6_2021_2022w by V6_2022_2023w
 (when throughput parameters are available)
 * EPOCH V6_2021_2022w 2022-11-09 2099-01-01
@@ -83,6 +81,7 @@ SUMMER:
 * ATMOSPHERE 62 2020-05-08  2020-11-04
 * ATMOSPHERE 62 2021-04-28  2021-11-16
 * ATMOSPHERE 62 2022-05-10  2022-11-08
+* ATMOSPHERE 62 2023-05-10  2023-11-08
 
 =================================================
 
