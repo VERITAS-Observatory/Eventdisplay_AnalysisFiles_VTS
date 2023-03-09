@@ -1,6 +1,7 @@
 Runparameter for TMVA Training
 =====================================
-Note that part of this parameter file is modified by the scripts in $EVNDISPSYS/scripts/VTS:
+Note that part of this parameter file is modified by
+analysis scripts in Eventdisplay_AnalysisScripts_VTS
 
 IRF.trainTMVAforGammaHadronSeparation.sh
 =====================================
@@ -10,8 +11,6 @@ IRF.trainTMVAforGammaHadronSeparation.sh
 ##############################################
 NOTE: all lines not starting with * are ignored
 * MVA_METHOD BDT NTrees=400:MaxDepth=5
-
-MinNodeSize=1 (between 0.1 and 10) - significant effect
 
 ##############################################
 energy bins
@@ -34,7 +33,6 @@ cut categories:  NotEnforced, FMax, FMin, FSmart
 * VARIABLE F 0 5 NotEnforced log10(SizeSecondMax)
 * VARIABLE F 0.0 1000. NotEnforced sqrt(Xcore*Xcore+Ycore*Ycore)
 * VARIABLE I 0 5 NotEnforced NImages
- VARIABLE F -10. 4. NotEnforced log10(DispDiff)
 
 ##############################################
 spectator variables
