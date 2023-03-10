@@ -99,9 +99,6 @@ V6 2020_2020s |  0-60 deg |  0-2 deg | 50-450 MHz  | v490 | - |
 V6 2021_2021s |  0-60 deg |  0-2 deg | 50-450 MHz  | v490 | - |
 V6 V6_2022_2022s |  0-60 deg |  0-2 deg | 50-450 MHz  | v490 | - |
 
-Remarks:
-- Extended025-Moderate-TMVA-BDT and Extended050-Moderate-TMVA-BDT for zenith range 0-50 deg only (2012-2019)
-
 ### V6 Winter (reduced HV)
 
 Only Winter simulations are available for the reduced HV operation. 
