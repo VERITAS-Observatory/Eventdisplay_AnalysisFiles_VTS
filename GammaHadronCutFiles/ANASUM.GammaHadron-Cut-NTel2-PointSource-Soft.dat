@@ -75,7 +75,7 @@ T1/T2/T3/T4
 * arrayltrig 15 1
 
 ii) direction cut [deg2]
-* arraytheta2 -1. 0.010
+* arraytheta2 -1. 0.008
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
