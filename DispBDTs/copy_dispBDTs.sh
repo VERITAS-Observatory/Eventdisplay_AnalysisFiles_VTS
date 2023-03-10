@@ -27,16 +27,20 @@ do
     elif [[ $Z == "SZE" ]]; then
         ZE="20deg"
     fi
-    echo $Z
+    echo "Zenith bin $Z $ZE"
     for A in ATM61 ATM62
     do
-        if [[ ${SIMTYPE} == "CARE_RedHV" ]] && [[ ${A} == "ATM62" ]]; then
-            continue
-        fi
-        if [[ ${A} == "ATM62" ]]; then
-            EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
+        if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
+            if [[ ${A} == "ATM62" ]]; then
+                continue
+            fi
+            EPOCHS=$(cat ../IRF_EPOCHS_*.dat | sort -u)
         else
-            EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
+            if [[ ${A} == "ATM62" ]]; then
+                EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
+            else
+                EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
+            fi
         fi
         for E in $EPOCHS
         do
