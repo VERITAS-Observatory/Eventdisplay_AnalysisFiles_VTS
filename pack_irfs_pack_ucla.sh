@@ -170,5 +170,3 @@ pack_effectivareas_V4V5()
 pack_dispbdts
 
 pack_gammahadronbdts
-
-
