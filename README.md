@@ -51,6 +51,11 @@ Import Notes:
 3. IRFs for reduced HV observations are available for wobble offsets 0.5 deg only.
 4. Radial acceptances depend significantly on the field observered. No generic radial acceptace files are therefore provided as this point as part of the IRF packages.
 
+Cuts and Epochs:
+- effective areas for nominal high voltage conditions are available for the following cuts: [IRF_GAMMAHADRONCUTS.dat](IRF_GAMMAHADRONCUTS.dat)
+- effective areas for reduced high voltage conditions are available for the following cuts: [IRF_GAMMAHADRONCUTS_RedHV.dat](IRF_GAMMAHADRONCUTS_RedHV.dat)
+- [Summer](IRF_EPOCHS_SUMMER.dat) and [Winter](IRF_EPOCHS_WINTER.dat) epochs
+
 ### V4
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |

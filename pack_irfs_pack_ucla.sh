@@ -11,8 +11,8 @@ mkdir -p ${DDIR}
 
 # list of cuts
 CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
-# CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
-# CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
+CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RedHV.dat)
+CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
 pack_radial_acceptances()
 {
@@ -86,7 +86,8 @@ pack_effectiveareas_V6()
 
         for I in ${EPOCHS[@]}
         do
-            for F in nominalHV RedHV UV
+            # TODO for F in nominalHV RedHV UV
+            for F in nominalHV RedHV
             do
                 # redHV and UV for ATM61 only
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
@@ -161,12 +162,14 @@ pack_effectivareas_V4V5()
 
 # pack_radial_acceptances
 
-# pack_lookup_tables
+pack_lookup_tables
 
-# pack_effectiveareas_V6
+pack_effectiveareas_V6
 
-# pack_effectivareas_V4V5
+# TODO pack_effectivareas_V4V5
 
 pack_dispbdts
 
 pack_gammahadronbdts
+
+echo "Observe the TODOs in this scripts before the release"

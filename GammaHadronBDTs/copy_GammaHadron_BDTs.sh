@@ -26,7 +26,7 @@ do
     for E in $EPOCHS
     do
         # for C in NTel2-Moderate NTel2-Soft NTel3-Hard
-        for C in NTel2-Moderate
+        for C in NTel3-Hard
         do
             echo "EPOCH ${E} CUT ${C}"
             ODIR="${E}_${A}/${C}"

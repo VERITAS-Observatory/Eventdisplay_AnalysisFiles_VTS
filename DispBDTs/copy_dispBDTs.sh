@@ -8,8 +8,8 @@
 
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="AP"
-SIMTYPE="CARE_RedHV"
 SIMTYPE="CARE_June2020"
+SIMTYPE="CARE_RedHV"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 

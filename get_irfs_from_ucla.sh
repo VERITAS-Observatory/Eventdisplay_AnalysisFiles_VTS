@@ -21,8 +21,8 @@ echo "Downloading IRF packages for ${VERSION}/"
 EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat IRF_EPOCHS_WINTER.dat | sort -u)
 # list of cuts
 CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
-# CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RV.dat)
-# CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
+CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RedHV.dat)
+CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
 ## function to download and upack
 download_and_unpack()
