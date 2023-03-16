@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Soft point source cuts
+Soft point source cuts (box cuts)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -17,7 +17,10 @@ outside of that intervall are ignored
 * cameraedge -1. 2.00
 
 second largest image size
-* sizesecondmax 200. 1.e30
+(this depends on the state of the instrument)
+* sizesecondmax 0. 1.e30 V4
+* sizesecondmax 0. 1.e30 V5
+* sizesecondmax 0. 1.e30 V6
 
 cut on mean emission height
 * emissionheight 6. 1.e12
@@ -76,8 +79,8 @@ ii) direction cut [deg2]
 
 iii) gamma hadron cuts:
 b) mean scaled width cut (use cut selector 0 in runlist)
-* arraymscw -1.2 0.5
-* arraymscl -1.2 0.7
+* arraymscw -1.2 0.3
+* arraymscl -1.2 0.5
 
 iv) energy reconstruction cuts
 echi2 is a measure of the difference between the energies

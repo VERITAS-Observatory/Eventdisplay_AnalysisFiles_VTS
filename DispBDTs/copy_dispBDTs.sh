@@ -9,6 +9,7 @@
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="AP"
 SIMTYPE="CARE_June2020"
+SIMTYPE="CARE_RedHV"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
@@ -16,6 +17,9 @@ for Z in XZE LZE MZE SZE
 do
     if [[ $Z == "XZE" ]]; then
         ZE="60deg"
+        if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
+            ZE="55deg"
+        fi
     elif [[ $Z == "LZE" ]]; then
         ZE="55deg"
     elif [[ $Z == "MZE" ]]; then
@@ -23,18 +27,29 @@ do
     elif [[ $Z == "SZE" ]]; then
         ZE="20deg"
     fi
-    echo $Z
+    echo "Zenith bin $Z $ZE"
     for A in ATM61 ATM62
     do
-        if [[ ${A} == "ATM62" ]]; then
-            EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
+        if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
+            if [[ ${A} == "ATM62" ]]; then
+                continue
+            fi
+            EPOCHS=$(cat ../IRF_EPOCHS_*.dat | sort -u)
         else
-            EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
+            if [[ ${A} == "ATM62" ]]; then
+                EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
+            else
+                EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
+            fi
         fi
         for E in $EPOCHS
         do
             echo "EPOCH ${E}"
-            ODIR="${E}_${A}_${ANALYSISTYPE}/${Z}"
+            if [[ ${SIMTYPE} == *"RedHV"* ]]; then
+                ODIR="${E}_${A}_${ANALYSISTYPE}_redHV/${Z}"
+            else
+                ODIR="${E}_${A}_${ANALYSISTYPE}/${Z}"
+            fi
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
