@@ -25,7 +25,7 @@ Parameter Files
 - ANASUM.runparameter (parameter file for anasum step)
 - ANASUM.timemask.dat (time mask example for anasum step)
 - ANASUM.runlist (run list example for anasum step)
-- TMVA.BDT.runparameter (runparameters for TMVA training)
+- TMVA.BDT.runparameter (runparameter for TMVA training)
 
 GammaHadronCutFiles
 - parameter files for gamma/hadron separation cuts
@@ -49,7 +49,7 @@ Import Notes:
 1. Analysis and file format change with v490. Do not use IRFs from older versions of Eventdisplay with v490.
 2. IRFs should not be used for analysis of observations outside of the indicated parameter space. This is especially important for the elevation range of V6 IRFs: no reliable analysis results can be achieved below 30 deg elevation.
 3. IRFs for reduced HV observations are available for wobble offsets 0.5 deg only.
-4. Radial acceptances depend significantly on the field observered. No generic radial acceptace files are therefore provided as this point as part of the IRF packages.
+4. Radial acceptances depend significantly on the field observed. No generic radial acceptance files are therefore provided as this point as part of the IRF packages.
 
 Cuts and Epochs:
 - effective areas for nominal high voltage conditions are available for the following cuts: [IRF_GAMMAHADRONCUTS.dat](IRF_GAMMAHADRONCUTS.dat)
