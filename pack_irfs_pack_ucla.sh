@@ -73,21 +73,25 @@ pack_dispbdts()
 pack_effectiveareas_V6()
 {
     # Effective areas for different epochs
-    for A in ATM61 ATM62
+    # TODO for F in nominalHV RedHV UV
+    for F in nominalHV RedHV
     do
-        if [[ ${A} == "ATM62" ]]; then
-            EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
-        else
-            EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
-        fi
-        # required, as IRFs for some operation mode are
-        # available only for one atmosphere
-        ASAVE=${A}
-
-        for I in ${EPOCHS[@]}
+        for A in ATM61 ATM62
         do
-            # TODO for F in nominalHV RedHV UV
-            for F in nominalHV RedHV
+            if [[ ${F} == "RedHV" ]]; then
+                EPOCHS=$(cat IRF_EPOCHS_*.dat | sort -u)
+            else
+                if [[ ${A} == "ATM62" ]]; then
+                    EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
+                else
+                    EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
+                fi
+            fi
+            # required, as IRFs for some operation mode are
+            # available only for one atmosphere
+            ASAVE=${A}
+
+            for I in ${EPOCHS[@]}
             do
                 # redHV and UV for ATM61 only
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then

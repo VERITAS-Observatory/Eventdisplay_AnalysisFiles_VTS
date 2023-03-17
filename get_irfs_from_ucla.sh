@@ -45,12 +45,12 @@ download_and_unpack()
    rm -v ${D}.tar
 }
 
-dowload_radialacceptances()
+download_radialacceptances()
 {
   download_and_unpack RadialAcceptances
 }
 
-dowload_lookuptables()
+download_lookuptables()
 {
     for I in ${EPOCHS[@]} V4 V5
     do
@@ -58,7 +58,7 @@ dowload_lookuptables()
     done
 }
 
-dowload_dispBDTs()
+download_dispbdts()
 {
     for I in ${EPOCHS[@]} V4 V5
     do
@@ -111,11 +111,12 @@ download_effectivareas_V6()
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
                   continue
                fi
+               ATM=${A}
                if [[ ${F} == "UV" ]]; then
                    if [[ ${A} == "ATM62" ]]; then
                        continue
                    fi
-                   A="ATM21"
+                   ATM="ATM21"
                fi
                if [[ ${F} == "RedHV" ]]; then
                   CLIST=${CLISTRV}
@@ -126,7 +127,7 @@ download_effectivareas_V6()
                fi
                for T in $CLIST
                do
-                  D="EffectiveAreas_${F}_${I}_${A}_${T}"
+                  D="EffectiveAreas_${F}_${I}_${ATM}_${T}"
                   download_and_unpack ${D}
                done
           done
@@ -134,9 +135,9 @@ download_effectivareas_V6()
     done
 }
 
-# dowload_radialacceptances
+# download_radialacceptances
 
-dowload_lookuptables
+download_lookuptables
 
 # download_effectivareas_V4V5
 
