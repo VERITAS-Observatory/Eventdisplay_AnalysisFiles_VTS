@@ -111,11 +111,12 @@ download_effectivareas_V6()
                if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
                   continue
                fi
+               ATM=${A}
                if [[ ${F} == "UV" ]]; then
                    if [[ ${A} == "ATM62" ]]; then
                        continue
                    fi
-                   A="ATM21"
+                   ATM="ATM21"
                fi
                if [[ ${F} == "RedHV" ]]; then
                   CLIST=${CLISTRV}
@@ -126,7 +127,7 @@ download_effectivareas_V6()
                fi
                for T in $CLIST
                do
-                  D="EffectiveAreas_${F}_${I}_${A}_${T}"
+                  D="EffectiveAreas_${F}_${I}_${ATM}_${T}"
                   download_and_unpack ${D}
                done
           done
