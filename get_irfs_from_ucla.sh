@@ -58,7 +58,7 @@ dowload_lookuptables()
     done
 }
 
-dowload_dispBDTs()
+dowload_dispbdts()
 {
     for I in ${EPOCHS[@]} V4 V5
     do
@@ -142,6 +142,6 @@ dowload_lookuptables
 
 download_effectivareas_V6
 
-download_dispbdts
+dowload_dispbdts
 
 download_gammahadronbdts
