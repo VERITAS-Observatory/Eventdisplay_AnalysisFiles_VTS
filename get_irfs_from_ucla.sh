@@ -45,12 +45,12 @@ download_and_unpack()
    rm -v ${D}.tar
 }
 
-dowload_radialacceptances()
+download_radialacceptances()
 {
   download_and_unpack RadialAcceptances
 }
 
-dowload_lookuptables()
+download_lookuptables()
 {
     for I in ${EPOCHS[@]} V4 V5
     do
@@ -58,7 +58,7 @@ dowload_lookuptables()
     done
 }
 
-dowload_dispbdts()
+download_dispbdts()
 {
     for I in ${EPOCHS[@]} V4 V5
     do
@@ -135,14 +135,14 @@ download_effectivareas_V6()
     done
 }
 
-# dowload_radialacceptances
+# download_radialacceptances
 
-dowload_lookuptables
+download_lookuptables
 
 # download_effectivareas_V4V5
 
 download_effectivareas_V6
 
-dowload_dispbdts
+download_dispbdts
 
 download_gammahadronbdts
