@@ -1,9 +1,15 @@
 
 Instrumental epochs of VERITAS:
 
-V4: four-telescope array with T1 at its original position (prototype position)
-V5: four-telescope array with T1 at its current position
-V6: four-telescope array with T1 at its current position and new photomultipliers
+V4: 
+- four-telescope array with T1 at its original position (prototype position)
+- before run 46642
+V5:
+- four-telescope array with T1 at its current position
+- run 46642 to 63372
+V6: 
+- four-telescope array with T1 at its current position and new photomultipliers
+- after run 63372
 
 Since the reflectivity and gains may not be stable
 we need to subdivide V6 in subperiods. This affects
