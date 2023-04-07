@@ -13,7 +13,7 @@ File containing time mask details
 (this allows to exclude certain time intervals from 
 the analysis)
  TIMEMASKFILE <file name of time mask file>
-* TIMEMASKFILE timemask.dat
+* TIMEMASKFILE ANASUM.timemask.dat
 
 Exclusion regions
 -----------------
