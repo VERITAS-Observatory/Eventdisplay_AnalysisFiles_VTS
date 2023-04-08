@@ -8,8 +8,9 @@
 
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="AP"
-SIMTYPE="CARE_June2020"
 SIMTYPE="CARE_RedHV"
+SIMTYPE="CARE_June2020"
+SIMTYPE="GRISU"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
@@ -35,6 +36,9 @@ do
                 continue
             fi
             EPOCHS=$(cat ../IRF_EPOCHS_*.dat | sort -u)
+        elif [[ ${SIMTYPE} == "GRISU" ]]; then
+            A=${A/6/2}
+            EPOCHS="V4 V5"
         else
             if [[ ${A} == "ATM62" ]]; then
                 EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
@@ -44,7 +48,7 @@ do
         fi
         for E in $EPOCHS
         do
-            echo "EPOCH ${E}"
+            echo "EPOCH ${E} ATMO ${A}"
             if [[ ${SIMTYPE} == *"RedHV"* ]]; then
                 ODIR="${E}_${A}_${ANALYSISTYPE}_redHV/${Z}"
             else

@@ -14,3 +14,5 @@ VERITAS epochs and operation types supported:
 - V6redHV reduced high voltage
 - V5 nominal high voltage
 - V4 nominal high voltage
+
+XML files should be gzipped
