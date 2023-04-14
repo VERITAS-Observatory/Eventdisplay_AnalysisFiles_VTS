@@ -108,9 +108,6 @@ download_effectivareas_V6()
             fi
             for F in nominalHV RedHV UV
             do
-               if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
-                  continue
-               fi
                ATM=${A}
                if [[ ${F} == "UV" ]]; then
                    if [[ ${A} == "ATM62" ]]; then

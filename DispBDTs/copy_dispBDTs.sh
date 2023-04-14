@@ -31,12 +31,7 @@ do
     echo "Zenith bin $Z $ZE"
     for A in ATM61 ATM62
     do
-        if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
-            if [[ ${A} == "ATM62" ]]; then
-                continue
-            fi
-            EPOCHS=$(cat ../IRF_EPOCHS_*.dat | sort -u)
-        elif [[ ${SIMTYPE} == "GRISU" ]]; then
+        if [[ ${SIMTYPE} == "GRISU" ]]; then
             A=${A/6/2}
             EPOCHS="V4 V5"
         else
