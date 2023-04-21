@@ -78,14 +78,10 @@ pack_effectiveareas_V6()
     do
         for A in ATM61 ATM62
         do
-            if [[ ${F} == "RedHV" ]]; then
-                EPOCHS=$(cat IRF_EPOCHS_*.dat | sort -u)
+            if [[ ${A} == "ATM62" ]]; then
+                EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
             else
-                if [[ ${A} == "ATM62" ]]; then
-                    EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
-                else
-                    EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
-                fi
+                EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
             fi
             # required, as IRFs for some operation mode are
             # available only for one atmosphere
@@ -93,10 +89,7 @@ pack_effectiveareas_V6()
 
             for I in ${EPOCHS[@]}
             do
-                # redHV and UV for ATM61 only
-               if [[ ${F} == "RedHV" ]] && [[ ${A} == "ATM62" ]]; then
-                  continue
-               fi
+                # UV for ATM61 only
                if [[ ${F} == "UV" ]]; then
                   if [[ ${A} == "ATM62" ]]; then
                       continue
