@@ -104,10 +104,7 @@ V6 2020_2020s |  0-60 deg |  0-2 deg | 50-450 MHz  | v490 | - |
 V6 2021_2021s |  0-60 deg |  0-2 deg | 50-450 MHz  | v490 | - |
 V6 V6_2022_2022s |  0-60 deg |  0-2 deg | 50-450 MHz  | v490 | - |
 
-### V6 Winter (reduced HV)
-
-Only Winter simulations are available for the reduced HV operation. 
-Epochs for summer epochs include the corresponding throughput corrections applied on Winter simulations.
+### V6 Winter and Summer (reduced HV)
 
 Epoch | Zenith Range | Wobble Offset | NSB Range |  Eventdisplay version (production) | Comment |
 :---:|:---:|:---:|:---:|:---:|:---:
