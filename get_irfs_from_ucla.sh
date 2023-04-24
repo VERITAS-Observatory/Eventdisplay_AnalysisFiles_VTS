@@ -106,7 +106,7 @@ download_effectivareas_V6()
             elif [[ ${I: -1} == "s" ]] && [[ ${A} == "ATM61" ]]; then
                continue
             fi
-            for F in nominalHV RedHV UV
+            for F in nominalHV RedHV
             do
                ATM=${A}
                if [[ ${F} == "UV" ]]; then
