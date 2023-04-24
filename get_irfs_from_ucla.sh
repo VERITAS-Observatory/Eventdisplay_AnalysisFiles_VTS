@@ -10,7 +10,7 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 
 # Eventdisplay version
 VERSION=$(cat IRFVERSION)
-VERSION="${VERSION}-beta.2"
+VERSION="${VERSION}.0"
 if [[ $IRFTYPE ]]; then
    VERSION=${VERSION}${IRFTYPE}
 fi
@@ -106,7 +106,7 @@ download_effectivareas_V6()
             elif [[ ${I: -1} == "s" ]] && [[ ${A} == "ATM61" ]]; then
                continue
             fi
-            for F in nominalHV RedHV UV
+            for F in nominalHV RedHV
             do
                ATM=${A}
                if [[ ${F} == "UV" ]]; then
