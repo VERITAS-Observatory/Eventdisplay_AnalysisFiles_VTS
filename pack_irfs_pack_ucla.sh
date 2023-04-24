@@ -74,6 +74,7 @@ pack_effectiveareas_V6()
 {
     # Effective areas for different epochs
     # TODO for F in nominalHV RedHV UV
+    # for F in nominalHV RedHV
     for F in nominalHV RedHV
     do
         for A in ATM61 ATM62
@@ -98,9 +99,9 @@ pack_effectiveareas_V6()
                   ASAVE="ATM61"
                fi
                # list of cuts depend on observation mode
-               if [[ ${F} == "RedHV" ]] && [[ -v ${CLISTRV} ]]; then
+               if [[ ${F} == "RedHV" ]]; then
                   CLIST=${CLISTRV}
-               elif [[ ${F} == "UV" ]] && [[ -v ${CLISTUV{} ]]; then
+               elif [[ ${F} == "UV" ]]; then
                   CLIST=${CLISTUV}
                else
                   CLIST=${CLISTNV}
@@ -159,14 +160,14 @@ pack_effectivareas_V4V5()
 
 # pack_radial_acceptances
 
-pack_lookup_tables
+# pack_lookup_tables
 
 pack_effectiveareas_V6
 
 # TODO pack_effectivareas_V4V5
 
-pack_dispbdts
+# pack_dispbdts
 
-pack_gammahadronbdts
+# pack_gammahadronbdts
 
 echo "Observe the TODOs in this scripts before the release"
