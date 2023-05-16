@@ -18,7 +18,7 @@ energy bins
 * ENERGYBINEDGES -1.5 -0.75 -1. -0.0 -0.25 0.5 0. 2.0
 
 zenith bins
-* ZENBINS 0 32.5 47.5 75.
+* ZENBINS 0 32.5 42.5 75.
 
 ##############################################
 training variables
