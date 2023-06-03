@@ -2,18 +2,16 @@
 # copy gamma/hadron BDT files from IRF production site
 #
 # hardwired 
-# - SIMTYPE (e.g., CARE_June2020)
 # - ANALYSISTYPE (e.g., AP)
 # - Directory with BDT output
 #
 
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="AP"
-SIMTYPE="CARE_June2020"
 
-BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining/GammaHadronBDTs_DISP/"
+BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining/GammaHadronBDTs_V6_DISP/"
 
-echo "COPY gamma/hadron BDTs for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
+echo "COPY gamma/hadron BDTs for ${IRVERSION}, analysis type ${ANALYSISTYPE}"
 echo "  reading files from ${BDTDIR}"
 
 for A in ATM61 ATM62
@@ -25,8 +23,7 @@ do
     fi
     for E in $EPOCHS
     do
-        # for C in NTel2-Moderate NTel2-Soft NTel3-Hard
-        for C in NTel3-Hard
+        for C in NTel2-Moderate NTel2-Soft NTel3-Hard
         do
             echo "EPOCH ${E} CUT ${C}"
             ODIR="${E}_${A}/${C}"

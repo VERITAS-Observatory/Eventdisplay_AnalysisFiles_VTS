@@ -18,8 +18,8 @@ outside of that intervall are ignored
 
 second largest image size
 (this depends on the state of the instrument)
-* sizesecondmax 1800. 1.e30 V4
-* sizesecondmax 1800. 1.e30 V5
+* sizesecondmax 900. 1.e30 V4
+* sizesecondmax 900. 1.e30 V5
 * sizesecondmax 1500. 1.e30 V6
 
 cut on mean emission height

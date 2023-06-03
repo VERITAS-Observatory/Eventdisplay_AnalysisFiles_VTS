@@ -73,8 +73,6 @@ pack_dispbdts()
 pack_effectiveareas_V6()
 {
     # Effective areas for different epochs
-    # TODO for F in nominalHV RedHV UV
-    # for F in nominalHV RedHV
     for F in nominalHV RedHV
     do
         for A in ATM61 ATM62
@@ -160,14 +158,12 @@ pack_effectivareas_V4V5()
 
 # pack_radial_acceptances
 
-# pack_lookup_tables
+pack_lookup_tables
 
 pack_effectiveareas_V6
 
-# TODO pack_effectivareas_V4V5
+pack_effectivareas_V4V5
 
-# pack_dispbdts
+pack_dispbdts
 
-# pack_gammahadronbdts
-
-echo "Observe the TODOs in this scripts before the release"
+pack_gammahadronbdts
