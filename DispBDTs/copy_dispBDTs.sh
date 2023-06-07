@@ -45,9 +45,9 @@ do
         do
             echo "EPOCH ${E} ATMO ${A}"
             if [[ ${SIMTYPE} == *"RedHV"* ]]; then
-                ODIR="${E}_${A}_${ANALYSISTYPE}_redHV/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}"
             else
-                ODIR="${E}_${A}_${ANALYSISTYPE}/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}"
             fi
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
