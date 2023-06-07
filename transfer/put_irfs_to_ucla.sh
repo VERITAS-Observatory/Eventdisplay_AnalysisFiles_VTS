@@ -21,8 +21,11 @@ fi
 
 echo "Uploading to /veritas/upload/EVNDISP/${VERSION}/"
 
+P=$(pwd)
+cd ..
+
 # list of tar files
-TARLIST=$(find tar_packages -name "Tab*.tar")
+TARLIST=$(find tar_packages -name "*.tar")
 
 for T in ${TARLIST}
 do
