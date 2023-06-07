@@ -14,44 +14,42 @@ CLISTNV=$(cat IRF_GAMMAHADRONCUTS.dat)
 CLISTRV=$(cat IRF_GAMMAHADRONCUTS_RedHV.dat)
 CLISTUV=$(cat IRF_GAMMAHADRONCUTS_UV.dat)
 
-pack_radial_acceptances()
-{
-    echo "Packing Radial acceptances"
-    echo "=========================="
-    D="RadialAcceptances"
-    echo "Packing RadialAcceptances into ${D}.tar"
-    rm -f -v ${D}.tar
-    tar -cvf ${D}.tar ${D}
-    mv -v -f ${D}.tar ${DDIR}/
-}
+# cleaning types
+CLEANING="AP NN"
 
 pack_lookup_tables()
 {
     echo "Packing Lookup Tables"
     echo "====================="
     EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
-    for I in ${EPOCHS[@]} V4 V5
+    for C in ${CLEANING}
     do
-        D="Tables_${I}"
-        echo "Packing tables ${I} into ${D}.tar"
-        rm -f -v ${D}.tar
-        tar -cvf ${D}.tar Tables/*${I}*.root
-        mv -f ${D}.tar ${DDIR}/
+        for I in ${EPOCHS[@]} V4 V5
+        do
+            D="Tables_${C}_${I}"
+            echo "Packing tables ${I} into ${D}.tar"
+            rm -f -v ${D}.tar
+            tar -cvf ${D}.tar Tables/*${I}*${C}*.root
+            mv -f ${D}.tar ${DDIR}/
+        done
     done
-}
+    }
 
 pack_gammahadronbdts()
 {
     echo "Packing GammaHadron BDTs"
     echo "========================"
     EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
-    for I in ${EPOCHS[@]} V4 V5
+    for C in ${CLEANING}
     do
-        D="GammaHadronBDTs_${I}"
-        echo "Packing BDT files ${I} into ${D}.tar"
-        rm -f -v ${D}.tar
-        tar -cvzf ${D}.tar GammaHadronBDTs/${I}*
-        mv -f ${D}.tar ${DDIR}/
+        for I in ${EPOCHS[@]} V4 V5
+        do
+            D="GammaHadronBDTs_${C}_${I}"
+            echo "Packing BDT files ${I} into ${D}.tar"
+            rm -f -v ${D}.tar
+            tar -cvzf ${D}.tar GammaHadronBDTs/${C}/${I}*
+            mv -f ${D}.tar ${DDIR}/
+        done
     done
 }
 
@@ -60,74 +58,83 @@ pack_dispbdts()
     echo "Packing disp BDTs"
     echo "========================"
     EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
-    for I in ${EPOCHS[@]} V4 V5
+    for C in ${CLEANING}
     do
-        D="DispBDTs_${I}"
-        echo "Packing dispBDT files ${I} into ${D}.tar"
-        rm -f -v ${D}.tar
-        tar -cvzf ${D}.tar DispBDTs/${I}*
-        mv -f ${D}.tar ${DDIR}/
+        for I in ${EPOCHS[@]} V4 V5
+        do
+            D="DispBDTs_${C}_${I}"
+            echo "Packing dispBDT files ${I} into ${D}.tar"
+            if [[ -e DispBDTs/${C} ]]; then
+                rm -f -v ${D}.tar
+                tar -cvzf ${D}.tar DispBDTs/${C}/${I}*
+                mv -f ${D}.tar ${DDIR}/
+            else
+                echo "ERROR directory DispBDTs/${C}/ does not exist"
+            fi    
+        done
     done
 }
 
 pack_effectiveareas_V6()
 {
-    # Effective areas for different epochs
-    for F in nominalHV RedHV
+    for C in ${CLEANING}
     do
-        for A in ATM61 ATM62
+        for F in nominalHV RedHV
         do
-            if [[ ${A} == "ATM62" ]]; then
-                EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
-            else
-                EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
-            fi
-            # required, as IRFs for some operation mode are
-            # available only for one atmosphere
-            ASAVE=${A}
-
-            for I in ${EPOCHS[@]}
+            for A in ATM61 ATM62
             do
-                # UV for ATM61 only
-               if [[ ${F} == "UV" ]]; then
-                  if [[ ${A} == "ATM62" ]]; then
-                      continue
-                  fi
-                  A="ATM21"
-                  ASAVE="ATM61"
-               fi
-               # list of cuts depend on observation mode
-               if [[ ${F} == "RedHV" ]]; then
-                  CLIST=${CLISTRV}
-               elif [[ ${F} == "UV" ]]; then
-                  CLIST=${CLISTUV}
-               else
-                  CLIST=${CLISTNV}
-               fi
-               for T in $CLIST
-               do
-                   if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
-                       NFIL=$(find EffectiveAreas -name "*${F}*${T}*${I}*${A}*.root" | wc -l)
-                   else
-                       NFIL=$(find EffectiveAreas -name "*${T}*${I}*${A}*.root" | wc -l)
+                if [[ ${A} == "ATM62" ]]; then
+                    EPOCHS=$(cat IRF_EPOCHS_SUMMER.dat | sort -u)
+                else
+                    EPOCHS=$(cat IRF_EPOCHS_WINTER.dat | sort -u)
+                fi
+                # required, as IRFs for some operation mode are
+                # available only for one atmosphere
+                ASAVE=${A}
+
+                for I in ${EPOCHS[@]}
+                do
+                    # UV for ATM61 only
+                   if [[ ${F} == "UV" ]]; then
+                      if [[ ${A} == "ATM62" ]]; then
+                          continue
+                      fi
+                      A="ATM21"
+                      ASAVE="ATM61"
                    fi
-                   if [[ $NFIL != "0" ]]; then
-                       D="EffectiveAreas_${F}_${I}_${A}_${T}"
-                       echo "Packing EffectiveAreas $F $I $A ${T} ${D}.tar ($NFIL files)"
-                       rm -f -v ${D}.tar
+                   # list of cuts depend on observation mode
+                   if [[ ${F} == "RedHV" ]]; then
+                      CLIST=${CLISTRV}
+                   elif [[ ${F} == "UV" ]]; then
+                      CLIST=${CLISTUV}
+                   else
+                      CLIST=${CLISTNV}
+                   fi
+                   for T in $CLIST
+                   do
                        if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
-                           tar -cvf ${D}.tar EffectiveAreas/*${F}*${T}*${I}*${A}*.root
+                           NFIL=$(find EffectiveAreas -name "*${F}*${T}*${C}*${I}*${A}*.root" | wc -l)
                        else
-                           tar -cvf ${D}.tar EffectiveAreas/*${T}*${I}*${A}*.root
+                           NFIL=$(find EffectiveAreas -name "*${T}*${C}*${I}*${A}*.root" | wc -l)
                        fi
-                       mv -v ${D}.tar ./${DDIR}/
-                   else
-                       echo "Packing EffectiveAreas $F $I $A ${T} ${D}.tar (no files)"
-                   fi
-               done
-               A=${ASAVE}
-            done
-         done
+                       if [[ $NFIL != "0" ]]; then
+                           D="EffectiveAreas_${F}_${C}_${I}_${A}_${T}"
+                           echo "Packing EffectiveAreas $F $C $I $A ${T} ${D}.tar ($NFIL files)"
+                           rm -f -v ${D}.tar
+                           if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
+                               tar -cvf ${D}.tar EffectiveAreas/*${F}*${C}*${T}*${I}*${A}*.root
+                           else
+                               tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+                           fi
+                           mv -v ${D}.tar ./${DDIR}/
+                       else
+                           echo "Packing EffectiveAreas $F $C $I $A ${T} ${D}.tar (no files)"
+                       fi
+                   done
+                   A=${ASAVE}
+                done
+             done
+        done
     done
 }
 
@@ -135,35 +142,36 @@ pack_effectivareas_V4V5()
 {
     echo "Packing Effective Areas V4 V5"
     echo "============================="
-    for I in V4 V5
+    for C in ${CLEANING}
     do
-        for A in ATM21 ATM22
+        for I in V4 V5
         do
-           for T in ${CLISTNV}
-           do
-               NFIL=$(find EffectiveAreas -name "*${T}*${I}*${A}*.root" | wc -l)
-               if [[ $NFIL != "0" ]]; then
-                   D="EffectiveAreas_${I}_${A}_${T}"
-                   echo "Packing EffectiveAreas $F $I $A ${T} ${D}.tar ($NFIL files)"
-                   rm -f -v ${D}.tar
-                   tar -cvf ${D}.tar EffectiveAreas/*${T}*${I}*${A}*.root
-                   mv -v ${D}.tar ./${DDIR}/
-               else
-                  echo "Packing EffectiveAreas $F $I $A ${T} (no files found)" 
-               fi
-           done
+            for A in ATM21 ATM22
+            do
+               for T in ${CLISTNV}
+               do
+                   NFIL=$(find EffectiveAreas -name "*${T}*${C}*${I}*${A}*.root" | wc -l)
+                   if [[ $NFIL != "0" ]]; then
+                       D="EffectiveAreas_${C}_${I}_${A}_${T}"
+                       echo "Packing EffectiveAreas $F ${C} $I $A ${T} ${D}.tar ($NFIL files)"
+                       rm -f -v ${D}.tar
+                       tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+                       mv -v ${D}.tar ./${DDIR}/
+                   else
+                      echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)" 
+                   fi
+               done
+            done
         done
     done
 }
 
-# pack_radial_acceptances
+# pack_lookup_tables
 
-pack_lookup_tables
+# pack_effectiveareas_V6
 
-pack_effectiveareas_V6
-
-pack_effectivareas_V4V5
+# pack_effectivareas_V4V5
 
 pack_dispbdts
 
-pack_gammahadronbdts
+# pack_gammahadronbdts
