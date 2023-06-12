@@ -7,9 +7,16 @@
 # - Directory with BDT output
 #
 
+IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 
-echo "COPY gamma/hadron BDTs for ${IRVERSION}, analysis type ${ANALYSISTYPE}"
+if [[ $ANALYSISTYPE == "AP" ]]; then
+    CUTLIST="NTel2-Moderate NTel2-Soft NTel3-Hard"
+else
+    CUTLIST="NTel2-Soft"
+fi
+
+echo "COPY gamma/hadron BDTs for ${IRFVERSION}, analysis type ${ANALYSISTYPE}"
 
 for A in ATM21 ATM22
 do
@@ -23,7 +30,7 @@ do
         BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining/GammaHadronBDTs_${E}_DISP/"
         echo "  reading files from ${BDTDIR}"
 
-        for C in NTel2-Moderate NTel2-Soft NTel3-Hard
+        for C in $CUTLIST
         do
             echo "EPOCH ${E} CUT ${C}"
             ODIR="${E}_${A}/${C}"
