@@ -22,7 +22,7 @@ fi
 echo "Uploading to /veritas/upload/EVNDISP/${VERSION}/"
 
 # list of tar files
-TARLIST=$(find tar_packages -name "*.tar")
+TARLIST=$(find tar_packages/ -name "T*.tar")
 
 for T in ${TARLIST}
 do
