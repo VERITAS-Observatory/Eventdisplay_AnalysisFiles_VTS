@@ -58,7 +58,7 @@ pack_gammahadronbdts()
     for C in ${CLEANING}
     do
         EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
-        for I in ${EPOCHS[@]} V4 V5
+        for I in ${EPOCHS[@]}
         do
             D="GammaHadronBDTs_${C}_${I}"
             echo "Packing BDT files ${I} into ${D}.tar"
@@ -76,7 +76,7 @@ pack_dispbdts()
     for C in ${CLEANING}
     do
         EPOCHS=$(get_epochs $C)
-        for I in ${EPOCHS[@]} V4 V5
+        for I in ${EPOCHS[@]}
         do
             D="DispBDTs_${C}_${I}"
             echo "Packing dispBDT files ${I} into ${D}.tar"
@@ -135,7 +135,6 @@ pack_effectiveareas_V6()
                        else
                            NFIL=$(find EffectiveAreas -name "*${T}*${C}*${I}*${A}*.root" | wc -l)
                        fi
-                       echo "FFFFFFF $NFIL"
                        if [[ $NFIL != "0" ]]; then
                            D="EffectiveAreas_${F}_${C}_${I}_${A}_${T}"
                            echo "Packing EffectiveAreas $F $C $I $A ${T} ${D}.tar ($NFIL files)"
