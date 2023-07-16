@@ -3,7 +3,7 @@
 #
 
 VERSION=$(cat IRFVERSION)
-VERSION="${VERSION}.0"
+VERSION="${VERSION}.2"
 
 if [ ! -n "$1" ]; then
 echo "
@@ -11,7 +11,6 @@ echo "
 
 download IRFs from UCLA for Eventdisplay version $VERSION
 
-   <server>  UCLA or DESY
    <filelist> list of tar packages to be downloaded 
               (usually found in directory ./transfer)
 
@@ -32,8 +31,8 @@ echo "Downloading IRF packages for ${VERSION}/"
 FILES=$(cat ${1})
 for D in ${FILES}
 do
-    if [[ $HOSTNAME == *"desFFy"* ]]; then
-       cp -v -i /lustre/fs23/group/veritas/Eventdisplay_AnalysisFiles/${VERSION}/archive/$D.tar .
+    if [[ $HOSTNAME == *"desy"* ]]; then
+       cp -v -i $VERITAS_DATA_DIR/shared/Eventdisplay_AnalysisFiles/${VERSION}/$D.tar .
     else
        echo "Downloading $D.tar from  /veritas/upload/EVNDISP/${VERSION}/${D}"
        if [[ -e ${D}.tar ]]
