@@ -87,9 +87,9 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 v) TMVA Cuts
 * cutselection 42 0
 
-* TMVAPARAMETER V4 BDT 0 3 0 2 /GammaHadronBDTs/V4/NTel3-Hard/  BDT
-* TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/V5/NTel3-Hard/  BDT
-* TMVAPARAMETER V6 BDT 0 8 0 2 /GammaHadronBDTs/V6/NTel3-Hard/  BDT
+* TMVAPARAMETER V4 BDT 0 3 0 2 /GammaHadronBDTs/AP/V4/NTel3-Hard/  BDT
+* TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel3-Hard/  BDT
+* TMVAPARAMETER V6 BDT 0 8 0 2 /GammaHadronBDTs/AP/V6/NTel3-Hard/  BDT
 
  TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 

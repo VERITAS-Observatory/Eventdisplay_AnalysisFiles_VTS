@@ -7,10 +7,10 @@
 #
 
 IRFVERSION=$(cat ../IRFVERSION)
-ANALYSISTYPE="AP"
+ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 SIMTYPE="CARE_RedHV"
-SIMTYPE="CARE_June2020"
 SIMTYPE="GRISU"
+SIMTYPE="CARE_June2020"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
@@ -45,9 +45,9 @@ do
         do
             echo "EPOCH ${E} ATMO ${A}"
             if [[ ${SIMTYPE} == *"RedHV"* ]]; then
-                ODIR="${E}_${A}_${ANALYSISTYPE}_redHV/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}"
             else
-                ODIR="${E}_${A}_${ANALYSISTYPE}/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}"
             fi
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"

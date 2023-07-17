@@ -7,11 +7,16 @@
 #
 
 IRFVERSION=$(cat ../IRFVERSION)
-ANALYSISTYPE="AP"
+ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 
-BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining/GammaHadronBDTs_V6_DISP/"
+BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/${ANALYSISTYPE}/BDTtraining/GammaHadronBDTs_V6_DISP/"
+if [[ $ANALYSISTYPE == "AP" ]]; then
+    CUTLIST="NTel2-Moderate NTel2-Soft NTel3-Hard"
+else
+    CUTLIST="NTel2-Soft"
+fi
 
-echo "COPY gamma/hadron BDTs for ${IRVERSION}, analysis type ${ANALYSISTYPE}"
+echo "COPY gamma/hadron BDTs for ${IRFVERSION}, analysis type ${ANALYSISTYPE}"
 echo "  reading files from ${BDTDIR}"
 
 for A in ATM61 ATM62
@@ -23,20 +28,26 @@ do
     fi
     for E in $EPOCHS
     do
-        for C in NTel2-Moderate NTel2-Soft NTel3-Hard
+        for C in $CUTLIST
         do
             echo "EPOCH ${E} CUT ${C}"
-            ODIR="${E}_${A}/${C}"
-            if [[ ! -d ${BDTDIR}/${ODIR} ]]; then
+            IDIR="${E}_${A}/${C}"
+            ODIR="${IDIR}"
+            # NN cleaning exist for supersoft only
+            # (same as soft cleaning)
+            if [[ $ANALYSISTYPE == "NN" ]]; then
+                ODIR="${E}_${A}/${C/NTel2-Soft/NTel2-SuperSoft}"
+            fi
+            if [[ ! -d ${BDTDIR}/${IDIR} ]]; then
                 echo "   directory not found"
                 continue
             fi
-            mkdir -p ${ODIR}
-            NXML=$(ls -1 ${BDTDIR}/${ODIR}/*.xml | wc -l)
-            NROO=$(ls -1 ${BDTDIR}/${ODIR}/BDT_*[0-9].root* | wc -l)
+            mkdir -p ${ANALYSISTYPE}/${ODIR}
+            NXML=$(ls -1 ${BDTDIR}/${IDIR}/*.xml | wc -l)
+            NROO=$(ls -1 ${BDTDIR}/${IDIR}/BDT_*[0-9].root* | wc -l)
             echo "   found $NXML XML and $NROO root files"
-            cp -v -f ${BDTDIR}/${ODIR}/*.xml ${ODIR}/
-            cp -v -f ${BDTDIR}/${ODIR}/BDT_*[0-9].root ${ODIR}/
+            cp -v -f ${BDTDIR}/${IDIR}/*.xml ${ANALYSISTYPE}/${ODIR}/
+            cp -v -f ${BDTDIR}/${IDIR}/BDT_*[0-9].root ${ANALYSISTYPE}/${ODIR}/
         done
     done
 done
