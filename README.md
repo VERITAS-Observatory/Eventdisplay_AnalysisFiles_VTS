@@ -8,7 +8,7 @@ Analysis requires additional IRF files (lookup tables, radial acceptances, etc) 
 To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_AnalysisFiles directory:
 
 ```
-./get_irfs_from_ucla.sh
+./dowload_irfs_from_ucla.sh
 ```
 
 Further information on this release: https://veritas.sao.arizona.edu/wiki/index.php/Eventdisplay_v490
@@ -47,9 +47,9 @@ A full list of the available instrument response functions can be found in the r
 
 For version changes, the following files need to be changed:
 - [README.md](README.md)
-- [get_irfs_from_ucla.sh](get_irfs_from_ucla.sh) 
+- [dowload_irfs_from_ucla.sh](download_irfs_from_ucla.sh) 
 - [put_irfs_to_ucla.sh](put_irfs_to_ucla.sh)
-- [pack_irfs_pack_ucla.sh](pack_irfs_pack_ucla.sh)
+- [transfer/pack_irfs_pack_ucla.sh](transfer/pack_irfs_pack_ucla.sh)
 
 
 ## Uploading IRFs
@@ -65,7 +65,7 @@ For version changes, the following files need to be changed:
 ```
 4. Test some uploads with downloading script (modify, to not download again everything):
 ```
-get_irfs_from_ucla.sh
+./dowload_irfs_from_ucla.sh
 ```
 
 Note that for DESY users, the tar packages are not downloaded but copied from their archive location.
