@@ -13,8 +13,8 @@
 command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting."; exit 1; }
 
 # Eventdisplay version
-VERSION=$(cat IRFVERSION)
-VERSION="${VERSION}.1"
+VERSION=$(cat ../IRFVERSION)
+VERSION="${VERSION}.2"
 if [[ $IRFTYPE ]]; then
    VERSION=${VERSION}${IRFTYPE}
 fi
@@ -25,7 +25,7 @@ P=$(pwd)
 cd ..
 
 # list of tar files
-TARLIST=$(find tar_packages -name "*.tar")
+TARLIST=$(find tar_packages/ -name "*.tar")
 
 for T in ${TARLIST}
 do
