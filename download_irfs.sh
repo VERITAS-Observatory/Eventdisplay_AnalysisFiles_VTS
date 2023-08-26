@@ -5,7 +5,7 @@
 VERSION=$(cat IRFVERSION)
 VERSION="${VERSION}.2"
 
-if [ ! -n "$1" ]; then
+if [ -z "$1" ]; then
 echo "
 ./download_irfs.sh <filelist>
 
@@ -28,11 +28,11 @@ fi
 
 echo "Downloading IRF packages for ${VERSION}/"
 
-FILES=$(cat ${1})
+FILES=$(cat "${1}")
 for D in ${FILES}
 do
-    if [[ $HOSTNAME == *"FFdesy"* ]]; then
-       cp -v -i $VERITAS_DATA_DIR/shared/Eventdisplay_AnalysisFiles/${VERSION}/$D .
+    if [[ $HOSTNAME == *"desy"* ]]; then
+       cp -v -i "$VERITAS_DATA_DIR"/shared/Eventdisplay_AnalysisFiles/"${VERSION}"/"$D" .
     else
        echo "Downloading $D from  /veritas/upload/EVNDISP/${VERSION}/${D}"
        if [[ -e ${D} ]]
@@ -43,6 +43,6 @@ do
        fi
        bbftp -u bbftp -V -S -m -p 12 -e "get /veritas/upload/EVNDISP/${VERSION}/${D} ${D}" gamma1.astro.ucla.edu
    fi
-   tar --keep-newer-files -xvf ${D}
-   rm -v ${D}
+   tar --keep-newer-files -xvf "${D}"
+   rm -v "${D}"
 done

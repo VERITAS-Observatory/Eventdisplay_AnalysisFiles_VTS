@@ -21,7 +21,6 @@ fi
 
 echo "Uploading to /veritas/upload/EVNDISP/${VERSION}/"
 
-P=$(pwd)
 cd ..
 
 # list of tar files
@@ -29,7 +28,7 @@ TARLIST=$(find tar_packages/ -name "*.tar")
 
 for T in ${TARLIST}
 do
-   TT=$(basename $T)
-   echo $T $TT
+   TT=$(basename "$T")
+   echo "$T" "$TT"
    bbftp -u bbftp -V -S -m -p 12 -e "put ${T} /veritas/upload/EVNDISP/${VERSION}/${TT}" gamma1.astro.ucla.edu
 done
