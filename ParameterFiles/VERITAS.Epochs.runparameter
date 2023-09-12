@@ -1,13 +1,13 @@
 
 Instrumental epochs of VERITAS:
 
-V4: 
+V4:
 - four-telescope array with T1 at its original position (prototype position)
 - before run 46642
 V5:
 - four-telescope array with T1 at its current position
 - run 46642 to 63372
-V6: 
+V6:
 - four-telescope array with T1 at its current position and new photomultipliers
 - after run 63372
 
@@ -80,7 +80,7 @@ SUMMER:
 * ATMOSPHERE 22 2010-05-27  2010-11-19
 * ATMOSPHERE 22 2011-05-16  2011-11-09
 * ATMOSPHERE 22 2012-05-05  2012-07-31
-* ATMOSPHERE 62 2012-08-01  2012-00-28
+* ATMOSPHERE 62 2012-08-01  2012-10-28
 * ATMOSPHERE 62 2013-05-23  2013-11-16
 * ATMOSPHERE 62 2014-05-13  2014-11-07
 * ATMOSPHERE 62 2015-06-01  2015-11-25
@@ -96,7 +96,7 @@ SUMMER:
 =================================================
 
 Absolute gains (dc/pe) for each VERITAS epoch
-determined from the time-averages of single-PE measurements in the database 
+determined from the time-averages of single-PE measurements in the database
 see: http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/3173
 
   GAIN <epoch name> <telescope(1-4)> <gain(dc/pe)>
