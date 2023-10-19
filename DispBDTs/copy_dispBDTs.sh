@@ -8,6 +8,7 @@
 
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
+SIMTYPE="CARE_UV_2212"
 SIMTYPE="CARE_RedHV"
 SIMTYPE="GRISU"
 SIMTYPE="CARE_June2020"
@@ -34,6 +35,11 @@ do
         if [[ ${SIMTYPE} == "GRISU" ]]; then
             A=${A/6/2}
             EPOCHS="V4 V5"
+        elif [[ ${SIMTYPE} == *"UV"* ]]; then
+            EPOCHS=$(cat ../IRF_EPOCHS_obsfilter.dat | sort -u)
+            if [[ ${A} == "ATM62" ]]; then
+                continue
+            fi
         else
             if [[ ${A} == "ATM62" ]]; then
                 EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
@@ -46,6 +52,8 @@ do
             echo "EPOCH ${E} ATMO ${A}"
             if [[ ${SIMTYPE} == *"RedHV"* ]]; then
                 ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}"
+            elif [[ ${SIMTYPE} == *"UV"* ]]; then
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_UV/${Z}"
             else
                 ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}"
             fi
