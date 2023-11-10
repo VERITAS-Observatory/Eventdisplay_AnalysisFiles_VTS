@@ -3,7 +3,7 @@ Throughput corrections
 
 Basic correction:
 
-Apply size scale corrections based on s=g*T, where g is the relative gain and T the transmission of the optical part (mirror reflectivity). 
+Apply size scale corrections based on s=g*T, where g is the relative gain and T the transmission of the optical part (mirror reflectivity).
 
 Partially extracted from here:
 https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Reflectivity
@@ -17,14 +17,14 @@ https://veritas.sao.arizona.edu/wiki/Flux_Calibration_/_Energy_scale_2020
 
 Different possibilities for measuring the baseline...
 
-transmission/reflectivity baseline for each telescope 
+transmission/reflectivity baseline for each telescope
 (estimated from end of V5 / beginning of V6):
 TB 1 0.91
 TB 2 0.93
 TB 3 0.95
 TB 4 0.95
 
-transmission/reflectivity baseline for each telescope 
+transmission/reflectivity baseline for each telescope
 (estimated from calibration curve in https://veritas.sao.arizona.edu/wiki/images/0/0e/IOReaderDetectorConfigV6.txt at 340nm):
 TB 1 0.80
 TB 2 0.82
@@ -57,6 +57,7 @@ Table with average reflectivities (from David Hanna, see elog end of March 2020)
 * T V6_2021_2021s 0.670 0.701 0.774 0.647
 * T V6_2021_2022w 0.697 0.680 0.767 0.652
 * T V6_2022_2022s 0.682 0.684 0.764 0.645
+* T V6_2022_2023w 0.723 0.682 0.743 0.636
 
 Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mcgill.ca/~veritas/gain)
   t ID T1 T2 T3 T4
@@ -79,6 +80,7 @@ Table with g-factors (from single PE, linked by Qi in https://www.hep.physics.mc
 * G V6_2021_2021s 0.937 0.987 1.022 1.054
 * G V6_2021_2022w 0.927 0.993 0.999 1.047
 * G V6_2022_2022s 0.932 0.959 0.970 0.991
+* G V6_2022_2023w 0.952 0.957 0.976 0.972
 
 Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
   s = T * G
@@ -103,6 +105,7 @@ Table with average-year s-factors (from Mireia Nievas, jupyter-notebook)
 * s V6_2021_2021s 0.628 0.692 0.792 0.682
 * s V6_2021_2022w 0.646 0.676 0.766 0.683
 * s V6_2022_2022s 0.636 0.656 0.741 0.639
+* s V6_2022_2023w 0.688 0.653 0.725 0.619
 
 Note: mirror swaps/jumps/breaks in T2 (2014_2015), T3 (2014_2015, 2017_2018), T4 (2013_2014).
 
