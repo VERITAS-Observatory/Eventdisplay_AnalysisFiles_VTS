@@ -74,6 +74,7 @@ do
                         if [[ $NFILE == "4" ]]; then
                             cp -v -u ${IDIR}/${B}/*.xml ${ODIR}
                             cp -v -u ${IDIR}/${B}/*.log ${ODIR}
+                            gzip -v ${ODIR}/*.xml
                         else
                             echo "ERROR found only $NFILE xml files (expected 4) in ${IDIR}/${B}/"
                         fi
