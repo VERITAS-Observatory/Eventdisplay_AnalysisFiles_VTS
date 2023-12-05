@@ -1,7 +1,7 @@
 #!/bin/bash
 # copy dispBDT files from IRF production site
 #
-# hardwired 
+# hardwired
 # - SIMTYPE (e.g., CARE_June2020)
 # - ANALYSISTYPE (e.g., AP)
 #
@@ -9,9 +9,9 @@
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 SIMTYPE="CARE_UV_2212"
-SIMTYPE="CARE_RedHV"
 SIMTYPE="GRISU"
 SIMTYPE="CARE_June2020"
+SIMTYPE="CARE_RedHV"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
@@ -46,6 +46,7 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
+            # FIXEPOCH EPOCHS="V6_2023_2023s"
         fi
         for E in $EPOCHS
         do
@@ -64,9 +65,10 @@ do
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign
             do
+                echo "Parameters ${Z} ${B}"
                 if [[ -d ${IDIR}/${B} ]]; then
-                    CHECKF=$(tail -n 1 ${IDIR}/${B}/mvaAngRes_${ZE}-${B}.log | grep -v Delete | wc -l)
-                    if [[ $CHECKF != "0" ]]; then
+                    CHECKF=$(grep "Delete method" ${IDIR}/${B}/mvaAngRes_${ZE}-${B}.log | wc -l)
+                    if [[ $CHECKF != "4" ]]; then
                         echo "ERROR training file not complete in ${IDIR}/${B}/"
                     else
                         # expect 4=NTel xml files
@@ -74,7 +76,7 @@ do
                         if [[ $NFILE == "4" ]]; then
                             cp -v -u ${IDIR}/${B}/*.xml ${ODIR}
                             cp -v -u ${IDIR}/${B}/*.log ${ODIR}
-                            gzip -v ${ODIR}/*.xml
+                            gzip -f -v ${ODIR}/*.xml
                         else
                             echo "ERROR found only $NFILE xml files (expected 4) in ${IDIR}/${B}/"
                         fi

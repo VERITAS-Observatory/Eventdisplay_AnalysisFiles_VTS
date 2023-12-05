@@ -42,15 +42,13 @@ short period with <3% throughput differences only)
 * EPOCH V6_2021_2022w 2021-11-17 2022-05-09
 * EPOCH V6_2022_2022s 2022-05-10 2022-11-08
 * EPOCH V6_2022_2023w 2022-11-09 2023-05-01
-TODO - replace V6_2022_2022s by V6_2023_2023s
-(when throughput parameters are available)
-* EPOCH V6_2022_2022s 2023-05-01 2023-10-31
+* EPOCH V6_2023_2023s 2023-05-01 2023-10-31
 TODO - replace V6_2022_2023w by V6_2023_2024w
 (when throughput parameters are available)
 * EPOCH V6_2022_2023w 2023-11-01 2024-04-22
-TODO - replace V6_2022_2022s by V6_2024_2024s
+TODO - replace V6_2023_2023s by V6_2024_2024s
 (when throughput parameters are available)
-* EPOCH V6_2022_2022s 2024-04-23 2024-11-15
+* EPOCH V6_2023_2023s 2024-04-23 2024-11-15
 
 =================================================
 

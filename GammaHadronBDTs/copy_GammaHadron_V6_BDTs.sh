@@ -1,7 +1,7 @@
 #!/bin/bash
 # copy gamma/hadron BDT files from IRF production site
 #
-# hardwired 
+# hardwired
 # - ANALYSISTYPE (e.g., AP)
 # - Directory with BDT output
 #
@@ -13,7 +13,7 @@ BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/${ANALYSISTYPE}/BDTtraining
 if [[ $ANALYSISTYPE == "AP" ]]; then
     CUTLIST="NTel2-Moderate NTel2-Soft NTel3-Hard"
 else
-    CUTLIST="NTel2-Soft"
+    CUTLIST="NTel2-SuperSoft"
 fi
 
 echo "COPY gamma/hadron BDTs for ${IRFVERSION}, analysis type ${ANALYSISTYPE}"
@@ -26,6 +26,7 @@ do
     else
         EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
     fi
+    # FIXEPOCH EPOCHS="V6_2023_2023s"
     for E in $EPOCHS
     do
         for C in $CUTLIST
