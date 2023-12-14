@@ -3,7 +3,7 @@
 #
 
 VERSION=$(cat IRFVERSION)
-VERSION="${VERSION}.2"
+VERSION="${VERSION}.5"
 
 if [ -z "$1" ]; then
 echo "
@@ -11,7 +11,7 @@ echo "
 
 download IRFs from UCLA for Eventdisplay version $VERSION
 
-   <filelist> list of tar packages to be downloaded 
+   <filelist> list of tar packages to be downloaded
               (usually found in directory ./transfer)
 
 "
