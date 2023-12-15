@@ -1,12 +1,12 @@
 #!/bin/bash
 # pack IRFs for UCLA
 # - IRFs packed in reasonable sized tar packages
-# 
+#
 # this script should be followed by put_irfs_to_ucla.sh
 #
 
 # directory with all packages
-DDIR="tar_packages_v490.2"
+DDIR="tar_packages_v490.5"
 
 # list of cuts
 CLISTNV=$(cat ../IRF_GAMMAHADRONCUTS.dat)
@@ -86,7 +86,7 @@ pack_dispbdts()
                 mv -f ${D}.tar ${DDIR}/
             else
                 echo "ERROR directory DispBDTs/${C}/ does not exist"
-            fi    
+            fi
         done
     done
 }
@@ -179,7 +179,7 @@ pack_effectivareas_V4V5()
                        tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
                        mv -v ${D}.tar ./${DDIR}/
                    else
-                      echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)" 
+                      echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)"
                    fi
                done
             done
@@ -194,7 +194,7 @@ pack_effectiveareas_V6
 pack_effectivareas_V4V5
 
 pack_dispbdts
- 
+
 pack_gammahadronbdts
 
 cd ${P}
