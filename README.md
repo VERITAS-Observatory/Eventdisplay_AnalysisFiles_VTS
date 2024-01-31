@@ -1,10 +1,10 @@
-# Eventdisplay Analysis Files - version v490
+# Eventdisplay Analysis Files
 
 Configuration and run parameter files for Eventdisplay.
 
 Required for the analysis of VERITAS data.
 
-Analysis additional IRF files (lookup tables, radial acceptances, etc) which are too big for this repository. These files are available through the UCLA archive.
+Analysis additional IRF files (lookup tables, radial acceptances, etc) which are too big for this repository. These files are available through the UCLA archive (restricted access).
 To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_AnalysisFiles directory:
 
 ```bash
@@ -12,7 +12,7 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_A
 ./download_irfs.sh transfer/file_list_V4V5.dat
 ```
 
-Further information on this release see the [Eventdisplay v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md).
+Further information on this release see the [Eventdisplay v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md) (restricted access).
 
 Following directories and files are available:
 
