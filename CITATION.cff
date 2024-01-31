@@ -1,0 +1,25 @@
+# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: "Eventdisplay Analysis Files"
+# doi: 10.5281/zenodo.3559075
+version: 4.9
+date-released: 2024-01-31
+keywords:
+- "gamma-ray astronomy"
+- "astronomy software"
+- "Imaging Atmospheric Cherenkov Telescope"
+- VERITAS
+- Eventdisplay
+repository-code: https://github.com/VERITAS-Observatory/Eventdisplay_AnalysisFiles_VTS
+license: BSD-3-Clause
+authors:
+- given-names: Gernot
+  family-names: Maier
+  affiliation: DESY
+  orcid: https://orcid.org/0000-0001-9868-4700
+- given-names: M.
+  family-names: Nievas-Rosillo
+- given-names: T.
+  family-names: Kleiner
