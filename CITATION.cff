@@ -3,9 +3,9 @@
 cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 title: "Eventdisplay Analysis Files for VERITAS"
-# doi: 10.5281/zenodo.3559075
+doi: 10.5281/zenodo.10616289
 version: 4.9
-date-released: 2024-01-31
+date-released: 2024-02-05
 keywords:
 - "gamma-ray astronomy"
 - "astronomy software"
