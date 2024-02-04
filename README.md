@@ -1,5 +1,7 @@
 # Eventdisplay Analysis Files
 
+[![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
+
 Configuration and run parameter files for Eventdisplay.
 
 Required for the analysis of VERITAS data.
