@@ -14,17 +14,17 @@ The following file describes the reconstruction parameters for eventdisplay:
 
 i) trace integration and image cleaning parameter
 
-ii) quality cuts applied before the array analysis 
+ii) quality cuts applied before the array analysis
 (reconstruction of shower core and direction).
 
    Each set of cuts listed below correspond to one set of array parameters in the
-   eventdisplay output file (showerpars tree): 
+   eventdisplay output file (showerpars tree):
    for example: first set of cuts to Xcore[0], Ycore[0], etc., second set to Xcore[1], Ycore[1], ...
 
-   The maximum number of different set is 100 
+   The maximum number of different set is 100
    (can be changed in VGlobalRunParameter: variable VDST_MAXRECMETHODS
 
-   mscw_energy reads the results of one set only, choose with -arrayrecid=RECID 
+   mscw_energy reads the results of one set only, choose with -arrayrecid=RECID
    (e.g. for cut set 13: -arrayrecid=13)
 
    (Note: There is some confusion between the words method and cut set in the array analysis code of
@@ -40,9 +40,9 @@ i) trace integration and image cleaning parameter
 
  trace integration <integration method (0=off/1=default/2=sliding window)>
 * -1 FADCANALYSIS 2
- double pass method 
+ double pass method
     Par1: <doublepass (on=1, off=0)>
-    Par2: <integration window length for pass 1> 
+    Par2: <integration window length for pass 1>
     Par3: <integration method for pass 1 (1/2)>
     Par4: <double pass error option (0/1)> (don't change if you don't understand)
     Par5: <maximum time difference between LG and HG T0 (default -4 samples)>
@@ -50,7 +50,7 @@ i) trace integration and image cleaning parameter
  trace integration window <window 1> <window 2>
 * -1 FADCSUMMATIONWINDOW 6 6
  trace integration start (for window 1 for integration method 1)
-    Par1: <sample # of window start> 
+    Par1: <sample # of window start>
     Par2: <shift of window start for double pass>
     Par3: <timing method used for calculation of window start (FIXED/TZERO/TAVERAGE)>
     Par4: <max difference between T0 and trace integration start>
@@ -71,7 +71,7 @@ probability to get fake image from NSB for this readout window
  -1 BRIGHTSTARS CATALOGUENAME MIN_B_MAGNITUDE MIN_DISTANCE_DEG <apply cut for images with less then minimum number of tubes>
 * -1 BRIGHTSTARS Hipparcos_MAG8_1997.dat 3.0 0. 15
 
-ii) quality cuts applied before the array analysis 
+ii) quality cuts applied before the array analysis
 --------------------------------------------------
 
 USAGE:
@@ -100,20 +100,19 @@ Set 0 = default reconstruction methods / quality cuts
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
 
-======== IMPORTANT IMPORTANT ============
-ignore the following lines for regular data analysis
--1 MCONLY
-======== IMPORTANT IMPORTANT ============
-
-Set 1 = (placeholder, as this is a no-disp file)
+Set 1 = relaxed cuts
 
 * -1 RECMETHOD 4
 * -1 MINANGLE 10.
-* -1 MINTUBES 5
+* -1 MINTUBES 4
 * -1 MINSIZE 100
-* -1 MAXLOSS 0.2
+* -1 MAXLOSS 0.5
 * -1 MINWIDTH 0.02
-* -1 MAXDIST 1.75
+* -1 MAXDIST 2.5
+
+======== IMPORTANT IMPORTANT ============
+ignore the following lines for regular data analysis
+-1 MCONLY
 
 ==============================
 3-telescope combinations
@@ -162,4 +161,3 @@ Set 5 = T4 off default reconstruction method
 * -1 MINWIDTH 0.02
 * -1 MAXDIST 1.75
 * 4 USEIMAGE 0
-
