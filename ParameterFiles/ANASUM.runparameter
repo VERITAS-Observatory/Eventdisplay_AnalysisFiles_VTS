@@ -8,80 +8,87 @@ All lines without a '*' in the first column are ignored!
 
 Time mask
 ---------
-
-File containing time mask details 
-(this allows to exclude certain time intervals from 
-the analysis)
- TIMEMASKFILE <file name of time mask file>
 * TIMEMASKFILE ANASUM.timemask.dat
+
+Write only selected or all events to DL3 tree
+* WRITEALLEVENTS 1
 
 Exclusion regions
 -----------------
-
-Exclusion region around sky map centre
-(should be adjust to brightness of the gamma-ray source
-and the cuts applied)
- REGIONTOEXCLUDE <x-derot [deg]> <y-derot [deg]> <radius of exlusion region [deg]>
-* REGIONTOEXCLUDE 0. 0. 0.35
-
-User defined regions in the sky to exclude from background 
-estimation (e.g. because of other gamma-ray sources in the
-field of view
-
-Exclusion region can be 
-
-1. circles
-If Radius1=Radius2 (or if no Radius2 is given) and theta=0
-
-2. ellipses
-If Radius1!=Radius2
-
-3. rotated ellipses
-If Radius1!=Radius2 and theta!=0
-
-->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius(deg))
-(coordinates are relative to camera center)
-ex: 0.48 -0.2 0.5
-Note: West positive means toward West (left in camera coordinates)
-North positive means toward South (up in camera coordinates)
-->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius(deg))
-ex: 335.287 58.964 0.5
-->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius(deg))
-ex:12 24 15 52 18 04 0.5
-
-->REGIONTOEXCLUDE (West(deg)  North(deg)  Radius1(deg) Radius2(deg) theta(deg))
-(coordinates are relative to camera center)
-ex: 0.48 -0.2 0.5 0.5 40
-Note: West positive means toward West (left in camera coordinates)
-North positive means toward South (up in camera coordinates)
-->REGIONTOEXCLUDE_RADECJ2000_DEG (RA(deg) DEC(deg) Radius1(deg) Radius2(deg) theta(deg))
-ex: 335.287 58.964 0.5 0.5 40
-->REGIONTOEXCLUDE_RADECJ2000_HOUR (RA(Hour Min Sec)  DEC(Deg Min Sec)  Radius1(deg) Radius2(deg) theta(deg))
-ex:12 24 15 52 18 04 0.5 0.5 40
-
-Additional regions:
- REGIONTOEXCLUDE_RADECJ2000_DEG 345.004 59.4042 0.12
-Zeta Tau (for the Crab field)
- REGIONTOEXCLUDE_RADECJ2000_HOUR 05 37 38.686 +21 08 33.18 0.25
-Crab
- REGIONTOEXCLUDE_RADECJ2000_DEG 83.633114 22.014487
-
-Exlusion regions from star catalogue
- BRIGHTSTARCATALOGUE <catalogue file name>
- (catalogues are located in 
-  $VERITAS_EVNDISP_AUX_DIR/AstroData/Catalogues/ )
+* REGIONTOEXCLUDE 0. 0. 0.40
 * BRIGHTSTARCATALOGUE Hipparcos_MAG8_1997.dat
-Minimum brightness of stars to be added to the list of exclusion regions and
-radius of region to be excluded from background calculation around bright star (<=0 to switch off)
- BRIGHTSTARSETTINGS <min magnitude> <radius of exlusion region [deg]> <band (B or V)>
-* BRIGHTSTARSETTINGS 6 0.30 B
+* BRIGHTSTARSETTINGS 8 0.25 B
+
+Exclude all VERITAS detections.
+Extracted using VTSCat and script `python ./write_source_table.py --print_run_parameter`
+https://github.com/VERITAS-Observatory/VTSCat
+
+* REGIONTOEXCLUDE_RADECJ2000_DEG 1.65 72.783 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 6.3397 64.1408 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 24.1358267 39.0997773 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 35.66505 43.0355222 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 38.202564 20.2881899 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 40.131938163 61.229336515 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 49.96585 18.7595556 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 49.950667083 41.511695306 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 64.2187375 1.0899944 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 76.9840583 67.6234056 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 80.4415375 21.2142722 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 83.633083 22.0145 0.5
+* REGIONTOEXCLUDE_RADECJ2000_DEG 94.51125 22.66 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 98.24689375 5.80032722 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 102.1984875 15.2735722 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 107.625325 59.1390278 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 122.454944708 52.31618075 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 148.9684583 69.6797028 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 153.767249167 49.433529083 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 166.113808083 38.208833083 0.5
+* REGIONTOEXCLUDE_RADECJ2000_DEG 184.46700833 30.11684333 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 185.382043833 28.232916722 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 185.3414278125 30.1769891083 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 186.100775925 24.6065282556 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 187.70593075 12.391123306 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 216.751632458 23.800010444 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 217.1358706208 42.6725130889 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 220.701152425 12.0112152417 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 238.92935 11.19010167 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 253.4675695 39.760169139 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 262.07759958 50.219575 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 265.99096917 19.58583806 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 266.416833 -29.007806 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 266.825 -28.15 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 276.55441 -13.58004 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 276.5627375 -14.8484056 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 287.175 6.183 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 292.6292 18.867 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 295.9792 21.30222 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 299.99938375 65.14851472 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 304.0076 37.21476 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 304.0083 37.19778 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 305.557090982 40.256679158 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 308.025 41.567 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 330.680380792 42.277772306 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 336.88 60.83 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 350.85 58.815 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 356.770153 51.704967 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 266.5821 -28.966226 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 83.63307625 22.014493278 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 220.987051 25.029025 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 77.358186 5.693148 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 304.5 36.7 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 305.0 36.8 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 298.05708 29.41889 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 176.270871 19.606317 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 308.054687 41.456762 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 308.054687 41.456762 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 340.978098 20.351048 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 186.22691 21.379551 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 179.882641 29.245507 0.3
+* REGIONTOEXCLUDE_RADECJ2000_DEG 187.558706 25.301982 0.3
+
 
 Sky maps
 --------
-
-binning and size
-(sky maps are in equatorial coordinates)
-
 binning of sky map (correlated plots) [deg]
 * SKYMAPBINSIZE 0.01
 binning of sky map (uncorrelated plots) [deg]
@@ -91,43 +98,9 @@ size of sky map (x-axis/declination axis) [deg]
 size of sky map (y-axis/RA axis) [deg]
 * SKYMAPSIZEY 2.
 
-sky map centre
-(default: target coordinates)
-in equatorial coordinates (ra,dec) (J2000, deg)
- SKYMAPCENTRE_RADECJ2000_DEG 83.633114 22.014487
- in equatorial coordinates (ra,dec) (J2000, hours)
- SKYMAPCENTRE_RADECJ2000_HOUR 05 34 31.95 +22 00 52.2
-
-Position where number of on and off events, significances,
-effective areas (all 1D histograms) are calculated
-(default is at sky map centre)
-
-relative to (0,0) in sky map [deg]
-(West,North)
- TARGETXYSHIFT 0. 0.
-Position in equatorial coordinates (ra,dec) (J2000, deg)
- TARGETPOSITION_RADECJ2000_DEG 83.633114 22.014487
-Position in equatorial coordinates (ra,dec) (J2000, hours)
- TARGETPOSITION_RADECJ2000_HOUR 05 34 31.95 +22 00 52.2
-
 Spectral reconstruction
 -----------------------
-
-Spectral index for effective areas
-(should be iteratively adjusted to match the measured
-spectrum)
- ENERGYSPECTRALINDEX <spectral index>
 * ENERGYSPECTRALINDEX 2.4
-
 Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
-Dead time calculation
-(0=using L1 scalars (default), 
- 1=using tdiff distributions (not as accurate as L1 scalar method))
 * DEADTIMECALCULATIONMETHOD 0
-
-Rate plots
-----------
-
-time intervalls for rate plots and short term histograms [minutes]
-* RATEINTERVALLLENGTH 4.
