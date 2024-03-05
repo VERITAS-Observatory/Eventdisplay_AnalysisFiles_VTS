@@ -11,7 +11,7 @@ ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 
 BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/${ANALYSISTYPE}/BDTtraining/GammaHadronBDTs_V6_DISP/"
 if [[ $ANALYSISTYPE == "AP" ]]; then
-    CUTLIST="NTel2-Moderate NTel2-Soft NTel3-Hard"
+    CUTLIST="NTel2-Moderate NTel2-Soft NTel2-Hard NTel3-Hard"
 else
     CUTLIST="NTel2-SuperSoft"
 fi
