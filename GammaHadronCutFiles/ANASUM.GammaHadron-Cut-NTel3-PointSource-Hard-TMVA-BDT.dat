@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts for TMVA BDT
 ========================================================
 
-Hard cuts
+Hard cuts (minimum 3 tel)
 
 ========================================================
 All lines without a '*' in the first column are ignored!

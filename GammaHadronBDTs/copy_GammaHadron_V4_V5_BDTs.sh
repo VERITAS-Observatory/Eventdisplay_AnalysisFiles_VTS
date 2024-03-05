@@ -2,7 +2,7 @@
 # copy gamma/hadron BDT files from IRF production site
 # (V4/V5 epochs)
 #
-# hardwired 
+# hardwired
 # - ANALYSISTYPE (e.g., AP)
 # - Directory with BDT output
 #
@@ -11,7 +11,7 @@ IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 
 if [[ $ANALYSISTYPE == "AP" ]]; then
-    CUTLIST="NTel2-Moderate NTel2-Soft NTel3-Hard"
+    CUTLIST="NTel2-Moderate NTel2-Soft NTel2-Hard NTel3-Hard"
 else
     CUTLIST="NTel2-Soft"
 fi
