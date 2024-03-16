@@ -20,7 +20,7 @@ second largest image size
 (this depends on the state of the instrument)
 * sizesecondmax 900. 1.e30 V4
 * sizesecondmax 900. 1.e30 V5
-* sizesecondmax 1500. 1.e30 V6
+* sizesecondmax 1400. 1.e30 V6
 
 cut on mean emission height
 * emissionheight 6. 1.e10
