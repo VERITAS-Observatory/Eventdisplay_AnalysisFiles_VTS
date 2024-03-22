@@ -1,6 +1,7 @@
 # Eventdisplay Analysis Files
 
 [![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 Configuration and run parameter files for Eventdisplay.
 

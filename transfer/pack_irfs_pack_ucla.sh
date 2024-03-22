@@ -6,7 +6,8 @@
 #
 
 # directory with all packages
-DDIR="tar_packages_v490.5"
+VERSION=$(cat ../IRFMINORVERSION)
+DDIR="tar_packages_${VERSION}"
 
 # list of cuts
 CLISTNV=$(cat ../IRF_GAMMAHADRONCUTS.dat)
@@ -19,7 +20,7 @@ CLEANING="AP NN"
 
 P=$(pwd)
 cd ..
-mkdir -p ${DDIR}
+mkdir -p "${DDIR}"
 
 get_epochs()
 {
@@ -46,7 +47,7 @@ pack_lookup_tables()
             echo "Packing tables ${I} into ${D}.tar"
             rm -f -v ${D}.tar
             tar -cvf ${D}.tar Tables/*${I}*${C}*.root
-            mv -f ${D}.tar ${DDIR}/
+            mv -f "${D}.tar" "${DDIR}/"
         done
     done
     }
@@ -197,4 +198,4 @@ pack_dispbdts
 
 pack_gammahadronbdts
 
-cd ${P}
+cd "${P}" || exit
