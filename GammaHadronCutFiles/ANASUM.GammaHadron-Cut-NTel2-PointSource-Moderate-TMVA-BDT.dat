@@ -7,13 +7,13 @@ Moderate cuts
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
 i) stereo quality cuts
-successfull core and direction reconstruction (>=0.)
+successful core and direction reconstruction (>=0.)
 * arraychi2 0. 1.e30
 distance of core position to telescopes [m]
 * arraycore -1. 400.
 
 size of the camera [deg], all events with direction
-outside of that intervall are ignored
+outside of that  are ignored
 * cameraedge -1. 2.00
 
 second largest image size
@@ -73,7 +73,7 @@ ii) direction cut [deg2]
 * arraytheta2 -1. 0.008
 
 iii) gamma hadron cuts:
-b) mean scaled width cut (use cut selector 0 in runlist)
+b) mean scaled width cut (use cut selector 0 in run list)
 * arraymscw -2. 2.
 * arraymscl -2. 5.
 

@@ -2,8 +2,7 @@
 # download IRFs from UCLA
 #
 
-VERSION=$(cat IRFVERSION)
-VERSION="${VERSION}.5"
+VERSION=$(cat IRFMINORVERSION)
 
 if [ -z "$1" ]; then
 echo "
@@ -13,6 +12,9 @@ download IRFs from UCLA for Eventdisplay version $VERSION
 
    <filelist> list of tar packages to be downloaded
               (usually found in directory ./transfer)
+
+   Note for DESY users: IRFs are on disk at DESY and there
+   is no need to download them.
 
 "
 exit

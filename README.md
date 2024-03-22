@@ -1,6 +1,7 @@
 # Eventdisplay Analysis Files
 
 [![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 Configuration and run parameter files for Eventdisplay.
 
@@ -56,16 +57,15 @@ A full list of the available instrument response functions can be found in the r
 For version changes, the following files need to be changed:
 
 - [README.md](README.md)
-- [download_irfs.sh](download_irfs.sh)
-- [put_irfs_to_ucla.sh](put_irfs_to_ucla.sh)
-- [transfer/pack_irfs_pack_ucla.sh](transfer/pack_irfs_pack_ucla.sh)
+- [IRFVERSION](IRFVERSION)
+- [IRFMINORVERSION](IRFMINORVERSION)
 
 ## Uploading IRFs
 
 1. Pack IRFs into several tar packages
 
 ```bash
-./pack_irfs_pack_ucla.sh
+./pack_irfs_for_ucla.sh
 ```
 
 2. Inspect tar packages in the directory `tar_packages` and move them to the directory `archive`
