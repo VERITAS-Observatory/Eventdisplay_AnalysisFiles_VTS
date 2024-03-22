@@ -58,7 +58,7 @@ pack_gammahadronbdts()
     echo "========================"
     for C in ${CLEANING}
     do
-        EPOCHS=$(cat IRF_EPOCHS_* | sort -u)
+        EPOCHS=$(get_epochs $C)
         for I in ${EPOCHS[@]}
         do
             D="GammaHadronBDTs_${C}_${I}"

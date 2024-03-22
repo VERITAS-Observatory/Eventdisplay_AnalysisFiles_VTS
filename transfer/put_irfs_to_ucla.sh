@@ -14,7 +14,6 @@ command -v bbftp >/dev/null 2>&1 || { echo >&2 "bbftp is not installed. Aborting
 
 # Eventdisplay version
 VERSION=$(cat ../IRFMINORVERSION)
-VERSION="${VERSION}.5"
 if [[ $IRFTYPE ]]; then
    VERSION=${VERSION}${IRFTYPE}
 fi
