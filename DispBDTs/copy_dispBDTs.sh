@@ -10,8 +10,8 @@ IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 SIMTYPE="CARE_UV_2212"
 SIMTYPE="GRISU"
-SIMTYPE="CARE_June2020"
 SIMTYPE="CARE_RedHV"
+SIMTYPE="CARE_June2020"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
@@ -47,6 +47,7 @@ do
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
             # FIXEPOCH EPOCHS="V6_2023_2023s"
+            EPOCHS="V6_2012_2013a"
         fi
         for E in $EPOCHS
         do
@@ -61,7 +62,7 @@ do
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
-            IDIR="${IDIR}/ze${ZE}/"
+            IDIR="${IDIR}/ze${ZE}_loss02/"
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign
             do
