@@ -47,7 +47,6 @@ do
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
             # FIXEPOCH EPOCHS="V6_2023_2023s"
-            EPOCHS="V6_2012_2013a"
         fi
         for E in $EPOCHS
         do
@@ -62,7 +61,7 @@ do
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
-            IDIR="${IDIR}/ze${ZE}_loss02/"
+            IDIR="${IDIR}/ze${ZE}/"
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign
             do
