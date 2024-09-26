@@ -1,2 +1,2 @@
-* MVAOPTIONS NTrees=100:BoostType=Grad:Shrinkage=0.1:UseBaggedBoost:GradBaggingFraction=0.5:nCuts=20:MaxDepth=10:PruneMethod=ExpectedError:RegressionLossFunctionBDTG=Huber:MinNodeSize=0.02:VarTransform=N
+* MVAOPTIONS NTrees=100:BoostType=Grad:Shrinkage=0.1:UseBaggedBoost:GradBaggingFraction=0.5:nCuts=20:MaxDepth=10:PruneMethod=ExpectedError:RegressionLossFunctionBDTG=Huber:MinNodeSize=0.0002:VarTransform=N
 * MVAQUALITYCUTS size>1.&&ntubes>log10(4.)&&width>0.&&width<2.&&length>0.&&length<10.&&tgrad_x<100.*100.&&loss<0.40&&cross<20.0&&Rcore<2000.&&dist<1.7
