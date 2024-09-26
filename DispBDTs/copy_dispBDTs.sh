@@ -63,7 +63,7 @@ do
             IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
             IDIR="${IDIR}/ze${ZE}/"
             # check log file for successful training
-            for B in BDTDisp BDTDispError BDTDispSign
+            for B in BDTDisp BDTDispError BDTDispSign BDTDispEnergy
             do
                 echo "Parameters ${Z} ${B}"
                 if [[ -d ${IDIR}/${B} ]]; then
