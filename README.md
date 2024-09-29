@@ -3,9 +3,7 @@
 [![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-Configuration and run parameter files for Eventdisplay.
-
-Required for the analysis of VERITAS data.
+Configuration and run parameter files for Eventdisplay. Required for the analysis of VERITAS data.
 
 Analysis additional IRF files (lookup tables, radial acceptances, etc) which are too big for this repository. These files are available through the UCLA archive (restricted access).
 To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_AnalysisFiles directory:
