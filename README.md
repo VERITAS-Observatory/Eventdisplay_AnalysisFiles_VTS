@@ -3,17 +3,20 @@
 [![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-Configuration and run parameter files for Eventdisplay.
+Configuration and run parameter files for Eventdisplay. Required for the analysis of VERITAS data.
 
-Required for the analysis of VERITAS data.
+The version of Eventdisplay for this repository can be found in the files [IRFVERSION](IRFVERSION) and [IRFMINORVERSION](IRFMINORVERSION).
 
-Analysis additional IRF files (lookup tables, radial acceptances, etc) which are too big for this repository. These files are available through the UCLA archive (restricted access).
-To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_AnalysisFiles directory:
+The analysis requires additional IRF files (lookup tables, gamma-hadron BDT trees, etc) which are too big for this repository. These files are available through the UCLA archive or direct download from DESY disks (restricted access).
+
+To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_AnalysisFiles directory:
 
 ```bash
 ./download_irfs.sh transfer/file_list_V6.dat
 ./download_irfs.sh transfer/file_list_V4V5.dat
 ```
+
+Total download size is about 190 GBytes.
 
 Further information on this release see the [Eventdisplay v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md) (restricted access).
 
@@ -30,7 +33,7 @@ Parameter Files
 - ANASUM.runparameter (parameter file for anasum step)
 - ANASUM.timemask.dat (time mask example for anasum step)
 - ANASUM.runlist (run list example for anasum step)
-- TMVA.BDT.runparameter (runparameter for TMVA training)
+- TMVA.BDT.runparameter and TMVA.BDT.V4.runparameter (runparameter for TMVA training)
 
 GammaHadronCutFiles
 
@@ -52,7 +55,9 @@ DetectorGeometry
 
 A full list of the available instrument response functions can be found in the release documentation (e.g. [v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md)).
 
-## Technical
+## Technical details for maintainers
+
+### Updating IRF files
 
 For version changes, the following files need to be changed:
 
@@ -60,9 +65,9 @@ For version changes, the following files need to be changed:
 - [IRFVERSION](IRFVERSION)
 - [IRFMINORVERSION](IRFMINORVERSION)
 
-## Uploading IRFs
+### Uploading IRF files
 
-1. Pack IRFs into several tar packages
+1. Pack IRF files into several tar packages
 
 ```bash
 ./pack_irfs_for_ucla.sh
@@ -77,6 +82,7 @@ For version changes, the following files need to be changed:
 ```
 
 4. Test some uploads with downloading script (modify, to not download again everything):
+
 ```bash
 ./download_irfs_from_ucla.sh transfer/file_list_V6.dat
 ```
