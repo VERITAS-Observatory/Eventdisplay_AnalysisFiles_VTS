@@ -5,7 +5,10 @@
 
 Configuration and run parameter files for Eventdisplay. Required for the analysis of VERITAS data.
 
-Analysis additional IRF files (lookup tables, radial acceptances, etc) which are too big for this repository. These files are available through the UCLA archive (restricted access).
+The version of Eventdisplay for this repository can be found in the files [IRFVERSION](IRFVERSION) and [IRFMINORVERSION](IRFMINORVERSION).
+
+The analysis requires additional IRF files (lookup tables, gamma-hadron BDT trees, etc) which are too big for this repository. These files are available through the UCLA archive or direct download from DESY disks (restricted access).
+
 To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_AnalysisFiles directory:
 
 ```bash
@@ -28,7 +31,7 @@ Parameter Files
 - ANASUM.runparameter (parameter file for anasum step)
 - ANASUM.timemask.dat (time mask example for anasum step)
 - ANASUM.runlist (run list example for anasum step)
-- TMVA.BDT.runparameter (runparameter for TMVA training)
+- TMVA.BDT.runparameter and TMVA.BDT.V4.runparameter (runparameter for TMVA training)
 
 GammaHadronCutFiles
 
