@@ -16,7 +16,7 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_
 ./download_irfs.sh transfer/file_list_V4V5.dat
 ```
 
-Total download size is about 190 Gbytes.
+Total download size is about 190 GBytes.
 
 Further information on this release see the [Eventdisplay v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md) (restricted access).
 
@@ -55,7 +55,9 @@ DetectorGeometry
 
 A full list of the available instrument response functions can be found in the release documentation (e.g. [v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md)).
 
-## Technical
+## Technical details for maintainers
+
+### Updating IRF files
 
 For version changes, the following files need to be changed:
 
@@ -63,9 +65,9 @@ For version changes, the following files need to be changed:
 - [IRFVERSION](IRFVERSION)
 - [IRFMINORVERSION](IRFMINORVERSION)
 
-## Uploading IRFs
+### Uploading IRF files
 
-1. Pack IRFs into several tar packages
+1. Pack IRF files into several tar packages
 
 ```bash
 ./pack_irfs_for_ucla.sh
@@ -80,6 +82,7 @@ For version changes, the following files need to be changed:
 ```
 
 4. Test some uploads with downloading script (modify, to not download again everything):
+
 ```bash
 ./download_irfs_from_ucla.sh transfer/file_list_V6.dat
 ```
