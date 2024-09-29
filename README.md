@@ -9,12 +9,14 @@ The version of Eventdisplay for this repository can be found in the files [IRFVE
 
 The analysis requires additional IRF files (lookup tables, gamma-hadron BDT trees, etc) which are too big for this repository. These files are available through the UCLA archive or direct download from DESY disks (restricted access).
 
-To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay_AnalysisFiles directory:
+To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_AnalysisFiles directory:
 
 ```bash
 ./download_irfs.sh transfer/file_list_V6.dat
 ./download_irfs.sh transfer/file_list_V4V5.dat
 ```
+
+Total download size is about 190 Gbytes.
 
 Further information on this release see the [Eventdisplay v490 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v490/blob/main/README.md) (restricted access).
 
