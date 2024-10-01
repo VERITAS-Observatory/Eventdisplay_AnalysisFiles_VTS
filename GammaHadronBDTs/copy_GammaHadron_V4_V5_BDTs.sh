@@ -27,7 +27,7 @@ do
     fi
     for E in V4 V5
     do
-        BDTDIR="$VERITAS_USER_DATA_DIR/analysis/Results/v490/AP/BDTtraining/GammaHadronBDTs_${E}_DISP/"
+        BDTDIR="$VERITAS_IRFPRODUCTION_DIR/${IRFVERSION}/${ANALYSISTYPE}/BDTtraining/GammaHadronBDTs_${E}_DISP/"
         echo "  reading files from ${BDTDIR}"
 
         for C in $CUTLIST
