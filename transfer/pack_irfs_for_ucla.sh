@@ -10,10 +10,10 @@ VERSION=$(cat ../IRFMINORVERSION)
 DDIR="tar_packages_${VERSION}"
 
 # list of cuts
-CLISTNV=$(cat ../IRF_GAMMAHADRONCUTS_AP.dat)
-CLISTNN=$(cat ../IRF_GAMMAHADRONCUTS_NN.dat)
-CLISTRV=$(cat ../IRF_GAMMAHADRONCUTS_RedHV_AP.dat)
-CLISTUV=$(cat ../IRF_GAMMAHADRONCUTS_UV_AP.dat)
+CLISTNV=$(cat ../GammaHadronCutFiles/IRF_GAMMAHADRONCUTS_AP.dat)
+CLISTNN=$(cat ../GammaHadronCutFiles/IRF_GAMMAHADRONCUTS_NN.dat)
+CLISTRV=$(cat ../GammaHadronCutFiles/IRF_GAMMAHADRONCUTS_RedHV_AP.dat)
+CLISTUV=$(cat ../GammaHadronCutFiles/IRF_GAMMAHADRONCUTS_UV_AP.dat)
 
 # cleaning types
 CLEANING="AP NN"

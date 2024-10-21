@@ -1,7 +1,8 @@
+#!/bin/bash
 # print missing effective area files
 #
 
-CLISTNV=$(cat ../IRF_GAMMAHADRONCUTS.dat)
+CLISTNV=$(cat ../GammaHadronCutFiles/IRF_GAMMAHADRONCUTS.dat)
 VERSION=$(cat ../IRFVERSION)
 
 ME="AP"
@@ -42,5 +43,3 @@ do
       done
    done
 done
-     
-
