@@ -34,7 +34,7 @@ Naming should be always MAJOREPOCH_MINOREPOCH
 (replaced by extended V6_2018_2019 period;
 short period with <3% throughput differences only)
  EPOCH V6_2019_2019s 2019-09-20 2019-11-12
-(from here: alignement with summer/winter epochs)
+(from here: alignment with summer/winter epochs)
 * EPOCH V6_2019_2020w 2019-11-13 2020-05-07
 * EPOCH V6_2020_2020s 2020-05-08 2020-11-04
 * EPOCH V6_2020_2021w 2020-11-05 2021-04-27
@@ -47,6 +47,12 @@ short period with <3% throughput differences only)
 TODO - replace V6_2023_2023s by V6_2024_2024s
 (when throughput parameters are available)
 * EPOCH V6_2023_2023s 2024-04-23 2024-11-15
+TODO - replace V6_2023_2024w by V6_2024_2025w
+(when throughput parameters are available)
+* EPOCH V6_2023_2024w 2024-11-16  2025-05-10
+TODO - replace V6_2023_2023s by V6_2025_2025s
+(when throughput parameters are available)
+* EPOCH V6_2023_2023s 2025-05-11  2025-11-05
 
 =================================================
 
@@ -75,6 +81,7 @@ WINTER:
 * ATMOSPHERE 61 2021-11-17  2022-05-09
 * ATMOSPHERE 61 2022-11-09  2023-05-01
 * ATMOSPHERE 61 2023-11-01  2024-04-22
+* ATMOSPHERE 61 2024-11-16  2025-05-10
 
 SUMMER:
 * ATMOSPHERE 22 2007-06-04  2007-11-23
@@ -96,6 +103,7 @@ SUMMER:
 * ATMOSPHERE 62 2022-05-10  2022-11-08
 * ATMOSPHERE 62 2023-05-02  2023-10-31
 * ATMOSPHERE 62 2024-04-23  2024-11-15
+* ATMOSPHERE 62 2025-05-11  2025-11-05
 
 =================================================
 
