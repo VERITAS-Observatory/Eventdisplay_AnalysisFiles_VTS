@@ -11,15 +11,16 @@ $EVNDISPSYS/scripts/VTS/UTILITY.downloadSoundingDatafromUWYO.sh
 ## data preparation
 
 Prepare a list of file:
-```
-ls -1 sound*.dat > filelist.dat
+
+```console
+ls -1 sound*.dat > file_list.dat
 ```
 
 Convert to root file:
 
-```
-.L /Users/maierg/Experiments/EVNDISP/EVNDISP-500/Eventdisplay/lib/libVAnaSum.so
+```console
+.L $EVNDISPSYS/lib/libVAnasum.so
 VAtmosphereSoundings a;
-a.readSoundingsFromTextFile("filelist.dat");
+a.readSoundingsFromTextFile("file_list.dat");
 a.writeRootFile("sounding.root");
 ```
