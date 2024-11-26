@@ -4,7 +4,7 @@
 # - one tar package per directory
 #
 # prepare by hand the upload directory:
-# bbftp -u bbftp -V -S -m -p 12 -e "mkdir /veritas/upload/EVNDISP/v490" gamma1.astro.ucla.edu
+# bbftp -u bbftp -V -S -m -p 12 -e "mkdir /veritas/upload/EVNDISP/v491.0" gamma1.astro.ucla.edu
 #
 
 [[ "$1" ]] && IRFTYPE=$1 || IRFTYPE=""

@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts)
+BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts, 3 tel minimum)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
