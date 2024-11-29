@@ -1,5 +1,6 @@
 #!/bin/bash
-# pack IRFs for UCLA
+# Pack IRF files to be transferred to UCLA
+#
 # - IRFs packed in reasonable sized tar packages
 #
 # this script should be followed by put_irfs_to_ucla.sh

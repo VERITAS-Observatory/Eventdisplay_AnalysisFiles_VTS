@@ -1,5 +1,6 @@
 #!/bin/bash
-# upload IRFs to UCLA using rsync (slower than bbftp!)
+# Upload IRFs to UCLA using rsync (slower than bbftp!)
+#
 # - uploading in tar packages
 # - one tar package per directory
 

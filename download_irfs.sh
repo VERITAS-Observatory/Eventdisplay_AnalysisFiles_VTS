@@ -6,11 +6,11 @@ VERSION=$(cat IRFMINORVERSION)
 
 if [ -z "$1" ]; then
 echo "
-./download_irfs.sh <filelist>
+./download_irfs.sh <file_list>
 
 download IRFs from UCLA for Eventdisplay version $VERSION
 
-   <filelist> list of tar packages to be downloaded
+   <file_list> list of tar packages to be downloaded
               (usually found in directory ./transfer)
 
    Note for DESY users: IRFs are on disk at DESY and there
