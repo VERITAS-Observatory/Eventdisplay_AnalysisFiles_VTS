@@ -1,25 +1,25 @@
-Analysis run parameters for effective area and instrument response function (IRF) analysis 
+Analysis run parameters for effective area and instrument response function (IRF) analysis
 (makeEffectiveArea)
 ========================================================
 All lines without a '*' in the first column are ignored!
 --------------------------------------------------------
 
 ========================================
-filling of IRFs: fill all IRFs (0), resolution plots only (1), angular resolution plot only (2), effective areas only (3) 
+filling of IRFs: fill all IRFs (0), resolution plots only (1), angular resolution plot only (2), effective areas only (3)
 * FILLINGMODE 0
 
 energy reconstruction method
-(default = 1; possible values: 0, 1)
-* ENERGYRECONSTRUCTIONMETHOD 1
+(default = 0; possible values: 0 (dispBDT energy reconstruction, 1 (lookup table method)
+* ENERGYRECONSTRUCTIONMETHOD 0
 
-number of bins on log_{10} energy axis 
+number of bins on log_{10} energy axis
 * ENERGYAXISBINS 60
 
 ignore quality cut on energy reconstruction
 (default = 0; possible values: 0, 1 )
 * ENERGYRECONSTRUCTIONQUALITY 0
 
-define azimuth bins and calculate IRFs in each azimuth bin. 
+define azimuth bins and calculate IRFs in each azimuth bin.
 Bins are hardwired with a bin width of $22.5^{\mathrm{o}}$ (16 bins), bin 17 contains the full azimuth range
 (default = 1; possible values: 0, 1 )
 * AZIMUTHBINS 1
