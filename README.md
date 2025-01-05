@@ -3,6 +3,8 @@
 [![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
+**Long-term support version v490.7.x**
+
 Configuration and run parameter files for Eventdisplay. Required for the analysis of VERITAS data.
 
 The version of Eventdisplay for this repository can be found in the files [IRFVERSION](IRFVERSION) and [IRFMINORVERSION](IRFMINORVERSION).
