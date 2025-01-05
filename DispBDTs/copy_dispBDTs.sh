@@ -12,6 +12,7 @@ SIMTYPE="CARE_UV_2212"
 SIMTYPE="GRISU"
 SIMTYPE="CARE_RedHV"
 SIMTYPE="CARE_June2020"
+SIMTYPE="CARE_24_20"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
