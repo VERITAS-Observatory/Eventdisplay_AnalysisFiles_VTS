@@ -10,9 +10,9 @@ IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
 SIMTYPE="CARE_UV_2212"
 SIMTYPE="GRISU"
+SIMTYPE="CARE_24_20"
 SIMTYPE="CARE_RedHV"
 SIMTYPE="CARE_June2020"
-SIMTYPE="CARE_24_20"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
@@ -47,7 +47,7 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
-            # FIXEPOCH EPOCHS="V6_2023_2023s"
+            # Fixed EPOCHS="V6_2024_2024s"
         fi
         for E in $EPOCHS
         do
@@ -68,7 +68,7 @@ do
             do
                 echo "Parameters ${Z} ${B}"
                 if [[ -d ${IDIR}/${B} ]]; then
-                    CHECKF=$(grep "Delete method" ${IDIR}/${B}/mvaAngRes_${ZE}-${B}.log | wc -l)
+                    CHECKF=$(grep "Delete method" ${IDIR}/${B}/mvaAngRes_${ZE}-${B}-Tel[0-9].log | wc -l)
                     if [[ $CHECKF != "4" ]]; then
                         echo "ERROR training file not complete in ${IDIR}/${B}/"
                     else
