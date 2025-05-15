@@ -12,4 +12,4 @@ cd ../tar_packages_${VERSION}
 
 rsync -avz -e ssh \
     ./*.tar \
-    ${USER}:/home/maierg/EVNDISP/tmp_${VERSION}/
+    ${USER}:/home/maierg/EVNDISP/${VERSION}/
