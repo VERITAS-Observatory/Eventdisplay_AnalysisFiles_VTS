@@ -7,6 +7,7 @@
 
 # directory with all packages
 VERSION=$(cat ../IRFMINORVERSION)
+VERSION="v490.7.2"
 DDIR="tar_packages_${VERSION}"
 
 # list of cuts
