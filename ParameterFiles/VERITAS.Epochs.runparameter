@@ -53,6 +53,12 @@ TODO - replace V6_2023_2024w by V6_2024_2025w
 TODO - replace V6_2023_2023s by V6_2025_2025s
 (when throughput parameters are available)
 * EPOCH V6_2023_2023s 2025-05-11  2025-11-05
+# TODO replace V6_2024_2024w by V6_2025_2026w
+(when throughput parameters are available)
+* EPOCH V6_2024_2025w 2025-11-06 2026-04-30
+TODO - replace V6_2024_2024s by V6_2026_2026s
+(when throughput parameters are available)
+* EPOCH V6_2024_2024s 2026-05-01 2026-11-24
 
 =================================================
 
