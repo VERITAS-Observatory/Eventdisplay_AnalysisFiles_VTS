@@ -33,7 +33,8 @@ do
         ZE="20deg"
     fi
     echo "Zenith bin $Z $ZE"
-    for A in ATM61 ATM62
+    # for A in ATM61 ATM62
+    for A in ATM61
     do
         if [[ ${SIMTYPE} == "GRISU" ]]; then
             A=${A/6/2}
@@ -49,7 +50,7 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
-            # FIXEPOCH EPOCHS="V6_2023_2024w"
+            EPOCHS="V6_2016_2017"
         fi
         for E in $EPOCHS
         do
@@ -70,9 +71,9 @@ do
             do
                 echo "Parameters ${Z} ${B}"
                 if [[ -d ${IDIR}/${B} ]]; then
-                    CHECKF=$(grep "Delete method" ${IDIR}/${B}/mvaAngRes_${ZE}-${B}.log | wc -l)
+                    CHECKF=$(grep -h "Delete method" "${IDIR}/${B}"/mvaAngRes_${ZE}-${B}-Tel*.log 2>/dev/null | wc -l)
                     if [[ $CHECKF != "4" ]]; then
-                        echo "ERROR training file not complete in ${IDIR}/${B}/"
+                        echo "ERROR training file(s) not complete in ${IDIR}/${B}/"
                     else
                         # expect 4=NTel xml files
                         NFILE=$(ls -1 ${IDIR}/${B}/*.xml | wc -l)
