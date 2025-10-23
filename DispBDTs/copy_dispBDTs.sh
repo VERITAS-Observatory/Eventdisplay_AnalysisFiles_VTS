@@ -33,8 +33,7 @@ do
         ZE="20deg"
     fi
     echo "Zenith bin $Z $ZE"
-    # for A in ATM61 ATM62
-    for A in ATM61
+    for A in ATM61 ATM62
     do
         if [[ ${SIMTYPE} == "GRISU" ]]; then
             A=${A/6/2}
@@ -50,7 +49,7 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
-            EPOCHS="V6_2016_2017"
+            # FIX EPOCH EPOCHS="V6_2016_2017"
         fi
         for E in $EPOCHS
         do
