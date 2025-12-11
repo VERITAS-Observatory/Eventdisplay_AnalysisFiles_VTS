@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-Hard point source cuts (box cuts)
+Hard point source cuts (box cuts; minimum 2 tel)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -13,7 +13,7 @@ distance of core position to telescopes [m]
 * arraycore -1. 400.
 
 size of the camera [deg], all events with direction
-outside of that  are ignored
+outside of that interval are ignored
 * cameraedge -1. 2.00
 
 second largest image size
@@ -27,7 +27,7 @@ cut on mean emission height
 
 cut on direction reconstruction quality
 (applies to Disp method only)
-Third parameter: require sucessful reconstruction for both methods
+Third parameter: require successful reconstruction for both methods
 * arraydispdiff -1. 0.5 1
 
 Telescope multiplicity
