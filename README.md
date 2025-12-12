@@ -9,7 +9,7 @@ The version of Eventdisplay for this repository can be found in the files [IRFVE
 
 The analysis requires additional IRF files (lookup tables, gamma-hadron BDT trees, etc) which are too big for this repository. These files are available through the UCLA archive or direct download from DESY disks (restricted access).
 
-To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_AnalysisFiles directory:
+To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_AnalysisFiles\_VTS directory:
 
 ```bash
 ./download_irfs.sh transfer/file_list_V6.dat
@@ -18,11 +18,11 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_
 
 Total download size is about 190 GBytes.
 
-Further information on this release see the [Eventdisplay v491 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v491/blob/main/README.md) (restricted access).
+For further information on this release, see the [Eventdisplay v491 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v491/blob/main/README.md) (restricted access).
 
 Following directories and files are available:
 
-Parameter Files
+ParameterFiles:
 
 - parameter files required for running most steps of Eventdisplay
 - EVNDISP.global.runparameter (global parameters like VERITAS position; URL of VERITAS DB; location of VERITAS raw data archive)
@@ -43,13 +43,13 @@ AstroData:
 
 - example catalogs and typical Crab Nebula spectra
 
-Calibration
+Calibration:
 
 - low-gain calibration files required for Eventdisplay analysis
 - pulse-shapes used in CARE simulations (Calibration/CareSimulations)
 - example file for calibration list to be used to overwrite DB flasher/laser values in the analysis (Calibration/calibrationlist.dat)
 
-DetectorGeometry
+DetectorGeometry:
 
 - configuration files for pixel and telescope positions
 
@@ -67,24 +67,24 @@ For version changes, the following files need to be changed:
 
 ### Uploading IRF files
 
-1. Pack IRF files into several tar packages
+1. Pack IRF files into several tar packages (scripts are located in the `transfer/` directory)
 
 ```bash
-./pack_irfs_for_ucla.sh
+./transfer/pack_irfs_for_ucla.sh
 ```
 
 2. Inspect tar packages in the directory `tar_packages` and move them to the directory `archive`
 
-3. Upload files to UCLA
+3. Upload files to UCLA (scripts are located in the `transfer/` directory)
 
 ```bash
-./put_irfs_to_ucla.sh
+./transfer/put_irfs_to_ucla.sh
 ```
 
-4. Test some uploads with downloading script (modify, to not download again everything):
+4. Test some uploads with the downloading script (modify to avoid downloading everything again):
 
 ```bash
-./download_irfs_from_ucla.sh transfer/file_list_V6.dat
+./download_irfs.sh transfer/file_list_V6.dat
 ```
 
 Note that for DESY users, the tar packages are not downloaded but copied from their archive location.
