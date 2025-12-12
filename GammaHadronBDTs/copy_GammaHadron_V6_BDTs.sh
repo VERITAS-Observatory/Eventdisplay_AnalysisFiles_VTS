@@ -27,7 +27,6 @@ do
     else
         EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
     fi
-    EPOCHS="V6_2016_2017"
     for E in $EPOCHS
     do
         for C in $CUTLIST

@@ -49,7 +49,7 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
-            # FIX EPOCH EPOCHS="V6_2016_2017"
+            # FIXEPOCH EPOCHS="V6_2016_2017"
         fi
         for E in $EPOCHS
         do
