@@ -104,3 +104,5 @@ Spectral reconstruction
 Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
 * DEADTIMECALCULATIONMETHOD 0
+
+* XY_DIRECTIONFILE v8_dxy_DirXGB_0.5_1000000
