@@ -27,7 +27,6 @@ do
     else
         EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
     fi
-    # FIXEPOCH EPOCHS="V6_2023_2024w"
     for E in $EPOCHS
     do
         for C in $CUTLIST
@@ -41,7 +40,7 @@ do
                 ODIR="${E}_${A}/${C/NTel2-Soft/NTel2-SuperSoft}"
             fi
             if [[ ! -d ${BDTDIR}/${IDIR} ]]; then
-                echo "   directory not found"
+                echo "   directory not found: ${BDTDIR}/${IDIR}"
                 continue
             fi
             mkdir -p ${ANALYSISTYPE}/${ODIR}
