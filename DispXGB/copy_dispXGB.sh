@@ -33,8 +33,7 @@ do
         ZE="20deg"
     fi
     echo "Zenith bin $Z $ZE"
-    # TMP for A in ATM61 ATM62
-    for A in ATM61
+    for A in ATM61 ATM62
     do
         if [[ ${SIMTYPE} == "GRISU" ]]; then
             A=${A/6/2}
@@ -63,9 +62,8 @@ do
                 ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}"
             fi
             mkdir -p ${ODIR}
-            # v4_DirXGB_20deg_0.5_1000000
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
-            IDIR="${IDIR}/${E}_${A}_gamma/XGB_AngularReconstruction/ze${ZE}"
+            IDIR="${IDIR}/${E}_${A}_gamma/TrainXGB/ze${ZE}"
             cp -v -i ${IDIR}/* ${ODIR}/
         done
    done
