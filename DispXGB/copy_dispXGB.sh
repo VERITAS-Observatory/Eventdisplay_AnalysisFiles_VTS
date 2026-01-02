@@ -1,9 +1,9 @@
 #!/bin/bash
-# copy dispXGB files from IRF production site
+# copy dispXGB model files from IRF production site
+# Stereo and gamma/hadron analysis
 #
 # hardwired
 # - SIMTYPE (e.g., CARE_June2020)
-# - ANALYSISTYPE (e.g., AP)
 #
 
 IRFVERSION=$(cat ../IRFVERSION)
@@ -22,9 +22,6 @@ for Z in XZE LZE MZE SZE
 do
     if [[ $Z == "XZE" ]]; then
         ZE="60deg"
-        if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
-            ZE="55deg"
-        fi
     elif [[ $Z == "LZE" ]]; then
         ZE="55deg"
     elif [[ $Z == "MZE" ]]; then
@@ -55,16 +52,25 @@ do
         do
             echo "EPOCH ${E} ATMO ${A} (**NOTE EPOCHS ARE IGNORED**)"
             if [[ ${SIMTYPE} == *"RedHV"* ]]; then
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV"
             elif [[ ${SIMTYPE} == *"UV"* ]]; then
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_UV/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_UV"
             else
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}"
             fi
-            mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
-            IDIR="${IDIR}/${E}_${A}_gamma/TrainXGB/ze${ZE}"
-            cp -v -i ${IDIR}/* ${ODIR}/
+
+            # Stereo analysis
+            ZDIR="${ODIR}/${Z}"
+            mkdir -p ${ZDIR}
+            SDIR="${IDIR}/${E}_${A}_gamma/TrainXGBStereoAnalysis/ze${ZE}"
+            cp -v -i ${SDIR}/* ${ZDIR}/
+
+            # Gamma/hadron BDTs (zenith angle independent)
+            if [[ $Z == "SZE" ]]; then
+                GDIR="${IDIR}/${E}_${A}_gamma/TrainXGBGammaHadron"
+                cp -v -i ${GDIR}/*[joblib,log] ${ODIR}/
+            fi
         done
    done
 done
