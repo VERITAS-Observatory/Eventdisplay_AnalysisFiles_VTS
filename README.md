@@ -16,9 +16,9 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_
 ./download_irfs.sh transfer/file_list_V4V5.dat
 ```
 
-Total download size is about 190 GBytes.
+Total download size is about 200 GB.
 
-For further information on this release, see the [Eventdisplay v491 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v491/blob/main/README.md) (restricted access).
+For further information on this release, see the [Eventdisplay v492 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v492/blob/main/README.md) (restricted access).
 
 Following directories and files are available:
 
@@ -54,7 +54,7 @@ DetectorGeometry:
 
 - configuration files for pixel and telescope positions
 
-A full list of the available instrument response functions can be found in the release documentation (e.g. [v491 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v491/blob/main/README.md)).
+A full list of the available instrument response functions can be found in the [v492 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v492/blob/main/README.md).
 
 ## Technical details for maintainers
 
