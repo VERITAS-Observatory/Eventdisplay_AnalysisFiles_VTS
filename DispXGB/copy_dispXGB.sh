@@ -16,7 +16,7 @@ SIMTYPE="CARE_24_20"
 SIMTYPE="CARE_RedHV_Feb2024"
 SIMTYPE="CARE_202404"
 
-echo "COPY dispXGB  for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
+echo "COPY dispXGB  for ${IRFVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
 for Z in XZE LZE MZE SZE
 do
