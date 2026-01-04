@@ -69,7 +69,7 @@ do
             # Gamma/hadron BDTs (zenith angle independent)
             if [[ $Z == "SZE" ]]; then
                 GDIR="${IDIR}/${E}_${A}_gamma/TrainXGBGammaHadron"
-                cp -v -i ${GDIR}/*[joblib,log] ${ODIR}/
+                cp -v -i ${GDIR}/*.{joblib,log} ${ODIR}/
             fi
         done
    done
