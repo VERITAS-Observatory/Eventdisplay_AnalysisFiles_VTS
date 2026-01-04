@@ -91,8 +91,6 @@ v) TMVA Cuts
 * TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel3-Hard/  BDT
 * TMVAPARAMETER V6 BDT 0 8 0 2 /GammaHadronBDTs/AP/V6/NTel3-Hard/  BDT
 
- TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
-
 * TMVA_MVACut V4_ATM21 00 0.154 01 0.154 02 0.154 10 0.154 11 0.155 12 0.147 20 0.125 21 0.158 22 0.0956 30 0.124 31 0.159 32 0.138
 * TMVA_MVACut V4_ATM22 00 0.158 01 0.158 02 0.158 10 0.158 11 0.157 12 0.166 20 0.134 21 0.158 22 0.108 30 0.126 31 0.164 32 0.14
 

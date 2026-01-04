@@ -91,7 +91,6 @@ v) TMVA Cuts
 * TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel2-Soft/   BDT
 * TMVAPARAMETER V6 BDT 0 8 0 2 /GammaHadronBDTs/AP/V6/NTel2-Soft/   BDT
 
- TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
 * TMVA_MVACut V6_2016_2017_ATM61 00 0.0963 01 0.0795 02 0.229 10 0.113 11 0.0914 12 0.0223 20 0.125 21 0.11 22 0.0163 30 0.128 31 0.118 32 0.066 40 0.116 41 0.127 42 0.0901 50 0.0992 51 0.127 52 0.102 60 0.0793 61 0.112 62 0.113 70 0.0685 71 0.104 72 0.116 80 0.0498 81 0.0829 82 0.117

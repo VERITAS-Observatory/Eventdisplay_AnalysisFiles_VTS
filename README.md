@@ -1,6 +1,6 @@
 # Eventdisplay Analysis Files
 
-[![DOI](https://zenodo.org/badge/220767628.svg)](https://zenodo.org/doi/10.5281/zenodo.10616288)
+[![DOI](https://zenodo.org/badge/220767628.svg)](https://doi.org/10.5281/zenodo.10616288)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 Configuration and run parameter files for Eventdisplay. Required for the analysis of VERITAS data.
@@ -34,6 +34,7 @@ ParameterFiles:
 - ANASUM.timemask.dat (time mask example for anasum step)
 - ANASUM.runlist (run list example for anasum step)
 - TMVA.BDT.runparameter and TMVA.BDT.V4.runparameter (runparameter for TMVA training)
+- XGB-classify-parameter.json (parameter file for XGBoost classification step)
 
 GammaHadronCutFiles
 
@@ -88,3 +89,7 @@ For version changes, the following files need to be changed:
 ```
 
 Note that for DESY users, the tar packages are not downloaded but copied from their archive location.
+
+## Citing this Software
+
+Please cite this software if it is used for a publication, see the [Zenodo record](https://doi.org/10.5281/zenodo.10616288) and [CITATION.cff](CITATION.cff) for details.

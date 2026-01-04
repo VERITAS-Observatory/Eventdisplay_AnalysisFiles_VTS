@@ -1,0 +1,19 @@
+{
+  "model_file_name": "classify_bdt_xgboost",
+  "energy_bins_log10_tev": [
+    {"E_min": -1.5,  "E_max": -0.5},
+    {"E_min": -1.25, "E_max": -0.25},
+    {"E_min": -1.0,  "E_max": 0.0},
+    {"E_min": -0.75, "E_max": 0.25},
+    {"E_min": -0.5,  "E_max": 0.5},
+    {"E_min": -0.25, "E_max": 0.75},
+    {"E_min": 0.0,   "E_max": 1.0},
+    {"E_min": 0.25,  "E_max": 1.25},
+    {"E_min": 0.5,   "E_max": 2.0}
+  ],
+  "zenith_bins_deg": [
+    {"Ze_min": 0.0,  "Ze_max": 32.5},
+    {"Ze_min": 32.5, "Ze_max": 47.5},
+    {"Ze_min": 47.5, "Ze_max": 75.0}
+  ]
+}

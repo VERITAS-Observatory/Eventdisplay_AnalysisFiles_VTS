@@ -104,3 +104,5 @@ Spectral reconstruction
 Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
 * DEADTIMECALCULATIONMETHOD 0
+
+XGBFILESUFFIX xgb_stereo

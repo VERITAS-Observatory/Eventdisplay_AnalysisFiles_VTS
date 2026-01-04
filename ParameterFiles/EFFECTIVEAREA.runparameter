@@ -28,10 +28,6 @@ input MC are simulated with random direction (wobble) offsets (use for gamma ray
 (default = 0; possible values: 0, 1 )
 * ISOTROPICARRIVALDIRECTIONS 0
 
-allow telescope type dependent cuts (e.g. remove all LST - cut is quite slow, that is why it is optional)
-(default = 0=off; possible values: 0, 1 )
-* TELESCOPETYPECUTS 0
-
 fill histograms with MC spectra only (default= 0; no IRF calculation)
 (default = 0; possible value: 0, 1 )
 * FILLMONTECARLOHISTOS 0
