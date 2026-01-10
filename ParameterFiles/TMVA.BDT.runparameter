@@ -10,7 +10,7 @@ IRF.trainTMVAforGammaHadronSeparation.sh
 
 ##############################################
 NOTE: all lines not starting with * are ignored
- v491, v490: MVA_METHOD BDT NTrees=400:MaxDepth=5
+# v491, v490 and earlier: MVA_METHOD BDT NTrees=400:MaxDepth=5
 * MVA_METHOD BDT NTrees=500:MaxDepth=6:MinNodeSize=2.5:Shrinkage=0.1:UseBaggedBoost=True:BaggedSampleFraction=0.6:SeparationType=GiniIndex
 
 ##############################################
