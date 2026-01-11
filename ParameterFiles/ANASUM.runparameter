@@ -105,5 +105,14 @@ Energy spectra binning (logarithmic axis)
 * ENERGYBINSIZE 0.05
 * DEADTIMECALCULATIONMETHOD 0
 
-XGBSTEREOFILESUFFIX xgb_stereo
-XGBGAMMAHADRONFILESUFFIX xgb_gh
+Stereo reconstruction
+---------------------
+Method ids: 0 (DispBDT), 1 (LT Tables), 2 (XGB stereo)
+* ENERGYRECONSTRUCTIONMETHOD 0
+Method ids:  0 (DispBDT), 1 (Intersection Method), 2 (XGB stereo)
+* DIRECTIONRECONSTRUCTIONMETHOD 0
+
+XGB file suffixes
+-----------------
+* XGBSTEREOFILESUFFIX xgb_stereo
+* XGBGAMMAHADRONFILESUFFIX xgb_gh
