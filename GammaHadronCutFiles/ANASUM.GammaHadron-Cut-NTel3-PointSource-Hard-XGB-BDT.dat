@@ -1,7 +1,7 @@
-cut values for quality and gamma hadron cuts
+cut values for quality and gamma hadron cuts for XGB BDT
 ========================================================
 
-BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts, 3 tel minimum)
+Hard cuts (minimum 3 tel)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -83,3 +83,6 @@ estimated per individual telescope
 * arrayechi2 0. 99999.
 cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
+
+v) XGB Cuts
+* cutselection 52
