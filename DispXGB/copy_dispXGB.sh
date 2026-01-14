@@ -18,18 +18,11 @@ SIMTYPE="CARE_202404"
 
 echo "COPY dispXGB  for ${IRFVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
-for Z in XZE LZE MZE SZE
+STEREO_PAR="$VERITAS_EVNDISP_AUX_DIR/ParameterFiles/XGB-stereo-parameter.json"
+IDS=$(jq -r '.zenith[].id' $STEREO_PAR)
+for Z in XZE $IDs
 do
-    if [[ $Z == "XZE" ]]; then
-        ZE="60deg"
-    elif [[ $Z == "LZE" ]]; then
-        ZE="55deg"
-    elif [[ $Z == "MZE" ]]; then
-        ZE="45deg"
-    elif [[ $Z == "SZE" ]]; then
-        ZE="20deg"
-    fi
-    echo "Zenith bin $Z $ZE"
+    echo "Zenith bin $Z"
     for A in ATM61 ATM62
     do
         if [[ ${SIMTYPE} == "GRISU" ]]; then
@@ -46,6 +39,7 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
+            # TODO fixed epoch
             EPOCHS="V6_2016_2017"
         fi
         for E in $EPOCHS
@@ -63,7 +57,7 @@ do
             # Stereo analysis
             ZDIR="${ODIR}/${Z}"
             mkdir -p ${ZDIR}
-            SDIR="${IDIR}/${E}_${A}_gamma/TrainXGBStereoAnalysis/ze${ZE}"
+            SDIR="${IDIR}/${E}_${A}_gamma/TrainXGBStereoAnalysisBinned/${Z}"
             cp -v -i ${SDIR}/* ${ZDIR}/
 
             # Gamma/hadron BDTs (zenith angle independent)
