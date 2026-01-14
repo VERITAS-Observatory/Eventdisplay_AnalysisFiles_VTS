@@ -20,7 +20,7 @@ echo "COPY dispXGB  for ${IRFVERSION}, analysis type ${ANALYSISTYPE}, and simula
 
 STEREO_PAR="$VERITAS_EVNDISP_AUX_DIR/ParameterFiles/XGB-stereo-parameter.json"
 IDS=$(jq -r '.zenith[].id' $STEREO_PAR)
-for Z in XZE $IDs
+for Z in $IDS
 do
     echo "Zenith bin $Z"
     for A in ATM61 ATM62
