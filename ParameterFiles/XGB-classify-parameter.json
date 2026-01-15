@@ -14,6 +14,7 @@
   "zenith_bins_deg": [
     {"Ze_min": 0.0,  "Ze_max": 32.5},
     {"Ze_min": 32.5, "Ze_max": 47.5},
-    {"Ze_min": 47.5, "Ze_max": 75.0}
+    {"Ze_min": 47.5, "Ze_max": 57.5},
+    {"Ze_min": 57.5, "Ze_max": 75.5}
   ]
 }
