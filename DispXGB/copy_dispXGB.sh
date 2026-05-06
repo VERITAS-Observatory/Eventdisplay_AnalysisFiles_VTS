@@ -39,7 +39,7 @@ do
             EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
         fi
         # TODO fixed epoch
-        EPOCHS="V6_2016_2017"
+        # EPOCHS="V6_2016_2017"
     fi
     for E in $EPOCHS
     do
