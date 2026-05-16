@@ -16,5 +16,8 @@
     {"Ze_min": 32.5, "Ze_max": 47.5},
     {"Ze_min": 47.5, "Ze_max": 57.5},
     {"Ze_min": 57.5, "Ze_max": 75.5}
-  ]
+  ],
+  "input_zenith_angles": [20, 30, 35, 40, 45, 50, 55, 60, 65],
+  "input_noise_values": [100, 160, 200, 250, 350, 450],
+  "tmva_style": false
 }
