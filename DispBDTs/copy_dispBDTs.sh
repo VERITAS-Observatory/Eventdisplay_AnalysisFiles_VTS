@@ -56,8 +56,6 @@ do
             fi
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
-            IDIR="${IDIR}/${E}_${A}_gamma_flat/TMVA_AngularReconstruction/"
-            IDIR="${IDIR}/ze${Z}deg/"
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign BDTDispEnergy
             do
