@@ -85,7 +85,7 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
 
 v) TMVA Cuts
-* cutselection 42 0
+* cutselection 42
 
 * TMVAPARAMETER V4 BDT 0 3 0 2 /GammaHadronBDTs/AP/V4/NTel3-Hard/  BDT
 * TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel3-Hard/  BDT

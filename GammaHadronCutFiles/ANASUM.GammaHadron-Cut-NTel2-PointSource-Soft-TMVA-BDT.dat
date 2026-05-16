@@ -13,7 +13,7 @@ distance of core position to telescopes [m]
 * arraycore -1. 400.
 
 size of the camera [deg], all events with direction
-outside of that  are ignored
+outside of that interval are ignored
 * cameraedge -1. 2.00
 
 second largest image size
@@ -85,7 +85,7 @@ cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
 
 v) TMVA Cuts
-* cutselection 42 0
+* cutselection 42
 
 * TMVAPARAMETER V4 BDT 0 3 0 2 /GammaHadronBDTs/AP/V4/NTel2-Soft/   BDT
 * TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel2-Soft/   BDT

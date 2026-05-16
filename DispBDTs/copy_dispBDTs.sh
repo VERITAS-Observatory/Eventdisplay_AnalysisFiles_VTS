@@ -18,21 +18,14 @@ SIMTYPE="CARE_202404"
 
 echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
-for Z in XZE LZE MZE SZE
+ZAS=(00 20 30 35 40 45 50 55 60 65)
+if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
+    ZAS=(00 20 30 35 40 45 50 55)
+fi
+
+for Z in "${ZAS[@]}"
 do
-    if [[ $Z == "XZE" ]]; then
-        ZE="60deg"
-        if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
-            ZE="55deg"
-        fi
-    elif [[ $Z == "LZE" ]]; then
-        ZE="55deg"
-    elif [[ $Z == "MZE" ]]; then
-        ZE="45deg"
-    elif [[ $Z == "SZE" ]]; then
-        ZE="20deg"
-    fi
-    echo "Zenith bin $Z $ZE"
+    echo "Zenith bin $Z"
     for A in ATM61 ATM62
     do
         if [[ ${SIMTYPE} == "GRISU" ]]; then
@@ -49,28 +42,26 @@ do
             else
                 EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
             fi
-            # FIXEPOCH EPOCHS="V6_2016_2017"
+            # FIXEDEPOX EPOCHS="V6_2016_2017"
         fi
         for E in $EPOCHS
         do
             echo "EPOCH ${E} ATMO ${A}"
             if [[ ${SIMTYPE} == *"RedHV"* ]]; then
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}deg"
             elif [[ ${SIMTYPE} == *"UV"* ]]; then
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_UV/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_UV/${Z}deg"
             else
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}"
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}deg"
             fi
             mkdir -p ${ODIR}
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
-            IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction/"
-            IDIR="${IDIR}/ze${ZE}/"
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign BDTDispEnergy
             do
                 echo "Parameters ${Z} ${B}"
                 if [[ -d ${IDIR}/${B} ]]; then
-                    CHECKF=$(grep -h "Delete method" "${IDIR}/${B}"/mvaAngRes_${ZE}-${B}-Tel*.log 2>/dev/null | wc -l)
+                    CHECKF=$(grep -h "Delete method" "${IDIR}/${B}"/mvaAngRes_${Z}deg-${B}-Tel*.log 2>/dev/null | wc -l)
                     if [[ $CHECKF != "4" ]]; then
                         echo "ERROR training file(s) not complete in ${IDIR}/${B}/"
                     else

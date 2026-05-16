@@ -1,0 +1,13 @@
+{
+  "zenith": [
+    {"id": "Z00", "train": ["20", "30"], "eval_min": 0.0,  "eval_max": 25.0},
+    {"id": "Z25", "train": ["20", "30", "35"], "eval_min": 25.0, "eval_max": 32.5},
+    {"id": "Z35", "train": ["30", "35", "40"], "eval_min": 32.5, "eval_max": 37.5},
+    {"id": "Z40", "train": ["35", "40", "45"], "eval_min": 37.5, "eval_max": 42.5},
+    {"id": "Z45", "train": ["40", "45", "50"], "eval_min": 42.5, "eval_max": 47.5},
+    {"id": "Z50", "train": ["45", "50", "55"], "eval_min": 47.5, "eval_max": 52.5},
+    {"id": "Z55", "train": ["50", "55", "60"], "eval_min": 52.5, "eval_max": 57.5},
+    {"id": "Z60", "train": ["55", "60", "65"], "eval_min": 57.5, "eval_max": 62.5},
+    {"id": "Z65", "train": ["60", "65"], "eval_min": 62.5, "eval_max":70.0}
+  ]
+}
