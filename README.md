@@ -18,6 +18,8 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_
 
 Total download size is about 200 GB.
 
+> **Note on XGB instrument files:** The standard download manifests cover only the classic DispBDT and effective-area products. XGB dispersion models (`DispXGB/`) and XGB effective areas are not included in these manifests. Their epoch and atmosphere coverage is currently limited (nominally `V6_2016_2017`, `ATM61` only for effective areas). DESY users can copy them directly from the shared IRF area using `DispXGB/copy_dispXGB.sh`.
+
 For further information on this release, see the [Eventdisplay v492 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v492/blob/main/README.md) (restricted access).
 
 Following directories and files are available:
@@ -27,7 +29,7 @@ ParameterFiles:
 - parameter files required for running most steps of Eventdisplay
 - EVNDISP.global.runparameter (global parameters like VERITAS position; URL of VERITAS DB; location of VERITAS raw data archive)
 - VERITAS.Epochs.runparameter (definition of VERITAS epochs (V4,V5,V6); summer/winter; absolute gains)
-- EVNDISP.reconstruction.runparameter (parameters used in Eventdisplay reconstruction)
+- EVNDISP.reconstruction.runparameter.AP.v4x, .CC.v4x, .NN.v4x, .TS.v4x (parameters used in Eventdisplay reconstruction)
 - EVNDISP.specialchannels.dat (definition of special channels like L2 channels)
 - EVNDISP.validchannels.dat (criteria for dead channel finders)
 - ANASUM.runparameter (parameter file for anasum step)
@@ -74,7 +76,7 @@ For version changes, the following files need to be changed:
 ./transfer/pack_irfs_for_ucla.sh
 ```
 
-2. Inspect tar packages in the directory `tar_packages` and move them to the directory `archive`
+2. Inspect tar packages in the directory `tar_packages_<VERSION>` (where `<VERSION>` matches `IRFMINORVERSION`)
 
 3. Upload files to UCLA (scripts are located in the `transfer/` directory)
 
