@@ -158,7 +158,7 @@ pack_effectiveareas_V6()
     done
 }
 
-pack_effectivareas_V4V5()
+pack_effectiveareas_V4V5()
 {
     echo "Packing Effective Areas V4 V5"
     echo "============================="
@@ -176,12 +176,12 @@ pack_effectivareas_V4V5()
                    NFIL=$(find EffectiveAreas -name "*${T}*${C}*${I}*${A}*.root" | wc -l)
                    if [[ $NFIL != "0" ]]; then
                        D="EffectiveAreas_${C}_${I}_${A}_${T}"
-                       echo "Packing EffectiveAreas $F ${C} $I $A ${T} ${D}.tar ($NFIL files)"
+                       echo "Packing EffectiveAreas ${C} $I $A ${T} ${D}.tar ($NFIL files)"
                        rm -f -v ${D}.tar
                        tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
                        mv -v ${D}.tar ./${DDIR}/
                    else
-                      echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)"
+                      echo "Packing EffectiveAreas ${C} $I $A ${T} (no files found)"
                    fi
                done
             done
@@ -193,7 +193,7 @@ pack_lookup_tables
 
 pack_effectiveareas_V6
 
-pack_effectivareas_V4V5
+pack_effectiveareas_V4V5
 
 pack_dispbdts
 
