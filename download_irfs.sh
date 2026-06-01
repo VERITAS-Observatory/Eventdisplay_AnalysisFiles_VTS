@@ -44,7 +44,11 @@ do
            continue
        fi
        bbftp -u bbftp -V -S -m -p 12 -e "get /veritas/upload/EVNDISP/${VERSION}/${D} ${D}" gamma1.astro.ucla.edu
-   fi
+    fi
+    if [[ $? -ne 0 ]]; then
+        echo "ERROR: transfer failed for ${D}, skipping extraction"
+        continue
+    fi
    tar --keep-newer-files -xvf "${D}"
    rm -v "${D}"
 done

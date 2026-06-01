@@ -20,7 +20,7 @@ echo "COPY gamma/hadron BDTs for ${IRFVERSION}, analysis type ${ANALYSISTYPE}"
 
 for A in ATM21 ATM22
 do
-    if [[ ${A} == "ATM62" ]]; then
+    if [[ ${A} == "ATM22" ]]; then
         EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
     else
         EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)

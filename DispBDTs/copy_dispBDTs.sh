@@ -8,15 +8,16 @@
 
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
-SIMTYPE="CARE_UV_2212"
-SIMTYPE="GRISU"
-SIMTYPE="CARE_RedHV"
-SIMTYPE="CARE_June2020"
-SIMTYPE="CARE_24_20"
-SIMTYPE="CARE_RedHV_Feb2024"
+# Set SIMTYPE to the desired simulation type (uncomment one):
+# SIMTYPE="CARE_UV_2212"
+# SIMTYPE="GRISU"
+# SIMTYPE="CARE_RedHV"
+# SIMTYPE="CARE_June2020"
+# SIMTYPE="CARE_24_20"
+# SIMTYPE="CARE_RedHV_Feb2024"
 SIMTYPE="CARE_202404"
 
-echo "COPY dispBDT for ${IRVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
+echo "COPY dispBDT for ${IRFVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
 
 ZAS=(00 20 30 35 40 45 50 55 60 65)
 if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
