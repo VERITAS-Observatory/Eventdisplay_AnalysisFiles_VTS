@@ -7,7 +7,7 @@
 
 # directory with all packages
 VERSION=$(cat ../IRFMINORVERSION)
-VERSION="v490.7.2"
+VERSION="v490.7.3"
 DDIR="tar_packages_${VERSION}"
 
 # list of cuts
@@ -144,7 +144,7 @@ pack_effectiveareas_V6()
                            if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
                                tar -cvf ${D}.tar EffectiveAreas/*${F}*${T}*${C}*${I}*${A}*.root
                            else
-                               tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+                               tar -cvf ${D}.tar EffectiveAreas/*${T}-${C}*${I}*${A}*.root
                            fi
                            mv -v ${D}.tar ./${DDIR}/
                        else
@@ -178,10 +178,10 @@ pack_effectivareas_V4V5()
                        D="EffectiveAreas_${C}_${I}_${A}_${T}"
                        echo "Packing EffectiveAreas $F ${C} $I $A ${T} ${D}.tar ($NFIL files)"
                        rm -f -v ${D}.tar
-                       tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+		       tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
                        mv -v ${D}.tar ./${DDIR}/
                    else
-                      echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)"
+                       echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)"
                    fi
                done
             done
