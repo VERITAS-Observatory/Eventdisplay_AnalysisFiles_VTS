@@ -1,3 +1,4 @@
+#!/bin/bash
 # print missing effective area files
 #
 
@@ -54,5 +55,5 @@ do
 	    done
 	 done
       done
-   done	
+   done
 done
