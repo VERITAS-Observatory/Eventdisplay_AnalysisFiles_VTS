@@ -8,7 +8,7 @@ USER="${VTS_UCLA_USER}"
 echo "USER: $USER"
 # Eventdisplay version
 VERSION=$(cat ../IRFMINORVERSION)
-VERSION="v490.7.2"
+VERSION="v490.7.3"
 cd ../tar_packages_${VERSION}
 
 rsync -avz -e ssh \
