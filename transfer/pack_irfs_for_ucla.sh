@@ -135,7 +135,7 @@ pack_effectiveareas_V6()
                        if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
                            NFIL=$(find EffectiveAreas -name "*${F}*${T}*${C}*${I}*${A}*.root" | wc -l)
                        else
-                           NFIL=$(find EffectiveAreas -name "*${T}*${C}*${I}*${A}*.root" | wc -l)
+                           NFIL=$(find EffectiveAreas -name "*${T}-${C}*${I}*${A}*.root" | wc -l)
                        fi
                        if [[ $NFIL != "0" ]]; then
                            D="EffectiveAreas_${F}_${C}_${I}_${A}_${T}"
@@ -176,12 +176,12 @@ pack_effectivareas_V4V5()
                    NFIL=$(find EffectiveAreas -name "*${T}*${C}*${I}*${A}*.root" | wc -l)
                    if [[ $NFIL != "0" ]]; then
                        D="EffectiveAreas_${C}_${I}_${A}_${T}"
-                       echo "Packing EffectiveAreas $F ${C} $I $A ${T} ${D}.tar ($NFIL files)"
+                       echo "Packing EffectiveAreas ${C} $I $A ${T} ${D}.tar ($NFIL files)"
                        rm -f -v ${D}.tar
-		       tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+                       tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
                        mv -v ${D}.tar ./${DDIR}/
                    else
-                       echo "Packing EffectiveAreas $F ${C} $I $A ${T} (no files found)"
+                       echo "Packing EffectiveAreas ${C} $I $A ${T} (no files found)"
                    fi
                done
             done

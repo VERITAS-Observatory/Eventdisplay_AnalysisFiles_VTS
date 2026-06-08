@@ -33,16 +33,19 @@ echo "Downloading IRF packages for ${VERSION}/"
 FILES=$(cat "${1}")
 for D in ${FILES}
 do
+    if [[ -e ${D} ]]
+    then
+        echo "   File ${D} exists locally"
+        echo "   move or remove before resume downloading"
+        continue
+    fi
+
+    mkdir -p "$(dirname "${D}")"
+
     if [[ $HOSTNAME == *"desy"* ]]; then
-       cp -v -i "$VERITAS_DATA_DIR"/shared/Eventdisplay_AnalysisFiles/"$D" .
+       cp -v -i "$VERITAS_DATA_DIR"/shared/Eventdisplay_AnalysisFiles/"$D" "${D}"
     else
-       echo "Downloading $D from  /veritas/upload/EVNDISP/${VERSION}/${D}"
-       if [[ -e ${D} ]]
-       then
-           echo "   File ${D} exists locally"
-           echo "   move or remove before resume downloading"
-           continue
-       fi
+       echo "Downloading $D from /veritas/upload/EVNDISP/${D}"
        bbftp -u bbftp -V -S -m -p 12 -e "get /veritas/upload/EVNDISP/${D} ${D}" gamma1.astro.ucla.edu
    fi
    tar --keep-newer-files -xvf "${D}"
