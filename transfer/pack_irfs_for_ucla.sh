@@ -144,7 +144,7 @@ pack_effectiveareas_V6()
                            if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
                                tar -cvf ${D}.tar EffectiveAreas/*${F}*${T}*${C}*${I}*${A}*.root
                            else
-                               tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+                               tar -cvf ${D}.tar EffectiveAreas/*${T}-${C}*${I}*${A}*.root
                            fi
                            mv -v ${D}.tar ./${DDIR}/
                        else
