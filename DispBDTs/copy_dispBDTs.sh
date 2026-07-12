@@ -4,11 +4,11 @@
 
 if [ "$#" -lt 1 ]; then
 echo "
-./copy_dispBDT.sh <simulation type> [epochs (default: all)] [atmosphere (default \"61 62\")]
+./copy_dispBDTs.sh <simulation type> [epochs (default: all)] [atmosphere (default \"61 62\")]
 
 Copy dispBDT model files (stereo reconstruction)
 
-   simulation types: CARE_202404 CARE_RedHV_Feb2024
+   simulation types: CARE_202404 CARE_RedHV_Feb2024 CARE_RedHV CARE_UV_2212
 
 "
 exit
@@ -66,12 +66,10 @@ do
             else
                 ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_ATM${LOCAL_A}/${Z}deg"
             fi
-            mkdir -p ${ODIR}
+            mkdir -p "${ODIR}"
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
             IDIR="${IDIR}/${E}_ATM${LOCAL_A}_gamma/TMVA_AngularReconstruction"
             IDIR="${IDIR}/ze${Z}deg/"
-            echo $ODIR
-            echo $IDIR
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign BDTDispEnergy
             do
