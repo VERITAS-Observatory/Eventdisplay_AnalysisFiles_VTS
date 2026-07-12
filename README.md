@@ -18,8 +18,6 @@ To download and unpack the IRFs from the UCLA archive, run in the Eventdisplay\_
 
 Total download size is about 200 GB.
 
-> **Note on XGB instrument files:** The standard download manifests cover only the classic DispBDT and effective-area products. XGB dispersion models (`DispXGB/`) and XGB effective areas are not included in these manifests. Their epoch and atmosphere coverage is currently limited (nominally `V6_2016_2017`, `ATM61` only for effective areas). DESY users can copy them directly from the shared IRF area using `DispXGB/copy_dispXGB.sh`.
-
 For further information on this release, see the [Eventdisplay v492 release page](https://github.com/VERITAS-Observatory/EventDisplay_Release_v492/blob/main/README.md) (restricted access).
 
 Following directories and files are available:
