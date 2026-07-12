@@ -34,6 +34,7 @@ do
     echo "Zenith bin $Z"
     for A in $ATM
     do
+        EPOCH_LIST="${EPOCHS}"
         if [[ $EPOCHS == "all" ]]; then
             if [[ ${SIMTYPE} == "GRISU" ]]; then
                 EPOCH_LIST="V4 V5"
@@ -49,9 +50,6 @@ do
                     EPOCH_LIST=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
                 fi
             fi
-        else
-            EPOCH_LIST="${EPOCHS}"
-        fi
         LOCAL_A="${A}"
         if [[ ${SIMTYPE} == "GRISU" ]]; then
             LOCAL_A=${A/6/2}
