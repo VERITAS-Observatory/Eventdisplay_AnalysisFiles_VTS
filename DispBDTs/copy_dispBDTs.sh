@@ -50,6 +50,7 @@ do
                     EPOCH_LIST=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
                 fi
             fi
+        fi
         LOCAL_A="${A}"
         if [[ ${SIMTYPE} == "GRISU" ]]; then
             LOCAL_A=${A/6/2}
