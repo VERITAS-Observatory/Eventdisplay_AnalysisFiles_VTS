@@ -82,10 +82,10 @@ pack_xgb_models()
         do
             D="DispXGBs_${C}_${I}"
             echo "Packing dispXGB files ${I} into ${D}.tar"
-            if [[ -e DispXGBs/${C} ]]; then
-                rm -f -v ${D}.tar
-                tar -cvzf ${D}.tar DispXGBs/${C}/${I}*
-                mv -f ${D}.tar ${DDIR}/
+            if [[ -d "DispXGBs/${C}" ]]; then
+                rm -f -v "${D}.tar"
+                tar -cvf "${D}.tar" "DispXGBs/${C}/${I}"*
+                mv -f "${D}.tar" "${DDIR}/"
             else
                 echo "ERROR directory DispXGBs/${C}/ does not exist"
             fi
