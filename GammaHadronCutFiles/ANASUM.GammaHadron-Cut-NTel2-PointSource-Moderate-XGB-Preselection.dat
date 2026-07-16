@@ -1,7 +1,8 @@
-cut values for quality and gamma hadron cuts for XGB BDT
+cut values for quality and gamma hadron cuts (XGB stereo)
 ========================================================
 
-Moderate cuts
+BDT preselection cuts for TMVA BDT cuts optimization  (moderate cuts)
+Uses XGB stereo analysis.
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -83,6 +84,3 @@ estimated per individual telescope
 * arrayechi2 0. 99999.
 cut on energy of reconstruction shower (on linear energy scale, in [TeV])
 * arrayerec 0. 1.e10
-
-v) XGB Cuts
-* cutselection 52

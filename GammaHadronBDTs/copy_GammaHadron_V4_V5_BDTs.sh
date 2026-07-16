@@ -20,11 +20,6 @@ echo "COPY gamma/hadron BDTs for ${IRFVERSION}, analysis type ${ANALYSISTYPE}"
 
 for A in ATM21 ATM22
 do
-    if [[ ${A} == "ATM22" ]]; then
-        EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
-    else
-        EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
-    fi
     for E in V4 V5
     do
         BDTDIR="$VERITAS_IRFPRODUCTION_DIR/${IRFVERSION}/${ANALYSISTYPE}/BDTtraining/GammaHadronBDTs_${E}_DISP/"

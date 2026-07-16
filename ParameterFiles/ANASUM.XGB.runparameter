@@ -107,9 +107,9 @@ Energy spectra binning (logarithmic axis)
 Stereo reconstruction
 ---------------------
 Method ids: 0 (DispBDT), 1 (LT Tables), 2 (XGB stereo)
-* ENERGYRECONSTRUCTIONMETHOD 0
+* ENERGYRECONSTRUCTIONMETHOD 2
 Method ids:  0 (DispBDT), 1 (Intersection Method), 2 (XGB stereo)
-* DIRECTIONRECONSTRUCTIONMETHOD 0
+* DIRECTIONRECONSTRUCTIONMETHOD 2
 
 XGB file suffixes
 -----------------

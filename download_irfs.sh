@@ -49,6 +49,6 @@ do
         echo "ERROR: transfer failed for ${D}, skipping extraction"
         continue
     fi
-   tar --keep-newer-files -xvf "${D}"
-   rm -v "${D}"
+    tar --keep-newer-files -xvf "${D}"
+    rm -v "${D}"
 done

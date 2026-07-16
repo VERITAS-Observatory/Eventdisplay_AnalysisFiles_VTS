@@ -53,7 +53,7 @@ pack_lookup_tables()
     done
     }
 
-pack_gammahadronbdts()
+pack_gammahadron_bdts()
 {
     echo "Packing GammaHadron BDTs"
     echo "========================"
@@ -71,7 +71,29 @@ pack_gammahadronbdts()
     done
 }
 
-pack_dispbdts()
+pack_xgb_models()
+{
+    echo "Packing XGB models"
+    echo "=================="
+    for C in ${CLEANING}
+    do
+        EPOCHS=$(get_epochs $C)
+        for I in ${EPOCHS[@]}
+        do
+            D="DispXGBs_${C}_${I}"
+            echo "Packing dispXGB files ${I} into ${D}.tar"
+            if [[ -d "DispXGBs/${C}" ]]; then
+                rm -f -v "${D}.tar"
+                tar -cvf "${D}.tar" "DispXGBs/${C}/${I}"*
+                mv -f "${D}.tar" "${DDIR}/"
+            else
+                echo "ERROR directory DispXGBs/${C}/ does not exist"
+            fi
+        done
+    done
+}
+
+pack_disp_bdts()
 {
     echo "Packing disp BDTs"
     echo "========================"
@@ -93,7 +115,7 @@ pack_dispbdts()
     done
 }
 
-pack_effectiveareas_V6()
+pack_effective_areas_V6()
 {
     for C in ${CLEANING}
     do
@@ -144,7 +166,7 @@ pack_effectiveareas_V6()
                            if [[ ${F} == "RedHV" ]] || [[ ${F} == "UV" ]]; then
                                tar -cvf ${D}.tar EffectiveAreas/*${F}*${T}*${C}*${I}*${A}*.root
                            else
-                               tar -cvf ${D}.tar EffectiveAreas/*${T}*${C}*${I}*${A}*.root
+                               tar -cvf ${D}.tar EffectiveAreas/*${T}-${C}*${I}*${A}*.root
                            fi
                            mv -v ${D}.tar ./${DDIR}/
                        else
@@ -158,7 +180,7 @@ pack_effectiveareas_V6()
     done
 }
 
-pack_effectiveareas_V4V5()
+pack_effective_areas_V4V5()
 {
     echo "Packing Effective Areas V4 V5"
     echo "============================="
@@ -191,12 +213,14 @@ pack_effectiveareas_V4V5()
 
 pack_lookup_tables
 
-pack_effectiveareas_V6
+pack_effective_areas_V6
 
-pack_effectiveareas_V4V5
+pack_effective_areas_V4V5
 
-pack_dispbdts
+pack_disp_bdts
 
-pack_gammahadronbdts
+pack_gammahadron_bdts
+
+pack_xgb_models
 
 cd "${P}" || exit

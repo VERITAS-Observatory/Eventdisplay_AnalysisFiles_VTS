@@ -1,23 +1,28 @@
 #!/bin/bash
 # copy dispBDT files from IRF production site
 #
-# hardwired
-# - SIMTYPE (e.g., CARE_June2020)
-# - ANALYSISTYPE (e.g., AP)
-#
+
+if [ "$#" -lt 1 ]; then
+echo "
+./copy_dispBDTs.sh <simulation type> [epochs (default: all)] [atmosphere (default \"61 62\")]
+
+Copy dispBDT model files (stereo reconstruction)
+
+   simulation types: CARE_202404 CARE_RedHV_Feb2024 CARE_RedHV CARE_UV_2212
+
+"
+exit
+fi
 
 IRFVERSION=$(cat ../IRFVERSION)
 ANALYSISTYPE="${VERITAS_ANALYSIS_TYPE:0:2}"
-# Set SIMTYPE to the desired simulation type (uncomment one):
-# SIMTYPE="CARE_UV_2212"
-# SIMTYPE="GRISU"
-# SIMTYPE="CARE_RedHV"
-# SIMTYPE="CARE_June2020"
-# SIMTYPE="CARE_24_20"
-# SIMTYPE="CARE_RedHV_Feb2024"
-SIMTYPE="CARE_202404"
+SIMTYPE="${1}"
+EPOCHS=${2:-"all"}
+ATM=${3:-"61 62"}
 
 echo "COPY dispBDT for ${IRFVERSION}, analysis type ${ANALYSISTYPE}, and simulation type ${SIMTYPE}"
+echo "  Atmosphere $ATM"
+echo "  EPOCHS $EPOCHS"
 
 ZAS=(00 20 30 35 40 45 50 55 60 65)
 if [[ ${SIMTYPE} == "CARE_RedHV" ]]; then
@@ -27,37 +32,42 @@ fi
 for Z in "${ZAS[@]}"
 do
     echo "Zenith bin $Z"
-    for A in ATM61 ATM62
+    for A in $ATM
     do
-        if [[ ${SIMTYPE} == "GRISU" ]]; then
-            A=${A/6/2}
-            EPOCHS="V4 V5"
-        elif [[ ${SIMTYPE} == *"UV"* ]]; then
-            EPOCHS=$(cat ../IRF_EPOCHS_obsfilter.dat | sort -u)
-            if [[ ${A} == "ATM62" ]]; then
-                continue
-            fi
-        else
-            if [[ ${A} == "ATM62" ]]; then
-                EPOCHS=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
-            else
-                EPOCHS=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
-            fi
-            # FIXEDEPOX EPOCHS="V6_2016_2017"
-        fi
-        for E in $EPOCHS
-        do
-            echo "EPOCH ${E} ATMO ${A}"
-            if [[ ${SIMTYPE} == *"RedHV"* ]]; then
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_redHV/${Z}deg"
+        EPOCH_LIST="${EPOCHS}"
+        if [[ $EPOCHS == "all" ]]; then
+            if [[ ${SIMTYPE} == "GRISU" ]]; then
+                EPOCH_LIST="V4 V5"
             elif [[ ${SIMTYPE} == *"UV"* ]]; then
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}_UV/${Z}deg"
+                EPOCH_LIST=$(cat ../IRF_EPOCHS_obsfilter.dat | sort -u)
+                if [[ ${A} == "62" ]]; then
+                    continue
+                fi
             else
-                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_${A}/${Z}deg"
+                if [[ ${A} == "62" ]]; then
+                    EPOCH_LIST=$(cat ../IRF_EPOCHS_SUMMER.dat | sort -u)
+                else
+                    EPOCH_LIST=$(cat ../IRF_EPOCHS_WINTER.dat | sort -u)
+                fi
             fi
-            mkdir -p ${ODIR}
+        fi
+        LOCAL_A="${A}"
+        if [[ ${SIMTYPE} == "GRISU" ]]; then
+            LOCAL_A=${A/6/2}
+        fi
+        for E in $EPOCH_LIST
+        do
+            echo "EPOCH ${E} ATMO ${LOCAL_A}"
+            if [[ ${SIMTYPE} == *"RedHV"* ]]; then
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_ATM${LOCAL_A}_redHV/${Z}deg"
+            elif [[ ${SIMTYPE} == *"UV"* ]]; then
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_ATM${LOCAL_A}_UV/${Z}deg"
+            else
+                ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_ATM${LOCAL_A}/${Z}deg"
+            fi
+            mkdir -p "${ODIR}"
             IDIR="${VERITAS_IRFPRODUCTION_DIR}/${IRFVERSION}/${ANALYSISTYPE}/${SIMTYPE}"
-            IDIR="${IDIR}/${E}_${A}_gamma/TMVA_AngularReconstruction"
+            IDIR="${IDIR}/${E}_ATM${LOCAL_A}_gamma/TMVA_AngularReconstruction"
             IDIR="${IDIR}/ze${Z}deg/"
             # check log file for successful training
             for B in BDTDisp BDTDispError BDTDispSign BDTDispEnergy
