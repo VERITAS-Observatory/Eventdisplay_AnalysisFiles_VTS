@@ -1,7 +1,7 @@
 cut values for quality and gamma hadron cuts
 ========================================================
 
-BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts)
+BDT preselection cuts for TMVA BDT cuts optimization  (hard cuts, 3 tel minimum)
 
 ========================================================
 All lines without a '*' in the first column are ignored!
@@ -13,7 +13,7 @@ distance of core position to telescopes [m]
 * arraycore -1. 400.
 
 size of the camera [deg], all events with direction
-outside of that  are ignored
+outside of that interval are ignored
 * cameraedge -1. 2.00
 
 second largest image size
