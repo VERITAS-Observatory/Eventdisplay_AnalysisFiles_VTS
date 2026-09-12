@@ -13,7 +13,7 @@ distance of core position to telescopes [m]
 * arraycore -1. 400.
 
 size of the camera [deg], all events with direction
-outside of that  are ignored
+outside of that interval are ignored
 * cameraedge -1. 2.00
 
 second largest image size
@@ -90,8 +90,6 @@ v) TMVA Cuts
 * TMVAPARAMETER V4 BDT 0 3 0 2 /GammaHadronBDTs/AP/V4/NTel2-Moderate/   BDT
 * TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel2-Moderate/   BDT
 * TMVAPARAMETER V6 BDT 0 8 0 2 /GammaHadronBDTs/AP/V6/NTel2-Moderate/   BDT
-
- TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 
 * TMVA_MVACut V4_ATM21 00 0.0968 01 0.0968 02 0.0968 10 0.141 11 0.154 12 0.0761 20 0.121 21 0.138 22 0.124 30 0.0898 31 0.136 32 0.144
 * TMVA_MVACut V4_ATM22 00 0.0968 01 0.0968 02 0.0968 10 0.153 11 0.16 12 0.0756 20 0.125 21 0.144 22 0.127 30 0.0921 31 0.137 32 0.15
