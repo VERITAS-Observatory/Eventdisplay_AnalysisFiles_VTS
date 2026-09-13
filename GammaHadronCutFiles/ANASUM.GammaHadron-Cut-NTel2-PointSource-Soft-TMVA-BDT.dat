@@ -13,7 +13,7 @@ distance of core position to telescopes [m]
 * arraycore -1. 400.
 
 size of the camera [deg], all events with direction
-outside of that  are ignored
+outside of that interval are ignored
 * cameraedge -1. 2.00
 
 second largest image size
@@ -91,7 +91,6 @@ v) TMVA Cuts
 * TMVAPARAMETER V5 BDT 0 3 0 2 /GammaHadronBDTs/AP/V5/NTel2-Soft/   BDT
 * TMVAPARAMETER V6 BDT 0 8 0 2 /GammaHadronBDTs/AP/V6/NTel2-Soft/   BDT
 
- TMVACUTS <required significance> <required number of events> <observing time> <particle rate file> <fixed signal efficiency> <minimum source strength> <conversion factor>
 cut values for different epochs and its corresponding directory where to find .root and weight files
 
 * TMVA_MVACut V4_ATM21 00 0.104 01 0.104 02 0.104 10 0.13 11 0.135 12 0.145 20 0.0936 21 0.0998 22 0.112 30 0.0328 31 0.0584 32 0.0631
@@ -129,5 +128,3 @@ cut values for different epochs and its corresponding directory where to find .r
 * TMVA_MVACut V6_2024_2025w_ATM61 00 0.129 01 0.103 10 0.133 11 0.125 12 0.143 20 0.146 21 0.134 22 0.0147 30 0.157 31 0.151 32 0.0683 40 0.11 41 0.159 42 0.102 50 0.0703 51 0.126 52 0.115 60 0.035 61 0.0741 62 0.124 70 0.0561 71 0.0538 72 0.124 80 0.0635 81 0.0507 82 0.12
 * TMVA_MVACut V6_2025_2025s_ATM62 00 0.134 01 0.111 10 0.147 11 0.135 12 0.147 20 0.157 21 0.137 22 0.0158 30 0.163 31 0.161 32 0.0666 40 0.117 41 0.156 42 0.104 50 0.0661 51 0.129 52 0.111 60 0.0323 61 0.0781 62 0.122 70 0.0503 71 0.0561 72 0.127 80 0.0601 81 0.0534 82 0.119
 * TMVA_MVACut V6_2025_2026w_ATM61 00 0.132 01 0.103 10 0.141 11 0.125 12 0.132 20 0.166 21 0.15 22 0.0212 30 0.158 31 0.155 32 0.0732 40 0.102 41 0.161 42 0.102 50 0.0647 51 0.119 52 0.119 60 0.0359 61 0.072 62 0.131 70 0.0577 71 0.0471 72 0.131 80 0.0675 81 0.0589 82 0.119
-
-

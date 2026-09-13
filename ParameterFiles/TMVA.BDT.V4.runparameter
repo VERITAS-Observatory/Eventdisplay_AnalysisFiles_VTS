@@ -58,7 +58,7 @@ Selection cut before training
 * SELECTION_CUTS_BKG ((Yoff_derot-WobbleN)*(Yoff_derot-WobbleN)+(Xoff_derot-WobbleE)*(Xoff_derot-WobbleE))>0.05
 
 ##############################################
-azimuth cut ('de-star' if not needed)
+azimuth cut (default: not set)
 South:
  AZIMUTH (ArrayPointing_Azimuth>135.&&ArrayPointing_Azimuth<225.)
 North:
