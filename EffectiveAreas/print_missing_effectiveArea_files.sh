@@ -2,7 +2,13 @@
 # print missing effective area files
 #
 
-VERSION=$(cat ../IRFVERSION)
+cd "$(dirname "$0")" || exit 1
+PRODUCTION_SIMTYPE=${1:-${SIMTYPE:-}}
+if [[ -z $PRODUCTION_SIMTYPE ]]; then
+    echo "Usage: $0 <production-simulation-token> (or set SIMTYPE)" >&2
+    exit 1
+fi
+VERSION=$(cat ../IRFVERSION) || exit 1
 
 for N in "" "_RedHV"
 do
@@ -23,6 +29,7 @@ do
 	 # for E in V4 V5 ${EPOCHS[@]}
 	 for E in ${EPOCHS[@]}
 	 do
+	    SIMTYPE=$PRODUCTION_SIMTYPE
 	    ATM=${A}
 	    if [[ $E == "V4" ]] || [[ $E == "V5" ]]; then
 		SIMTYPE="GRISU"
