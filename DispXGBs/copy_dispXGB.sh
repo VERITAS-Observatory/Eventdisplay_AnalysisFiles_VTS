@@ -25,8 +25,22 @@ echo "  Atmosphere $ATM"
 echo "  EPOCHS $EPOCHS"
 
 STEREO_PAR="$VERITAS_EVNDISP_AUX_DIR/ParameterFiles/XGB-stereo-parameter.json"
-IDS=$(jq -r '.zenith[].id' $STEREO_PAR)
+IDS=$(jq -r '.zenith[].id' "$STEREO_PAR")
 echo "Zenith bins: $IDS"
+CLASSIFY_PAR="$VERITAS_EVNDISP_AUX_DIR/ParameterFiles/XGB-classify-parameter.json"
+N_GH_EBINS=$(jq -r '.energy_bins_log10_tev | length' "$CLASSIFY_PAR")
+echo "Gamma/hadron energy bins: $N_GH_EBINS"
+
+FAILURES=0
+
+# check that a model exists as <prefix>.joblib.gz or <prefix>.joblib
+check_model()
+{
+    if [[ ! -f "${1}.joblib.gz" ]] && [[ ! -f "${1}.joblib" ]]; then
+        echo "ERROR: missing model ${1}.joblib(.gz)"
+        FAILURES=$((FAILURES + 1))
+    fi
+}
 
 for A in $ATM
 do
@@ -69,14 +83,32 @@ do
         do
             echo "Zenith bin $Z"
             ZDIR="${ODIR}/${Z}"
-            mkdir -p ${ZDIR}
+            mkdir -p "${ZDIR}"
             SDIR="${IDIR}/${E}_ATM${LOCAL_A}_gamma/TrainXGBStereoAnalysis/${Z}"
-            cp -v -f ${SDIR}/* ${ZDIR}/
+            cp -v -f "${SDIR}"/* "${ZDIR}"/
+            check_model "${ZDIR}/dispdir_bdt"
         done
 
         ##################################################
         # Gamma/hadron BDTs (zenith angle independent)
+        # (training writes gammahadron_bdt_ebin<N>.joblib.gz)
         GDIR="${IDIR}/${E}_ATM${LOCAL_A}_gamma/TrainXGBGammaHadron"
-        cp -v -f ${GDIR}/*.{joblib,log} ${ODIR}/
+        if [[ ! -d "${GDIR}" ]]; then
+            echo "No gamma/hadron models for epoch ${E} (${GDIR} not found)"
+            continue
+        fi
+        mkdir -p "${ODIR}"
+        for F in "${GDIR}"/*.joblib.gz "${GDIR}"/*.joblib "${GDIR}"/*.log; do
+            [[ -f "$F" ]] && cp -v -f "$F" "${ODIR}"/
+        done
+        for (( B=0; B<N_GH_EBINS; B++ )); do
+            check_model "${ODIR}/gammahadron_bdt_ebin${B}"
+        done
     done
 done
+
+if [[ $FAILURES -gt 0 ]]; then
+    echo "ERROR: ${FAILURES} expected model file(s) missing after copy"
+    exit 1
+fi
+echo "All expected model files copied."
