@@ -53,6 +53,12 @@ do
     fi
     for E in $EPOCH_LIST
     do
+        if [[ ${A} == "62" && ${E} == *"w"* ]]; then
+            continue
+        fi
+        if [[ ${A} == "61" && ${E} == *"s"* ]]; then
+            continue
+        fi
         echo "EPOCH ${E} ATMO ${LOCAL_A}"
         if [[ ${SIMTYPE} == *"RedHV"* ]]; then
             ODIR="${VERITAS_ANALYSIS_TYPE:0:2}/${E}_ATM${LOCAL_A}_redHV"
